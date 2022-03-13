@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "613422672008",
+    "project_id": "xlcdapp",
+    "storage_bucket": "xlcdapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613422672008:android:78e0e3a371c4afde25573d",
+        "android_client_info": {
+          "package_name": "one.joyjoy.xlcdapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613422672008-i5u4abf6fdbpr9oqhcrr5m7ggjachgrn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrgu8j4J6t0sd_M090uYL0JKJW1CSkIeA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613422672008-i5u4abf6fdbpr9oqhcrr5m7ggjachgrn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "613422672008-8mr24aljjvksssd39vdib9q5tcgiif0u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "one.joyjoy.xlcdapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
