@@ -1,6 +1,6 @@
 {
-    "name": "xlcd_app",
-    "short_name": "xlcd_app",
+    "name": "xlcdapp",
+    "short_name": "xlcdapp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

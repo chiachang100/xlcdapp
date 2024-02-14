@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>613422672008-8mr24aljjvksssd39vdib9q5tcgiif0u.apps.googleusercontent.com</string>
+	<string>613422672008-6ej0i1bjtcvh8mf2c2dvca076tcopkqg.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.613422672008-8mr24aljjvksssd39vdib9q5tcgiif0u</string>
+	<string>com.googleusercontent.apps.613422672008-6ej0i1bjtcvh8mf2c2dvca076tcopkqg</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBn1cvJBd0YeAn2jwFZUpq7srZo2qomTSI</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>one.joyjoy.xlcdapp</string>
+	<string>com.joyolord.app.xlcdapp</string>
 	<key>PROJECT_ID</key>
 	<string>xlcdapp</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:613422672008:ios:de752e650d14296c25573d</string>
+	<string>1:613422672008:ios:e3e4f85ab87a757d25573d</string>
 </dict>
 </plist>

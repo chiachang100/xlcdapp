@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCrgu8j4J6t0sd_M090uYL0JKJW1CSkIeA',
-    appId: '1:613422672008:android:3fcc6af268e268f025573d',
+    appId: '1:613422672008:android:b52c3544dda1bb7825573d',
     messagingSenderId: '613422672008',
     projectId: 'xlcdapp',
     storageBucket: 'xlcdapp.appspot.com',
@@ -66,11 +66,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBn1cvJBd0YeAn2jwFZUpq7srZo2qomTSI',
-    appId: '1:613422672008:ios:de752e650d14296c25573d',
+    appId: '1:613422672008:ios:e3e4f85ab87a757d25573d',
     messagingSenderId: '613422672008',
     projectId: 'xlcdapp',
     storageBucket: 'xlcdapp.appspot.com',
-    iosClientId: '613422672008-8mr24aljjvksssd39vdib9q5tcgiif0u.apps.googleusercontent.com',
-    iosBundleId: 'one.joyjoy.xlcdapp',
+    iosClientId: '613422672008-6ej0i1bjtcvh8mf2c2dvca076tcopkqg.apps.googleusercontent.com',
+    iosBundleId: 'com.joyolord.app.xlcdapp',
   );
 }

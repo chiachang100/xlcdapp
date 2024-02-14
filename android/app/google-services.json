@@ -7,14 +7,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:613422672008:android:3fcc6af268e268f025573d",
+        "mobilesdk_app_id": "1:613422672008:android:b52c3544dda1bb7825573d",
         "android_client_info": {
-          "package_name": "com.example.xlcd_app"
+          "package_name": "com.joyolord.app.xlcdapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "613422672008-i5u4abf6fdbpr9oqhcrr5m7ggjachgrn.apps.googleusercontent.com",
+          "client_id": "613422672008-4naa6lfsid73eci55hc6a757coi52nfr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,50 +27,14 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "613422672008-i5u4abf6fdbpr9oqhcrr5m7ggjachgrn.apps.googleusercontent.com",
+              "client_id": "613422672008-4naa6lfsid73eci55hc6a757coi52nfr.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "613422672008-8mr24aljjvksssd39vdib9q5tcgiif0u.apps.googleusercontent.com",
+              "client_id": "613422672008-6ej0i1bjtcvh8mf2c2dvca076tcopkqg.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "one.joyjoy.xlcdapp"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:613422672008:android:78e0e3a371c4afde25573d",
-        "android_client_info": {
-          "package_name": "one.joyjoy.xlcdapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "613422672008-i5u4abf6fdbpr9oqhcrr5m7ggjachgrn.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCrgu8j4J6t0sd_M090uYL0JKJW1CSkIeA"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "613422672008-i5u4abf6fdbpr9oqhcrr5m7ggjachgrn.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "613422672008-8mr24aljjvksssd39vdib9q5tcgiif0u.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "one.joyjoy.xlcdapp"
+                "bundle_id": "com.joyolord.app.xlcdapp"
               }
             }
           ]
