@@ -1,7 +1,0 @@
-{
-  "name": "xlcdapp",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

@@ -1,11 +1,11 @@
 {
-    "name": "xlcdapp",
-    "short_name": "xlcdapp",
+    "name": "xlcdapp-笑裡藏道",
+    "short_name": "笑裡藏道",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "xlcdapp-笑裡藏道.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

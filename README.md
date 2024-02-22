@@ -1,6 +1,6 @@
 # xlcdapp
 
-A new Flutter project.
+xlcdapp-笑裡藏道.
 
 ## Getting Started
 
@@ -31,8 +31,7 @@ samples, guidance on mobile development, and a full API reference.
 - Insall the FlutterFire CLI
   - `dart pub global activate flutterfire_cli`
 ### Step 2: Configure your apps to use Firebase
-- `flutterfire configure`
-- `flutterfire configure -i com.joyolord.joyolordapp -a com.joyolord.joyolordapp`
+- `flutterfire configure -i com.joyolord.xlcdapp -a com.joyolord.xlcdapp`
   - Select the platforms (iOS, Android, Web) in your Flutter app.
   - Create a Firebase configuration file
     - `lib/firebase_options.dart`
@@ -41,7 +40,20 @@ samples, guidance on mobile development, and a full API reference.
   - `flutter pub add firebase_core`
 - From your Flutter project, ensure your Flutter app's Firebase configuration is up-to-date
   - `flutterfire configure -i com.joyolord.app.xlcdapp -a com.joyolord.app.xlcdapp`
-- In your lib/main.dart file, import Firebase core plugin and the configuration file you generated earlier:
+```
+✔ Which platforms should your configuration support (use arrow keys & space to select)? · android, ios, web
+i Firebase android app com.joyolord.xlcdapp registered.
+i Firebase ios app com.joyolord.xlcdapp registered.
+i Firebase web app xlcdapp (web) registered.
+
+Firebase configuration file lib\firebase_options.dart generated successfully with the following Firebase apps:
+
+Platform  Firebase App Id
+web       1:613422672008:web:b2ccf3a963676d8a25573d
+android   1:613422672008:android:35cf1831d54b20fc25573d
+ios       1:613422672008:ios:7c5735d8ef3e17a325573d
+```
+- In your `lib/main.dart` file, import Firebase core plugin and the configuration file you generated earlier:
 ```
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -53,16 +65,23 @@ await Firebase.initializeApp(
 );
 ```
 - Rebuild your Flutter application
-  - `flutter run`
+  - `flutter pub get`
+  - Web: `flutter run -d chrome`
+  - Android Emulator: `flutter run -d emulator-5554`
+  - iOS Simulator: `flutter run -d [TBS]`
 
 ### Step 4: Add Firebase plugins
 - From your Flutter project directory, run the following commands:
   - `flutter pub add firebase_analytics`
   - `flutter pub add firebase_auth`
+  - `flutter pub add cloud_firestore`
 - From your Flutter project, ensure your Flutter app's Firebase configuration is up-to-date
   - `flutterfire configure -i com.joyolord.app.xlcdapp -a com.joyolord.app.xlcdapp`
 - Rebuild your Flutter application
-  - `flutter run`
+  - `flutter pub get`
+  - Web: `flutter run -d chrome`
+  - Android Emulator: `flutter run -d emulator-5554`
+  - iOS Simulator: `flutter run -d [TBS]`
 
 ---
 ## Useful Tools
