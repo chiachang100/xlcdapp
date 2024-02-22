@@ -60,8 +60,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with TickerProviderStateMixin<Home> {
-  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-
   static const List<Destination> allDestinations = <Destination>[
     Destination(0, 'Home', Icons.home, Colors.teal),
     Destination(1, 'Favorites', Icons.favorite, Colors.red),
@@ -94,11 +92,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin<Home> {
   void initState() {
     super.initState();
 
-    analytics.logScreenView(
-      //screenName: '${TabsPage.routeName}/tab$selectedIndex',
-      screenName: '_HomeState.initState()',
-    );
-
     navigatorKeys = List<GlobalKey<NavigatorState>>.generate(
       allDestinations.length,
       (int index) => GlobalKey(),
@@ -126,11 +119,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin<Home> {
 
   @override
   void dispose() {
-    analytics.logScreenView(
-      //screenName: '${TabsPage.routeName}/tab$selectedIndex',
-      screenName: '_HomeState.dispose()',
-    );
-
     for (final AnimationController controller in destinationFaders) {
       controller.dispose();
     }
@@ -368,24 +356,15 @@ class TextPage extends StatefulWidget {
 
 class _TextPageState extends State<TextPage> {
   late final TextEditingController textController;
-  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   @override
   void initState() {
-    analytics.logScreenView(
-      //screenName: '${TabsPage.routeName}/tab$selectedIndex',
-      screenName: '_HomeState.dispose()',
-    );
     super.initState();
     textController = TextEditingController(text: 'Sample Text');
   }
 
   @override
   void dispose() {
-    analytics.logScreenView(
-      //screenName: '${TabsPage.routeName}/tab$selectedIndex',
-      screenName: '_HomeState.dispose()',
-    );
     textController.dispose();
     super.dispose();
   }
