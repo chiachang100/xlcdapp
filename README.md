@@ -95,4 +95,11 @@ await Firebase.initializeApp(
 - Update `firebase tool`
   - `npm install -g firebase-tools`
 
+## Setup firebaseServiceAccount on GitHub
+- Follow the following instructions to setup `firebaseServiceAccount` on GitHub for `.github/workflow/firebase-hosting-merge.yml`:
+- [Firebase Hosting with GitHub Actions. Prachit Suhas Patil](https://dev.to/pprachit09/firebase-hosting-with-github-actions-55ka)
+```
+        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_XLCDAPP }}'
+```
+
 ---
