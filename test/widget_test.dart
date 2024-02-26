@@ -11,7 +11,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:xlcdapp/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('xlcdapp smoke test', (WidgetTester tester) async {
     expect(0, 0);
     /*
     // Build our app and trigger a frame.

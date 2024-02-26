@@ -1,51 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'media_category.dart';
-import 'dummy_snapshot.dart';
-import 'record.dart';
+import 'package:xlcdapp/joys/joys_category.dart';
+import 'package:xlcdapp/joys/dummy_snapshot.dart';
+import 'package:xlcdapp/joys/record.dart';
 
-class RecommendedMediaApp extends StatefulWidget {
-  // const RecommendedMediaApp({
-  //   super.key,
-  //   required this.firestore,
-  // });
-  RecommendedMediaApp(this.firestore);
+class JoysPage extends StatefulWidget {
+  JoysPage(this.firestore);
   final FirebaseFirestore firestore;
 
   @override
   State<StatefulWidget> createState() {
-    return RecommendedMediaAppState();
+    return JoysPageState();
   }
 }
 
 enum AppBarBehavior { normal, pinned, floating, snapping }
 
-class RecommendedMediaAppState extends State<RecommendedMediaApp> {
+class JoysPageState extends State<JoysPage> {
   static final GlobalKey<ScaffoldState> _scaffoldKey =
       GlobalKey<ScaffoldState>();
 
   int _selectedIndex = 0;
 
-  AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
-  final double _appBarHeight = 256.0;
-
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Media',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: About',
-      style: optionStyle,
-    ),
-  ];
 
   void _launchURL(Uri url) => launchUrl(url);
 
@@ -57,13 +36,6 @@ class RecommendedMediaAppState extends State<RecommendedMediaApp> {
         Uri.parse(
             'https://www.youtube.com/channel/UCuvN0Tt_LLL-bOwO8LcOPlw/playlists?view_as=subscriber'),
       );
-
-  // void _launchXlcdAppFacebook() =>
-  //     _scaffoldKey.currentState.showSnackBar(const SnackBar(
-  //         content: Text("喜樂抹茶傳媒 Facebook - Under Construction.")));
-
-  // void _launchXlcdAppTwitter() => _scaffoldKey.currentState.showSnackBar(
-  //     const SnackBar(content: Text("喜樂抹茶傳媒 Twitter - Under Construction.")));
 
   void _onItemTapped(int index) {
     setState(() {
@@ -175,8 +147,10 @@ class RecommendedMediaAppState extends State<RecommendedMediaApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // backgroundColor: Colors.purple,
+        centerTitle: true,
         titleSpacing: 0.0,
-        title: Text('傳媒精華推薦'),
+        title: Text('收藏夾'),
         actions: <Widget>[
           //IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
           PopupMenuButton<XlcdMediaPlaylist>(
@@ -409,7 +383,7 @@ class RecommendedMediaAppState extends State<RecommendedMediaApp> {
         {
           return StreamBuilder<QuerySnapshot>(
             stream: widget.firestore
-                .collection('media')
+                .collection('joys')
                 .orderBy("votes", descending: true)
                 .snapshots(),
             builder: (context, snapshot) {
@@ -487,24 +461,14 @@ class RecommendedMediaAppState extends State<RecommendedMediaApp> {
 
     return Padding(
       key: ValueKey(record.title),
-//      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: Container(
-//        decoration: BoxDecoration(
-//          border: Border.all(color: Colors.grey),
-//          borderRadius: BorderRadius.circular(5.0),
-//        ),
         child: ListTile(
           title: Text(record.title),
           subtitle: Text(record.subtitle),
-//          leading: Icon(
-//            XlcdMediaIconList[record.icon],
-//            color: XlcdMediaColorList[record.icon],
-//          ),
           leading: CircleAvatar(
             backgroundColor:
                 XlcdMediaColorList[(record.icon.codeUnitAt(0) - 64)],
-//            child: Icon(XlcdMediaIconList[record.icon]),
             child: Text(
               //String.fromCharCode(64 + record.icon),
               //record.icon,
@@ -523,64 +487,3 @@ class RecommendedMediaAppState extends State<RecommendedMediaApp> {
     );
   }
 }
-
-// class RecommendedMediaAppState extends State<RecommendedMediaApp> {
-//   int number = 0;
-
-//   void subtractNumbers() {
-//     setState(() {
-//       number = number - 1;
-//     });
-//   }
-
-//   void addNumbers() {
-//     setState(() {
-//       number = number + 1;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Raised Button"),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             Text(
-//               '$number',
-//               style: TextStyle(
-//                 fontWeight: FontWeight.bold,
-//                 fontSize: 160.0,
-//                 fontFamily: 'Roboto',
-//               ),
-//             ),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//               children: <Widget>[
-//                 RaisedButton(
-//                   padding: const EdgeInsets.all(8.0),
-//                   textColor: Colors.white,
-//                   color: Colors.blue,
-//                   onPressed: addNumbers,
-//                   child: Text("Add"),
-//                 ),
-//                 RaisedButton(
-//                   onPressed: subtractNumbers,
-//                   textColor: Colors.white,
-//                   color: Colors.red,
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: Text(
-//                     "Subtract",
-//                   ),
-//                 ),
-//               ],
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

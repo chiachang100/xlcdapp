@@ -17,7 +17,7 @@ List<Color> XlcdMediaColorList = [
   // 0. misc
   Colors.red,
   // A. art
-  Colors.red,
+  Colors.lightBlue,
   // B. business
   Colors.orange,
   // C. religion
@@ -25,15 +25,15 @@ List<Color> XlcdMediaColorList = [
   //Colors.amber,
   Colors.yellow,
   // D. media
-  Colors.green,
+  Colors.lightGreen,
   // E. education
   Colors.blue,
   // F. family
-  Colors.indigo,
+  Colors.lime,
   // G. government
-  Colors.purple,
+  Colors.pink,
   // H. misc
-  Colors.greenAccent,
+  Colors.amber,
   // I. apps
   Colors.grey,
 ];

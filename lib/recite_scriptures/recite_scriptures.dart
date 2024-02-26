@@ -46,9 +46,6 @@ class ReciteScripturesState extends State<ReciteScriptures> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('背誦經文'),
-      ),
       body: _buildBody(context),
     );
   }
@@ -68,7 +65,7 @@ class ReciteScripturesState extends State<ReciteScriptures> {
         {
           return StreamBuilder<QuerySnapshot>(
             stream: widget.firestore
-                .collection('joymm-bible-verse')
+                .collection('bibleverses')
                 .orderBy("votes", descending: true)
                 .snapshots(),
             builder: (context, snapshot) {
@@ -161,10 +158,10 @@ class ReciteScripturesState extends State<ReciteScriptures> {
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(record.book + ' ' + record.chapter),
+                  Text('${record.book} ${record.chapter}'),
                   Text(
                     record.votes.toString(),
-                    style: TextStyle(color: Colors.green),
+                    style: const TextStyle(color: Colors.red),
                   ),
                 ],
               ),
@@ -177,7 +174,7 @@ class ReciteScripturesState extends State<ReciteScriptures> {
                   final fresh = Record.fromSnapshot(
                       freshSnapshot as DocumentSnapshot<Map<String, dynamic>>);
 
-                  await transaction.update(
+                  transaction.update(
                       record.reference as DocumentReference<Object?>,
                       {'votes': fresh.votes + 1});
                 });
@@ -188,37 +185,11 @@ class ReciteScripturesState extends State<ReciteScriptures> {
               },
               child: Text(
                 record.verse,
-                style: TextStyle(fontSize: 20.0, color: Colors.white),
               ),
             ),
           ],
         ),
       ),
     );
-
-    /*
-    return Padding(
-      key: ValueKey(record.title),
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: Container(
-        child: ListTile(
-          title: Text(record.title),
-          subtitle: Text(record.subtitle),
-          leading: CircleAvatar(
-            backgroundColor:
-                XlcdMediaColorList[(record.icon.codeUnitAt(0) - 64)],
-            child: Text(
-              record.title.substring(0, 1),
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-          ),
-          trailing: Text(record.votes.toString()),
-          onTap: () => _launchURL(record.url),
-        ),
-      ),
-    );
-    */
   }
 }

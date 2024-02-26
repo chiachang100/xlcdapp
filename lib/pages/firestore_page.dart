@@ -5,7 +5,7 @@ class FirestorePage extends StatelessWidget {
   final FirebaseFirestore db;
   FirestorePage(this.db);
   final bool initDb = false;
-  final bool initMediaDb = false;
+  final bool initJoysDb = false;
 
   void getStarted_addData() async {
     // [START get_started_add_data_1]
@@ -48,8 +48,8 @@ class FirestorePage extends StatelessWidget {
     // [END get_started_read_data]
   }
 
-  void getStarted_addMediaData() async {
-    final media = <String, dynamic>{
+  void getStarted_addJoysData() async {
+    final joy = <String, dynamic>{
       "icon": 'D',
       "title": "喜樂的心乃是良藥",
       "subtitle": "喜樂的心乃是良藥，憂傷的靈使骨枯乾 - 神話語的科學證明。",
@@ -58,12 +58,12 @@ class FirestorePage extends StatelessWidget {
     };
 
     // Add a new document with a generated ID
-    db.collection("media").add(media).then((DocumentReference doc) =>
+    db.collection("joys").add(joy).then((DocumentReference doc) =>
         print('DocumentSnapshot added with ID: ${doc.id}'));
   }
 
-  void getStarted_addMediaData2() async {
-    final media = <String, dynamic>{
+  void getStarted_addJoysData2() async {
+    final joy = <String, dynamic>{
       "icon": 'C',
       "title": "宣教士 第一集 - 叩门",
       "subtitle": "从汉朝多马入华的传说, 经唐朝景教, 元朝也里可温教, 到明末清初的天主教, 一千多年间叩门, 开门和关门的故事. ",
@@ -72,12 +72,12 @@ class FirestorePage extends StatelessWidget {
     };
 
     // Add a new document with a generated ID
-    db.collection("media").add(media).then((DocumentReference doc) =>
+    db.collection("joys").add(joy).then((DocumentReference doc) =>
         print('DocumentSnapshot added with ID: ${doc.id}'));
   }
 
-  void getStarted_addMediaData3() async {
-    final media = <String, dynamic>{
+  void getStarted_addJoysData3() async {
+    final joy = <String, dynamic>{
       "icon": 'D',
       "title": "Good TV",
       "subtitle": "GOOD TV好消息電視台",
@@ -86,12 +86,12 @@ class FirestorePage extends StatelessWidget {
     };
 
     // Add a new document with a generated ID
-    db.collection("media").add(media).then((DocumentReference doc) =>
+    db.collection("joys").add(joy).then((DocumentReference doc) =>
         print('DocumentSnapshot added with ID: ${doc.id}'));
   }
 
-  void getStarted_readMediaData() async {
-    await db.collection("media").get().then((event) {
+  void getStarted_readJoysData() async {
+    await db.collection("joys").get().then((event) {
       for (var doc in event.docs) {
         print("${doc.id} => ${doc.data()}");
       }
@@ -106,12 +106,12 @@ class FirestorePage extends StatelessWidget {
     }
     getStarted_readData();
 
-    if (initMediaDb) {
-      getStarted_addMediaData();
-      getStarted_addMediaData2();
-      getStarted_addMediaData3();
+    if (initJoysDb) {
+      getStarted_addJoysData();
+      getStarted_addJoysData2();
+      getStarted_addJoysData3();
     }
-    getStarted_readMediaData();
+    getStarted_readJoysData();
 
     return Scaffold(
       body: Card(

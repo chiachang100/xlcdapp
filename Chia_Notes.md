@@ -11,7 +11,7 @@
   - `export JAVA_TOOL_OPTIONS="-Xmx4g"`
 
 - Start up emulators
-  - `firebase emulators:start`
+  - `firebase emulators:start --import c:\ws\fb_emulators --export-on-exit`
   - `firebase emulators:exec scriptpath`
 
 ```

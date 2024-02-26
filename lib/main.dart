@@ -11,10 +11,10 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'pages/home_page.dart';
 import 'pages/favorites_page.dart';
-import 'pages/personal_page.dart';
+import 'pages/settings_page.dart';
 import 'pages/firestore_page.dart';
 
-import 'media_list/recommended_media.dart';
+import 'joys/joys_page.dart';
 import 'recite_scriptures/recite_scriptures.dart';
 
 Future<void> main() async {
@@ -70,7 +70,7 @@ class MainApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       navigatorObservers: <NavigatorObserver>[observer],
-      home: Home(
+      home: NavigationHome(
         title: '笑裡藏道',
         analytics: analytics,
         observer: observer,
@@ -80,8 +80,8 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class Home extends StatefulWidget {
-  const Home({
+class NavigationHome extends StatefulWidget {
+  const NavigationHome({
     super.key,
     required this.title,
     required this.analytics,
@@ -95,11 +95,12 @@ class Home extends StatefulWidget {
   final FirebaseFirestore firestore;
 
   @override
-  State<Home> createState() => _HomeState();
+  State<NavigationHome> createState() => _NavigationHomeState();
 }
 
-class _HomeState extends State<Home> {
+class _NavigationHomeState extends State<NavigationHome> {
   int currentPageIndex = 0;
+  int _selectedIndex = 0;
 
   void _onDestinationSelected(int index) {
     setState(() {
@@ -107,9 +108,61 @@ class _HomeState extends State<Home> {
     });
   }
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        //backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Colors.orange,
+        centerTitle: true,
+        title: Text('笑裡藏道'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            Container(
+              height: 120,
+              child: const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+                child: Text('Drawer Header'),
+              ),
+            ),
+            ListTile(
+              title: const Text('Home'),
+              selected: _selectedIndex == 0,
+              onTap: () {
+                _onItemTapped(0);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Business'),
+              selected: _selectedIndex == 1,
+              onTap: () {
+                _onItemTapped(1);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('School'),
+              selected: _selectedIndex == 2,
+              onTap: () {
+                _onItemTapped(2);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: _onDestinationSelected,
         indicatorColor: Colors.amber,
@@ -118,42 +171,48 @@ class _HomeState extends State<Home> {
           NavigationDestination(
             selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            label: '首頁',
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.favorite),
-            icon: Icon(Icons.favorite_outline),
-            label: 'Favorites',
+            selectedIcon: Icon(
+              Icons.favorite,
+              color: Colors.pink,
+            ),
+            icon: Icon(
+              Icons.favorite_outline,
+              color: Colors.pink,
+            ),
+            label: '收藏夾',
           ),
           NavigationDestination(
             selectedIcon: Icon(Icons.person),
             icon: Icon(Icons.person_outline),
-            label: 'Personal',
+            label: '設定',
           ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.storage),
-            icon: Icon(Icons.storage_outlined),
-            label: 'Firestore',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.media_bluetooth_on),
-            icon: Icon(Icons.media_bluetooth_off),
-            label: 'Media',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.book),
-            icon: Icon(Icons.book_outlined),
-            label: 'BibleVerse',
-          ),
+          // NavigationDestination(
+          //   selectedIcon: Icon(Icons.book),
+          //   icon: Icon(Icons.book_outlined),
+          //   label: '聖經金句',
+          // ),
+          // NavigationDestination(
+          //   selectedIcon: Icon(Icons.media_bluetooth_on),
+          //   icon: Icon(Icons.media_bluetooth_off),
+          //   label: 'Joys',
+          // ),
+          // NavigationDestination(
+          //   selectedIcon: Icon(Icons.storage),
+          //   icon: Icon(Icons.storage_outlined),
+          //   label: 'Firestore',
+          // ),
         ],
       ),
       body: <Widget>[
-        HomePage(),
-        FavoritesPage(),
-        PersonalPage(),
-        FirestorePage(widget.firestore),
-        RecommendedMediaApp(widget.firestore),
-        ReciteScriptures(widget.firestore),
+        HomePage(widget.firestore),
+        JoysPage(widget.firestore),
+        SettingsPage(),
+        //ReciteScriptures(widget.firestore),
+        //FirestorePage(widget.firestore),
+        //FavoritesPage(),
       ][currentPageIndex],
     );
   }
