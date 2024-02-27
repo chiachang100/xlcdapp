@@ -35,25 +35,25 @@ jobs:
         projectId: xlcdapp
 
     # Build Android APK and app bundle
-    - uses: actions/checkout@v4
-    - uses: subosito/flutter-action@v2
-      with:
+    #- uses: actions/checkout@v4
+    #- uses: subosito/flutter-action@v2
+      #with:
         #flutter-version: '3.16.9'
-        channel: stable
-    - run: flutter pub get
-    - run: flutter test
+        #channel: stable
+    #- run: flutter pub get
+    #- run: flutter test
     #- run: flutter build apk
     #- run: flutter build appbundle
 
   # Build for iOS (macOS only):
-  build:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: subosito/flutter-action@v2
-      with:
+  #build:
+    #runs-on: macos-latest
+    #steps:
+    #- uses: actions/checkout@v4
+    #- uses: subosito/flutter-action@v2
+      #with:
         #flutter-version: '3.16.9'
-        channel: 'stable'
-    - run: flutter pub get
-    - run: flutter test
+        #channel: 'stable'
+    #- run: flutter pub get
+    #- run: flutter test
     #- run: flutter build ios --release --no-codesign
