@@ -1,7 +1,7 @@
 name: xlcdapp
 description: "xlcdapp-笑裡藏道"
 publish_to: 'none'
-version: 0.9.0
+version: 0.9.1
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
@@ -19,10 +19,11 @@ dependencies:
   #firebase_auth: ^4.6.0
   cloud_firestore: ^4.15.5
   firebase_analytics: ^10.8.5
-  firebase_auth: ^4.17.4
+  firebase_auth: ^4.17.5
   firebase_core: ^2.25.4
   google_sign_in: ^6.2.1
   url_launcher: ^6.2.4
+  web: ^0.4.2
 
 dev_dependencies:
   flutter_test:
