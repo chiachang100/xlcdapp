@@ -1,0 +1,272 @@
+// Copyright 2021, the Flutter project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import 'auth.dart';
+import 'data.dart';
+import 'screens/scripture_details.dart';
+import 'screens/scriptures.dart';
+import 'screens/joy_details.dart';
+import 'screens/joys.dart';
+import 'screens/scaffold.dart';
+import 'screens/settings.dart';
+import 'screens/sign_in.dart';
+import 'widgets/joy_list.dart';
+import 'widgets/fade_transition_page.dart';
+
+final appShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'app shell');
+final joysNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'joys shell');
+
+class Joystore extends StatefulWidget {
+  const Joystore({super.key});
+
+  @override
+  State<Joystore> createState() => _JoystoreState();
+}
+
+class _JoystoreState extends State<Joystore> {
+  final JoystoreAuth auth = JoystoreAuth();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        if (child == null) {
+          throw ('No child in .router constructor builder');
+        }
+        return JoystoreAuthScope(
+          notifier: auth,
+          child: child,
+        );
+      },
+      routerConfig: GoRouter(
+        refreshListenable: auth,
+        debugLogDiagnostics: true,
+        initialLocation: '/joys/like',
+        redirect: (context, state) {
+          final signedIn = JoystoreAuth.of(context).signedIn;
+          if (state.uri.toString() != '/sign-in' && !signedIn) {
+            return '/sign-in';
+          }
+          return null;
+        },
+        routes: [
+          ShellRoute(
+            navigatorKey: appShellNavigatorKey,
+            builder: (context, state, child) {
+              return JoystoreScaffold(
+                selectedIndex: switch (state.uri.path) {
+                  var p when p.startsWith('/joys') => 0,
+                  var p when p.startsWith('/scriptures') => 1,
+                  var p when p.startsWith('/settings') => 2,
+                  _ => 0,
+                },
+                child: child,
+              );
+            },
+            routes: [
+              ShellRoute(
+                pageBuilder: (context, state, child) {
+                  return FadeTransitionPage<dynamic>(
+                    key: state.pageKey,
+                    // Use a builder to get the correct BuildContext
+                    // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
+                    child: Builder(builder: (context) {
+                      return JoysScreen(
+                        onTap: (idx) {
+                          GoRouter.of(context).go(switch (idx) {
+                            0 => '/joys/like',
+                            1 => '/joys/new',
+                            2 => '/joys/all',
+                            _ => '/joys/like',
+                          });
+                        },
+                        selectedIndex: switch (state.uri.path) {
+                          var p when p.startsWith('/joys/like') => 0,
+                          var p when p.startsWith('/joys/new') => 1,
+                          var p when p.startsWith('/joys/all') => 2,
+                          _ => 0,
+                        },
+                        child: child,
+                      );
+                    }),
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    path: '/joys/like',
+                    pageBuilder: (context, state) {
+                      return FadeTransitionPage<dynamic>(
+                        // Use a builder to get the correct BuildContext
+                        // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
+                        key: state.pageKey,
+                        child: Builder(
+                          builder: (context) {
+                            return JoyList(
+                              joys: libraryInstance.likeJoys,
+                              onTap: (joy) {
+                                GoRouter.of(context)
+                                    .go('/joys/like/joy/${joy.id}');
+                              },
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    routes: [
+                      GoRoute(
+                        path: 'joy/:joyId',
+                        parentNavigatorKey: appShellNavigatorKey,
+                        builder: (context, state) {
+                          return JoyDetailsScreen(
+                            joy: libraryInstance
+                                .getJoy(state.pathParameters['joyId'] ?? ''),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  GoRoute(
+                    path: '/joys/new',
+                    pageBuilder: (context, state) {
+                      return FadeTransitionPage<dynamic>(
+                        key: state.pageKey,
+                        // Use a builder to get the correct BuildContext
+                        // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
+                        child: Builder(
+                          builder: (context) {
+                            return JoyList(
+                              joys: libraryInstance.newJoys,
+                              onTap: (joy) {
+                                GoRouter.of(context)
+                                    .go('/joys/new/joy/${joy.id}');
+                              },
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    routes: [
+                      GoRoute(
+                        path: 'joy/:joyId',
+                        parentNavigatorKey: appShellNavigatorKey,
+                        builder: (context, state) {
+                          return JoyDetailsScreen(
+                            joy: libraryInstance
+                                .getJoy(state.pathParameters['joyId'] ?? ''),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  GoRoute(
+                    path: '/joys/all',
+                    pageBuilder: (context, state) {
+                      return FadeTransitionPage<dynamic>(
+                        key: state.pageKey,
+                        // Use a builder to get the correct BuildContext
+                        // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
+                        child: Builder(
+                          builder: (context) {
+                            return JoyList(
+                              joys: libraryInstance.allJoys,
+                              onTap: (joy) {
+                                GoRouter.of(context)
+                                    .go('/joys/all/joy/${joy.id}');
+                              },
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    routes: [
+                      GoRoute(
+                        path: 'joy/:joyId',
+                        parentNavigatorKey: appShellNavigatorKey,
+                        builder: (context, state) {
+                          return JoyDetailsScreen(
+                            joy: libraryInstance
+                                .getJoy(state.pathParameters['joyId'] ?? ''),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              GoRoute(
+                path: '/scriptures',
+                pageBuilder: (context, state) {
+                  return FadeTransitionPage<dynamic>(
+                    key: state.pageKey,
+                    child: Builder(builder: (context) {
+                      return ScripturesScreen(
+                        onTap: (scripture) {
+                          GoRouter.of(context)
+                              .go('/scriptures/scripture/${scripture.id}');
+                        },
+                      );
+                    }),
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    path: 'scripture/:scriptureId',
+                    builder: (context, state) {
+                      final scripture = libraryInstance.allScriptures
+                          .firstWhere((scripture) =>
+                              scripture.id ==
+                              int.parse(state.pathParameters['scriptureId']!));
+                      // Use a builder to get the correct BuildContext
+                      // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
+                      return Builder(builder: (context) {
+                        return ScriptureDetailsScreen(
+                          scripture: scripture,
+                          onJoyTapped: (joy) {
+                            GoRouter.of(context).go('/joys/all/joy/${joy.id}');
+                          },
+                        );
+                      });
+                    },
+                  )
+                ],
+              ),
+              GoRoute(
+                path: '/settings',
+                pageBuilder: (context, state) {
+                  return FadeTransitionPage<dynamic>(
+                    key: state.pageKey,
+                    child: const SettingsScreen(),
+                  );
+                },
+              ),
+            ],
+          ),
+          GoRoute(
+            path: '/sign-in',
+            builder: (context, state) {
+              // Use a builder to get the correct BuildContext
+              // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
+              return Builder(
+                builder: (context) {
+                  return SignInScreen(
+                    onSignIn: (value) async {
+                      final router = GoRouter.of(context);
+                      await JoystoreAuth.of(context)
+                          .signIn(value.username, value.password);
+                      router.go('/joys/like');
+                    },
+                  );
+                },
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
