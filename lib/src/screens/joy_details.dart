@@ -41,7 +41,6 @@ class JoyDetailsScreen extends StatelessWidget {
               name: joy!.scripture.name,
               verse: joy!.scripture.verse,
               votes: joy!.votes,
-              isLike: joy!.isLike,
             ),
             const DividerSection(
                 Icon(Icons.favorite_outline, color: Colors.red)),
@@ -95,12 +94,10 @@ class TitleSection extends StatelessWidget {
     required this.name,
     required this.verse,
     required this.votes,
-    required this.isLike,
   });
   final String name;
   final String verse;
   final int votes;
-  final bool isLike;
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +122,7 @@ class TitleSection extends StatelessWidget {
               ],
             ),
           ),
-          isLike
+          (votes > 0)
               ? Icon(Icons.favorite, color: Colors.red)
               : Icon(Icons.favorite_outline, color: Colors.red),
           Text('${votes}'),

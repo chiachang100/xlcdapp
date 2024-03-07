@@ -37,7 +37,6 @@ class _SignInScreenState extends State<SignInScreen> {
           leadingWidth: 100,
           centerTitle: true,
           title: Text('笑裡藏道'),
-          backgroundColor: Colors.orange,
         ),
         body: Center(
           child: Card(

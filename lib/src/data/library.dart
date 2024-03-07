@@ -27,7 +27,6 @@ final libraryInstance = Library()
         '\n  愛是最強而有力的推動力。',
     votes: 10,
     type: 1,
-    isLike: true,
     isNew: false,
   )
   ..addJoy(
@@ -40,7 +39,6 @@ final libraryInstance = Library()
     talk: '  是的,恐懼會促使你做各樣的措施來保護自己。...',
     votes: 9,
     type: 1,
-    isLike: true,
     isNew: false,
   )
   ..addJoy(
@@ -53,7 +51,6 @@ final libraryInstance = Library()
     talk: '  饒恕乃是一個決定,...',
     votes: 8,
     type: 1,
-    isLike: true,
     isNew: false,
   )
   ..addJoy(
@@ -64,9 +61,8 @@ final libraryInstance = Library()
     laugh: '  老王擔心他太太的聽覺有問題,可能需要帶耳機,他不知如何開口,就問他的醫生。...',
     photoUrl: 'assets/photos/xlcdapp_photo_4.png',
     talk: '  當我們承認自己不是十分完美時,我們就會以不同的眼光去看待周圍的人。...',
-    votes: 6,
+    votes: 0,
     type: 1,
-    isLike: false,
     isNew: true,
   )
   ..addJoy(
@@ -77,9 +73,8 @@ final libraryInstance = Library()
     laugh: '  有一天,有一位老先生買了一個漢堡,薯條和一杯飲料。...',
     photoUrl: 'assets/photos/xlcdapp_photo_5.png',
     talk: '  若是人人都有一顆與他人分享好東西的心,這世界肯定會更加溫暖。...',
-    votes: 1,
+    votes: 0,
     type: 1,
-    isLike: false,
     isNew: true,
   );
 
@@ -97,7 +92,6 @@ class Library {
     required String talk,
     required int votes,
     required int type,
-    required bool isLike,
     required bool isNew,
   }) {
     var scripture = allScriptures.firstWhere(
@@ -118,7 +112,6 @@ class Library {
       talk,
       votes,
       type,
-      isLike,
       isNew,
       scripture,
     );
@@ -132,7 +125,7 @@ class Library {
   }
 
   List<Joy> get likeJoys => [
-        ...allJoys.where((joy) => joy.isLike),
+        ...allJoys.where((joy) => (joy.votes > 0)),
       ];
 
   List<Joy> get newJoys => [

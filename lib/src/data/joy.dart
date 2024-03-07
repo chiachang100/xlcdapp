@@ -13,7 +13,6 @@ class Joy {
   final String talk;
   final int votes;
   final int type;
-  final bool isLike;
   final bool isNew;
   final Scripture scripture;
 
@@ -26,7 +25,6 @@ class Joy {
     this.talk,
     this.votes,
     this.type,
-    this.isLike,
     this.isNew,
     this.scripture,
   );

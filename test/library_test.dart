@@ -19,7 +19,6 @@ void main() {
         talk: '  要珍惜別人善意的勸勉,...',
         votes: 10,
         type: 1,
-        isLike: true,
         isNew: false,
       );
       library.addJoy(
@@ -32,7 +31,6 @@ void main() {
         talk: '  是的,恐懼會促使你做各樣的措施來保護自己。...',
         votes: 9,
         type: 1,
-        isLike: false,
         isNew: false,
       );
       library.addJoy(
@@ -45,7 +43,6 @@ void main() {
           talk: '  饒恕乃是一個決定,...',
           votes: 8,
           type: 1,
-          isLike: true,
           isNew: false);
       expect(library.allScriptures.length, 3);
       expect(library.allScriptures.first.joys.length, 1);
