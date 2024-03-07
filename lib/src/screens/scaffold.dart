@@ -32,7 +32,8 @@ class JoystoreScaffold extends StatelessWidget {
         destinations: const [
           AdaptiveScaffoldDestination(
             title: '笑裡藏道',
-            icon: Icons.face_rounded,
+            icon: Icons.favorite,
+            //icon: ImageIcon(AssetImage('assets/icons/xlcdapp-icon-48x48.png')),
           ),
           AdaptiveScaffoldDestination(
             title: '聖經經文',

@@ -116,8 +116,6 @@ class _JoystoreState extends State<Joystore> {
                     path: '/joys/like',
                     pageBuilder: (context, state) {
                       return FadeTransitionPage<dynamic>(
-                        // Use a builder to get the correct BuildContext
-                        // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
                         key: state.pageKey,
                         child: Builder(
                           builder: (context) {
