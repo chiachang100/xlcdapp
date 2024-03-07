@@ -10,11 +10,21 @@ class ScriptureList extends StatelessWidget {
   final List<Scripture> scriptures;
   final ValueChanged<Scripture>? onTap;
 
-  const ScriptureList({
+  ScriptureList({
     required this.scriptures,
     this.onTap,
     super.key,
   });
+
+  List<Color> circleAvatarBgColor = [
+    Colors.red,
+    Colors.orange,
+    Colors.yellow,
+    Colors.green,
+    Colors.blue,
+    Colors.indigo,
+    Colors.purple,
+  ];
 
   @override
   Widget build(BuildContext context) => ListView.builder(
@@ -27,6 +37,8 @@ class ScriptureList extends StatelessWidget {
             scriptures[index].verse,
           ),
           leading: CircleAvatar(
+            backgroundColor: circleAvatarBgColor[
+                (scriptures[index].id % circleAvatarBgColor.length)],
             child: Text(
               scriptures[index].name.substring(0, 1),
               style: const TextStyle(
