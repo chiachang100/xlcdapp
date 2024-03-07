@@ -43,7 +43,7 @@ class JoyDetailsScreen extends StatelessWidget {
               likes: joy!.likes,
             ),
             const DividerSection(
-                Icon(Icons.favorite_outline, color: Colors.red)),
+                Icon(Icons.favorite_border, color: Colors.red)),
             TextSection(description: joy!.prelude),
             const DividerSection(Icon(Icons.face, color: Colors.red)),
             TextSection(description: joy!.laugh),
@@ -91,7 +91,7 @@ class ImageSection extends StatelessWidget {
 }
 
 class TitleSection extends StatelessWidget {
-  const TitleSection({
+  TitleSection({
     super.key,
     required this.name,
     required this.verse,
@@ -99,7 +99,7 @@ class TitleSection extends StatelessWidget {
   });
   final String name;
   final String verse;
-  final int likes;
+  int likes;
 
   @override
   Widget build(BuildContext context) {
@@ -125,10 +125,17 @@ class TitleSection extends StatelessWidget {
               ],
             ),
           ),
-          (likes > 0)
-              ? Icon(Icons.favorite, color: Colors.red)
-              : Icon(Icons.favorite_outline, color: Colors.red),
-          Text('${likes}'),
+          ActionChip(
+            avatar: const Icon(Icons.thumb_up_outlined),
+            label: Text('$likes'),
+            onPressed: () {
+              likes = likes + 1;
+            },
+          ),
+          // (likes > 0)
+          //     ? Icon(Icons.thumb_up_alt_outlined)
+          //     : Icon(Icons.thumb_up_alt_outlined),
+          // Text('${likes}'),
         ],
       ),
     );

@@ -264,7 +264,7 @@ class _NavigationHomeState extends State<NavigationHome> {
               color: Colors.pink,
             ),
             icon: Icon(
-              Icons.favorite_outline,
+              Icons.favorite_border,
               color: Colors.pink,
             ),
             label: '收藏夾',
