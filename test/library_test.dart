@@ -17,7 +17,7 @@ void main() {
         laugh: '  老張在他生日時, ...',
         photoUrl: 'assets/photos/xlcdapp_photo_1.png',
         talk: '  要珍惜別人善意的勸勉,...',
-        votes: 10,
+        likes: 10,
         type: 1,
         isNew: false,
       );
@@ -29,7 +29,7 @@ void main() {
         laugh: '  時事雜誌的主持人芭芭拉.華特斯(Barbara Walters), ...',
         photoUrl: 'assets/photos/xlcdapp_photo_2.png',
         talk: '  是的,恐懼會促使你做各樣的措施來保護自己。...',
-        votes: 9,
+        likes: 9,
         type: 1,
         isNew: false,
       );
@@ -41,7 +41,7 @@ void main() {
           laugh: '  小美一直以來都不喜歡...',
           photoUrl: 'assets/photos/xlcdapp_photo_3.png',
           talk: '  饒恕乃是一個決定,...',
-          votes: 8,
+          likes: 8,
           type: 1,
           isNew: false);
       expect(library.allScriptures.length, 3);

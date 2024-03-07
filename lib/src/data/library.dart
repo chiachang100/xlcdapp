@@ -25,7 +25,7 @@ final libraryInstance = Library()
         '他說原來基督的愛就好像一股力量在背後不停地推著他，因為我們知道耶穌既然為眾人死了，眾人就都死了。'
         '祂為我們眾人死，叫我們這些還活著的人不再為自己活，乃是為替我們死而復活的主而活。'
         '\n\n  愛是最強而有力的推動力。',
-    votes: 10,
+    likes: 10,
     type: 1,
     isNew: false,
   )
@@ -48,7 +48,7 @@ final libraryInstance = Library()
         '祂的杖可以幫助你從錯誤的道路上回轉過來，祂的竿會指引你走正路。'
         '有耶和華上帝與你同在，你可以不再恐懼，可以享受出人意外的平安。'
         '\n\n  今天，嘗試把你心中的恐懼藉著禱告，告訴上帝。',
-    votes: 9,
+    likes: 9,
     type: 1,
     isNew: false,
   )
@@ -72,7 +72,7 @@ final libraryInstance = Library()
         '難怪有人說：「一個不饒恕別人的人，好像一個人喝了毒藥，卻盼望別人死。」'
         '\n\n  但是當我們決定順服上帝的話去饒恕人時，我們就傷害中得醫治，得自由，重新領受上帝赦罪的恩典。'
         '\n\n  為何不作一個聰明人，選擇饒恕那傷害你的人？',
-    votes: 8,
+    likes: 8,
     type: 1,
     isNew: false,
   )
@@ -96,7 +96,7 @@ final libraryInstance = Library()
         '他/她會去發掘和欣賞別人的優點，及以別人的優點來補足自己的缺點，以自己的優點去幫補別人的缺點。'
         '更重要的是，他/她也懂得發揮自己的優點，並讓它成為自己的優勢。'
         '\n\n  今天就嘗試去發掘及欣賞你身邊人的優點吧！記得要具體地告訴他/她，你所發掘的優點。',
-    votes: 0,
+    likes: 0,
     type: 1,
     isNew: true,
   )
@@ -120,7 +120,7 @@ final libraryInstance = Library()
         '其實，與他人分享好東西不是我們天生就會做的事，乃是一個需要被教導和學習的美德。'
         '一旦我們開始與他人分享好東西時，我們會驚然發現--得到的快樂是遠遠超出我們所付出的。'
         '\n\n  分享可以從日常生活中的一件小事開始，可以從你身邊的家人或朋友開始。請問有什麼好東西你可以和他人分享呢？',
-    votes: 0,
+    likes: 0,
     type: 1,
     isNew: true,
   );
@@ -137,7 +137,7 @@ class Library {
     required String laugh,
     required String photoUrl,
     required String talk,
-    required int votes,
+    required int likes,
     required int type,
     required bool isNew,
   }) {
@@ -157,7 +157,7 @@ class Library {
       laugh,
       photoUrl,
       talk,
-      votes,
+      likes,
       type,
       isNew,
       scripture,
@@ -172,7 +172,7 @@ class Library {
   }
 
   List<Joy> get likeJoys => [
-        ...allJoys.where((joy) => (joy.votes > 0)),
+        ...allJoys.where((joy) => (joy.likes > 0)),
       ];
 
   List<Joy> get newJoys => [

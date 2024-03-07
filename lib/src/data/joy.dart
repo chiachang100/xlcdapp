@@ -11,7 +11,7 @@ class Joy {
   final String laugh;
   final String photoUrl;
   final String talk;
-  final int votes;
+  final int likes;
   final int type;
   final bool isNew;
   final Scripture scripture;
@@ -23,7 +23,7 @@ class Joy {
     this.laugh,
     this.photoUrl,
     this.talk,
-    this.votes,
+    this.likes,
     this.type,
     this.isNew,
     this.scripture,
