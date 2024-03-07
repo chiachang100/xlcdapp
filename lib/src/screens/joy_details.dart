@@ -48,6 +48,7 @@ class JoyDetailsScreen extends StatelessWidget {
             const DividerSection(Icon(Icons.face, color: Colors.red)),
             TextSection(description: joy!.laugh),
             LeadingIconTextSection(description: joy!.talk, iconUrl: iconUrl),
+            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -75,15 +76,16 @@ class ImageSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 320,
-      width: 640,
-      child: FittedBox(
-        fit: BoxFit.fill,
-        child: Image.asset(
+    return Column(
+      //crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Image.asset(
           image,
+          height: 320,
+          width: 640,
+          fit: BoxFit.fill,
         ),
-      ),
+      ],
     );
   }
 }
@@ -165,14 +167,17 @@ class LeadingIconTextSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Image.asset(iconUrl),
-        Text(
-          description,
-          softWrap: true,
-        ),
-      ],
+    return Container(
+      margin: const EdgeInsets.only(left: 15, right: 15),
+      child: Column(
+        children: <Widget>[
+          Image.asset(iconUrl),
+          Text(
+            description,
+            softWrap: true,
+          ),
+        ],
+      ),
     );
   }
 }

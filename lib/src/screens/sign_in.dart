@@ -27,8 +27,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  //final String iconUrl = 'assets/icons/xlcdapp-icon-48x48.png';
-  final String iconUrl = 'assets/icons/android-icon-96x96.png';
+  final String iconUrl = 'assets/icons/xlcdapp-icon-96x96.png';
 
   @override
   Widget build(BuildContext context) => Scaffold(

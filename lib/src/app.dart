@@ -85,8 +85,6 @@ class _JoystoreState extends State<Joystore> {
                 pageBuilder: (context, state, child) {
                   return FadeTransitionPage<dynamic>(
                     key: state.pageKey,
-                    // Use a builder to get the correct BuildContext
-                    // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
                     child: Builder(builder: (context) {
                       return JoysScreen(
                         onTap: (idx) {
@@ -147,8 +145,6 @@ class _JoystoreState extends State<Joystore> {
                     pageBuilder: (context, state) {
                       return FadeTransitionPage<dynamic>(
                         key: state.pageKey,
-                        // Use a builder to get the correct BuildContext
-                        // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
                         child: Builder(
                           builder: (context) {
                             return JoyList(
@@ -180,8 +176,6 @@ class _JoystoreState extends State<Joystore> {
                     pageBuilder: (context, state) {
                       return FadeTransitionPage<dynamic>(
                         key: state.pageKey,
-                        // Use a builder to get the correct BuildContext
-                        // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
                         child: Builder(
                           builder: (context) {
                             return JoyList(
@@ -233,8 +227,6 @@ class _JoystoreState extends State<Joystore> {
                           .firstWhere((scripture) =>
                               scripture.id ==
                               int.parse(state.pathParameters['scriptureId']!));
-                      // Use a builder to get the correct BuildContext
-                      // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
                       return Builder(builder: (context) {
                         return ScriptureDetailsScreen(
                           scripture: scripture,
@@ -261,8 +253,6 @@ class _JoystoreState extends State<Joystore> {
           GoRoute(
             path: '/sign-in',
             builder: (context, state) {
-              // Use a builder to get the correct BuildContext
-              // TODO (johnpryan): remove when https://github.com/flutter/flutter/issues/108177 lands
               return Builder(
                 builder: (context) {
                   return SignInScreen(
