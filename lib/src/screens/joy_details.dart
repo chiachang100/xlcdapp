@@ -118,6 +118,7 @@ class TitleSection extends StatelessWidget {
                     '$verse($name)',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
                     ),
                   ),
                 ),
@@ -150,6 +151,7 @@ class TextSection extends StatelessWidget {
       child: Text(
         description,
         softWrap: true,
+        style: const TextStyle(fontSize: 16.0),
       ),
     );
   }
@@ -175,6 +177,7 @@ class LeadingIconTextSection extends StatelessWidget {
           Text(
             description,
             softWrap: true,
+            style: const TextStyle(fontSize: 16.0),
           ),
         ],
       ),
