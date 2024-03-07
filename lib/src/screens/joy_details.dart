@@ -34,13 +34,14 @@ class JoyDetailsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            ImageSection(image: joy!.photoUrl),
             TitleSection(
               name: joy!.scripture.name,
               verse: joy!.scripture.verse,
               votes: joy!.votes,
               isLike: joy!.isLike,
             ),
-            ImageSection(image: joy!.photoUrl),
+            const DividerSection(),
             TextSection(description: joy!.prelude),
             const DividerSection(),
             TextSection(description: joy!.laugh),
@@ -73,8 +74,8 @@ class ImageSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 240,
-      width: 400,
+      height: 320,
+      width: 640,
       child: FittedBox(
         fit: BoxFit.fill,
         child: Image.asset(

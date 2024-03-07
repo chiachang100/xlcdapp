@@ -4,6 +4,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'auth.dart';
 import 'data.dart';
@@ -21,7 +23,16 @@ final appShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'app shell');
 final joysNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'joys shell');
 
 class Joystore extends StatefulWidget {
-  const Joystore({super.key});
+  const Joystore({
+    super.key,
+    required this.firestore,
+  });
+
+  final FirebaseFirestore firestore;
+
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   State<Joystore> createState() => _JoystoreState();
@@ -44,6 +55,7 @@ class _JoystoreState extends State<Joystore> {
         );
       },
       routerConfig: GoRouter(
+        observers: [Joystore.observer],
         refreshListenable: auth,
         debugLogDiagnostics: true,
         initialLocation: '/joys/like',

@@ -5,7 +5,8 @@
 import 'dart:async';
 import 'dart:io' show Platform;
 
-import 'package:flutter/foundation.dart' show kIsWeb;
+//import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show kIsWeb, kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:window_size/window_size.dart';
@@ -18,7 +19,30 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'src/app.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  final firestore = FirebaseFirestore.instance;
+
+  final settings = firestore.settings.copyWith(persistenceEnabled: true);
+  final updatedSettings = firestore.settings
+      .copyWith(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
+  firestore.settings = settings;
+
+  if (kIsWeb) {
+    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
+  }
+
+  if (!kReleaseMode) {
+    FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+    FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+    //FirebaseDatabase.instance.useDatabaseEmulator('localhost', 9000);
+    //FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
+  }
+
   // Use package:url_strategy until this pull request is released:
   // https://github.com/flutter/flutter/pull/77103
 
@@ -31,7 +55,7 @@ void main() {
   // setPathUrlStrategy();
 
   setupWindow();
-  runApp(const Joystore());
+  runApp(Joystore(firestore: firestore));
 }
 
 const double windowWidth = 480;
