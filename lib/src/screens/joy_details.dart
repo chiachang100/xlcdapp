@@ -18,6 +18,8 @@ class JoyDetailsScreen extends StatelessWidget {
     this.joy,
   });
 
+  final String iconUrl = 'assets/icons/xlcdapp-icon-48x48.png';
+
   @override
   Widget build(BuildContext context) {
     if (joy == null) {
@@ -41,12 +43,12 @@ class JoyDetailsScreen extends StatelessWidget {
               votes: joy!.votes,
               isLike: joy!.isLike,
             ),
-            const DividerSection(),
+            const DividerSection(
+                Icon(Icons.favorite_outline, color: Colors.red)),
             TextSection(description: joy!.prelude),
-            const DividerSection(),
+            const DividerSection(Icon(Icons.face, color: Colors.red)),
             TextSection(description: joy!.laugh),
-            const DividerSection(),
-            TextSection(description: joy!.talk),
+            LeadingIconTextSection(description: joy!.talk, iconUrl: iconUrl),
           ],
         ),
       ),
@@ -55,13 +57,14 @@ class JoyDetailsScreen extends StatelessWidget {
 }
 
 class DividerSection extends StatelessWidget {
-  const DividerSection({super.key});
+  const DividerSection(this.icon);
+  final Icon icon;
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: SizedBox(
-        child: Icon(Icons.stars),
+        child: icon,
       ),
     );
   }
@@ -119,12 +122,6 @@ class TitleSection extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Text(
-                //   name,
-                //   style: TextStyle(
-                //     color: Colors.grey[500],
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -153,6 +150,30 @@ class TextSection extends StatelessWidget {
         description,
         softWrap: true,
       ),
+    );
+  }
+}
+
+class LeadingIconTextSection extends StatelessWidget {
+  const LeadingIconTextSection({
+    super.key,
+    required this.description,
+    required this.iconUrl,
+  });
+
+  final String description;
+  final String iconUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Image.asset(iconUrl),
+        Text(
+          description,
+          softWrap: true,
+        ),
+      ],
     );
   }
 }

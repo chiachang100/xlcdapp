@@ -10,11 +10,21 @@ class JoyList extends StatelessWidget {
   final List<Joy> joys;
   final ValueChanged<Joy>? onTap;
 
-  const JoyList({
+  JoyList({
     required this.joys,
     this.onTap,
     super.key,
   });
+
+  List<Color> circleAvatarBgColor = [
+    Colors.red,
+    Colors.orange,
+    Colors.yellow,
+    Colors.green,
+    Colors.blue,
+    Colors.indigo,
+    Colors.purple,
+  ];
 
   @override
   Widget build(BuildContext context) => ListView.builder(
@@ -27,6 +37,8 @@ class JoyList extends StatelessWidget {
             joys[index].scripture.name,
           ),
           leading: CircleAvatar(
+            backgroundColor: circleAvatarBgColor[
+                (joys[index].id % circleAvatarBgColor.length)],
             child: Text(
               joys[index].title.substring(0, 1),
               style: const TextStyle(
