@@ -47,15 +47,15 @@ class _JoysScreenState extends State<JoysScreen>
           controller: _tabController,
           tabs: const [
             Tab(
-              text: '收藏夾',
+              text: '熱門笑話',
               icon: Icon(Icons.favorite, color: Colors.red),
             ),
             Tab(
-              text: '新系列',
+              text: '新增笑話',
               icon: Icon(Icons.new_releases, color: Colors.green),
             ),
             Tab(
-              text: '全部',
+              text: '全部笑話',
               icon: Icon(Icons.collections, color: Colors.blueAccent),
             ),
           ],

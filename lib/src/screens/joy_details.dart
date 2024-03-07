@@ -125,7 +125,9 @@ class TitleSection extends StatelessWidget {
               ],
             ),
           ),
-          isLike ? Icon(Icons.thumb_up) : Icon(Icons.thumb_up_alt_outlined),
+          isLike
+              ? Icon(Icons.favorite, color: Colors.red)
+              : Icon(Icons.favorite_outline, color: Colors.red),
           Text('${votes}'),
         ],
       ),

@@ -27,8 +27,18 @@ class _SignInScreenState extends State<SignInScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  //final String iconUrl = 'assets/icons/xlcdapp-icon-48x48.png';
+  final String iconUrl = 'assets/icons/android-icon-96x96.png';
+
   @override
   Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          leading: Image.asset(iconUrl),
+          leadingWidth: 100,
+          centerTitle: true,
+          title: Text('笑裡藏道'),
+          backgroundColor: Colors.orange,
+        ),
         body: Center(
           child: Card(
             child: Container(
@@ -38,26 +48,25 @@ class _SignInScreenState extends State<SignInScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Sign in',
-                      style: Theme.of(context).textTheme.headlineMedium),
+                  Text('登入', style: Theme.of(context).textTheme.headlineMedium),
                   TextField(
-                    decoration: const InputDecoration(labelText: 'Username'),
+                    decoration: const InputDecoration(labelText: '用戶'),
                     controller: _usernameController,
                   ),
                   TextField(
-                    decoration: const InputDecoration(labelText: 'Password'),
+                    decoration: const InputDecoration(labelText: '密碼'),
                     obscureText: true,
                     controller: _passwordController,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16),
-                    child: TextButton(
+                    child: ElevatedButton(
                       onPressed: () async {
                         widget.onSignIn(Credentials(
                             _usernameController.value.text,
                             _passwordController.value.text));
                       },
-                      child: const Text('Sign in'),
+                      child: const Text('登入'),
                     ),
                   ),
                 ],

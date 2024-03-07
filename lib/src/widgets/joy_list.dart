@@ -34,8 +34,9 @@ class JoyList extends StatelessWidget {
             joys[index].title,
           ),
           subtitle: Text(
-            joys[index].scripture.name,
-          ),
+              '${joys[index].scripture.verse}(${joys[index].scripture.name})'
+              //joys[index].scripture.name,
+              ),
           leading: CircleAvatar(
             backgroundColor: circleAvatarBgColor[
                 (joys[index].id % circleAvatarBgColor.length)],
