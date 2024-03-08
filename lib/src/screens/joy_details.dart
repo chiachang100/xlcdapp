@@ -90,7 +90,7 @@ class ImageSection extends StatelessWidget {
   }
 }
 
-class TitleSection extends StatefulWidget {
+class TitleSection extends StatelessWidget {
   TitleSection({
     super.key,
     required this.name,
@@ -100,12 +100,6 @@ class TitleSection extends StatefulWidget {
   final String name;
   final String verse;
   int likes;
-
-  @override
-  State<TitleSection> createState() => _TitleSectionState();
-}
-
-class _TitleSectionState extends State<TitleSection> {
   bool _favorite = false;
 
   @override
@@ -122,7 +116,7 @@ class _TitleSectionState extends State<TitleSection> {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
                     // '「$verse」($name)',
-                    '${widget.verse}(${widget.name})',
+                    '${verse}(${name})',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0,
@@ -134,14 +128,12 @@ class _TitleSectionState extends State<TitleSection> {
           ),
           ActionChip(
             avatar: const Icon(Icons.thumb_up_outlined),
-            label: Text('${widget.likes}'),
+            label: Text('$likes'),
             onPressed: () {
-              setState(() {
-                if (!_favorite) {
-                  _favorite = true;
-                  widget.likes++;
-                }
-              });
+              if (!_favorite) {
+                _favorite = true;
+                likes++;
+              }
             },
           ),
         ],

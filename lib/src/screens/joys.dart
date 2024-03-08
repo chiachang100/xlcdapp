@@ -47,7 +47,7 @@ class _JoysScreenState extends State<JoysScreen>
           controller: _tabController,
           tabs: const [
             Tab(
-              text: '熱門榜',
+              text: '排行榜',
               icon: Icon(Icons.fireplace, color: Colors.red),
             ),
             Tab(
@@ -55,7 +55,7 @@ class _JoysScreenState extends State<JoysScreen>
               icon: Icon(Icons.new_releases, color: Colors.green),
             ),
             Tab(
-              text: '全部收藏',
+              text: '收藏品',
               icon: Icon(Icons.collections, color: Colors.blueAccent),
             ),
           ],

@@ -34,9 +34,7 @@ class JoyList extends StatelessWidget {
             joys[index].title,
           ),
           subtitle: Text(
-              '${joys[index].scripture.verse}(${joys[index].scripture.name})'
-              //joys[index].scripture.name,
-              ),
+              '${joys[index].scripture.verse}(${joys[index].scripture.name})'),
           leading: CircleAvatar(
             backgroundColor: circleAvatarBgColor[
                 (joys[index].id % circleAvatarBgColor.length)],
@@ -47,6 +45,7 @@ class JoyList extends StatelessWidget {
               ),
             ),
           ),
+          trailing: const Icon(Icons.arrow_forward_ios),
           onTap: onTap != null ? () => onTap!(joys[index]) : null,
         ),
       );
