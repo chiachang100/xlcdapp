@@ -29,7 +29,7 @@ class ScriptureDetailsScreen extends StatelessWidget {
                 child: JoyList(
                   joys: scripture.joys,
                   onTap: (joy) {
-                    onJoyTapped(joy);
+                    //onJoyTapped(joy);
                   },
                 ),
               ),

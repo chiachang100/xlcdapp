@@ -45,7 +45,7 @@ class JoyList extends StatelessWidget {
               ),
             ),
           ),
-          trailing: const Icon(Icons.arrow_forward_ios),
+          //trailing: const Icon(Icons.arrow_forward_ios),
           onTap: onTap != null ? () => onTap!(joys[index]) : null,
         ),
       );
