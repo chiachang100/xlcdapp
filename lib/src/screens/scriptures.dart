@@ -22,6 +22,7 @@ class ScripturesScreen extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text(title),
+          leading: Image.asset('assets/icons/xlcdapp-icon-48x48.png'),
         ),
         body: ScriptureList(
           scriptures: libraryInstance.allScriptures,

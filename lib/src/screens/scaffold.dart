@@ -21,29 +21,38 @@ class JoystoreScaffold extends StatelessWidget {
     final goRouter = GoRouter.of(context);
 
     return Scaffold(
-      body: AdaptiveNavigationScaffold(
-        selectedIndex: selectedIndex,
-        body: child,
-        onDestinationSelected: (idx) {
-          if (idx == 0) goRouter.go('/joys/like');
-          if (idx == 1) goRouter.go('/scriptures');
-          if (idx == 2) goRouter.go('/settings');
-        },
-        destinations: const [
-          AdaptiveScaffoldDestination(
-            title: '笑裡藏道',
-            icon: Icons.favorite,
-            //icon: ImageIcon(AssetImage('assets/icons/xlcdapp-icon-48x48.png')),
-          ),
-          AdaptiveScaffoldDestination(
-            title: '聖經經文',
-            icon: Icons.book,
-          ),
-          // AdaptiveScaffoldDestination(
-          //   title: '設定',
-          //   icon: Icons.settings,
-          // ),
-        ],
+      // appBar: AppBar(
+      //   leading: Image.asset('assets/icons/xlcdapp-icon-48x48.png'),
+      //   title: const Text('笑裡藏道'),
+      //   centerTitle: true,
+      //   //backgroundColor: Colors.orange,
+      // ),
+      //extendBodyBehindAppBar: true,
+      body: SafeArea(
+        child: AdaptiveNavigationScaffold(
+          selectedIndex: selectedIndex,
+          body: child,
+          onDestinationSelected: (idx) {
+            if (idx == 0) goRouter.go('/joys/like');
+            if (idx == 1) goRouter.go('/scriptures');
+            if (idx == 2) goRouter.go('/settings');
+          },
+          destinations: const [
+            AdaptiveScaffoldDestination(
+              title: '笑裡藏道',
+              icon: Icons.favorite,
+              //icon: ImageIcon(AssetImage('assets/icons/xlcdapp-icon-48x48.png')),
+            ),
+            AdaptiveScaffoldDestination(
+              title: '聖經經文',
+              icon: Icons.book,
+            ),
+            // AdaptiveScaffoldDestination(
+            //   title: '設定',
+            //   icon: Icons.settings,
+            // ),
+          ],
+        ),
       ),
     );
   }
