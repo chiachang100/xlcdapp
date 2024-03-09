@@ -1,7 +1,7 @@
 name: xlcdapp
 description: "xlcdapp-笑裡藏道"
 publish_to: 'none'
-version: 1.0.13
+version: 1.2.0
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
@@ -36,6 +36,7 @@ dependencies:
     git:
       url: https://github.com/google/flutter-desktop-embedding.git
       path: plugins/window_size
+  youtube_player_iframe: ^5.0.0
 
 dev_dependencies:
   flutter_test:

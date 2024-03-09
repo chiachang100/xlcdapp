@@ -2,6 +2,26 @@
 
 xlcdapp-笑裡藏道.
 
+## References
+- [Flutter website](https://flutter.dev/)
+- [Flutter samples](https://flutter.github.io/samples/#)
+  - [Flutter samples: Navigation and Routing](https://flutter.github.io/samples/navigation_and_routing.html)
+  - [How to add a YouTube video to your Flutter app? by 
+Walnut Software](https://walnutistanbul.medium.com/how-to-add-a-youtube-video-to-your-flutter-app-40c0125414ba)
+- [Flutter package: youtube_player_flutter](youtube_player_flutter)
+  - `youtube_player_flutter` depends on `flutter_inappwebview`
+    - [flutter_inappwebview](https://pub.dev/packages/flutter_inappwebview)
+    - [flutter_inappwebview: Getting Started](https://inappwebview.dev/docs/intro/)
+  - NOTE:
+    - For Android & iOS: it seems to work fine.
+    - For Web: it didn't work. The follow errors were thrown:
+```
+"Error: UnimplementedError: addJavaScriptHandler is not implemented on the current platform."
+...
+```
+- [Flutter package: youtube_player_iframe](https://pub.dev/packages/youtube_player_iframe)
+  - [Depends on webview_flutter (Android & iOS)](https://pub.dev/packages/webview_flutter)
+---
 ## Getting Started
 
 This project is a starting point for a Flutter application.
@@ -101,5 +121,14 @@ await Firebase.initializeApp(
 ```
         firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_XLCDAPP }}'
 ```
+
+---
+## Youtube Player plugins
+
+- Use `youtube_player_flutter`
+- `flutter pub add youtube_player_flutter`
+
+- Use `youtube_player_iframe`
+- `flutter pub add youtube_player_iframe`
 
 ---

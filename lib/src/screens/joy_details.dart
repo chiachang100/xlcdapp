@@ -2,10 +2,16 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/link.dart';
 //import 'package:web/helpers.dart';
+import 'package:flutter/services.dart';
+//import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+//import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 import '../data.dart';
 import 'scripture_details.dart';
@@ -42,12 +48,14 @@ class JoyDetailsScreen extends StatelessWidget {
               verse: joy!.scripture.verse,
               likes: joy!.likes,
             ),
-            const DividerSection(
-                Icon(Icons.favorite_border, color: Colors.red)),
+            const DividerSection(Icon(Icons.star_border_rounded)),
             TextSection(description: joy!.prelude),
-            const DividerSection(Icon(Icons.face, color: Colors.red)),
+            const DividerSection(Icon(Icons.star_border_rounded)),
             TextSection(description: joy!.laugh),
             LeadingIconTextSection(description: joy!.talk, iconUrl: iconUrl),
+            const DividerSection(Icon(Icons.star_border_rounded)),
+            //YoutubePlayerIFrameSection(videoId: 'GkRrP2iBaKw'),
+            YoutubePlayerIFrameSection(videoId: joy!.videoId),
             const SizedBox(height: 20),
           ],
         ),
@@ -64,6 +72,7 @@ class DividerSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
+        height: 20,
         child: icon,
       ),
     );
@@ -111,7 +120,7 @@ class _TitleSectionState extends State<TitleSection> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(32),
+      padding: const EdgeInsets.all(12),
       child: Row(
         children: [
           Expanded(
@@ -119,7 +128,7 @@ class _TitleSectionState extends State<TitleSection> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.only(bottom: 1),
                   child: Text(
                     // '「$verse」($name)',
                     '${widget.verse}(${widget.name})',
@@ -199,3 +208,131 @@ class LeadingIconTextSection extends StatelessWidget {
     );
   }
 }
+
+/*
+* YoutubePlayerIFrameSection uses [youtube_player_iframe](https://pub.dev/packages/youtube_player_iframe).
+*/
+class YoutubePlayerIFrameSection extends StatefulWidget {
+  YoutubePlayerIFrameSection({required this.videoId});
+  final String videoId;
+
+  @override
+  State<YoutubePlayerIFrameSection> createState() =>
+      _YoutubePlayerIFrameSectionState();
+}
+
+class _YoutubePlayerIFrameSectionState
+    extends State<YoutubePlayerIFrameSection> {
+  late YoutubePlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = YoutubePlayerController(
+      params: const YoutubePlayerParams(
+        showControls: true,
+        mute: false,
+        showFullscreenButton: true,
+        loop: false,
+      ),
+    );
+
+    _controller.setFullScreenListener(
+      (isFullScreen) {
+        log('${isFullScreen ? 'Entered' : 'Exited'} Fullscreen.');
+      },
+    );
+
+    //_controller.loadVideoById(videoId: widget.videoId); // Auto Play
+    _controller.cueVideoById(videoId: widget.videoId); // Manual Play
+  }
+
+  @override
+  void dispose() {
+    _controller.close();
+    super.dispose();
+  }
+
+  // final _controller = YoutubePlayerController(
+  @override
+  Widget build(BuildContext context) {
+    return YoutubePlayerScaffold(
+      controller: _controller,
+      aspectRatio: 16 / 9,
+      builder: (context, player) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: <Widget>[
+            player,
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/* 
+//
+// YoutubePlayerSection uses [youtube_player_flutter](https://pub.dev/packages/youtube_player_flutter). 
+// Only works for Android and iOS. Web was failed. See README.md file for detailed information.
+//
+class YoutubePlayerSection extends StatefulWidget {
+  const YoutubePlayerSection({super.key, required this.videoId});
+  final String videoId;
+
+  @override
+  State<YoutubePlayerSection> createState() => _YoutubePlayerSectionState();
+}
+
+class _YoutubePlayerSectionState extends State<YoutubePlayerSection> {
+  late YoutubePlayerController _controller;
+  bool isFullScreen = false;
+
+//videoId = YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=BBAyRBTfsOU");
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = YoutubePlayerController(
+      initialVideoId: widget.videoId,
+      flags: YoutubePlayerFlags(
+        autoPlay: false,
+        mute: false,
+        //isLive: true,
+      ),
+    )..addListener(() {
+        if (_controller.value.isFullScreen != isFullScreen) {
+          setState(() {
+            isFullScreen = _controller.value.isFullScreen;
+          });
+        }
+      });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return YoutubePlayerBuilder(
+      onExitFullScreen: () {
+        SystemChrome.setPreferredOrientations(DeviceOrientation.values);
+        setState(() {
+          isFullScreen = false;
+        });
+      },
+      player: YoutubePlayer(
+        controller: _controller,
+        liveUIColor: Colors.amber,
+        showVideoProgressIndicator: true,
+      ),
+      builder: (context, player) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            player,
+          ],
+        ),
+      ),
+    );
+  }
+}
+ */

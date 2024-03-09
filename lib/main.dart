@@ -8,6 +8,7 @@ import 'dart:io' show Platform;
 //import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/foundation.dart' show kIsWeb, kReleaseMode;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:window_size/window_size.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -21,6 +22,11 @@ import 'src/app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.blueAccent,
+    ),
+  );
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

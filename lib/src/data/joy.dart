@@ -10,6 +10,7 @@ class Joy {
   final String prelude;
   final String laugh;
   final String photoUrl;
+  final String videoId;
   final String talk;
   final int likes;
   final int type;
@@ -22,6 +23,7 @@ class Joy {
     this.prelude,
     this.laugh,
     this.photoUrl,
+    this.videoId,
     this.talk,
     this.likes,
     this.type,

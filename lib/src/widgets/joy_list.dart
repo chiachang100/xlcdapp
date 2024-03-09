@@ -75,7 +75,7 @@ class JoyList extends StatelessWidget {
               ElevatedButton(
                 onPressed: (onTap != null ? () => onTap!(joys[index]) : null),
                 child: const Text(
-                  '看內容',
+                  '觀賞內容',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
