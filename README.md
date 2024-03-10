@@ -3,9 +3,9 @@
 xlcdapp-笑裡藏道.
 
 ## References
-
-- [曾興才牧師講道視頻@YouTube](https://www.youtube.com/results?search_query=%22%E6%9B%BE%E8%88%88%E6%89%8D%E7%89%A7%E5%B8%AB%22)
 - [靈糧書房購買"笑裡藏道"書籍](https://www.rolcc.net/opencart/index.php?route=product/product&product_id=358)
+- [笑裡藏道書籍作者曾興才牧師講道視頻@YouTube](https://www.youtube.com/results?search_query=%22%E6%9B%BE%E8%88%88%E6%89%8D%E7%89%A7%E5%B8%AB%22)
+- [笑裡藏道]()
 - [Flutter website](https://flutter.dev/)
 - [Flutter samples](https://flutter.github.io/samples/#)
   - [Flutter samples: Navigation and Routing](https://flutter.github.io/samples/navigation_and_routing.html)
