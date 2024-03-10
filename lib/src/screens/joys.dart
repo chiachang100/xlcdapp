@@ -57,9 +57,8 @@ class _JoysScreenState extends State<JoysScreen>
               icon: Icon(Icons.new_releases_outlined, color: Colors.green),
             ),
             Tab(
-              text: '收藏品',
-              icon:
-                  Icon(Icons.local_library_outlined, color: Colors.blueAccent),
+              text: '珍藏品',
+              icon: Icon(Icons.collections_outlined, color: Colors.blueAccent),
             ),
           ],
         ),

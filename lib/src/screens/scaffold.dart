@@ -29,29 +29,32 @@ class JoystoreScaffold extends StatelessWidget {
       // ),
       //extendBodyBehindAppBar: true,
       body: SafeArea(
-        child: AdaptiveNavigationScaffold(
-          selectedIndex: selectedIndex,
-          body: child,
-          onDestinationSelected: (idx) {
-            if (idx == 0) goRouter.go('/joys/like');
-            if (idx == 1) goRouter.go('/scriptures');
-            if (idx == 2) goRouter.go('/settings');
-          },
-          destinations: const [
-            AdaptiveScaffoldDestination(
-              title: '笑裡藏道',
-              icon: Icons.favorite_border,
-              //icon: ImageIcon(AssetImage('assets/icons/xlcdapp-leading-icon.png')),
-            ),
-            AdaptiveScaffoldDestination(
-              title: '聖經經文',
-              icon: Icons.list,
-            ),
-            AdaptiveScaffoldDestination(
-              title: '簡介',
-              icon: Icons.person_outline_sharp,
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: AdaptiveNavigationScaffold(
+            selectedIndex: selectedIndex,
+            body: child,
+            onDestinationSelected: (idx) {
+              if (idx == 0) goRouter.go('/joys/like');
+              if (idx == 1) goRouter.go('/scriptures');
+              if (idx == 2) goRouter.go('/settings');
+            },
+            destinations: const [
+              AdaptiveScaffoldDestination(
+                title: '笑裡藏道',
+                icon: Icons.favorite_border,
+                //icon: ImageIcon(AssetImage('assets/icons/xlcdapp-leading-icon.png')),
+              ),
+              AdaptiveScaffoldDestination(
+                title: '聖經經文',
+                icon: Icons.list,
+              ),
+              AdaptiveScaffoldDestination(
+                title: '資源介紹',
+                icon: Icons.person_outline_sharp,
+              ),
+            ],
+          ),
         ),
       ),
     );
