@@ -27,9 +27,11 @@ class JoyList extends StatelessWidget {
   ];
 
   @override
-  Widget build(BuildContext context) => ListView.builder(
-        itemCount: joys.length,
-        itemBuilder: (context, index) => Card(
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: joys.length,
+      itemBuilder: (context, index) {
+        return Card(
           color: Colors.yellow[50],
           elevation: 8.0,
           margin: const EdgeInsets.all(8.0),
@@ -89,26 +91,8 @@ class JoyList extends StatelessWidget {
               const SizedBox(height: 10),
             ],
           ),
-        ),
-/*         itemBuilder: (context, index) => ListTile(
-          title: Text(
-            joys[index].title,
-          ),
-          subtitle: Text(
-              '${joys[index].scripture.verse}(${joys[index].scripture.name})'),
-          leading: CircleAvatar(
-            backgroundColor: circleAvatarBgColor[
-                (joys[index].id % circleAvatarBgColor.length)],
-            child: Text(
-              joys[index].title.substring(0, 1),
-              style: const TextStyle(
-                fontSize: 20,
-              ),
-            ),
-          ),
-          //trailing: const Icon(Icons.arrow_forward_ios),
-          onTap: onTap != null ? () => onTap!(joys[index]) : null,
-        ),
- */
-      );
+        );
+      },
+    );
+  }
 }

@@ -262,7 +262,8 @@ class _YoutubePlayerIFrameSectionState
       controller: _controller,
       aspectRatio: 16 / 9,
       builder: (context, player) => Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding:
+            const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20, right: 20),
         child: Column(
           children: <Widget>[
             Text(
