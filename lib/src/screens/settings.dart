@@ -9,6 +9,13 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../auth.dart';
 
+Future<void> lauchTargetUrl(String urlString) async {
+  Uri urlForPurchasingBook = Uri.parse(urlString);
+  if (!await launchUrl(urlForPurchasingBook)) {
+    throw Exception('無法啟動 $urlForPurchasingBook');
+  }
+}
+
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
@@ -53,7 +60,7 @@ class BookIntroSection extends StatelessWidget {
   final String bookSiteLink =
       'https://www.rolcc.net/opencart/index.php?route=product/product&product_id=358';
 
-  Future<void> purchaseBook() async {
+  Future<void> visitBuyBookWebsite() async {
     Uri urlForPurchasingBook = Uri.parse(bookSiteLink);
     if (!await launchUrl(urlForPurchasingBook)) {
       throw Exception('無法啟動 $urlForPurchasingBook');
@@ -105,7 +112,8 @@ class BookIntroSection extends StatelessWidget {
           ),
           Center(
             child: ElevatedButton(
-              onPressed: purchaseBook,
+              //onPressed: visitBuyBookWebsite,
+              onPressed: () => lauchTargetUrl(bookSiteLink),
               child: const Text('請到靈糧書房購買"笑裡藏道"書籍'),
             ),
           ),
@@ -123,7 +131,7 @@ class BookAuthorSection extends StatelessWidget {
   final String youtubePlaylistLink =
       'https://www.youtube.com/results?search_query=%22%E6%9B%BE%E8%88%88%E6%89%8D%E7%89%A7%E5%B8%AB%22';
 
-  Future<void> viewPlaylist() async {
+  Future<void> visitYouTubePlaylist() async {
     Uri urlForViewPlaylist = Uri.parse(youtubePlaylistLink);
     if (!await launchUrl(urlForViewPlaylist)) {
       throw Exception('無法啟動 $urlForViewPlaylist');
@@ -177,7 +185,8 @@ class BookAuthorSection extends StatelessWidget {
           ),
           Center(
             child: ElevatedButton(
-              onPressed: viewPlaylist,
+              //onPressed: visitYouTubePlaylist,
+              onPressed: () => lauchTargetUrl(youtubePlaylistLink),
               child: const Text('觀賞曾興才牧師YouTube講道視頻'),
             ),
           ),
@@ -191,6 +200,16 @@ class BookAuthorSection extends StatelessWidget {
 class AppDeveloperSection extends StatelessWidget {
   const AppDeveloperSection({super.key});
   final String xlcdAppAuthor = '張嘉: "笑裡藏道"App開發者';
+
+  final String bibleGatewayLink =
+      'https://www.biblegateway.com/passage/?search=%E5%B8%96%E6%92%92%E7%BE%85%E5%B0%BC%E8%BF%A6%E5%89%8D%E6%9B%B8+5%3A16-18&version=CUVMPT';
+
+  Future<void> visitBibleWebsite() async {
+    Uri urlForViewPlaylist = Uri.parse(bibleGatewayLink);
+    if (!await launchUrl(urlForViewPlaylist)) {
+      throw Exception('無法啟動 $urlForViewPlaylist');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -230,12 +249,19 @@ class AppDeveloperSection extends StatelessWidget {
           const Text(
             '  感謝主!我一生一世如神應許:「必有主的恩惠、慈愛隨著我!」出生於台灣，大學畢業，服完兵役，來美留學，完成電腦碩士及兼職完成企管碩士。'
             '1981年起即在矽谷電腦公司，從事多種電腦軟體工程開發。2023年於Microsoft職場上退休。'
-            '業餘時靠著主的恩典得在教會裡擔任過多種事奉，傳主福音，跟隨耶穌，榮神益人。'
+            '業餘時領受主的呼召及恩典，得在教會裡擔任過多種事奉，傳主福音，跟隨耶穌，榮神益人。'
             '與妻子Judy目前領受主賜兒孫滿堂。'
             '祈求藉著"笑裡藏道"書籍+App能為主多傳喜樂的福音，領人歸主。哈利路亞!頌讚、榮耀歸於我們的神，直到永永遠遠！阿們。'
             '\n\n「要常常喜樂，不住地禱告，凡事謝恩，因為這是神在基督耶穌裡向你們所定的旨意。」(帖撒羅尼迦前書 5:16-18)。',
             style: TextStyle(
               fontSize: 14,
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              //onPressed: visitBibleWebsite,
+              onPressed: () => lauchTargetUrl(bibleGatewayLink),
+              child: const Text('經文連結"帖撒羅尼迦前書 5:16-18"'),
             ),
           ),
           const SizedBox(height: 10),

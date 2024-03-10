@@ -42,7 +42,7 @@ class JoystoreScaffold extends StatelessWidget {
             destinations: const [
               AdaptiveScaffoldDestination(
                 title: '笑裡藏道',
-                icon: Icons.favorite_border,
+                icon: Icons.sentiment_satisfied_outlined,
                 //icon: ImageIcon(AssetImage('assets/icons/xlcdapp-leading-icon.png')),
               ),
               AdaptiveScaffoldDestination(
@@ -51,7 +51,7 @@ class JoystoreScaffold extends StatelessWidget {
               ),
               AdaptiveScaffoldDestination(
                 title: '資源簡介',
-                icon: Icons.person_outline_sharp,
+                icon: Icons.group_outlined,
               ),
             ],
           ),

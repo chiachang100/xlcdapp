@@ -50,10 +50,10 @@ class JoyDetailsScreen extends StatelessWidget {
             ),
             const DividerSection(Icon(Icons.star_border_rounded)),
             TextSection(description: joy!.prelude),
-            const DividerSection(Icon(Icons.star_border_rounded)),
+            const DividerSection(Icon(Icons.face_outlined)),
             TextSection(description: joy!.laugh),
             LeadingIconTextSection(description: joy!.talk, iconUrl: iconUrl),
-            const DividerSection(Icon(Icons.star_border_rounded)),
+            const DividerSection(Icon(Icons.live_tv_outlined)),
             //YoutubePlayerIFrameSection(videoId: 'Mez7DnMOlgc', videoName: '不要怕！你要得人了 | 曾興才牧師 | 20240225 | 生命河 ROLCCmedia'),
             YoutubePlayerIFrameSection(
                 videoId: joy!.videoId, videoName: joy!.videoName),
