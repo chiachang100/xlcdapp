@@ -30,7 +30,7 @@ class JoystoreScaffold extends StatelessWidget {
       //extendBodyBehindAppBar: true,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
+          padding: const EdgeInsets.only(bottom: 12.0),
           child: AdaptiveNavigationScaffold(
             selectedIndex: selectedIndex,
             body: child,
