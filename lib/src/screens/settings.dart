@@ -48,7 +48,7 @@ class SettingsContent extends StatelessWidget {
 
 class BookIntroSection extends StatelessWidget {
   const BookIntroSection({super.key});
-  final String xlcdBookIntro = '笑裡藏道書本介紹';
+  final String xlcdBookIntro = '"笑裡藏道"書籍介紹';
 
   final String bookSiteLink =
       'https://www.rolcc.net/opencart/index.php?route=product/product&product_id=358';
@@ -106,7 +106,7 @@ class BookIntroSection extends StatelessWidget {
           Center(
             child: ElevatedButton(
               onPressed: purchaseBook,
-              child: const Text('請到靈糧書房購買"笑裡藏道"'),
+              child: const Text('請到靈糧書房購買"笑裡藏道"書籍'),
             ),
           ),
           const SizedBox(height: 10),
@@ -118,7 +118,7 @@ class BookIntroSection extends StatelessWidget {
 
 class BookAuthorSection extends StatelessWidget {
   const BookAuthorSection({super.key});
-  final String xlcdBookAuthor = '曾興才牧師: 笑裡藏道書本作者';
+  final String xlcdBookAuthor = '曾興才牧師: "笑裡藏道"書籍作者';
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +174,7 @@ class BookAuthorSection extends StatelessWidget {
 
 class AppDeveloperSection extends StatelessWidget {
   const AppDeveloperSection({super.key});
-  final String xlcdAppAuthor = '張嘉: 笑裡藏道軟件開發';
+  final String xlcdAppAuthor = '張嘉: "笑裡藏道"App軟件開發';
 
   @override
   Widget build(BuildContext context) {
