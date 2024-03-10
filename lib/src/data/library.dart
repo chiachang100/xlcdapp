@@ -5,6 +5,8 @@
 import 'scripture.dart';
 import 'joy.dart';
 
+final int topList = 2;
+
 final libraryInstance = Library()
   ..addJoy(
     title: '愛的激勵',
@@ -185,8 +187,18 @@ class Library {
     return allJoys[int.parse(id)];
   }
 
+  List<Joy> getTopList(List<Joy> allJoys, int filter) {
+    //allJoys.sort((a, b) => a.likes.compareTo(b.likes)); // ascending
+    allJoys.sort((a, b) => b.likes.compareTo(a.likes)); // descending
+    return allJoys.take(filter).toList();
+  }
+
+  // List<Joy> get likeJoys => [
+  //       ...allJoys.where((joy) => (joy.likes > 0)),
+  //     ];
+
   List<Joy> get likeJoys => [
-        ...allJoys.where((joy) => (joy.likes > 0)),
+        ...getTopList(allJoys, topList).where((joy) => (joy.likes > 0)),
       ];
 
   List<Joy> get newJoys => [
