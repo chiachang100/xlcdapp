@@ -48,7 +48,7 @@ class SettingsContent extends StatelessWidget {
 
 class BookIntroSection extends StatelessWidget {
   const BookIntroSection({super.key});
-  final String xlcdBookIntro = '笑裡藏道: 書本介紹';
+  final String xlcdBookIntro = '笑裡藏道書本介紹';
 
   final String bookSiteLink =
       'https://www.rolcc.net/opencart/index.php?route=product/product&product_id=358';
@@ -188,7 +188,7 @@ class AppDeveloperSection extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              'assets/photos/xlcd_image_640x640.png',
+              'assets/photos/joy_pray_thanks.png',
               height: MediaQuery.of(context).size.width * (3 / 4),
               width: MediaQuery.of(context).size.width,
               //height: 120, width: 640,
