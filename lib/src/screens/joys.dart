@@ -43,22 +43,23 @@ class _JoysScreenState extends State<JoysScreen>
     return Scaffold(
       appBar: AppBar(
         title: const Text('笑裡藏道'),
-        leading: Image.asset('assets/icons/xlcdapp-icon-48x48.png'),
+        leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
         //backgroundColor: Colors.orange,
         bottom: TabBar(
           controller: _tabController,
           tabs: const [
             Tab(
               text: '排行榜',
-              icon: Icon(Icons.fireplace, color: Colors.red),
+              icon: Icon(Icons.format_list_numbered, color: Colors.red),
             ),
             Tab(
               text: '新出爐',
-              icon: Icon(Icons.new_releases, color: Colors.green),
+              icon: Icon(Icons.new_releases_outlined, color: Colors.green),
             ),
             Tab(
               text: '收藏品',
-              icon: Icon(Icons.collections, color: Colors.blueAccent),
+              icon:
+                  Icon(Icons.local_library_outlined, color: Colors.blueAccent),
             ),
           ],
         ),

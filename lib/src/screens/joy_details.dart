@@ -24,7 +24,7 @@ class JoyDetailsScreen extends StatelessWidget {
     this.joy,
   });
 
-  final String iconUrl = 'assets/icons/xlcdapp-icon-48x48.png';
+  final String iconUrl = 'assets/icons/xlcdapp-leading-icon.png';
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +54,9 @@ class JoyDetailsScreen extends StatelessWidget {
             TextSection(description: joy!.laugh),
             LeadingIconTextSection(description: joy!.talk, iconUrl: iconUrl),
             const DividerSection(Icon(Icons.star_border_rounded)),
-            //YoutubePlayerIFrameSection(videoId: 'GkRrP2iBaKw'),
-            YoutubePlayerIFrameSection(videoId: joy!.videoId),
+            //YoutubePlayerIFrameSection(videoId: 'Mez7DnMOlgc', videoName: '不要怕！你要得人了 | 曾興才牧師 | 20240225 | 生命河 ROLCCmedia'),
+            YoutubePlayerIFrameSection(
+                videoId: joy!.videoId, videoName: joy!.videoName),
             const SizedBox(height: 20),
           ],
         ),
@@ -213,8 +214,9 @@ class LeadingIconTextSection extends StatelessWidget {
 * YoutubePlayerIFrameSection uses [youtube_player_iframe](https://pub.dev/packages/youtube_player_iframe).
 */
 class YoutubePlayerIFrameSection extends StatefulWidget {
-  YoutubePlayerIFrameSection({required this.videoId});
+  YoutubePlayerIFrameSection({required this.videoId, required this.videoName});
   final String videoId;
+  final String videoName;
 
   @override
   State<YoutubePlayerIFrameSection> createState() =>
@@ -263,6 +265,14 @@ class _YoutubePlayerIFrameSectionState
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
+            Text(
+              '(${widget.videoName})',
+              softWrap: true,
+              style: const TextStyle(
+                fontSize: 12.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             player,
           ],
         ),

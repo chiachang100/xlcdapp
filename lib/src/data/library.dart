@@ -21,6 +21,7 @@ final libraryInstance = Library()
         '\n\n  老張對鸚鵡態度的轉變很是驚訝!正想要問這樣戲劇性的變化是什麼原因，牠又接著說道:「我可以問一下，裡面那隻被扒光毛的鳥做錯了什麼事嗎?」',
     photoUrl: 'assets/photos/xlcdapp_photo_1.png',
     videoId: 'Mez7DnMOlgc',
+    videoName: '不要怕！你要得人了 | 曾興才牧師 | 20240225 | 生命河 ROLCCmedia',
     talk: '  要珍惜別人善意的勸勉，尤其是出於愛的勸告。出於愛的推動力是可以幫助我們，在艱難的環境中持續做正確的事情。'
         '\n\n  使徒保羅因為明白和經歷基督耶穌的愛，使他在諸多的逼迫和困難中，忠心心完成耶穌給他的託付。'
         '他說原來基督的愛就好像一股力量在背後不停地推著他，因為我們知道耶穌既然為眾人死了，眾人就都死了。'
@@ -44,6 +45,7 @@ final libraryInstance = Library()
         '\n\n  那個女人目不轉睛地望著華特小姐，然後毫不猶豫地回答說：「因為有地雷！」',
     photoUrl: 'assets/photos/xlcdapp_photo_2.png',
     videoId: 'GkRrP2iBaKw',
+    videoName: '不斷成長，進入豐盛 | 曾興才牧師 | 20240121 | 生命河 ROLCCmedia',
     talk: '  是的，恐懼會促使你做各樣的措施來保護自已。但有時候，沒有任何預備能夠幫助你面對它。'
         '你渴望在千變萬化的人情世故中找到永不搖動的錨，找到真正的平安。'
         '\n\n  詩人大衛提醒我們說：唯有緊緊抓住永不改變的真神上帝，哪怕是走過死蔭幽谷，你也可以不怕，因為知道上帝永遠與你同在，'
@@ -68,7 +70,8 @@ final libraryInstance = Library()
         '\n\n  突然間，路邊衝出一個渾身惡臭、滿臉污穢，看來好無家可歸的老太太，垂著頭低聲地向我討東西，差點嚇我的一對寶貝。'
         '驚嚇之餘，我再仔細一看，『天啊！竟然是我國小五年級的國文老師！』」',
     photoUrl: 'assets/photos/xlcdapp_photo_3.png',
-    videoId: '71P18v5SqlY',
+    videoId: 'Ay5KpU3QS44',
+    videoName: '聖靈，再一次充滿我們 | #曾興才牧師 | 20230611 | 生命河 ROLCCmedia',
     talk: '  饒怨乃是一個決定，不能夠憑感覺。因為受傷害的感覺會使我們的思想混亂不清。'
         '當我們越去思想別人對我們的傷害，我們就越陷越深，叫我們跌入苦毒與怨恨的深淵裡。其實，那傷害你的人可能早已經把你忘得一乾二淨。'
         '當你茶飯不思的時候，他/她可能在大吃大喝；當你深夜卻無法入眠時，他/她可能早已呼呼大睡。'
@@ -96,6 +99,7 @@ final libraryInstance = Library()
         '\n\n  太太回答說：「老公，這是第五次了，宮保雞丁！」',
     photoUrl: 'assets/photos/xlcdapp_photo_4.png',
     videoId: 'gUxlZ4S_meE',
+    videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '  當我們承認自己不是十分完美時，我們就會以不同的眼光去看待周圍的人。一個成功的人知道自己的優點和缺點，'
         '他/她會去發掘和欣賞別人的優點，及以別人的優點來補足自己的缺點，以自己的優點去幫補別人的缺點。'
         '更重要的是，他/她也懂得發揮自己的優點，並讓它成為自己的優勢。'
@@ -121,6 +125,7 @@ final libraryInstance = Library()
         '\n\n  老太太不慌不忙地回答說：「我在等他的假牙！」',
     photoUrl: 'assets/photos/xlcdapp_photo_5.png',
     videoId: 'sUuT3a-ibbs',
+    videoName: '那九個在哪裡呢？ | 曾興才牧師 | 20231112 | 生命河 ROLCCmedia',
     talk: '  若是人人都有一顆與他人分享好東西的心， 這世界肯定會更加溫暖、可愛。'
         '其實，與他人分享好東西不是我們天生就會做的事，乃是一個需要被教導和學習的美德。'
         '一旦我們開始與他人分享好東西時，我們會驚然發現--得到的快樂是遠遠超出我們所付出的。'
@@ -142,6 +147,7 @@ class Library {
     required String laugh,
     required String photoUrl,
     required String videoId,
+    required String videoName,
     required String talk,
     required int likes,
     required int type,
@@ -163,6 +169,7 @@ class Library {
       laugh,
       photoUrl,
       videoId,
+      videoName,
       talk,
       likes,
       type,

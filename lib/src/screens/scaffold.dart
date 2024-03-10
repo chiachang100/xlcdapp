@@ -22,7 +22,7 @@ class JoystoreScaffold extends StatelessWidget {
 
     return Scaffold(
       // appBar: AppBar(
-      //   leading: Image.asset('assets/icons/xlcdapp-icon-48x48.png'),
+      //   leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
       //   title: const Text('笑裡藏道'),
       //   centerTitle: true,
       //   //backgroundColor: Colors.orange,
@@ -40,17 +40,17 @@ class JoystoreScaffold extends StatelessWidget {
           destinations: const [
             AdaptiveScaffoldDestination(
               title: '笑裡藏道',
-              icon: Icons.favorite,
-              //icon: ImageIcon(AssetImage('assets/icons/xlcdapp-icon-48x48.png')),
+              icon: Icons.favorite_border,
+              //icon: ImageIcon(AssetImage('assets/icons/xlcdapp-leading-icon.png')),
             ),
             AdaptiveScaffoldDestination(
               title: '聖經經文',
-              icon: Icons.book,
+              icon: Icons.list,
             ),
-            // AdaptiveScaffoldDestination(
-            //   title: '設定',
-            //   icon: Icons.settings,
-            // ),
+            AdaptiveScaffoldDestination(
+              title: '簡介',
+              icon: Icons.person_outline_sharp,
+            ),
           ],
         ),
       ),

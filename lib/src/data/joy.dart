@@ -11,6 +11,7 @@ class Joy {
   final String laugh;
   final String photoUrl;
   final String videoId;
+  final String videoName;
   final String talk;
   final int likes;
   final int type;
@@ -24,6 +25,7 @@ class Joy {
     this.laugh,
     this.photoUrl,
     this.videoId,
+    this.videoName,
     this.talk,
     this.likes,
     this.type,

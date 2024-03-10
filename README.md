@@ -21,6 +21,8 @@ Walnut Software](https://walnutistanbul.medium.com/how-to-add-a-youtube-video-to
 ```
 - [Flutter package: youtube_player_iframe](https://pub.dev/packages/youtube_player_iframe)
   - [Depends on webview_flutter (Android & iOS)](https://pub.dev/packages/webview_flutter)
+- [Material Icons](https://fonts.google.com/icons)
+
 ---
 ## Getting Started
 

@@ -38,7 +38,7 @@ class JoyList extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Image.asset(
                   joys[index].photoUrl,
                   height: MediaQuery.of(context).size.width * (3 / 4),
@@ -73,15 +73,20 @@ class JoyList extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    //backgroundColor: Colors.orange, // background
+                    //foregroundColor: Colors.yellow, // foreground
+                    ),
                 onPressed: (onTap != null ? () => onTap!(joys[index]) : null),
                 child: const Text(
-                  '觀賞內容',
+                  '觀賞詳情',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              )
+              ),
+              const SizedBox(height: 10),
             ],
           ),
         ),
