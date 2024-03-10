@@ -48,7 +48,7 @@ class SettingsContent extends StatelessWidget {
 
 class BookIntroSection extends StatelessWidget {
   const BookIntroSection({super.key});
-  final String xlcdBookIntro = '"笑裡藏道"書籍介紹';
+  final String xlcdBookIntro = '笑裡藏道書籍介紹';
 
   final String bookSiteLink =
       'https://www.rolcc.net/opencart/index.php?route=product/product&product_id=358';
@@ -174,7 +174,7 @@ class BookAuthorSection extends StatelessWidget {
 
 class AppDeveloperSection extends StatelessWidget {
   const AppDeveloperSection({super.key});
-  final String xlcdAppAuthor = '張嘉: "笑裡藏道"App軟件開發';
+  final String xlcdAppAuthor = '張嘉: "笑裡藏道"軟件工程師';
 
   @override
   Widget build(BuildContext context) {
