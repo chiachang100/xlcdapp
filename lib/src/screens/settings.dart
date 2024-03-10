@@ -120,6 +120,16 @@ class BookAuthorSection extends StatelessWidget {
   const BookAuthorSection({super.key});
   final String xlcdBookAuthor = '曾興才牧師: "笑裡藏道"書籍作者';
 
+  final String youtubePlaylistLink =
+      'https://www.youtube.com/results?search_query=%22%E6%9B%BE%E8%88%88%E6%89%8D%E7%89%A7%E5%B8%AB%22';
+
+  Future<void> viewPlaylist() async {
+    Uri urlForViewPlaylist = Uri.parse(youtubePlaylistLink);
+    if (!await launchUrl(urlForViewPlaylist)) {
+      throw Exception('無法啟動 $urlForViewPlaylist');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -165,6 +175,12 @@ class BookAuthorSection extends StatelessWidget {
               fontSize: 14,
             ),
           ),
+          Center(
+            child: ElevatedButton(
+              onPressed: viewPlaylist,
+              child: const Text('觀賞曾興才牧師YouTube講道視頻'),
+            ),
+          ),
           const SizedBox(height: 10),
         ],
       ),
@@ -174,7 +190,7 @@ class BookAuthorSection extends StatelessWidget {
 
 class AppDeveloperSection extends StatelessWidget {
   const AppDeveloperSection({super.key});
-  final String xlcdAppAuthor = '張嘉: "笑裡藏道"軟件工程師';
+  final String xlcdAppAuthor = '張嘉: "笑裡藏道"App開發者';
 
   @override
   Widget build(BuildContext context) {
@@ -212,11 +228,12 @@ class AppDeveloperSection extends StatelessWidget {
             ],
           ),
           const Text(
-            '  出生於台灣，畢業於文化大學兒童福利系'
-            '感謝主的恩典!於1980年留學來美獲得史蒂文斯理工學院電腦碩士，兼職學習獲得金門大學工商管理碩士。'
-            '1981年起曾在矽谷數家電腦公司(startups，Rolm，Sun Micro，Yahoo，Microsoft,etc.) 從事電腦資深軟體工程師職務。2023年於Microsoft職場退休。'
-            '出於神的恩惠能在教會裡事奉，曾從事小組長，兒童主日學老師及校長，成人主日學老師，執事，區牧，等服事。祈求能成為傳福音的器皿，效法基督，榮神益人。2009年起在「矽谷生命河靈糧堂」聚會和事奉。'
-            '與妻子Judy目前一起享受主所賜兒孫滿堂的福份。哈利路亞!「要常常喜樂，不住地禱告，凡事謝恩，因為這是神在基督耶穌裡向你們所定的旨意。」(帖撒羅尼迦前書 5:16-18)',
+            '  感謝主!我一生一世如神應許:「必有主的恩惠、慈愛隨著我!」出生於台灣，大學畢業，服完兵役，來美留學，完成電腦碩士及兼職完成企管碩士。'
+            '1981年起即在矽谷電腦公司，從事多種電腦軟體工程開發。2023年於Microsoft職場上退休。'
+            '業餘時靠著主的恩典得在教會裡擔任過多種事奉，傳主福音，跟隨耶穌，榮神益人。'
+            '與妻子Judy目前領受主賜兒孫滿堂。'
+            '祈求藉著"笑裡藏道"書籍+App能為主多傳喜樂的福音，領人歸主。哈利路亞!頌讚、榮耀歸於我們的神，直到永永遠遠！阿們。'
+            '\n\n「要常常喜樂，不住地禱告，凡事謝恩，因為這是神在基督耶穌裡向你們所定的旨意。」(帖撒羅尼迦前書 5:16-18)。',
             style: TextStyle(
               fontSize: 14,
             ),

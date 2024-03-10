@@ -50,7 +50,7 @@ class JoystoreScaffold extends StatelessWidget {
                 icon: Icons.list,
               ),
               AdaptiveScaffoldDestination(
-                title: '資源介紹',
+                title: '資源簡介',
                 icon: Icons.person_outline_sharp,
               ),
             ],
