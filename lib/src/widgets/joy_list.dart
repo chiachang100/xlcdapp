@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../data.dart';
@@ -25,6 +26,18 @@ class JoyList extends StatelessWidget {
     Colors.indigo,
     Colors.purple,
   ];
+
+  static List<String> dynamicText = [
+    '⚕️喜樂的心乃是良藥',
+    '🤣盡情地開懷大笑吧',
+    '💓神的道是活潑的',
+    '✞神的道是有功效的',
+    '😌領受一份幽默感',
+    '🏦累積你的笑話存款',
+    '📈提升你的親和指數'
+  ];
+
+  String getNextText() => dynamicText[Random().nextInt(dynamicText.length)];
 
   @override
   Widget build(BuildContext context) {
@@ -80,9 +93,10 @@ class JoyList extends StatelessWidget {
                     //foregroundColor: Colors.yellow, // foreground
                     ),
                 onPressed: (onTap != null ? () => onTap!(joys[index]) : null),
-                child: const Text(
-                  '觀賞詳情',
-                  style: TextStyle(
+                child: Text(
+                  // '觀賞詳情',
+                  getNextText(),
+                  style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
