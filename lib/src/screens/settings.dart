@@ -12,7 +12,7 @@ import '../auth.dart';
 Future<void> lauchTargetUrl(String urlString) async {
   Uri urlForPurchasingBook = Uri.parse(urlString);
   if (!await launchUrl(urlForPurchasingBook)) {
-    throw Exception('無法啟動 $urlForPurchasingBook');
+    //throw Exception('無法啟動 $urlForPurchasingBook');
   }
 }
 
@@ -114,7 +114,7 @@ class BookIntroSection extends StatelessWidget {
             child: ElevatedButton(
               //onPressed: visitBuyBookWebsite,
               onPressed: () => lauchTargetUrl(bookSiteLink),
-              child: const Text('請到靈糧書房購買"笑裡藏道"書籍'),
+              child: const Text('📚請到靈糧書房購買"笑裡藏道"書籍'),
             ),
           ),
           const SizedBox(height: 10),
@@ -187,7 +187,7 @@ class BookAuthorSection extends StatelessWidget {
             child: ElevatedButton(
               //onPressed: visitYouTubePlaylist,
               onPressed: () => lauchTargetUrl(youtubePlaylistLink),
-              child: const Text('觀賞曾興才牧師YouTube講道視頻'),
+              child: const Text('▶️觀賞曾興才牧師YouTube講道視頻'),
             ),
           ),
           const SizedBox(height: 10),
@@ -261,7 +261,7 @@ class AppDeveloperSection extends StatelessWidget {
             child: ElevatedButton(
               //onPressed: visitBibleWebsite,
               onPressed: () => lauchTargetUrl(bibleGatewayLink),
-              child: const Text('經文連結"帖撒羅尼迦前書 5:16-18"'),
+              child: const Text('✝️聖經經文"帖撒羅尼迦前書 5:16-18"'),
             ),
           ),
           const SizedBox(height: 10),

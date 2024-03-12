@@ -46,6 +46,7 @@ class _JoysScreenState extends State<JoysScreen>
         leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
         //backgroundColor: Colors.orange,
         bottom: TabBar(
+          //isScrollable: true,
           controller: _tabController,
           tabs: const [
             Tab(
