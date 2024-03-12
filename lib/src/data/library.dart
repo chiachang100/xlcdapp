@@ -236,7 +236,7 @@ final libraryInstance = Library()
     prelude: '  慷慨樂施 ，。...',
     laugh: '    慷慨樂施 ，。..'
         '\n\n    慷慨樂施 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_7.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    慷慨樂施 ，。..',
@@ -252,7 +252,7 @@ final libraryInstance = Library()
     prelude: '  男女有別 ，。...',
     laugh: '    男女有別 ，。..'
         '\n\n    男女有別 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_8.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    男女有別 ，。..',
@@ -265,13 +265,13 @@ final libraryInstance = Library()
     title: '停止相咬相吞',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  停止相咬相吞 ，。...',
+    laugh: '    停止相咬相吞 ，。..'
+        '\n\n    停止相咬相吞 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_9.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    停止相咬相吞 ，。..',
     likes: 5,
     type: 1,
     isNew: false,
@@ -281,13 +281,13 @@ final libraryInstance = Library()
     title: '不要只顧自己',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  不要只顧自己 ，。...',
+    laugh: '    不要只顧自己 ，。..'
+        '\n\n    不要只顧自己 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_10.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    不要只顧自己 ，。..',
     likes: 4,
     type: 1,
     isNew: false,
@@ -297,13 +297,13 @@ final libraryInstance = Library()
     title: '活出你的最高點',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  活出你的最高點 ，。...',
+    laugh: '    活出你的最高點 ，。..'
+        '\n\n    活出你的最高點 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_11.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    活出你的最高點 ，。..',
     likes: 3,
     type: 1,
     isNew: false,
@@ -313,13 +313,13 @@ final libraryInstance = Library()
     title: '肯付代價',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  肯付代價 ，。...',
+    laugh: '    肯付代價 ，。..'
+        '\n\n    肯付代價 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_12.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    肯付代價 ，。..',
     likes: 2,
     type: 1,
     isNew: true,
@@ -329,10 +329,10 @@ final libraryInstance = Library()
     title: '要做新事',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  要做新事 ，。...',
+    laugh: '    要做新事 ，。..'
+        '\n\n    要做新事 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_13.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    選擇報告好消息 ，。..',
@@ -345,13 +345,13 @@ final libraryInstance = Library()
     title: '要作智慧人',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  要作智慧人 ，。...',
+    laugh: '    要作智慧人 ，。..'
+        '\n\n    要作智慧人 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_14.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    要作智慧人 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
@@ -361,17 +361,51 @@ final libraryInstance = Library()
     title: '上帝榮耀的豐富',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  上帝榮耀的豐富 ，。...',
+    laugh: '    上帝榮耀的豐富 ，。..'
+        '\n\n    上帝榮耀的豐富 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_15.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    上帝榮耀的豐富 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
+  ..addJoy(
+    itemId: 52,
+    title: '與你同得福音的好處',
+    scriptureName: '哥林多前書 9:23',
+    scriptureVerse: '凡我所行的，都是為福音的緣故，為要與人同得這福音的好處。',
+    prelude:
+        '  與別人認同是建立良好人際關係的方法之一。有些人會想盡方法去和別人認同，為的是要討好對方；有些人卻是真心的要與別人認同，為的是得到對方的接納。',
+    laugh: '    有一個土著部落，每次集會活動時，大家都必須赤身裸體地在一起。'
+        '雖然受到了很多人的白眼和辱罵，但他們卻從沒有因此改變過自己的族規。'
+        '\n\n    有一次，他們這個部落傳染起瘟疫，許多人都病倒了，部落裡的醫生全都束手無策，最後他們決定到鄰近的部落去請一位有名的醫生。'
+        '那位醫生知道他們奇怪的族規，覺得去到那地方會非常難為情，但他又拒絕不了他們三番兩次的邀請，又感到還是救人比面子重要，便答應了。'
+        '\n\n    終於到了歡迎醫生到來的那一天，部落的人想，好不容易把醫生請來，為了尊重他起見，咱們就破例一次吧。'
+        '所以那一天大家都穿上衣服，打上了領帶，聚集在他們的會堂裡。'
+        '\n\n    鐘聲響過之後，醫生走了進來，大家一下子都愣住了。只見年紀老邁，白髮蒼蒼的醫生背著重重的醫療包，身上卻一絲不掛！',
+    photoUrl: 'assets/photos/xlcdapp_photo_52.png',
+    videoId: 'WLssNhv886A',
+    videoName: '同心領受命定的福 | 曾興才牧師 | 20180922 | 生命河 ROLCCmedia',
+    talk: '    使徒保羅是主耶穌最偉大的門徒之一。他為了傳福音，就是好消息，受盡了逼迫、災難和痛苦，他也願意放下身段和他所接觸的人認同。'
+        '因此，他說：「向軟弱的人，我就作軟弱的人，為要得軟弱的人。向什麼樣的人，我就作什麼樣的人。無論如何，總要救些人。'
+        '凡我所行的，都是為福音的缘故，為要與人同得這福音的好處。」（哥林多前書九章22~23 節）'
+        '\n\n  為什麼保羅如此用心的要與人同得這福音的好處呢？因為福音對你太重要了！'
+        '\n\n  那什麼是福音呢？福音就是上帝非常愛你和世上的人，愛到祂願意差遣他的獨生兒子耶穌基督，來到世上，為你我的罪釘死在十字架上，第三天從死裡復活，把永生的生命賜給你和我。'
+        '只要你願意相信接受耶穌基督作為你生命的主，你就可以享受豐盛的生命，永生的生命。'
+        '\n\n  我們每一個人都必須作相信接受主耶穌的決定。如果你願意的話，可以作以下的禱告，把你心中的決定告訴主耶穌：'
+        '\n\n  「親愛的天父上帝，我感謝祢這麼愛我，把祢獨生的兒子主耶穌賜給我，為我的罪釘死在十字架上，第三天從死裡復活。'
+        '我現在願意相信並接受主耶穌作我個人的救主，赦免我的罪，賜我豐盛、永生的生命。'
+        '我願意一生跟隨祢，敬拜祢，我如此禱告，乃是奉靠主耶穌基督的名求，阿們！」'
+        '\n\n  恭喜你！按照天父上帝的應許，你現在就成為祂的兒女了：「凡接待祂（主耶穌）的，就是信祂（主耶穌）名的人，祂就賜他們權柄作上帝的兒女。」（約翰福音一章12節）',
+    likes: 0,
+    type: 1,
+    isNew: true,
+  );
+
+  /* 
   ..addJoy(
     itemId: 16,
     title: '起初的愛心',
@@ -380,7 +414,7 @@ final libraryInstance = Library()
     prelude: '  起初的愛心 ，。...',
     laugh: '    起初的愛心 ，。..'
         '\n\n    起初的愛心 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_16.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    起初的愛心 ，。..',
@@ -396,7 +430,7 @@ final libraryInstance = Library()
     prelude: '  要像小孩子 ，。...',
     laugh: '    要像小孩子 ，。..'
         '\n\n    要像小孩子 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_17.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    要像小孩子 ，。..',
@@ -412,7 +446,7 @@ final libraryInstance = Library()
     prelude: '  應當一無掛慮 ，。...',
     laugh: '    應當一無掛慮 ，。..'
         '\n\n    應當一無掛慮 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_18.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    應當一無掛慮 ，。..',
@@ -428,7 +462,7 @@ final libraryInstance = Library()
     prelude: '  不要以惡報惡 ，。...',
     laugh: '    不要以惡報惡 ，。..'
         '\n\n    不要以惡報惡 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_19.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    不要以惡報惡 ，。..',
@@ -444,7 +478,7 @@ final libraryInstance = Library()
     prelude: '  要孝敬父母 ，。...',
     laugh: '    要孝敬父母 ，。..'
         '\n\n    要孝敬父母 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_20.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    要孝敬父母 ，。..',
@@ -460,7 +494,7 @@ final libraryInstance = Library()
     prelude: '  靈巧像蛇、馴良像鴿子 ，。...',
     laugh: '    靈巧像蛇、馴良像鴿子 ，。..'
         '\n\n    靈巧像蛇、馴良像鴿子 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_21.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    靈巧像蛇、馴良像鴿子 ，。..',
@@ -476,7 +510,7 @@ final libraryInstance = Library()
     prelude: '  隱藏的事會顯出來 ，。...',
     laugh: '    隱藏的事會顯出來 ，。..'
         '\n\n    隱藏的事會顯出來 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_22.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    隱藏的事會顯出來 ，。..',
@@ -492,7 +526,7 @@ final libraryInstance = Library()
     prelude: '  勇敢改變自己 ，。...',
     laugh: '    勇敢改變自己 ，。..'
         '\n\n    勇敢改變自己 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_23.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    勇敢改變自己 ，。..',
@@ -508,7 +542,7 @@ final libraryInstance = Library()
     prelude: '  要凡事謝恩 ，。...',
     laugh: '    要凡事謝恩 ，。..'
         '\n\n    要凡事謝恩 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_24.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    要凡事謝恩 ，。..',
@@ -524,7 +558,7 @@ final libraryInstance = Library()
     prelude: '  愛人不可虛假 ，。...',
     laugh: '    愛人不可虛假 ，。..'
         '\n\n    愛人不可虛假 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_25.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    愛人不可虛假 ，。..',
@@ -540,7 +574,7 @@ final libraryInstance = Library()
     prelude: '  不要以外貌看人 ，。...',
     laugh: '    不要以外貌看人 ，。..'
         '\n\n    不要以外貌看人 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_26.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    不要以外貌看人 ，。..',
@@ -556,7 +590,7 @@ final libraryInstance = Library()
     prelude: '  喜樂的心是良藥 ，。...',
     laugh: '    喜樂的心是良藥 ，。..'
         '\n\n    喜樂的心是良藥 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_27.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    喜樂的心是良藥 ，。..',
@@ -572,7 +606,7 @@ final libraryInstance = Library()
     prelude: '  專注的能力 ，。...',
     laugh: '    專注的能力 ，。..'
         '\n\n    專注的能力 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_28.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    專注的能力 ，。..',
@@ -588,7 +622,7 @@ final libraryInstance = Library()
     prelude: '  成功的秘訣 ，。...',
     laugh: '    成功的秘訣 ，。..'
         '\n\n    成功的秘訣 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_29.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    成功的秘訣 ，。..',
@@ -604,7 +638,7 @@ final libraryInstance = Library()
     prelude: '  用愛心說誠實話 ，。...',
     laugh: '    用愛心說誠實話 ，。..'
         '\n\n    用愛心說誠實話 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    photoUrl: 'assets/photos/xlcdapp_photo_30.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     talk: '    用愛心說誠實話 ，。..',
@@ -612,375 +646,341 @@ final libraryInstance = Library()
     type: 1,
     isNew: true,
   )
-  ..addJoy(
-    itemId: 52,
-    title: '與你同得福音的好處',
+..addJoy(
+    itemId: 31,
+    title: '為我造清潔的心',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  與你同得福音的好處 ，。...',
-    laugh: '    與你同得福音的好處 ，。..'
-        '\n\n    與你同得福音的好處 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  為我造清潔的心 ，。...',
+    laugh: '    為我造清潔的心 ，。..'
+        '\n\n    為我造清潔的心 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_31.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    與你同得福音的好處 ，。..',
-    likes: 0,
-    type: 1,
-    isNew: true,
-  );
-
-  /* 
-  ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
-    scriptureName: '馬太福音 7:4',
-    scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
-    videoId: 'gUxlZ4S_meE',
-    videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    為我造清潔的心 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 32,
+    title: '有衣有食就當知足',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  有衣有食就當知足 ，。...',
+    laugh: '    有衣有食就當知足 ，。..'
+        '\n\n    有衣有食就當知足 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_32.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    有衣有食就當知足 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 33,
+    title: '永生是上帝的恩賜',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  永生是上帝的恩賜 ，。...',
+    laugh: '    永生是上帝的恩賜 ，。..'
+        '\n\n    永生是上帝的恩賜 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_33.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    永生是上帝的恩賜 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 34,
+    title: '作一個内裡誠責的人',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  作一個内裡誠責的人 ，。...',
+    laugh: '    作一個内裡誠責的人 ，。..'
+        '\n\n    作一個内裡誠責的人 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_34.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    作一個内裡誠責的人 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 35,
+    title: '管教是愛',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  管教是愛 ，。...',
+    laugh: '    管教是愛 ，。..'
+        '\n\n    管教是愛 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_35.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    管教是愛 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 36,
+    title: '你可以勝過試探',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  你可以勝過試探 ，。...',
+    laugh: '    你可以勝過試探 ，。..'
+        '\n\n    你可以勝過試探 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_36.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    你可以勝過試探 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 37,
+    title: '要愛你的妻子',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  要愛你的妻子 ，。...',
+    laugh: '    要愛你的妻子 ，。..'
+        '\n\n    要愛你的妻子 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_37.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    要愛你的妻子 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 38,
+    title: '要殷勤、不可懶惰',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  要殷勤、不可懶惰 ，。...',
+    laugh: '    要殷勤、不可懶惰 ，。..'
+        '\n\n    要殷勤、不可懶惰 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_38.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    要殷勤、不可懶惰 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 39,
+    title: '真正的平安',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  真正的平安 ，。...',
+    laugh: '    真正的平安 ，。..'
+        '\n\n    真正的平安 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_39.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    真正的平安 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 40,
+    title: '要教養孩子',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  要教養孩子 ，。...',
+    laugh: '    要教養孩子 ，。..'
+        '\n\n    要教養孩子 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_40.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    要教養孩子 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 41,
+    title: '不要作糊塗人',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  不要作糊塗人 ，。...',
+    laugh: '    不要作糊塗人 ，。..'
+        '\n\n    不要作糊塗人 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_41.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    不要作糊塗人 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 42,
+    title: '與智慧人同行',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  與智慧人同行 ，。...',
+    laugh: '    與智慧人同行 ，。..'
+        '\n\n    與智慧人同行 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_42.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    與智慧人同行 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 43,
+    title: '不要惹兒女的氣',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  不要惹兒女的氣 ，。...',
+    laugh: '    不要惹兒女的氣 ，。..'
+        '\n\n    不要惹兒女的氣 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_43.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    不要惹兒女的氣 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 44,
+    title: '不可安求',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  不可安求 ，。...',
+    laugh: '    不可安求 ，。..'
+        '\n\n    不可安求 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_44.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    不可安求 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 45,
+    title: '得力在乎平靜安穩',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  得力在乎平靜安穩 ，。...',
+    laugh: '    得力在乎平靜安穩 ，。..'
+        '\n\n    得力在乎平靜安穩 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_45.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    得力在乎平靜安穩 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 46,
+    title: '要培養內在美',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  要培養內在美 ，。...',
+    laugh: '    要培養內在美 ，。..'
+        '\n\n    要培養內在美 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_46.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    要培養內在美 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 47,
+    title: '得著妻子的人有福了',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  得著妻子的人有福了 ，。...',
+    laugh: '    得著妻子的人有福了 ，。..'
+        '\n\n    得著妻子的人有福了 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_47.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    得著妻子的人有福了 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 48,
+    title: '自卑的必升為高',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  自卑的必升為高 ，。...',
+    laugh: '    自卑的必升為高 ，。..'
+        '\n\n    自卑的必升為高 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_48.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    自卑的必升為高 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 49,
+    title: '不可離棄智慧',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  不可離棄智慧 ，。...',
+    laugh: '    不可離棄智慧 ，。..'
+        '\n\n    不可離棄智慧 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_49.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    不可離棄智慧 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
+    itemId: 50,
+    title: '真實的彼此相愛',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  真實的彼此相愛 ，。...',
+    laugh: '    真實的彼此相愛 ，。..'
+        '\n\n    真實的彼此相愛 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_50.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
-    likes: 0,
-    type: 1,
-    isNew: true,
-  )
-  ..addJoy(
-    itemId: 5,
-    title: '選擇報告好消息',
-    scriptureName: '馬太福音 7:4',
-    scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
-    videoId: 'gUxlZ4S_meE',
-    videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    真實的彼此相愛 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
   )
   ..addJoy(
     itemId: 51,
-    title: '選擇報告好消息',
+    title: '要彼此順服',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？',
-    prelude: '  選擇報告好消息 ，。...',
-    laugh: '    選擇報告好消息 ，。..'
-        '\n\n    選擇報告好消息 ，。..',
-    photoUrl: 'assets/photos/xlcdapp_photo_6.png',
+    prelude: '  要彼此順服 ，。...',
+    laugh: '    要彼此順服 ，。..'
+        '\n\n    要彼此順服 ，。..',
+    photoUrl: 'assets/photos/xlcdapp_photo_51.png',
     videoId: 'gUxlZ4S_meE',
     videoName: '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
-    talk: '    選擇報告好消息 ，。..',
+    talk: '    要彼此順服 ，。..',
     likes: 0,
     type: 1,
     isNew: true,
-  );
+);
 
  */
