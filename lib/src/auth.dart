@@ -21,8 +21,13 @@ class JoystoreAuth extends ChangeNotifier {
     await Future<void>.delayed(const Duration(milliseconds: 200));
 
     // Sign in. Allow any password.
-    _signedIn = true;
-    notifyListeners();
+    //_signedIn = true;
+
+    // TODO: hardcode them for now
+    if ((username == "test") && (password == "test1!")) {
+      _signedIn = true;
+      notifyListeners();
+    }
     return _signedIn;
   }
 
