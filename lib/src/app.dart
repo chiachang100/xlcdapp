@@ -41,6 +41,8 @@ class Joystore extends StatefulWidget {
 class _JoystoreState extends State<Joystore> {
   final JoystoreAuth auth = JoystoreAuth();
 
+  final bool turnonSignIn = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
@@ -65,9 +67,11 @@ class _JoystoreState extends State<Joystore> {
         debugLogDiagnostics: true,
         initialLocation: '/joys/like',
         redirect: (context, state) {
-          final signedIn = JoystoreAuth.of(context).signedIn;
-          if (state.uri.toString() != '/sign-in' && !signedIn) {
-            return '/sign-in';
+          if (turnonSignIn) {
+            final signedIn = JoystoreAuth.of(context).signedIn;
+            if (state.uri.toString() != '/sign-in' && !signedIn) {
+              return '/sign-in';
+            }
           }
           return null;
         },

@@ -6,6 +6,7 @@ import 'scripture.dart';
 
 class Joy {
   final int id;
+  final int itemId;
   final String title;
   final String prelude;
   final String laugh;
@@ -20,6 +21,7 @@ class Joy {
 
   Joy(
     this.id,
+    this.itemId,
     this.title,
     this.prelude,
     this.laugh,
