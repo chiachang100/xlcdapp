@@ -16,6 +16,16 @@ Future<void> lauchTargetUrl(String urlString) async {
   }
 }
 
+List<Color> circleAvatarBgColor = [
+  Colors.red,
+  Colors.orange,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+  Colors.amber,
+  Colors.grey,
+];
+
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
@@ -89,16 +99,17 @@ class BookIntroSection extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                backgroundColor: Colors.orange,
+                //backgroundColor: Colors.orange,
+                backgroundColor: circleAvatarBgColor[0],
                 child: Text(
                   xlcdBookIntro.substring(0, 1),
-                  style: const TextStyle(fontSize: 16),
                 ),
               ),
               Text(
                 xlcdBookIntro,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
@@ -106,15 +117,12 @@ class BookIntroSection extends StatelessWidget {
             '  笑裡藏道，曾興才著，天恩出版社，2016年11月初版，2022第七版。'
             '"笑裡藏道"是曾興才牧師首本著作，收集了五十二篇他這些年於矽谷生命河靈糧堂主日證道中分享的精彩笑話及其中引申的經文應用。'
             '喜樂的心乃是良藥，這本讓人開懷大笑的好書，能使大家從幽默文字中領悟屬靈的道理，也為您打開與人分享真理的機會之門！',
-            style: TextStyle(
-              fontSize: 14,
-            ),
           ),
           Center(
             child: ElevatedButton(
               //onPressed: visitBuyBookWebsite,
               onPressed: () => lauchTargetUrl(bookSiteLink),
-              child: const Text('📚請到靈糧書房購買"笑裡藏道"書籍'),
+              child: const Text('📚請到靈糧書房購買'),
             ),
           ),
           const SizedBox(height: 10),
@@ -160,16 +168,17 @@ class BookAuthorSection extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                backgroundColor: Colors.orange,
+                //backgroundColor: Colors.orange,
+                backgroundColor: circleAvatarBgColor[1],
                 child: Text(
                   xlcdBookAuthor.substring(0, 1),
-                  style: const TextStyle(fontSize: 16),
                 ),
               ),
               Text(
                 xlcdBookAuthor,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
@@ -179,15 +188,12 @@ class BookAuthorSection extends StatelessWidget {
             '1995年返回馬來西亞擔任吉隆坡信義會主任牧師。'
             '2001年全家返美，加入「矽谷生命河靈糧堂」事奉團隊，目前負責牧養處事工。'
             '與師母 Connie 育有兩個女兒。',
-            style: TextStyle(
-              fontSize: 14,
-            ),
           ),
           Center(
             child: ElevatedButton(
               //onPressed: visitYouTubePlaylist,
               onPressed: () => lauchTargetUrl(youtubePlaylistLink),
-              child: const Text('▶️觀賞曾興才牧師YouTube講道視頻'),
+              child: const Text('▶️請到YouTube觀賞曾興才牧師講道視頻'),
             ),
           ),
           const SizedBox(height: 10),
@@ -233,35 +239,31 @@ class AppDeveloperSection extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                backgroundColor: Colors.orange,
+                //backgroundColor: Colors.orange,
+                backgroundColor: circleAvatarBgColor[2],
                 child: Text(
                   xlcdAppAuthor.substring(0, 1),
-                  style: const TextStyle(fontSize: 16),
                 ),
               ),
               Text(
                 xlcdAppAuthor,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
           const Text(
-            '  感謝主!我一生一世如神應許:「必有主的恩惠、慈愛隨著我!」出生於台灣，大學畢業，服完兵役，來美留學，完成電腦碩士及兼職完成企管碩士。'
-            '1981年起即在矽谷電腦公司，從事多種電腦軟體工程開發。2023年於Microsoft職場上退休。'
-            '業餘時領受主的呼召及恩典，得在教會裡擔任過多種事奉，傳主福音，跟隨耶穌，榮神益人。'
-            '與妻子Judy目前領受主賜兒孫滿堂。'
-            '祈求藉著"笑裡藏道"書籍+App能為主多傳喜樂的福音，領人歸主。哈利路亞!頌讚、榮耀歸於我們的神，直到永永遠遠！阿們。'
-            '\n\n「要常常喜樂，不住地禱告，凡事謝恩，因為這是神在基督耶穌裡向你們所定的旨意。」(帖撒羅尼迦前書 5:16-18)。',
-            style: TextStyle(
-              fontSize: 14,
-            ),
-          ),
+              '  感謝主! 我一生一世如同聖經上應許:「必有主的恩惠、慈愛隨著我!」出生於台灣，大學畢業，服完兵役，來美留學，完成電腦碩士及兼職完成企管碩士。'
+              '1981年起即在矽谷電腦公司，從事多種電腦軟體工程開發。2023年職場上於Microsoft退休。'
+              '業餘時領受主的呼召及恩典，得在教會裡擔任過多種事奉，傳主福音，跟隨耶穌，榮神益人。'
+              '與妻子Judy目前領受主賜兒孫滿堂。'
+              '祈求藉著"笑裡藏道"書籍+App能為主多傳喜樂的福音，領人歸主。哈利路亞! 頌讚、榮耀歸於我們的神，直到永永遠遠！阿們。'),
           Center(
             child: ElevatedButton(
               //onPressed: visitBibleWebsite,
               onPressed: () => lauchTargetUrl(bibleGatewayLink),
-              child: const Text('✝️聖經經文"帖撒羅尼迦前書 5:16-18"'),
+              child: const Text('✝️請到BibleGateway閱讀聖經經文'),
             ),
           ),
           const SizedBox(height: 10),

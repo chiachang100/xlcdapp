@@ -23,8 +23,8 @@ class JoyList extends StatelessWidget {
     Colors.yellow,
     Colors.green,
     Colors.blue,
-    Colors.indigo,
-    Colors.purple,
+    Colors.amber,
+    Colors.grey,
   ];
 
   static List<String> dynamicText = [
@@ -75,7 +75,6 @@ class JoyList extends StatelessWidget {
                   Text(
                     joys[index].title,
                     style: const TextStyle(
-                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -83,9 +82,6 @@ class JoyList extends StatelessWidget {
               ),
               Text(
                 '${joys[index].scripture.verse}(${joys[index].scripture.name})',
-                style: const TextStyle(
-                  fontSize: 14,
-                ),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(

@@ -22,8 +22,8 @@ class ScriptureList extends StatelessWidget {
     Colors.yellow,
     Colors.green,
     Colors.blue,
-    Colors.indigo,
-    Colors.purple,
+    Colors.amber,
+    Colors.grey,
   ];
 
   @override
@@ -32,6 +32,9 @@ class ScriptureList extends StatelessWidget {
         itemBuilder: (context, index) => ListTile(
           title: Text(
             scriptures[index].name,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
           subtitle: Text(
             scriptures[index].verse,

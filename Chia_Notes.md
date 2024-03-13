@@ -14,6 +14,40 @@
   - `firebase emulators:start --import c:\ws\fb_emulators --export-on-exit`
   - `firebase emulators:exec scriptpath`
 
+- `Theme.of(context).textTheme.`
+```
+       displayLarge = displayLarge ?? headline1,
+       displayMedium = displayMedium ?? headline2,
+       displaySmall = displaySmall ?? headline3,
+       headlineMedium = headlineMedium ?? headline4,
+       headlineSmall = headlineSmall ?? headline5,
+       titleLarge = titleLarge ?? headline6,
+       titleMedium = titleMedium ?? subtitle1,
+       titleSmall = titleSmall ?? subtitle2,
+       bodyLarge = bodyLarge ?? bodyText1,
+       bodyMedium = bodyMedium ?? bodyText2,
+       bodySmall = bodySmall ?? caption,
+       labelLarge = labelLarge ?? button,
+       labelSmall = labelSmall ?? overline;
+
+/// | NEW NAME       | OLD NAME  | SIZE |  WEIGHT |  SPACING |             |
+/// |----------------|-----------|------|---------|----------|-------------|
+/// | displayLarge   | headline1 | 96.0 | light   | -1.5     |             |
+/// | displayMedium  | headline2 | 60.0 | light   | -0.5     |             |
+/// | displaySmall   | headline3 | 48.0 | regular |  0.0     |             |
+/// | headlineMedium | headline4 | 34.0 | regular |  0.25    |             |
+/// | headlineSmall  | headline5 | 24.0 | regular |  0.0     |             |
+/// | titleLarge     | headline6 | 20.0 | medium  |  0.15    |             |
+/// | titleMedium    | subtitle1 | 16.0 | regular |  0.15    |             |
+/// | titleSmall     | subtitle2 | 14.0 | medium  |  0.1     |             |
+/// | bodyLarge      | bodyText1 | 16.0 | regular |  0.5     | (bodyText1) |
+/// | bodyMedium     | bodyText2 | 14.0 | regular |  0.25    | (bodyText2) |
+/// | labelLarge     | button    | 14.0 | medium  |  1.25    |             |
+/// | bodySmall      | caption   | 12.0 | regular |  0.4     |             |
+/// | labelSmall     | overline  | 10.0 | regular |  1.5     |             |
+
+```
+
 ```
 === Project Setup
 

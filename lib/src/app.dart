@@ -47,11 +47,12 @@ class _JoystoreState extends State<Joystore> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      // theme: ThemeData(
-      //   textTheme: TextTheme(
-      //     bodyLarge: Theme.of(context).textTheme.bodyLarge,
-      //   ),
-      // ),
+      theme: ThemeData(
+        textTheme: TextTheme(
+          //bodyLarge: Theme.of(context).textTheme.titleLarge,
+          bodyMedium: Theme.of(context).textTheme.titleMedium,
+        ),
+      ),
       builder: (context, child) {
         if (child == null) {
           throw ('No child in .router constructor builder');
