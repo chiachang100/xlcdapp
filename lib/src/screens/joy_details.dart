@@ -91,9 +91,10 @@ class ImageSection extends StatelessWidget {
       children: <Widget>[
         Image.asset(
           image,
-          height: 320,
-          width: 640,
-          fit: BoxFit.fill,
+          height: MediaQuery.of(context).size.width * (3 / 4),
+          width: MediaQuery.of(context).size.width,
+          //height: 320, width: 640,
+          fit: BoxFit.scaleDown,
         ),
       ],
     );
