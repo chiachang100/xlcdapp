@@ -61,7 +61,9 @@ Future<void> main() async {
   // setPathUrlStrategy();
 
   setupWindow();
-  runApp(Joystore(firestore: firestore));
+  //runApp(Joystore(firestore: firestore));
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(Joystore(firestore: firestore)));
 }
 
 const double windowWidth = 480;
