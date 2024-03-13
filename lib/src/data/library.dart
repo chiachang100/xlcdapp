@@ -25,6 +25,7 @@ class Library {
     required int likes,
     required int type,
     required bool isNew,
+    required String category,
   }) {
     var scripture = allScriptures.firstWhere(
       (scripture) => scripture.name == scriptureName,
@@ -49,6 +50,7 @@ class Library {
       type,
       isNew,
       scripture,
+      category,
     );
 
     scripture.joys.add(joy);
@@ -104,6 +106,7 @@ final libraryInstance = Library()
     likes: 20,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 2,
@@ -130,6 +133,7 @@ final libraryInstance = Library()
     likes: 19,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 3,
@@ -157,6 +161,7 @@ final libraryInstance = Library()
     likes: 18,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 4,
@@ -184,6 +189,7 @@ final libraryInstance = Library()
     likes: 17,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 5,
@@ -211,6 +217,7 @@ final libraryInstance = Library()
     likes: 16,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 6,
@@ -234,6 +241,7 @@ final libraryInstance = Library()
     likes: 8,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 7,
@@ -257,6 +265,7 @@ final libraryInstance = Library()
     likes: 7,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 8,
@@ -280,6 +289,7 @@ final libraryInstance = Library()
     likes: 6,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 9,
@@ -301,6 +311,7 @@ final libraryInstance = Library()
     likes: 5,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 10,
@@ -324,6 +335,7 @@ final libraryInstance = Library()
     likes: 4,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 11,
@@ -346,6 +358,7 @@ final libraryInstance = Library()
     likes: 3,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 12,
@@ -374,6 +387,7 @@ final libraryInstance = Library()
     likes: 2,
     type: 1,
     isNew: true,
+    category: '春',
   )
   ..addJoy(
     itemId: 52,
@@ -406,6 +420,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   );
 
   /* 
@@ -424,6 +439,7 @@ final libraryInstance = Library()
     likes: 1,
     type: 1,
     isNew: false,
+    category: '春',
   )
   ..addJoy(
     itemId: 14,
@@ -440,6 +456,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 15,
@@ -456,6 +473,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 16,
@@ -472,6 +490,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 17,
@@ -488,6 +507,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 18,
@@ -504,6 +524,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 19,
@@ -520,6 +541,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 20,
@@ -536,6 +558,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 21,
@@ -552,6 +575,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 22,
@@ -568,6 +592,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 23,
@@ -584,6 +609,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 24,
@@ -600,6 +626,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 25,
@@ -616,6 +643,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 26,
@@ -632,6 +660,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '夏',
   )
   ..addJoy(
     itemId: 27,
@@ -648,6 +677,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 28,
@@ -664,6 +694,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 29,
@@ -680,6 +711,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 30,
@@ -696,6 +728,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
 ..addJoy(
     itemId: 31,
@@ -712,6 +745,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 32,
@@ -728,6 +762,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 33,
@@ -744,6 +779,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 34,
@@ -760,6 +796,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 35,
@@ -776,6 +813,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 36,
@@ -792,6 +830,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 37,
@@ -808,6 +847,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 38,
@@ -824,6 +864,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 39,
@@ -840,6 +881,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '秋',
   )
   ..addJoy(
     itemId: 40,
@@ -856,6 +898,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   )
   ..addJoy(
     itemId: 41,
@@ -872,6 +915,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   )
   ..addJoy(
     itemId: 42,
@@ -888,6 +932,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   )
   ..addJoy(
     itemId: 43,
@@ -904,6 +949,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   )
   ..addJoy(
     itemId: 44,
@@ -920,6 +966,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   )
   ..addJoy(
     itemId: 45,
@@ -936,6 +983,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   )
   ..addJoy(
     itemId: 46,
@@ -952,6 +1000,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   )
   ..addJoy(
     itemId: 47,
@@ -968,6 +1017,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   )
   ..addJoy(
     itemId: 48,
@@ -984,6 +1034,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   )
   ..addJoy(
     itemId: 49,
@@ -1000,6 +1051,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   )
   ..addJoy(
     itemId: 50,
@@ -1016,6 +1068,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
   )
   ..addJoy(
     itemId: 51,
@@ -1032,6 +1085,7 @@ final libraryInstance = Library()
     likes: 0,
     type: 1,
     isNew: true,
+    category: '冬',
 );
 
  */

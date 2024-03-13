@@ -18,6 +18,7 @@ class Joy {
   final int type;
   final bool isNew;
   final Scripture scripture;
+  final String category;
 
   Joy(
     this.id,
@@ -33,5 +34,6 @@ class Joy {
     this.type,
     this.isNew,
     this.scripture,
+    this.category,
   );
 }

@@ -5,6 +5,14 @@
 import 'package:xlcdapp/src/data/library.dart';
 import 'package:test/test.dart';
 
+// category
+// itemId   category
+// ------   --------
+// 1-13     '春'
+// 14-26    '夏'
+// 27-39    '秋'
+// 40-52    '冬'
+
 void main() {
   group('Library', () {
     test('addJoy', () {
@@ -23,6 +31,7 @@ void main() {
         likes: 10,
         type: 1,
         isNew: false,
+        category: '春',
       );
       library.addJoy(
         itemId: 2,
@@ -38,21 +47,24 @@ void main() {
         likes: 9,
         type: 1,
         isNew: false,
+        category: '春',
       );
       library.addJoy(
-          itemId: 3,
-          title: '彼此饒恕',
-          scriptureName: '歌羅西書 3:13',
-          scriptureVerse: '倘若這人與那人有嫌隙，總要彼此包容，彼此饒恕；主怎樣饒恕了你們，你們也要怎樣饒恕人。',
-          prelude: '  饒恕別人的過犯是一種美德,...',
-          laugh: '  小美一直以來都不喜歡...',
-          photoUrl: 'assets/photos/xlcdapp_photo_3.png',
-          videoId: 'Ay5KpU3QS44',
-          videoName: '聖靈，再一次充滿我們 | #曾興才牧師 | 20230611 | 生命河 ROLCCmedia',
-          talk: '  饒恕乃是一個決定,...',
-          likes: 8,
-          type: 1,
-          isNew: false);
+        itemId: 3,
+        title: '彼此饒恕',
+        scriptureName: '歌羅西書 3:13',
+        scriptureVerse: '倘若這人與那人有嫌隙，總要彼此包容，彼此饒恕；主怎樣饒恕了你們，你們也要怎樣饒恕人。',
+        prelude: '  饒恕別人的過犯是一種美德,...',
+        laugh: '  小美一直以來都不喜歡...',
+        photoUrl: 'assets/photos/xlcdapp_photo_3.png',
+        videoId: 'Ay5KpU3QS44',
+        videoName: '聖靈，再一次充滿我們 | #曾興才牧師 | 20230611 | 生命河 ROLCCmedia',
+        talk: '  饒恕乃是一個決定,...',
+        likes: 8,
+        type: 1,
+        isNew: false,
+        category: '春',
+      );
       expect(library.allScriptures.length, 3);
       expect(library.allScriptures.first.joys.length, 1);
       expect(library.allJoys.length, 3);
