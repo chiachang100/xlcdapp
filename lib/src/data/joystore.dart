@@ -1,10 +1,16 @@
+// Copyright 2021, the Flutter project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'firestore_joy.dart';
+import 'scripture.dart';
+import 'joy.dart';
 
 const int topList = 10;
 
-class FirestoreDb {
+class JoyStore {
   final List<Joy> allJoys = [];
+  final List<Scripture> allScriptures = [];
 
   void addJoy({
     required int id,
@@ -22,6 +28,14 @@ class FirestoreDb {
     required bool isNew,
     required String category,
   }) {
+    var scripture = allScriptures.firstWhere(
+      (scripture) => scripture.name == scriptureName,
+      orElse: () {
+        final value = Scripture(id, scriptureName, scriptureVerse);
+        allScriptures.add(value);
+        return value;
+      },
+    );
     var joy = Joy(
       id: id,
       title: title,
@@ -37,8 +51,10 @@ class FirestoreDb {
       type: type,
       isNew: isNew,
       category: category,
+      scripture: scripture,
     );
 
+    scripture.joys.add(joy);
     allJoys.add(joy);
   }
 
@@ -65,7 +81,7 @@ class FirestoreDb {
       ];
 }
 
-var firestoreDbInstance = FirestoreDb()
+var joystoreInstance = JoyStore()
   ..addJoy(
     id: 1,
     title: '愛的激勵',

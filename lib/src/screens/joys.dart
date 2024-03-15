@@ -50,7 +50,7 @@ class _JoysScreenState extends State<JoysScreen>
           controller: _tabController,
           tabs: const [
             Tab(
-              text: '靈糧榜',
+              text: '喜樂榜',
               icon: Icon(Icons.format_list_numbered, color: Colors.red),
             ),
             Tab(

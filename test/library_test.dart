@@ -2,7 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:xlcdapp/src/data/library.dart';
+import 'package:xlcdapp/src/data/joystore.dart';
 import 'package:test/test.dart';
 
 // category
@@ -14,10 +14,10 @@ import 'package:test/test.dart';
 // 40-52    '冬'
 
 void main() {
-  group('Library', () {
+  group('JoyStore', () {
     test('addJoy', () {
-      final library = Library();
-      library.addJoy(
+      final joystore = JoyStore();
+      joystore.addJoy(
         id: 1,
         title: '愛的激勵',
         scriptureName: '哥林多後書 5:14',
@@ -33,7 +33,7 @@ void main() {
         isNew: false,
         category: '春',
       );
-      library.addJoy(
+      joystore.addJoy(
         id: 2,
         title: '勝過恐懼',
         scriptureName: '詩篇 23:4',
@@ -49,7 +49,7 @@ void main() {
         isNew: false,
         category: '春',
       );
-      library.addJoy(
+      joystore.addJoy(
         id: 3,
         title: '彼此饒恕',
         scriptureName: '歌羅西書 3:13',
@@ -65,10 +65,10 @@ void main() {
         isNew: false,
         category: '春',
       );
-      expect(library.allScriptures.length, 3);
-      expect(library.allScriptures.first.joys.length, 1);
-      expect(library.allJoys.length, 3);
-      expect(library.allJoys.first.scripture.name, startsWith('哥林多'));
+      expect(joystore.allScriptures.length, 3);
+      expect(joystore.allScriptures.first.joys.length, 1);
+      expect(joystore.allJoys.length, 3);
+      expect(joystore.allJoys.first.scripture.name, startsWith('哥林多'));
     });
   });
 }

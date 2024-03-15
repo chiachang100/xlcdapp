@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/scripture.dart';
-import '../data/library.dart';
+import '../data/joystore.dart';
 import '../widgets/scripture_list.dart';
 
 class ScripturesScreen extends StatelessWidget {
@@ -25,7 +25,7 @@ class ScripturesScreen extends StatelessWidget {
           leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
         ),
         body: ScriptureList(
-          scriptures: libraryInstance.allScriptures,
+          scriptures: joystoreInstance.allScriptures,
           onTap: onTap,
         ),
       );

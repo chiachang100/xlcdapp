@@ -7,10 +7,12 @@ import 'package:go_router/go_router.dart';
 import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:xlcdapp/src/data/firestore_joy.dart';
-import 'package:xlcdapp/src/data/firestore_db.dart';
+//import 'package:xlcdapp/src/data/firestore_joy.dart';
+//import 'package:xlcdapp/src/data/firestore_db.dart';
 
 import '../auth.dart';
+import '../data/joy.dart';
+import '../data/joystore.dart';
 
 const showFirebaseDb = true;
 
@@ -298,7 +300,8 @@ class FirebaseDbSection extends StatelessWidget {
 
   void joysAddData() async {
     // Add new documents
-    for (var joy in firestoreDbInstance.allJoys) {
+    //for (var joy in firestoreDbInstance.allJoys) {
+    for (var joy in joystoreInstance.allJoys) {
       // firestore.collection("joys").add(joy.toFirestore()).then(
       //     (DocumentReference doc) =>
       //         print('DocumentSnapshot added with ID: ${doc.id}'));
@@ -322,7 +325,6 @@ class FirebaseDbSection extends StatelessWidget {
     await firestore.collection("joys").get().then((event) {
       for (var doc in event.docs) {
         print("Firestore: ${doc.id} => ${doc.data()}");
-        //var joy = Joy.fromFirestore(doc, null);
         var joy = Joy.fromJson(doc.data());
         print(
             "Joy: ${doc.id} => id=${joy.id}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");

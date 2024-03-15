@@ -125,7 +125,7 @@ class _JoystoreState extends State<Joystore> {
                         child: Builder(
                           builder: (context) {
                             return JoyList(
-                              joys: libraryInstance.likeJoys,
+                              joys: joystoreInstance.likeJoys,
                               onTap: (joy) {
                                 GoRouter.of(context)
                                     .go('/joys/like/joy/${joy.id}');
@@ -141,7 +141,7 @@ class _JoystoreState extends State<Joystore> {
                         parentNavigatorKey: appShellNavigatorKey,
                         builder: (context, state) {
                           return JoyDetailsScreen(
-                            joy: libraryInstance
+                            joy: joystoreInstance
                                 .getJoy(state.pathParameters['joyId'] ?? ''),
                           );
                         },
@@ -156,7 +156,7 @@ class _JoystoreState extends State<Joystore> {
                         child: Builder(
                           builder: (context) {
                             return JoyList(
-                              joys: libraryInstance.newJoys,
+                              joys: joystoreInstance.newJoys,
                               onTap: (joy) {
                                 GoRouter.of(context)
                                     .go('/joys/new/joy/${joy.id}');
@@ -172,7 +172,7 @@ class _JoystoreState extends State<Joystore> {
                         parentNavigatorKey: appShellNavigatorKey,
                         builder: (context, state) {
                           return JoyDetailsScreen(
-                            joy: libraryInstance
+                            joy: joystoreInstance
                                 .getJoy(state.pathParameters['joyId'] ?? ''),
                           );
                         },
@@ -187,7 +187,7 @@ class _JoystoreState extends State<Joystore> {
                         child: Builder(
                           builder: (context) {
                             return JoyList(
-                              joys: libraryInstance.allJoys,
+                              joys: joystoreInstance.allJoys,
                               onTap: (joy) {
                                 GoRouter.of(context)
                                     .go('/joys/all/joy/${joy.id}');
@@ -203,7 +203,7 @@ class _JoystoreState extends State<Joystore> {
                         parentNavigatorKey: appShellNavigatorKey,
                         builder: (context, state) {
                           return JoyDetailsScreen(
-                            joy: libraryInstance
+                            joy: joystoreInstance
                                 .getJoy(state.pathParameters['joyId'] ?? ''),
                           );
                         },
@@ -231,7 +231,7 @@ class _JoystoreState extends State<Joystore> {
                   GoRoute(
                     path: 'scripture/:scriptureId',
                     builder: (context, state) {
-                      final scripture = libraryInstance.allScriptures
+                      final scripture = joystoreInstance.allScriptures
                           .firstWhere((scripture) =>
                               scripture.id ==
                               int.parse(state.pathParameters['scriptureId']!));
