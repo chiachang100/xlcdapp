@@ -6,8 +6,9 @@ import 'scripture.dart';
 
 class Joy {
   final int id;
-  final int itemId;
   final String title;
+  final String scriptureName;
+  final String scriptureVerse;
   final String prelude;
   final String laugh;
   final String photoUrl;
@@ -22,8 +23,9 @@ class Joy {
 
   Joy({
     required this.id,
-    required this.itemId,
     required this.title,
+    required this.scriptureName,
+    required this.scriptureVerse,
     required this.prelude,
     required this.laugh,
     required this.photoUrl,

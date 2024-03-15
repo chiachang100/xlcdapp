@@ -12,7 +12,7 @@ import 'package:xlcdapp/src/data/firestore_db.dart';
 
 import '../auth.dart';
 
-const showFirebaseDb = false;
+const showFirebaseDb = true;
 
 Future<void> lauchTargetUrl(String urlString) async {
   Uri urlForPurchasingBook = Uri.parse(urlString);
@@ -297,11 +297,24 @@ class FirebaseDbSection extends StatelessWidget {
   final String xlcdFirestore = '儲藏庫初始設定和搜尋';
 
   void joysAddData() async {
-    // Add new documents with a generated ID
+    // Add new documents
     for (var joy in firestoreDbInstance.allJoys) {
-      firestore.collection("joys").add(joy.toFirestore()).then(
-          (DocumentReference doc) =>
-              print('DocumentSnapshot added with ID: ${doc.id}'));
+      // firestore.collection("joys").add(joy.toFirestore()).then(
+      //     (DocumentReference doc) =>
+      //         print('DocumentSnapshot added with ID: ${doc.id}'));
+      final docRef = firestore.collection("joys").doc(joy.id.toString());
+      // Add document
+      docRef
+          .set(joy.toJson())
+          .onError((e, _) => print("Error writing documen(t: $e"));
+      // Read document
+      docRef.get().then(
+        (DocumentSnapshot doc) {
+          final data = doc.data() as Map<String, dynamic>;
+          print('DocumentSnapshot added with ID: ${doc.id}:${data['id']}');
+        },
+        onError: (e) => print("Error getting document: $e"),
+      );
     }
   }
 
@@ -309,9 +322,10 @@ class FirebaseDbSection extends StatelessWidget {
     await firestore.collection("joys").get().then((event) {
       for (var doc in event.docs) {
         print("Firestore: ${doc.id} => ${doc.data()}");
-        var joy = Joy.fromFirestore(doc, null);
+        //var joy = Joy.fromFirestore(doc, null);
+        var joy = Joy.fromJson(doc.data());
         print(
-            "Joy: ${doc.id} => id=${joy.id}:itemId=${joy.itemId}:isNew=${joy.isNew}:category=${joy.category}");
+            "Joy: ${doc.id} => id=${joy.id}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
       }
     });
   }

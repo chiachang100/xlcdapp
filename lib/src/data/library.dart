@@ -12,7 +12,7 @@ class Library {
   final List<Scripture> allScriptures = [];
 
   void addJoy({
-    required int itemId,
+    required int id,
     required String title,
     required String scriptureName,
     required String scriptureVerse,
@@ -30,16 +30,16 @@ class Library {
     var scripture = allScriptures.firstWhere(
       (scripture) => scripture.name == scriptureName,
       orElse: () {
-        final value =
-            Scripture(allScriptures.length, scriptureName, scriptureVerse);
+        final value = Scripture(id, scriptureName, scriptureVerse);
         allScriptures.add(value);
         return value;
       },
     );
     var joy = Joy(
-      id: allJoys.length,
-      itemId: itemId,
+      id: id,
       title: title,
+      scriptureName: scriptureName,
+      scriptureVerse: scriptureVerse,
       prelude: prelude,
       laugh: laugh,
       photoUrl: photoUrl,
@@ -82,7 +82,7 @@ class Library {
 
 var libraryInstance = Library()
   ..addJoy(
-    itemId: 1,
+    id: 1,
     title: '愛的激勵',
     scriptureName: '哥林多後書 5:14',
     scriptureVerse: '「原來基督的愛激勵我們，因我們想：一人既替眾人死，眾人就都死了；」',
@@ -109,7 +109,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 2,
+    id: 2,
     title: '勝過恐懼',
     scriptureName: '詩篇 23:4',
     scriptureVerse: '「我雖然行過死蔭的幽谷，也不怕遭害，因為你與我同在，你的杖、你的竿都安慰我。」',
@@ -136,7 +136,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 3,
+    id: 3,
     title: '彼此饒恕',
     scriptureName: '歌羅西書 3:13',
     scriptureVerse: '「倘若這人與那人有嫌隙，總要彼此包容，彼此饒恕；主怎樣饒恕了你們，你們也要怎樣饒恕人。」',
@@ -164,7 +164,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 4,
+    id: 4,
     title: '先去掉眼中樑木',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -192,7 +192,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 5,
+    id: 5,
     title: '分享的喜樂',
     scriptureName: '路加福音 3:11',
     scriptureVerse: '「約翰回答說：『有兩件衣裳的，就分給那沒有的，有食物的也當這樣行。』」',
@@ -220,7 +220,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 6,
+    id: 6,
     title: '選擇報告好消息',
     scriptureName: '箴言 15:30，新譯本',
     scriptureVerse: '「眼中的光采使人心快樂；好消息使骨頭滋潤。」',
@@ -244,7 +244,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 7,
+    id: 7,
     title: '慷慨樂施',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -268,7 +268,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 8,
+    id: 8,
     title: '男女有別',
     scriptureName: '創世記 1:27',
     scriptureVerse: '「神就照著自己的形象造人，乃是照著他的形象，造男造女。」',
@@ -292,7 +292,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 9,
+    id: 9,
     title: '停止相咬相吞',
     scriptureName: '加拉太書 5:15',
     scriptureVerse: '「你們要謹慎，若相咬相吞，只怕要彼此消滅了。」',
@@ -314,7 +314,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 10,
+    id: 10,
     title: '不要只顧自己',
     scriptureName: '腓立比書 2:4',
     scriptureVerse: '「各人不要單顧自己的事，也要顧別人的事。」',
@@ -338,7 +338,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 11,
+    id: 11,
     title: '活出你的最高點',
     scriptureName: '以弗所書 4:1',
     scriptureVerse: '「我為主被囚的勸你們：既然蒙召，行事為人就當與蒙召的恩相稱，」',
@@ -361,7 +361,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 12,
+    id: 12,
     title: '肯付代價',
     scriptureName: '馬太福音 16:24',
     scriptureVerse: '「於是，耶穌對門徒說：「若有人要跟從我，就當捨己，背起他的十字架來跟從我。」',
@@ -390,7 +390,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 52,
+    id: 52,
     title: '與你同得福音的好處',
     scriptureName: '哥林多前書 9:23',
     scriptureVerse: '「凡我所行的，都是為福音的緣故，為要與人同得這福音的好處。」',
@@ -425,7 +425,7 @@ var libraryInstance = Library()
 
   /* 
   ..addJoy(
-    itemId: 13,
+    id: 13,
     title: '要做新事',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -442,7 +442,7 @@ var libraryInstance = Library()
     category: '春',
   )
   ..addJoy(
-    itemId: 14,
+    id: 14,
     title: '要作智慧人',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -459,7 +459,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 15,
+    id: 15,
     title: '上帝榮耀的豐富',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -476,7 +476,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 16,
+    id: 16,
     title: '起初的愛心',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -493,7 +493,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 17,
+    id: 17,
     title: '要像小孩子',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -510,7 +510,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 18,
+    id: 18,
     title: '應當一無掛慮',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -527,7 +527,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 19,
+    id: 19,
     title: '不要以惡報惡',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -544,7 +544,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 20,
+    id: 20,
     title: '要孝敬父母',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -561,7 +561,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 21,
+    id: 21,
     title: '靈巧像蛇、馴良像鴿子',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -578,7 +578,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 22,
+    id: 22,
     title: '隱藏的事會顯出來',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -595,7 +595,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 23,
+    id: 23,
     title: '勇敢改變自己',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -612,7 +612,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 24,
+    id: 24,
     title: '要凡事謝恩',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -629,7 +629,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 25,
+    id: 25,
     title: '愛人不可虛假',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -646,7 +646,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 26,
+    id: 26,
     title: '不要以外貌看人',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -663,7 +663,7 @@ var libraryInstance = Library()
     category: '夏',
   )
   ..addJoy(
-    itemId: 27,
+    id: 27,
     title: '喜樂的心是良藥',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -680,7 +680,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 28,
+    id: 28,
     title: '專注的能力',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -697,7 +697,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 29,
+    id: 29,
     title: '成功的秘訣',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -714,7 +714,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 30,
+    id: 30,
     title: '用愛心說誠實話',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -731,7 +731,7 @@ var libraryInstance = Library()
     category: '秋',
   )
 ..addJoy(
-    itemId: 31,
+    id: 31,
     title: '為我造清潔的心',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -748,7 +748,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 32,
+    id: 32,
     title: '有衣有食就當知足',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -765,7 +765,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 33,
+    id: 33,
     title: '永生是上帝的恩賜',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -782,7 +782,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 34,
+    id: 34,
     title: '作一個内裡誠責的人',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -799,7 +799,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 35,
+    id: 35,
     title: '管教是愛',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -816,7 +816,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 36,
+    id: 36,
     title: '你可以勝過試探',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -833,7 +833,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 37,
+    id: 37,
     title: '要愛你的妻子',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -850,7 +850,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 38,
+    id: 38,
     title: '要殷勤、不可懶惰',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -867,7 +867,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 39,
+    id: 39,
     title: '真正的平安',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -884,7 +884,7 @@ var libraryInstance = Library()
     category: '秋',
   )
   ..addJoy(
-    itemId: 40,
+    id: 40,
     title: '要教養孩子',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -901,7 +901,7 @@ var libraryInstance = Library()
     category: '冬',
   )
   ..addJoy(
-    itemId: 41,
+    id: 41,
     title: '不要作糊塗人',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -918,7 +918,7 @@ var libraryInstance = Library()
     category: '冬',
   )
   ..addJoy(
-    itemId: 42,
+    id: 42,
     title: '與智慧人同行',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -935,7 +935,7 @@ var libraryInstance = Library()
     category: '冬',
   )
   ..addJoy(
-    itemId: 43,
+    id: 43,
     title: '不要惹兒女的氣',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -952,7 +952,7 @@ var libraryInstance = Library()
     category: '冬',
   )
   ..addJoy(
-    itemId: 44,
+    id: 44,
     title: '不可安求',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -969,7 +969,7 @@ var libraryInstance = Library()
     category: '冬',
   )
   ..addJoy(
-    itemId: 45,
+    id: 45,
     title: '得力在乎平靜安穩',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -986,7 +986,7 @@ var libraryInstance = Library()
     category: '冬',
   )
   ..addJoy(
-    itemId: 46,
+    id: 46,
     title: '要培養內在美',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -1003,7 +1003,7 @@ var libraryInstance = Library()
     category: '冬',
   )
   ..addJoy(
-    itemId: 47,
+    id: 47,
     title: '得著妻子的人有福了',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -1020,7 +1020,7 @@ var libraryInstance = Library()
     category: '冬',
   )
   ..addJoy(
-    itemId: 48,
+    id: 48,
     title: '自卑的必升為高',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -1037,7 +1037,7 @@ var libraryInstance = Library()
     category: '冬',
   )
   ..addJoy(
-    itemId: 49,
+    id: 49,
     title: '不可離棄智慧',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -1054,7 +1054,7 @@ var libraryInstance = Library()
     category: '冬',
   )
   ..addJoy(
-    itemId: 50,
+    id: 50,
     title: '真實的彼此相愛',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -1071,7 +1071,7 @@ var libraryInstance = Library()
     category: '冬',
   )
   ..addJoy(
-    itemId: 51,
+    id: 51,
     title: '要彼此順服',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',

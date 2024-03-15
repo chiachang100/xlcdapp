@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 
+@immutable
 class Joy {
   final int id;
-  final int itemId;
   final String title;
+  final String scriptureName;
+  final String scriptureVerse;
   final String prelude;
   final String laugh;
   final String photoUrl;
@@ -15,10 +18,11 @@ class Joy {
   final bool isNew;
   final String category;
 
-  Joy({
+  const Joy({
     required this.id,
-    required this.itemId,
     required this.title,
+    required this.scriptureName,
+    required this.scriptureVerse,
     required this.prelude,
     required this.laugh,
     required this.photoUrl,
@@ -31,6 +35,43 @@ class Joy {
     required this.category,
   });
 
+  Joy.fromJson(Map<String, Object?> json)
+      : this(
+          id: json['id']! as int,
+          title: json['title']! as String,
+          scriptureName: json['scriptureName']! as String,
+          scriptureVerse: json['scriptureVerse']! as String,
+          prelude: json['prelude']! as String,
+          laugh: json['laugh']! as String,
+          photoUrl: json['photoUrl']! as String,
+          videoId: json['videoId']! as String,
+          videoName: json['videoName']! as String,
+          talk: json['talk']! as String,
+          likes: json['likes']! as int,
+          type: json['type']! as int,
+          isNew: json['isNew']! as bool,
+          category: json['category']! as String,
+        );
+
+  Map<String, Object?> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'scriptureName': scriptureName,
+      'scriptureVerse': scriptureVerse,
+      'prelude': prelude,
+      'laugh': laugh,
+      'photoUrl': photoUrl,
+      'videoId': videoId,
+      'videoName': videoName,
+      'talk': talk,
+      'likes': likes,
+      'type': type,
+      'isNew': isNew,
+      'category': category,
+    };
+  }
+
   factory Joy.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
     SnapshotOptions? options,
@@ -38,8 +79,9 @@ class Joy {
     final data = snapshot.data();
     return Joy(
       id: data?['id'],
-      itemId: data?['itemId'],
       title: data?['title'],
+      scriptureName: data?['scriptureName'],
+      scriptureVerse: data?['scriptureVerse'],
       prelude: data?['prelude'],
       laugh: data?['laugh'],
       photoUrl: data?['photoUrl'],
@@ -55,19 +97,20 @@ class Joy {
 
   Map<String, dynamic> toFirestore() {
     return {
-      "id": id,
-      "itemId": itemId,
-      "title": title,
-      "prelude": prelude,
-      "laugh": laugh,
-      "photoUrl": photoUrl,
-      "videoId": videoId,
-      "videoName": videoName,
-      "talk": talk,
-      "likes": likes,
-      "type": type,
-      "isNew": isNew,
-      "category": category,
+      'id': id,
+      'title': title,
+      'scriptureName': scriptureName,
+      'scriptureVerse': scriptureVerse,
+      'prelude': prelude,
+      'laugh': laugh,
+      'photoUrl': photoUrl,
+      'videoId': videoId,
+      'videoName': videoName,
+      'talk': talk,
+      'likes': likes,
+      'type': type,
+      'isNew': isNew,
+      'category': category,
     };
   }
 }
