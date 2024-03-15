@@ -139,7 +139,7 @@ class BookIntroSection extends StatelessWidget {
             child: ElevatedButton(
               //onPressed: visitBuyBookWebsite,
               onPressed: () => lauchTargetUrl(bookSiteLink),
-              child: const Text('📚請到靈糧書房購買'),
+              child: const Text('📚靈糧書房購買書'),
             ),
           ),
           const SizedBox(height: 10),
@@ -210,7 +210,7 @@ class BookAuthorSection extends StatelessWidget {
             child: ElevatedButton(
               //onPressed: visitYouTubePlaylist,
               onPressed: () => lauchTargetUrl(youtubePlaylistLink),
-              child: const Text('▶️請到YouTube觀賞曾興才牧師講道視頻'),
+              child: const Text('▶️曾牧師講道視頻'),
             ),
           ),
           const SizedBox(height: 10),
@@ -280,7 +280,7 @@ class AppDeveloperSection extends StatelessWidget {
             child: ElevatedButton(
               //onPressed: visitBibleWebsite,
               onPressed: () => lauchTargetUrl(bibleGatewayLink),
-              child: const Text('✝️請到BibleGateway閱讀聖經'),
+              child: const Text('✝️請閱讀線上聖經'),
             ),
           ),
           const SizedBox(height: 10),
