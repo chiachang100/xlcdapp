@@ -64,7 +64,7 @@ class FirestoreDb {
       ];
 }
 
-final firestoreDbInstance = FirestoreDb()
+var firestoreDbInstance = FirestoreDb()
   ..addJoy(
     itemId: 1,
     title: '愛的激勵',

@@ -80,7 +80,7 @@ class Library {
       ];
 }
 
-final libraryInstance = Library()
+var libraryInstance = Library()
   ..addJoy(
     itemId: 1,
     title: '愛的激勵',
