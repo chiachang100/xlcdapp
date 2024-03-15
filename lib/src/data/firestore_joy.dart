@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Joy {
-  //final int id;
+  final int id;
   final int itemId;
   final String title;
   final String prelude;
@@ -16,7 +16,7 @@ class Joy {
   final String category;
 
   Joy({
-    //required this.id,
+    required this.id,
     required this.itemId,
     required this.title,
     required this.prelude,
@@ -37,7 +37,7 @@ class Joy {
   ) {
     final data = snapshot.data();
     return Joy(
-      //id: data['id'],
+      id: data?['id'],
       itemId: data?['itemId'],
       title: data?['title'],
       prelude: data?['prelude'],
@@ -55,6 +55,7 @@ class Joy {
 
   Map<String, dynamic> toFirestore() {
     return {
+      "id": id,
       "itemId": itemId,
       "title": title,
       "prelude": prelude,

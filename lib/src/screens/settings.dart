@@ -12,6 +12,8 @@ import 'package:xlcdapp/src/data/firestore_db.dart';
 
 import '../auth.dart';
 
+const showFirebaseDb = false;
+
 Future<void> lauchTargetUrl(String urlString) async {
   Uri urlForPurchasingBook = Uri.parse(urlString);
   if (!await launchUrl(urlForPurchasingBook)) {
@@ -53,8 +55,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
 class SettingsContent extends StatelessWidget {
   const SettingsContent({super.key, required this.firestore});
   final FirebaseFirestore firestore;
-
-  final showFirebaseDb = false;
 
   Widget showFirebaseDbSection() {
     if (showFirebaseDb) {
@@ -311,7 +311,7 @@ class FirebaseDbSection extends StatelessWidget {
         print("Firestore: ${doc.id} => ${doc.data()}");
         var joy = Joy.fromFirestore(doc, null);
         print(
-            "Joy: ${doc.id} => itemId=${joy.itemId}:isNew=${joy.isNew}:category=${joy.category}");
+            "Joy: ${doc.id} => id=${joy.id}:itemId=${joy.itemId}:isNew=${joy.isNew}:category=${joy.category}");
       }
     });
   }

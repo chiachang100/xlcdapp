@@ -23,7 +23,7 @@ class FirestoreDb {
     required String category,
   }) {
     var joy = Joy(
-      //allJoys.length,
+      id: allJoys.length,
       itemId: itemId,
       title: title,
       prelude: prelude,
