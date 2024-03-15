@@ -36,18 +36,18 @@ Future<void> main() async {
   final settings = firestore.settings.copyWith(persistenceEnabled: true);
   final updatedSettings = firestore.settings
       .copyWith(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
-  firestore.settings = settings;
+  //firestore.settings = settings;
 
   if (kIsWeb) {
     await FirebaseAuth.instance.setPersistence(Persistence.NONE);
   }
 
-  if (!kReleaseMode) {
-    FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-    FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
-    //FirebaseDatabase.instance.useDatabaseEmulator('localhost', 9000);
-    //FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
-  }
+  // if (!kReleaseMode) {
+  //   FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  //   FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+  //   //FirebaseDatabase.instance.useDatabaseEmulator('localhost', 9000);
+  //   //FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
+  // }
 
   // Use package:url_strategy until this pull request is released:
   // https://github.com/flutter/flutter/pull/77103

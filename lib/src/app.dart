@@ -252,7 +252,7 @@ class _JoystoreState extends State<Joystore> {
                 pageBuilder: (context, state) {
                   return FadeTransitionPage<dynamic>(
                     key: state.pageKey,
-                    child: const SettingsScreen(),
+                    child: SettingsScreen(firestore: widget.firestore),
                   );
                 },
               ),

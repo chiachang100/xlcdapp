@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:xlcdapp/src/data/firestore_joy.dart';
+import 'package:xlcdapp/src/data/firestore_db.dart';
 
 import '../auth.dart';
 
@@ -27,7 +30,8 @@ List<Color> circleAvatarBgColor = [
 ];
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key});
+  const SettingsScreen({super.key, required this.firestore});
+  final FirebaseFirestore firestore;
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -40,24 +44,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
           title: const Text('笑裡藏道簡介'),
           leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
         ),
-        body: const SafeArea(
-          child: SettingsContent(),
+        body: SafeArea(
+          child: SettingsContent(firestore: widget.firestore),
         ),
       );
 }
 
 class SettingsContent extends StatelessWidget {
-  const SettingsContent({super.key});
+  const SettingsContent({super.key, required this.firestore});
+  final FirebaseFirestore firestore;
+
+  final showFirebaseDb = false;
+
+  Widget showFirebaseDbSection() {
+    if (showFirebaseDb) {
+      return FirebaseDbSection(firestore: firestore);
+    } else {
+      return const SizedBox(height: 1);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: const <Widget>[
-        BookIntroSection(),
-        BookAuthorSection(),
-        AppDeveloperSection(),
-        CopyrightSection(),
-        SizedBox(height: 10),
+      children: <Widget>[
+        const BookIntroSection(),
+        const BookAuthorSection(),
+        const AppDeveloperSection(),
+        //FirebaseDbSection(firestore: firestore),
+        showFirebaseDbSection(),
+        const CopyrightSection(),
+        const SizedBox(height: 10),
       ],
     );
   }
@@ -263,8 +280,89 @@ class AppDeveloperSection extends StatelessWidget {
             child: ElevatedButton(
               //onPressed: visitBibleWebsite,
               onPressed: () => lauchTargetUrl(bibleGatewayLink),
-              child: const Text('✝️請到BibleGateway閱讀聖經經文'),
+              child: const Text('✝️請到BibleGateway閱讀聖經'),
             ),
+          ),
+          const SizedBox(height: 10),
+        ],
+      ),
+    );
+  }
+}
+
+class FirebaseDbSection extends StatelessWidget {
+  const FirebaseDbSection({super.key, required this.firestore});
+  final FirebaseFirestore firestore;
+
+  final String xlcdFirestore = '儲藏庫初始設定和搜尋';
+
+  void joysAddData() async {
+    // Add new documents with a generated ID
+    for (var joy in firestoreDbInstance.allJoys) {
+      firestore.collection("joys").add(joy.toFirestore()).then(
+          (DocumentReference doc) =>
+              print('DocumentSnapshot added with ID: ${doc.id}'));
+    }
+  }
+
+  void joysReadData() async {
+    await firestore.collection("joys").get().then((event) {
+      for (var doc in event.docs) {
+        print("Firestore: ${doc.id} => ${doc.data()}");
+        var joy = Joy.fromFirestore(doc, null);
+        print(
+            "Joy: ${doc.id} => itemId=${joy.itemId}:isNew=${joy.isNew}:category=${joy.category}");
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.yellow[50],
+      elevation: 8.0,
+      margin: const EdgeInsets.all(8.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/photos/xlcdapp_photo_default.png',
+              height: MediaQuery.of(context).size.width * (3 / 4),
+              width: MediaQuery.of(context).size.width,
+              //height: 120, width: 640,
+              fit: BoxFit.scaleDown,
+            ),
+          ),
+          Row(
+            children: [
+              CircleAvatar(
+                //backgroundColor: Colors.orange,
+                backgroundColor: circleAvatarBgColor[2],
+                child: Text(
+                  xlcdFirestore.substring(0, 1),
+                ),
+              ),
+              Text(
+                xlcdFirestore,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          const Text('笑裡藏道: 儲藏庫初始設定和搜尋'),
+          Center(
+            child: ElevatedButton(
+              onPressed: joysReadData,
+              child: const Text('🔍搜尋'),
+            ),
+          ),
+          const SizedBox(height: 10),
+          ElevatedButton(
+            onPressed: joysAddData,
+            child: const Text('⚙️初始設定'),
           ),
           const SizedBox(height: 10),
         ],
