@@ -17,23 +17,23 @@ class Joy {
   final int likes;
   final int type;
   final bool isNew;
-  final Scripture scripture;
   final String category;
+  final Scripture scripture;
 
-  Joy(
-    this.id,
-    this.itemId,
-    this.title,
-    this.prelude,
-    this.laugh,
-    this.photoUrl,
-    this.videoId,
-    this.videoName,
-    this.talk,
-    this.likes,
-    this.type,
-    this.isNew,
-    this.scripture,
-    this.category,
-  );
+  Joy({
+    required this.id,
+    required this.itemId,
+    required this.title,
+    required this.prelude,
+    required this.laugh,
+    required this.photoUrl,
+    required this.videoId,
+    required this.videoName,
+    required this.talk,
+    required this.likes,
+    required this.type,
+    required this.isNew,
+    required this.category,
+    required this.scripture,
+  });
 }
