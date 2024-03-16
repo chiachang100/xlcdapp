@@ -90,11 +90,11 @@ class JoyStore {
       ];
 
   // <Future>JoyStore joysReadDataFromJoyStore() async {
-  JoyStore joysReadDataFromJoyStore() {
+  Future<JoyStore> joysReadDataFromJoyStore() async {
     JoyStore joystoreInstanceFromJoyStore = JoyStore();
 
     //await joysRef.get().then((event) {
-    joysRef.get().then((event) {
+    await joysRef.get().then((event) {
       for (var doc in event.docs) {
         print(
             "Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
@@ -122,14 +122,16 @@ class JoyStore {
     if (joystoreInstanceFromJoyStore.allJoys.isNotEmpty) {
       return joystoreInstanceFromJoyStore;
     } else {
-      return joystoreInstanceFromLocal;
+      //return joystoreInstanceFromLocal;
+      return joystoreInstance;
     }
   }
 }
 
-var joystoreInstance = JoyStore().joysReadDataFromJoyStore();
+//JoyStore joystoreInstance = await JoyStore().joysReadDataFromJoyStore();
 
-var joystoreInstanceFromLocal = JoyStore()
+//var joystoreInstanceFromLocal = JoyStore()
+var joystoreInstance = JoyStore()
   ..addJoy(
     id: 0,
     articleId: 1,
