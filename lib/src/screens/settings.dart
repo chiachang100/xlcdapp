@@ -305,7 +305,7 @@ class FirebaseDbSection extends StatelessWidget {
       // firestore.collection("joys").add(joy.toFirestore()).then(
       //     (DocumentReference doc) =>
       //         print('DocumentSnapshot added with ID: ${doc.id}'));
-      final docRef = firestore.collection("joys").doc(joy.id.toString());
+      final docRef = firestore.collection("joys").doc(joy.articleId.toString());
       // Add document
       docRef
           .set(joy.toJson())
@@ -327,7 +327,7 @@ class FirebaseDbSection extends StatelessWidget {
         print("Firestore: ${doc.id} => ${doc.data()}");
         var joy = Joy.fromJson(doc.data());
         print(
-            "Joy: ${doc.id} => id=${joy.id}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
+            "Joy: ${doc.id} => id=${joy.id}:articleId=${joy.articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
       }
     });
   }

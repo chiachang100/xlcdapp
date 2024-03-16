@@ -10,6 +10,7 @@ import 'scripture.dart';
 @immutable
 class Joy {
   final int id;
+  final int articleId;
   final String title;
   final String scriptureName;
   final String scriptureVerse;
@@ -27,6 +28,7 @@ class Joy {
 
   Joy({
     required this.id,
+    required this.articleId,
     required this.title,
     required this.scriptureName,
     required this.scriptureVerse,
@@ -46,6 +48,7 @@ class Joy {
   Joy.fromJson(Map<String, Object?> json)
       : this(
             id: json['id']! as int,
+            articleId: json['articleId']! as int,
             title: json['title']! as String,
             scriptureName: json['scriptureName']! as String,
             scriptureVerse: json['scriptureVerse']! as String,
@@ -67,6 +70,7 @@ class Joy {
   Map<String, Object?> toJson() {
     return {
       'id': id,
+      'articleId': articleId,
       'title': title,
       'scriptureName': scriptureName,
       'scriptureVerse': scriptureVerse,

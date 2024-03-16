@@ -8,12 +8,19 @@ import 'joy.dart';
 
 const int topList = 10;
 
+final joysRef =
+    FirebaseFirestore.instance.collection('joys').withConverter<Joy>(
+          fromFirestore: (snapshots, _) => Joy.fromJson(snapshots.data()!),
+          toFirestore: (joy, _) => joy.toJson(),
+        );
+
 class JoyStore {
   final List<Joy> allJoys = [];
   final List<Scripture> allScriptures = [];
 
   void addJoy({
     required int id,
+    required int articleId,
     required String title,
     required String scriptureName,
     required String scriptureVerse,
@@ -31,13 +38,15 @@ class JoyStore {
     var scripture = allScriptures.firstWhere(
       (scripture) => scripture.name == scriptureName,
       orElse: () {
-        final value = Scripture(id, scriptureName, scriptureVerse);
+        final value =
+            Scripture(allScriptures.length, scriptureName, scriptureVerse);
         allScriptures.add(value);
         return value;
       },
     );
     var joy = Joy(
-      id: id,
+      id: allJoys.length,
+      articleId: articleId,
       title: title,
       scriptureName: scriptureName,
       scriptureVerse: scriptureVerse,
@@ -79,11 +88,51 @@ class JoyStore {
   List<Joy> get newJoys => [
         ...allJoys.where((joy) => joy.isNew),
       ];
+
+  // <Future>JoyStore joysReadDataFromJoyStore() async {
+  JoyStore joysReadDataFromJoyStore() {
+    JoyStore joystoreInstanceFromJoyStore = JoyStore();
+
+    //await joysRef.get().then((event) {
+    joysRef.get().then((event) {
+      for (var doc in event.docs) {
+        print(
+            "Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
+        //var joy = Joy.fromJson(doc.data());
+        var joy = doc.data();
+        print(
+            "JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
+
+        var scripture = joystoreInstanceFromJoyStore.allScriptures.firstWhere(
+          (scripture) => scripture.name == joy.scriptureName,
+          orElse: () {
+            final value =
+                Scripture(joy.id, joy.scriptureName, joy.scriptureVerse);
+            joystoreInstanceFromJoyStore.allScriptures.add(value);
+            return value;
+          },
+        );
+
+        joystoreInstanceFromJoyStore.allJoys.add(joy);
+        scripture.joys.add(joy);
+      }
+    });
+
+    //return Future.value(joystoreInstanceFromJoyStore);
+    if (joystoreInstanceFromJoyStore.allJoys.isNotEmpty) {
+      return joystoreInstanceFromJoyStore;
+    } else {
+      return joystoreInstanceFromLocal;
+    }
+  }
 }
 
-var joystoreInstance = JoyStore()
+var joystoreInstance = JoyStore().joysReadDataFromJoyStore();
+
+var joystoreInstanceFromLocal = JoyStore()
   ..addJoy(
-    id: 1,
+    id: 0,
+    articleId: 1,
     title: '愛的激勵',
     scriptureName: '哥林多後書 5:14',
     scriptureVerse: '「原來基督的愛激勵我們，因我們想：一人既替眾人死，眾人就都死了；」',
@@ -110,7 +159,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 2,
+    id: 0,
+    articleId: 2,
     title: '勝過恐懼',
     scriptureName: '詩篇 23:4',
     scriptureVerse: '「我雖然行過死蔭的幽谷，也不怕遭害，因為你與我同在，你的杖、你的竿都安慰我。」',
@@ -137,7 +187,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 3,
+    id: 0,
+    articleId: 3,
     title: '彼此饒恕',
     scriptureName: '歌羅西書 3:13',
     scriptureVerse: '「倘若這人與那人有嫌隙，總要彼此包容，彼此饒恕；主怎樣饒恕了你們，你們也要怎樣饒恕人。」',
@@ -165,7 +216,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 4,
+    id: 0,
+    articleId: 4,
     title: '先去掉眼中樑木',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -193,7 +245,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 5,
+    id: 0,
+    articleId: 5,
     title: '分享的喜樂',
     scriptureName: '路加福音 3:11',
     scriptureVerse: '「約翰回答說：『有兩件衣裳的，就分給那沒有的，有食物的也當這樣行。』」',
@@ -221,7 +274,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 6,
+    id: 0,
+    articleId: 6,
     title: '選擇報告好消息',
     scriptureName: '箴言 15:30，新譯本',
     scriptureVerse: '「眼中的光采使人心快樂；好消息使骨頭滋潤。」',
@@ -245,7 +299,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 7,
+    id: 0,
+    articleId: 7,
     title: '慷慨樂施',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -269,7 +324,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 8,
+    id: 0,
+    articleId: 8,
     title: '男女有別',
     scriptureName: '創世記 1:27',
     scriptureVerse: '「神就照著自己的形象造人，乃是照著他的形象，造男造女。」',
@@ -293,7 +349,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 9,
+    id: 0,
+    articleId: 9,
     title: '停止相咬相吞',
     scriptureName: '加拉太書 5:15',
     scriptureVerse: '「你們要謹慎，若相咬相吞，只怕要彼此消滅了。」',
@@ -315,7 +372,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 10,
+    id: 0,
+    articleId: 10,
     title: '不要只顧自己',
     scriptureName: '腓立比書 2:4',
     scriptureVerse: '「各人不要單顧自己的事，也要顧別人的事。」',
@@ -339,7 +397,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 11,
+    id: 0,
+    articleId: 11,
     title: '活出你的最高點',
     scriptureName: '以弗所書 4:1',
     scriptureVerse: '「我為主被囚的勸你們：既然蒙召，行事為人就當與蒙召的恩相稱，」',
@@ -362,7 +421,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 12,
+    id: 0,
+    articleId: 12,
     title: '肯付代價',
     scriptureName: '馬太福音 16:24',
     scriptureVerse: '「於是，耶穌對門徒說：「若有人要跟從我，就當捨己，背起他的十字架來跟從我。」',
@@ -391,7 +451,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 52,
+    id: 0,
+    articleId: 52,
     title: '與你同得福音的好處',
     scriptureName: '哥林多前書 9:23',
     scriptureVerse: '「凡我所行的，都是為福音的緣故，為要與人同得這福音的好處。」',
@@ -426,10 +487,11 @@ var joystoreInstance = JoyStore()
 
   /* 
   ..addJoy(
-    id: 13,
+    id: 0,
+    articleId: 13,
     title: '要做新事',
-    scriptureName: '馬太福音 7:4',
-    scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
+    scriptureName: '以賽亞書 43:19',
+    scriptureVerse: '「看哪，我要做一件新事，如今要發現，你們豈不知道嗎？我必在曠野開道路，在沙漠開江河。」',
     prelude: '  要做新事 ，。...',
     laugh: '  要做新事 ，。..'
         '\n\n  要做新事 ，。..',
@@ -443,7 +505,8 @@ var joystoreInstance = JoyStore()
     category: '春',
   )
   ..addJoy(
-    id: 14,
+    id: 0,
+    articleId: 14,
     title: '要作智慧人',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -460,7 +523,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 15,
+    id: 0,
+    articleId: 15,
     title: '上帝榮耀的豐富',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -477,7 +541,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 16,
+    id: 0,
+    articleId: 16,
     title: '起初的愛心',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -494,7 +559,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 17,
+    id: 0,
+    articleId: 17,
     title: '要像小孩子',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -511,7 +577,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 18,
+    id: 0,
+    articleId: 18,
     title: '應當一無掛慮',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -528,7 +595,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 19,
+    id: 0,
+    articleId: 19,
     title: '不要以惡報惡',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -545,7 +613,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 20,
+    id: 0,
+    articleId: 20,
     title: '要孝敬父母',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -562,7 +631,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 21,
+    id: 0,
+    articleId: 21,
     title: '靈巧像蛇、馴良像鴿子',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -579,7 +649,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 22,
+    id: 0,
+    articleId: 22,
     title: '隱藏的事會顯出來',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -596,7 +667,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 23,
+    id: 0,
+    articleId: 23,
     title: '勇敢改變自己',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -613,7 +685,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 24,
+    id: 0,
+    articleId: 24,
     title: '要凡事謝恩',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -630,7 +703,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 25,
+    id: 0,
+    articleId: 25,
     title: '愛人不可虛假',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -647,7 +721,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 26,
+    id: 0,
+    articleId: 26,
     title: '不要以外貌看人',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -664,7 +739,8 @@ var joystoreInstance = JoyStore()
     category: '夏',
   )
   ..addJoy(
-    id: 27,
+    id: 0,
+    articleId: 27,
     title: '喜樂的心是良藥',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -681,7 +757,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 28,
+    id: 0,
+    articleId: 28,
     title: '專注的能力',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -698,7 +775,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 29,
+    id: 0,
+    articleId: 29,
     title: '成功的秘訣',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -715,7 +793,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 30,
+    id: 0,
+    articleId: 30,
     title: '用愛心說誠實話',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -731,8 +810,9 @@ var joystoreInstance = JoyStore()
     isNew: true,
     category: '秋',
   )
-..addJoy(
-    id: 31,
+  ..addJoy(
+    id: 0,
+    articleId: 31,
     title: '為我造清潔的心',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -749,7 +829,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 32,
+    id: 0,
+    articleId: 32,
     title: '有衣有食就當知足',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -766,7 +847,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 33,
+    id: 0,
+    articleId: 33,
     title: '永生是上帝的恩賜',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -783,7 +865,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 34,
+    id: 0,
+    articleId: 34,
     title: '作一個内裡誠責的人',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -800,7 +883,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 35,
+    articleId: 35,
+    id: 0,
     title: '管教是愛',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -817,7 +901,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 36,
+    id: 0,
+    articleId: 36,
     title: '你可以勝過試探',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -834,7 +919,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 37,
+    id: 0,
+    articleId: 37,
     title: '要愛你的妻子',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -851,7 +937,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 38,
+    id: 0,
+    articleId: 38,
     title: '要殷勤、不可懶惰',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -868,7 +955,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 39,
+    id: 0,
+    articleId: 39,
     title: '真正的平安',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -885,7 +973,8 @@ var joystoreInstance = JoyStore()
     category: '秋',
   )
   ..addJoy(
-    id: 40,
+    id: 0,
+    articleId: 40,
     title: '要教養孩子',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -902,7 +991,8 @@ var joystoreInstance = JoyStore()
     category: '冬',
   )
   ..addJoy(
-    id: 41,
+    id: 0,
+    articleId: 41,
     title: '不要作糊塗人',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -919,7 +1009,8 @@ var joystoreInstance = JoyStore()
     category: '冬',
   )
   ..addJoy(
-    id: 42,
+    id: 0,
+    articleId: 42,
     title: '與智慧人同行',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -936,7 +1027,8 @@ var joystoreInstance = JoyStore()
     category: '冬',
   )
   ..addJoy(
-    id: 43,
+    id: 0,
+    articleId: 43,
     title: '不要惹兒女的氣',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -953,7 +1045,8 @@ var joystoreInstance = JoyStore()
     category: '冬',
   )
   ..addJoy(
-    id: 44,
+    id: 0,
+    articleId: 44,
     title: '不可安求',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -970,7 +1063,8 @@ var joystoreInstance = JoyStore()
     category: '冬',
   )
   ..addJoy(
-    id: 45,
+    id: 0,
+    articleId: 45,
     title: '得力在乎平靜安穩',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -987,7 +1081,8 @@ var joystoreInstance = JoyStore()
     category: '冬',
   )
   ..addJoy(
-    id: 46,
+    id: 0,
+    articleId: 46,
     title: '要培養內在美',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -1004,7 +1099,8 @@ var joystoreInstance = JoyStore()
     category: '冬',
   )
   ..addJoy(
-    id: 47,
+    id: 0,
+    articleId: 47,
     title: '得著妻子的人有福了',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -1021,7 +1117,8 @@ var joystoreInstance = JoyStore()
     category: '冬',
   )
   ..addJoy(
-    id: 48,
+    id: 0,
+    articleId: 48,
     title: '自卑的必升為高',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -1038,7 +1135,8 @@ var joystoreInstance = JoyStore()
     category: '冬',
   )
   ..addJoy(
-    id: 49,
+    id: 0,
+    articleId: 49,
     title: '不可離棄智慧',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -1055,7 +1153,8 @@ var joystoreInstance = JoyStore()
     category: '冬',
   )
   ..addJoy(
-    id: 50,
+    id: 0,
+    articleId: 50,
     title: '真實的彼此相愛',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',
@@ -1072,7 +1171,8 @@ var joystoreInstance = JoyStore()
     category: '冬',
   )
   ..addJoy(
-    id: 51,
+    id: 0,
+    articleId: 51,
     title: '要彼此順服',
     scriptureName: '馬太福音 7:4',
     scriptureVerse: '「你自己眼中有梁木，怎能對你弟兄說『容我去掉你眼中的刺』呢？」',

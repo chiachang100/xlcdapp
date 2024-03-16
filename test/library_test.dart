@@ -18,7 +18,8 @@ void main() {
     test('addJoy', () {
       final joystore = JoyStore();
       joystore.addJoy(
-        id: 1,
+        id: 0,
+        articleId: 1,
         title: '愛的激勵',
         scriptureName: '哥林多後書 5:14',
         scriptureVerse: '原來基督的愛激勵我們，因我們想：一人既替眾人死，眾人就都死了；',
@@ -34,7 +35,8 @@ void main() {
         category: '春',
       );
       joystore.addJoy(
-        id: 2,
+        id: 1,
+        articleId: 2,
         title: '勝過恐懼',
         scriptureName: '詩篇 23:4',
         scriptureVerse: '我雖然行過死蔭的幽谷，也不怕遭害，因為你與我同在，你的杖、你的竿都安慰我。',
@@ -50,7 +52,8 @@ void main() {
         category: '春',
       );
       joystore.addJoy(
-        id: 3,
+        id: 2,
+        articleId: 3,
         title: '彼此饒恕',
         scriptureName: '歌羅西書 3:13',
         scriptureVerse: '倘若這人與那人有嫌隙，總要彼此包容，彼此饒恕；主怎樣饒恕了你們，你們也要怎樣饒恕人。',
