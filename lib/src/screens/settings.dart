@@ -73,7 +73,7 @@ class SettingsContent extends StatelessWidget {
         const BookIntroSection(),
         const BookAuthorSection(),
         const AppDeveloperSection(),
-        //FirebaseDbSection(firestore: firestore),
+        const QRCodeSection(),
         showFirebaseDbSection(),
         const CopyrightSection(),
         const SizedBox(height: 10),
@@ -88,13 +88,6 @@ class BookIntroSection extends StatelessWidget {
 
   final String bookSiteLink =
       'https://www.rolcc.net/opencart/index.php?route=product/product&product_id=358';
-
-  Future<void> visitBuyBookWebsite() async {
-    Uri urlForPurchasingBook = Uri.parse(bookSiteLink);
-    if (!await launchUrl(urlForPurchasingBook)) {
-      throw Exception('無法啟動 $urlForPurchasingBook');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -157,13 +150,6 @@ class BookAuthorSection extends StatelessWidget {
 
   final String youtubePlaylistLink =
       'https://www.youtube.com/results?search_query=%22%E6%9B%BE%E8%88%88%E6%89%8D%E7%89%A7%E5%B8%AB%22';
-
-  Future<void> visitYouTubePlaylist() async {
-    Uri urlForViewPlaylist = Uri.parse(youtubePlaylistLink);
-    if (!await launchUrl(urlForViewPlaylist)) {
-      throw Exception('無法啟動 $urlForViewPlaylist');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -229,13 +215,6 @@ class AppDeveloperSection extends StatelessWidget {
   final String bibleGatewayLink =
       'https://www.biblegateway.com/passage/?search=%E5%B8%96%E6%92%92%E7%BE%85%E5%B0%BC%E8%BF%A6%E5%89%8D%E6%9B%B8+5%3A16-18&version=CUVMPT';
 
-  Future<void> visitBibleWebsite() async {
-    Uri urlForViewPlaylist = Uri.parse(bibleGatewayLink);
-    if (!await launchUrl(urlForViewPlaylist)) {
-      throw Exception('無法啟動 $urlForViewPlaylist');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -283,6 +262,65 @@ class AppDeveloperSection extends StatelessWidget {
               //onPressed: visitBibleWebsite,
               onPressed: () => lauchTargetUrl(bibleGatewayLink),
               child: const Text('✝️請閱讀線上聖經'),
+            ),
+          ),
+          const SizedBox(height: 10),
+        ],
+      ),
+    );
+  }
+}
+
+class QRCodeSection extends StatelessWidget {
+  const QRCodeSection({super.key});
+  final String xlcdQRCodeIntro = 'QR Code: xlcdapp(笑裡藏道 App)';
+
+  final String xlcdappWebsiteLink = 'https://xlcdapp.web.app';
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.yellow[50],
+      elevation: 8.0,
+      margin: const EdgeInsets.all(8.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/images/xlcdapp_qrcode.png',
+              height: MediaQuery.of(context).size.width * (2 / 4),
+              width: MediaQuery.of(context).size.width,
+              //height: 120, width: 640,
+              fit: BoxFit.scaleDown,
+            ),
+          ),
+          Row(
+            children: [
+              CircleAvatar(
+                //backgroundColor: Colors.orange,
+                backgroundColor: circleAvatarBgColor[0],
+                child: Text(
+                  xlcdQRCodeIntro.substring(0, 1),
+                ),
+              ),
+              Text(
+                xlcdQRCodeIntro,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          const Text(
+            '  請掃描xlcdapp QR Code 以便於使用 xlcdapp(笑裡藏道 App)。',
+          ),
+          Center(
+            child: ElevatedButton(
+              //onPressed: visitXlcdappWebsite,
+              onPressed: () => lauchTargetUrl(xlcdappWebsiteLink),
+              child: const Text('🔗xlcdapp(笑裡藏道 App)'),
             ),
           ),
           const SizedBox(height: 10),
