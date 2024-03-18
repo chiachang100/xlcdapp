@@ -70,10 +70,10 @@ class SettingsContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
+        const QRCodeSection(),
         const BookIntroSection(),
         const BookAuthorSection(),
         const AppDeveloperSection(),
-        const QRCodeSection(),
         showFirebaseDbSection(),
         const CopyrightSection(),
         const SizedBox(height: 10),
