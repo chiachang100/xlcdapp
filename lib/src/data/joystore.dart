@@ -129,6 +129,42 @@ class JoyStore {
   }
 }
 
+// Build JoyStore Instance from Remote Firestore JoyStore
+JoyStore buildJoyStoreFromFirestore() {
+  var js = JoyStore();
+
+  joysRef.get().then((event) {
+    for (var doc in event.docs) {
+      print(
+          "Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
+      //var joy = Joy.fromJson(doc.data());
+      var joy = doc.data();
+      print(
+          "JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
+      js.addJoy(
+        id: joy.id,
+        articleId: joy.articleId,
+        title: joy.title,
+        scriptureName: joy.scriptureName,
+        scriptureVerse: joy.scriptureVerse,
+        prelude: joy.prelude,
+        laugh: joy.laugh,
+        photoUrl: joy.photoUrl,
+        videoId: joy.videoId,
+        videoName: joy.videoName,
+        talk: joy.talk,
+        likes: joy.likes,
+        type: joy.type,
+        isNew: joy.isNew,
+        category: joy.category,
+      );
+    }
+  });
+
+  return js;
+}
+
+// Build JoyStore Instance from local JoyStore
 JoyStore buildJoyStoreFromLocal() {
   var js = JoyStore();
   for (var joyMap in localJoyStore) {
@@ -154,4 +190,35 @@ JoyStore buildJoyStoreFromLocal() {
   return js;
 }
 
-JoyStore joystoreInstance = buildJoyStoreFromLocal();
+JoyStore buildJoyStoreFromFirestoreOrLocal({prod = true}) {
+  if (!prod) {
+    // Build JoyStore Instance from local JoyStore
+    return buildJoyStoreFromLocal();
+  }
+
+  // Build JoyStore Instance from Firestore JoyStore
+  var js = buildJoyStoreFromFirestore();
+  if (js.allJoys.isNotEmpty) {
+    print('[INFO] Firestore retuns JoyStore.');
+    return js;
+  } else {
+    // Try it again
+    js = buildJoyStoreFromFirestore();
+
+    if (js.allJoys.isNotEmpty) {
+      print('[INFO] Firestore retuns JoyStore.');
+      return js;
+    } else {
+      print(
+          '[INFO] Firestore retuns an empty JoyStore. Therefore, we use the local JoyStore instead.');
+      // Build JoyStore Instance from local JoyStore
+      return buildJoyStoreFromLocal();
+    }
+  }
+}
+
+// For prod: use buildJoyStoreFromFirestore()
+JoyStore joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
+
+// For dev: use buildJoyStoreFromLocal()
+//JoyStore joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: false);
