@@ -20,7 +20,8 @@ class Joy {
   final String videoId;
   final String videoName;
   final String talk;
-  final int likes;
+  //final int likes;
+  int likes;
   final int type;
   final bool isNew;
   final String category;

@@ -16,7 +16,7 @@ import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import '../data.dart';
 import 'scripture_details.dart';
 
-class JoyDetailsScreen extends StatelessWidget {
+class JoyDetailsScreen extends StatefulWidget {
   final Joy? joy;
 
   const JoyDetailsScreen({
@@ -24,11 +24,17 @@ class JoyDetailsScreen extends StatelessWidget {
     this.joy,
   });
 
+  @override
+  State<JoyDetailsScreen> createState() => _JoyDetailsScreenState();
+}
+
+class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
   final String iconUrl = 'assets/icons/xlcdapp-leading-icon.png';
+  bool favorite = false;
 
   @override
   Widget build(BuildContext context) {
-    if (joy == null) {
+    if (widget.joy == null) {
       return const Scaffold(
         body: Center(
           child: Text('No joy found.'),
@@ -37,26 +43,41 @@ class JoyDetailsScreen extends StatelessWidget {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text(joy!.title),
+        title: Text(widget.joy!.title),
+        actions: <Widget>[
+          ActionChip(
+            avatar: const Icon(Icons.thumb_up_outlined),
+            label: Text('${widget.joy!.likes}'),
+            onPressed: () {
+              setState(() {
+                if (!favorite) {
+                  favorite = true;
+                  widget.joy!.likes++;
+                }
+              });
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ImageSection(image: joy!.photoUrl),
+            ImageSection(image: widget.joy!.photoUrl),
             TitleSection(
-              name: joy!.scripture.name,
-              verse: joy!.scripture.verse,
-              likes: joy!.likes,
+              name: widget.joy!.scripture.name,
+              verse: widget.joy!.scripture.verse,
+              likes: widget.joy!.likes,
             ),
             const DividerSection(Icon(Icons.star_border_rounded)),
-            TextSection(description: joy!.prelude),
+            TextSection(description: widget.joy!.prelude),
             const DividerSection(Icon(Icons.face_outlined)),
-            TextSection(description: joy!.laugh),
-            LeadingIconTextSection(description: joy!.talk, iconUrl: iconUrl),
+            TextSection(description: widget.joy!.laugh),
+            LeadingIconTextSection(
+                description: widget.joy!.talk, iconUrl: iconUrl),
             const DividerSection(Icon(Icons.live_tv_outlined)),
             //YoutubePlayerIFrameSection(videoId: 'Mez7DnMOlgc', videoName: '不要怕！你要得人了 | 曾興才牧師 | 20240225 | 生命河 ROLCCmedia'),
             YoutubePlayerIFrameSection(
-                videoId: joy!.videoId, videoName: joy!.videoName),
+                videoId: widget.joy!.videoId, videoName: widget.joy!.videoName),
             const SizedBox(height: 20),
           ],
         ),
@@ -123,37 +144,19 @@ class _TitleSectionState extends State<TitleSection> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 1),
-                  child: Text(
-                    // '「$verse」($name)',
-                    '${widget.verse}(${widget.name})',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ),
-              ],
+          Padding(
+            padding: const EdgeInsets.only(bottom: 1),
+            child: Text(
+              // '「$verse」($name)',
+              '${widget.verse}(${widget.name})',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16.0,
+              ),
             ),
-          ),
-          ActionChip(
-            avatar: const Icon(Icons.thumb_up_outlined),
-            label: Text('${widget.likes}'),
-            onPressed: () {
-              setState(() {
-                if (!_favorite) {
-                  _favorite = true;
-                  widget.likes++;
-                }
-              });
-            },
           ),
         ],
       ),
