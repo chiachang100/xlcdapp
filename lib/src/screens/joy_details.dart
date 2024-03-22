@@ -5,10 +5,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/link.dart';
 //import 'package:web/helpers.dart';
 import 'package:flutter/services.dart';
+import 'package:xlcdapp/src/screens/scaffold.dart';
 //import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 //import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
@@ -19,7 +21,7 @@ import 'scripture_details.dart';
 class JoyDetailsScreen extends StatefulWidget {
   final Joy? joy;
 
-  const JoyDetailsScreen({
+  JoyDetailsScreen({
     super.key,
     this.joy,
   });
@@ -31,6 +33,12 @@ class JoyDetailsScreen extends StatefulWidget {
 class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
   final String iconUrl = 'assets/icons/xlcdapp-leading-icon.png';
   bool favorite = false;
+
+  final joysRef =
+      FirebaseFirestore.instance.collection('joys').withConverter<Joy>(
+            fromFirestore: (snapshots, _) => Joy.fromJson(snapshots.data()!),
+            toFirestore: (joy, _) => joy.toJson(),
+          );
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +61,13 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
                 if (!favorite) {
                   favorite = true;
                   widget.joy!.likes++;
+                  final joyRef = joysRef.doc(widget.joy!.articleId.toString());
+                  FirebaseFirestore.instance
+                      .runTransaction((transaction) async {
+                    //final snapshot = await transaction.get(joyRef);
+                    //final newLikes = snapshot.get("likes") + 1;
+                    transaction.update(joyRef, {'likes': widget.joy!.likes});
+                  });
                 }
               });
             },
@@ -138,8 +153,6 @@ class TitleSection extends StatefulWidget {
 }
 
 class _TitleSectionState extends State<TitleSection> {
-  bool _favorite = false;
-
   @override
   Widget build(BuildContext context) {
     return Padding(

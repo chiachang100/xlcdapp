@@ -360,7 +360,11 @@ class FirebaseDbSection extends StatelessWidget {
   }
 
   void joysReadData() async {
-    await firestore.collection("joys").get().then((event) {
+    await firestore
+        .collection("joys")
+        .orderBy("likes", descending: true)
+        .get()
+        .then((event) {
       for (var doc in event.docs) {
         print("Firestore: ${doc.id} => ${doc.data()}");
         var joy = Joy.fromJson(doc.data());

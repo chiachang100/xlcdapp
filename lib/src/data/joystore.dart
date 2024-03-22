@@ -9,11 +9,13 @@ import 'local_joystore.dart';
 
 const int topList = 10;
 
-final joysRef =
-    FirebaseFirestore.instance.collection('joys').withConverter<Joy>(
-          fromFirestore: (snapshots, _) => Joy.fromJson(snapshots.data()!),
-          toFirestore: (joy, _) => joy.toJson(),
-        );
+final joysRef = FirebaseFirestore.instance
+    .collection('joys')
+    .orderBy("likes", descending: true)
+    .withConverter<Joy>(
+      fromFirestore: (snapshots, _) => Joy.fromJson(snapshots.data()!),
+      toFirestore: (joy, _) => joy.toJson(),
+    );
 
 class JoyStore {
   final List<Joy> allJoys = [];
@@ -202,18 +204,10 @@ JoyStore buildJoyStoreFromFirestoreOrLocal({prod = true}) {
     print('[INFO] Firestore retuns JoyStore.');
     return js;
   } else {
-    // Try it again
-    js = buildJoyStoreFromFirestore();
-
-    if (js.allJoys.isNotEmpty) {
-      print('[INFO] Firestore retuns JoyStore.');
-      return js;
-    } else {
-      print(
-          '[INFO] Firestore retuns an empty JoyStore. Therefore, we use the local JoyStore instead.');
-      // Build JoyStore Instance from local JoyStore
-      return buildJoyStoreFromLocal();
-    }
+    print(
+        '[INFO] Firestore retuns an empty JoyStore. Therefore, we use the local JoyStore instead.');
+    // Build JoyStore Instance from local JoyStore
+    return buildJoyStoreFromLocal();
   }
 }
 
