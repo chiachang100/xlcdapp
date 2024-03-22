@@ -133,7 +133,7 @@ class JoyStore {
 
 // Build JoyStore Instance from Remote Firestore JoyStore
 JoyStore buildJoyStoreFromFirestore() {
-  var js = JoyStore();
+  var js = buildJoyStoreFromLocal();
 
   joysRef.get().then((event) {
     for (var doc in event.docs) {
