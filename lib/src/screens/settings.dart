@@ -14,7 +14,7 @@ import '../auth.dart';
 import '../data/joy.dart';
 import '../data/joystore.dart';
 
-const showFirebaseDb = true;
+const showFirebaseDb = false;
 
 Future<void> lauchTargetUrl(String urlString) async {
   Uri urlForPurchasingBook = Uri.parse(urlString);
@@ -277,7 +277,7 @@ class AppDeveloperSection extends StatelessWidget {
 
 class QRCodeSection extends StatelessWidget {
   const QRCodeSection({super.key});
-  final String xlcdQRCodeIntro = '二維碼掃描(QR Code)';
+  final String xlcdQRCodeIntro = '二維碼(QR Code)';
 
   final String xlcdappWebsiteLink = 'https://xlcdapp.web.app';
 
@@ -319,7 +319,7 @@ class QRCodeSection extends StatelessWidget {
             ],
           ),
           const Text(
-            '  請掃描二維碼(QR Code) 以便於使用 xlcdapp(「笑裡藏道」App)。',
+            '  請掃描二維碼(QR Code)方便使用xlcdapp(「笑裡藏道」App)。',
           ),
           Center(
             child: ElevatedButton(
