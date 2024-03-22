@@ -30,7 +30,7 @@ List<Color> circleAvatarBgColor = [
   Colors.green,
   Colors.blue,
   Colors.amber,
-  Colors.grey,
+  Colors.cyan,
 ];
 
 class SettingsScreen extends StatefulWidget {
@@ -45,7 +45,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text('笑裡藏道簡介'),
+          title: const Text('「笑裡藏道」簡介'),
           leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
         ),
         body: SafeArea(
@@ -73,6 +73,7 @@ class SettingsContent extends StatelessWidget {
         const QRCodeSection(),
         const BookIntroSection(),
         const BookAuthorSection(),
+        const BookPraiseSection(),
         const AppDeveloperSection(),
         showFirebaseDbSection(),
         const CopyrightSection(),
@@ -127,15 +128,15 @@ class BookIntroSection extends StatelessWidget {
             ],
           ),
           const Text(
-            '  笑裡藏道，曾興才著，天恩出版社，2016年11月初版，2022第七版。'
-            '"笑裡藏道"是曾興才牧師首本著作，收集了五十二篇他這些年於矽谷生命河靈糧堂主日證道中分享的精彩笑話及其中引申的經文應用。'
+            '  「笑裡藏道」，曾興才著，天恩出版社，2016年11月初版，2022第七版。'
+            '「笑裡藏道」是曾興才牧師首本著作，收集了五十二篇他這些年於矽谷生命河靈糧堂主日證道中分享的精彩笑話及其中引申的經文應用。'
             '喜樂的心乃是良藥，這本讓人開懷大笑的好書，能使大家從幽默文字中領悟屬靈的道理，也為您打開與人分享真理的機會之門！',
           ),
           Center(
             child: ElevatedButton(
               //onPressed: visitBuyBookWebsite,
               onPressed: () => lauchTargetUrl(bookSiteLink),
-              child: const Text('📚靈糧書房購買書'),
+              child: const Text('📚請到靈糧書房購買「笑裡藏道」'),
             ),
           ),
           const SizedBox(height: 10),
@@ -147,7 +148,7 @@ class BookIntroSection extends StatelessWidget {
 
 class BookAuthorSection extends StatelessWidget {
   const BookAuthorSection({super.key});
-  final String xlcdBookAuthor = '曾興才牧師: "笑裡藏道"書籍作者';
+  final String xlcdBookAuthor = '曾興才牧師: 「笑裡藏道」書籍作者';
 
   final String youtubePlaylistLink =
       'https://www.youtube.com/results?search_query=%22%E6%9B%BE%E8%88%88%E6%89%8D%E7%89%A7%E5%B8%AB%22';
@@ -212,7 +213,7 @@ class BookAuthorSection extends StatelessWidget {
 
 class AppDeveloperSection extends StatelessWidget {
   const AppDeveloperSection({super.key});
-  final String xlcdAppAuthor = '張嘉: "笑裡藏道"App開發者';
+  final String xlcdAppAuthor = '張嘉: 「笑裡藏道」App開發者';
 
   final String bibleGatewayLink =
       'https://www.biblegateway.com/passage/?search=%E5%B8%96%E6%92%92%E7%BE%85%E5%B0%BC%E8%BF%A6%E5%89%8D%E6%9B%B8+5%3A16-18&version=CUVMPT';
@@ -259,7 +260,7 @@ class AppDeveloperSection extends StatelessWidget {
               '1981年起即在矽谷電腦公司，從事多種電腦軟體工程開發。2023年職場上於Microsoft退休。'
               '業餘時領受主的呼召及恩典，得在教會裡擔任過多種事奉，傳主福音，跟隨耶穌，榮神益人。'
               '與妻子Judy目前領受主賜兒孫滿堂。'
-              '祈求藉著"笑裡藏道"書籍+App能為主多傳喜樂的福音，領人歸主。哈利路亞! 頌讚、榮耀歸於我們的神，直到永永遠遠！阿們。'),
+              '祈求藉著「笑裡藏道」書籍+App能為主多傳喜樂的福音，領人歸主。哈利路亞! 頌讚、榮耀歸於我們的神，直到永永遠遠！阿們。'),
           Center(
             child: ElevatedButton(
               //onPressed: visitBibleWebsite,
@@ -276,7 +277,7 @@ class AppDeveloperSection extends StatelessWidget {
 
 class QRCodeSection extends StatelessWidget {
   const QRCodeSection({super.key});
-  final String xlcdQRCodeIntro = 'QR Code: xlcdapp(笑裡藏道 App)';
+  final String xlcdQRCodeIntro = '二維碼掃描(QR Code)';
 
   final String xlcdappWebsiteLink = 'https://xlcdapp.web.app';
 
@@ -303,7 +304,7 @@ class QRCodeSection extends StatelessWidget {
             children: [
               CircleAvatar(
                 //backgroundColor: Colors.orange,
-                backgroundColor: circleAvatarBgColor[0],
+                backgroundColor: Colors.green,
                 child: Text(
                   xlcdQRCodeIntro.substring(0, 1),
                 ),
@@ -318,13 +319,120 @@ class QRCodeSection extends StatelessWidget {
             ],
           ),
           const Text(
-            '  請掃描xlcdapp QR Code 以便於使用 xlcdapp(笑裡藏道 App)。',
+            '  請掃描二維碼(QR Code) 以便於使用 xlcdapp(「笑裡藏道」App)。',
           ),
           Center(
             child: ElevatedButton(
               //onPressed: visitXlcdappWebsite,
               onPressed: () => lauchTargetUrl(xlcdappWebsiteLink),
-              child: const Text('🔗xlcdapp(笑裡藏道 App)'),
+              child: const Text('🔗xlcdapp(「笑裡藏道」App)'),
+            ),
+          ),
+          const SizedBox(height: 10),
+        ],
+      ),
+    );
+  }
+}
+
+class BookPraiseSection extends StatelessWidget {
+  const BookPraiseSection({super.key});
+  final String bookPraiseSectionTitle = '讚揚「笑裡藏道」書籍';
+
+  final String bookSiteLink =
+      'https://www.rolcc.net/opencart/index.php?route=product/product&product_id=358';
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.yellow[50],
+      elevation: 8.0,
+      margin: const EdgeInsets.all(8.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/photos/xlcdapp_photo_default.png',
+              height: MediaQuery.of(context).size.width * (2 / 4),
+              width: MediaQuery.of(context).size.width,
+              //height: 120, width: 640,
+              fit: BoxFit.scaleDown,
+            ),
+          ),
+          Row(
+            children: [
+              CircleAvatar(
+                //backgroundColor: Colors.orange,
+                backgroundColor: circleAvatarBgColor[2],
+                child: const Icon(Icons.thumb_up_outlined),
+                // child: Text(
+                //   bookPraiseSectionTitle.substring(0, 1),
+                // ),
+              ),
+              const SizedBox(width: 5),
+              Text(
+                bookPraiseSectionTitle,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          ListTile(
+            leading: CircleAvatar(
+                backgroundColor: circleAvatarBgColor[0], child: Text('來')),
+            title: Text(
+              '來，領受一份 「幽默感」的恩膏！ 累積你的笑話存款，提升你的親和指數，打開分享真理的機會之門！',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            subtitle: Text(''),
+          ),
+          Divider(),
+          ListTile(
+            leading: CircleAvatar(
+                backgroundColor: circleAvatarBgColor[1], child: Text('若')),
+            title: Text('若同樣有功效，能用幽默的笑話，把神的道解明，豈不更好？鄭重推薦本書，幫助你分享真道，有笑果，更有效果！'),
+            subtitle: Text('靈糧全球使徒性網絡主席 周神助'),
+          ),
+          Divider(),
+          ListTile(
+            leading: CircleAvatar(
+                backgroundColor: circleAvatarBgColor[2], child: Text('幽')),
+            title: Text(
+                '幽默感能使我們從新的角度來看每天周遭發生的事，也使我們可以笑談自己的缺失，並接納別人的軟弱。事實上，幽默感能幫助我們的信仰 更人性化，使人更容易來親近神。'),
+            subtitle: Text('美國加州矽谷生命河靈糧堂主任牧師 劉彤'),
+          ),
+          Divider(),
+          ListTile(
+            leading: CircleAvatar(
+                backgroundColor: circleAvatarBgColor[3], child: Text('曾')),
+            title: Text(
+                '曾牧師這本書顛覆傳統，詮釋了矽谷的創新精神⋯⋯一個牧師寫本關於「笑」的書，就如同嚴肅人講笑話，講的時候常有意想不到的效果。'),
+            subtitle: Text('矽谷創新頻道「丁丁電視」創辦人丁維平'),
+          ),
+          Divider(),
+          ListTile(
+            leading: CircleAvatar(
+                backgroundColor: circleAvatarBgColor[4], child: Text('每')),
+            title: Text('每篇短文都像是曾牧師喜歡的一杯好茶，初嚐不酸，再喝不澀，品完後喉韻甘醇，回味無窮。'),
+            subtitle: Text('欣欣教育基金會教育顧問 廖本榮'),
+          ),
+          Divider(),
+          ListTile(
+            leading: CircleAvatar(
+                backgroundColor: circleAvatarBgColor[5], child: Text('獨')),
+            title: Text(
+                '獨樂樂，不如眾樂樂。我預測你的朋友們會和你一樣，迫不及待地想要享受 《笑裡藏道》。所以，做一件讓他們大為開懷的事一一送他們一人一本吧！'),
+            subtitle: Text('北加州全福會會長、優勢頻道執行委員會主席 劉效宏'),
+          ),
+          Divider(),
+          Center(
+            child: ElevatedButton(
+              //onPressed: visitXlcdappWebsite,
+              onPressed: () => lauchTargetUrl(bookSiteLink),
+              child: const Text('📚請到靈糧書房購買「笑裡藏道」'),
             ),
           ),
           const SizedBox(height: 10),
@@ -415,7 +523,7 @@ class FirebaseDbSection extends StatelessWidget {
               ),
             ],
           ),
-          const Text('笑裡藏道: 儲藏庫初始設定和搜尋'),
+          const Text('「笑裡藏道」: 儲藏庫初始設定和搜尋'),
           Center(
             child: ElevatedButton(
               onPressed: joysReadData,

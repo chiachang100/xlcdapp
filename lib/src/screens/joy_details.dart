@@ -2,7 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:developer';
+import 'dart:developer' as developer;
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -258,7 +258,7 @@ class _YoutubePlayerIFrameSectionState
 
     _controller.setFullScreenListener(
       (isFullScreen) {
-        log('${isFullScreen ? 'Entered' : 'Exited'} Fullscreen.');
+        developer.log('${isFullScreen ? 'Entered' : 'Exited'} Fullscreen.');
       },
     );
 
