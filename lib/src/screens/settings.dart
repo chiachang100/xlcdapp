@@ -117,6 +117,7 @@ class BookIntroSection extends StatelessWidget {
                   xlcdBookIntro.substring(0, 1),
                 ),
               ),
+              const SizedBox(width: 5),
               Text(
                 xlcdBookIntro,
                 style: const TextStyle(
@@ -179,6 +180,7 @@ class BookAuthorSection extends StatelessWidget {
                   xlcdBookAuthor.substring(0, 1),
                 ),
               ),
+              const SizedBox(width: 5),
               Text(
                 xlcdBookAuthor,
                 style: const TextStyle(
@@ -243,6 +245,7 @@ class AppDeveloperSection extends StatelessWidget {
                   xlcdAppAuthor.substring(0, 1),
                 ),
               ),
+              const SizedBox(width: 5),
               Text(
                 xlcdAppAuthor,
                 style: const TextStyle(
@@ -305,6 +308,7 @@ class QRCodeSection extends StatelessWidget {
                   xlcdQRCodeIntro.substring(0, 1),
                 ),
               ),
+              const SizedBox(width: 5),
               Text(
                 xlcdQRCodeIntro,
                 style: const TextStyle(
@@ -402,6 +406,7 @@ class FirebaseDbSection extends StatelessWidget {
                   xlcdFirestore.substring(0, 1),
                 ),
               ),
+              const SizedBox(width: 5),
               Text(
                 xlcdFirestore,
                 style: const TextStyle(

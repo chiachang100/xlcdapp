@@ -72,12 +72,23 @@ class JoyList extends StatelessWidget {
                       style: const TextStyle(fontSize: 16),
                     ),
                   ),
+                  const SizedBox(width: 5),
                   Text(
                     joys[index].title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  const SizedBox(width: 10),
+                  Chip(
+                    avatar: const Icon(Icons.thumb_up_outlined),
+                    label: Text('${joys[index].likes}'),
+                    backgroundColor: Colors.yellow[50],
+                  ),
+                  // Badge(
+                  //   label: Text(joys[index].likes.toString()),
+                  //   child: const Icon(Icons.thumb_up_outlined),
+                  // ),
                 ],
               ),
               Text(
