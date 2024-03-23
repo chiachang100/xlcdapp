@@ -182,6 +182,7 @@ JoyStore buildJoyStoreFromFirestore() {
         );
       }
     }
+    return js;
   });
 
   return js;
