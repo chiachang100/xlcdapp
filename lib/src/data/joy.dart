@@ -7,9 +7,9 @@ import 'package:flutter/foundation.dart';
 
 import 'scripture.dart';
 
-@immutable
+//@immutable
 class Joy {
-  final int id;
+  int id;
   final int articleId;
   final String title;
   final String scriptureName;

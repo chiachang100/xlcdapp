@@ -187,7 +187,8 @@ class _JoystoreState extends State<Joystore> {
                         child: Builder(
                           builder: (context) {
                             return JoyList(
-                              joys: joystoreInstance.allJoys,
+                              // joys: joystoreInstance.allJoys,
+                              joys: joystoreInstance.wholeJoys,
                               onTap: (joy) {
                                 GoRouter.of(context)
                                     .go('/joys/all/joy/${joy.id}');

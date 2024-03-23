@@ -3,11 +3,13 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'scripture.dart';
 import 'joy.dart';
 import 'local_joystore.dart';
 
 const int topList = 10;
+const int wholeList = 0;
 
 final joysRef = FirebaseFirestore.instance
     .collection('joys')
@@ -18,8 +20,8 @@ final joysRef = FirebaseFirestore.instance
     );
 
 class JoyStore {
-  final List<Joy> allJoys = [];
-  final List<Scripture> allScriptures = [];
+  List<Joy> allJoys = [];
+  List<Scripture> allScriptures = [];
 
   void addJoy({
     required int id,
@@ -74,22 +76,38 @@ class JoyStore {
     return allJoys[int.parse(id)];
   }
 
-  List<Joy> getTopList(List<Joy> allJoys, int filter) {
-    //allJoys.sort((a, b) => a.likes.compareTo(b.likes)); // ascending
-    allJoys.sort((a, b) => b.likes.compareTo(a.likes)); // descending
-    return allJoys.take(filter).toList();
+  List<Joy> getSelectedList(List<Joy> listOfJoys, int filter) {
+    //listOfJoys.sort((a, b) => a.likes.compareTo(b.likes)); // ascending
+    listOfJoys.sort((a, b) => b.likes.compareTo(a.likes)); // descending
+    // Reindex the value of id
+    var index = 0;
+    while (index < listOfJoys.length) {
+      listOfJoys[index].id = index;
+      index++;
+    }
+
+    // Reset the entire list
+    allJoys = listOfJoys.toList();
+
+    if (filter > 0) {
+      // Return the selected list
+      return listOfJoys.take(filter).toList();
+    } else {
+      // Return the whole list
+      return listOfJoys.toList();
+    }
   }
 
-  // List<Joy> get likeJoys => [
-  //       ...allJoys.where((joy) => (joy.likes > 0)),
-  //     ];
+  List<Joy> get wholeJoys => [
+        ...getSelectedList(allJoys, wholeList),
+      ];
 
   List<Joy> get likeJoys => [
-        ...getTopList(allJoys, topList).where((joy) => (joy.likes > 0)),
+        ...getSelectedList(allJoys, topList).where((joy) => (joy.likes > 0)),
       ];
 
   List<Joy> get newJoys => [
-        ...allJoys.where((joy) => joy.isNew),
+        ...getSelectedList(allJoys, wholeList).where((joy) => joy.isNew),
       ];
 
   // <Future>JoyStore joysReadDataFromJoyStore() async {
@@ -136,30 +154,33 @@ JoyStore buildJoyStoreFromFirestore() {
   var js = buildJoyStoreFromLocal();
 
   joysRef.get().then((event) {
-    for (var doc in event.docs) {
-      print(
-          "Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
-      //var joy = Joy.fromJson(doc.data());
-      var joy = doc.data();
-      print(
-          "JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
-      js.addJoy(
-        id: joy.id,
-        articleId: joy.articleId,
-        title: joy.title,
-        scriptureName: joy.scriptureName,
-        scriptureVerse: joy.scriptureVerse,
-        prelude: joy.prelude,
-        laugh: joy.laugh,
-        photoUrl: joy.photoUrl,
-        videoId: joy.videoId,
-        videoName: joy.videoName,
-        talk: joy.talk,
-        likes: joy.likes,
-        type: joy.type,
-        isNew: joy.isNew,
-        category: joy.category,
-      );
+    if (event.docs.isNotEmpty) {
+      js = JoyStore();
+      for (var doc in event.docs) {
+        print(
+            "Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
+        //var joy = Joy.fromJson(doc.data());
+        var joy = doc.data();
+        print(
+            "JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
+        js.addJoy(
+          id: joy.id,
+          articleId: joy.articleId,
+          title: joy.title,
+          scriptureName: joy.scriptureName,
+          scriptureVerse: joy.scriptureVerse,
+          prelude: joy.prelude,
+          laugh: joy.laugh,
+          photoUrl: joy.photoUrl,
+          videoId: joy.videoId,
+          videoName: joy.videoName,
+          talk: joy.talk,
+          likes: joy.likes,
+          type: joy.type,
+          isNew: joy.isNew,
+          category: joy.category,
+        );
+      }
     }
   });
 
@@ -200,29 +221,7 @@ JoyStore buildJoyStoreFromFirestoreOrLocal({prod = true}) {
     // Build JoyStore Instance from local JoyStore
     return buildJoyStoreFromLocal();
   }
-
-  /*
-  if (!prod) {
-    // Build JoyStore Instance from local JoyStore
-    return buildJoyStoreFromLocal();
-  }
-
-  // Build JoyStore Instance from Firestore JoyStore
-  var js = buildJoyStoreFromFirestore();
-  if (js.allJoys.isNotEmpty) {
-    print('[INFO] Firestore retuns JoyStore.');
-    return js;
-  } else {
-    print(
-        '[INFO] Firestore retuns an empty JoyStore. Therefore, we use the local JoyStore instead.');
-    // Build JoyStore Instance from local JoyStore
-    return buildJoyStoreFromLocal();
-  }
-  */
 }
 
-// For prod: use buildJoyStoreFromFirestore()
+// For prod: prod = true
 JoyStore joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
-
-// For dev: use buildJoyStoreFromLocal()
-//JoyStore joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: false);
