@@ -24,7 +24,7 @@ class JoystoreAuth extends ChangeNotifier {
     //_signedIn = true;
 
     // TODO: hardcode them for now
-    if ((username == "jesus") && (password == "lovesme!")) {
+    if ((username == "g") && (password == "r")) {
       _signedIn = true;
       notifyListeners();
     }

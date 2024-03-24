@@ -64,7 +64,8 @@ class JoyList extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   Text(
-                    joys[index].title,
+                    //joys[index].title,
+                    '${joys[index].articleId}. ${joys[index].title}',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),

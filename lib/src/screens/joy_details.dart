@@ -51,7 +51,7 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.joy!.title),
+        title: Text('${widget.joy!.articleId}. ${widget.joy!.title}'),
         actions: <Widget>[
           ActionChip(
             avatar: const Icon(Icons.thumb_up_outlined),
