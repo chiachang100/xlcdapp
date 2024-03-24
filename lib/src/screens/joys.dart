@@ -58,7 +58,7 @@ class _JoysScreenState extends State<JoysScreen>
               icon: Icon(Icons.rocket_launch_outlined, color: Colors.green),
             ),
             Tab(
-              text: '珍藏品',
+              text: '目錄表',
               icon: Icon(Icons.collections_outlined, color: Colors.blueAccent),
             ),
           ],
