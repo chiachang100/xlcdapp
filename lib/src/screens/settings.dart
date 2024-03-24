@@ -39,8 +39,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': '笑裡藏道簡介',
-      'xlcdapp_screen_class': 'SettingsScreen',
+      'xlcdapp_screen': '笑裡藏道簡介Screen',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
     });
 
     return Scaffold(
@@ -71,7 +71,7 @@ class SettingsContent extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'SettingsContent',
-      'xlcdapp_screen_class': 'SettingsScreen',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
     });
 
     return ListView(
@@ -100,7 +100,7 @@ class BookIntroSection extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'BookIntroSection',
-      'xlcdapp_screen_class': 'SettingsScreen',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
     });
 
     return Card(
@@ -168,7 +168,7 @@ class BookAuthorSection extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'BookAuthorSection',
-      'xlcdapp_screen_class': 'SettingsScreen',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
     });
 
     return Card(
@@ -238,7 +238,7 @@ class AppDeveloperSection extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'AppDevelopeSection',
-      'xlcdapp_screen_class': 'SettingsScreen',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
     });
 
     return Card(
@@ -306,7 +306,7 @@ class QRCodeSection extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'QRCodeSection',
-      'xlcdapp_screen_class': 'SettingsScreen',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
     });
 
     return Card(
@@ -372,7 +372,7 @@ class BookPraiseSection extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'BookPraiseSection',
-      'xlcdapp_screen_class': 'SettingsScreen',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
     });
 
     return Card(
@@ -522,7 +522,7 @@ class FirebaseDbSection extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'FirebaseDbSection',
-      'xlcdapp_screen_class': 'SettingsScreen',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
     });
 
     return Card(
@@ -586,7 +586,7 @@ class CopyrightSection extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'CopyrightSection',
-      'xlcdapp_screen_class': 'SettingsScreen',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
     });
 
     return const Row(

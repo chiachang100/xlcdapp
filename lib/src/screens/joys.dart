@@ -41,8 +41,8 @@ class _JoysScreenState extends State<JoysScreen>
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': '笑裡藏道Home',
-      'xlcdapp_screen_class': 'JoysScreen',
+      'xlcdapp_screen': '笑裡藏道HomeScreen',
+      'xlcdapp_screen_class': 'JoysScreenClass',
     });
 
     _tabController.index = widget.selectedIndex;

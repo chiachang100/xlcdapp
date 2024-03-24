@@ -23,8 +23,8 @@ class JoystoreScaffold extends StatelessWidget {
     final goRouter = GoRouter.of(context);
 
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': 'AdaptiveScaffold',
-      'xlcdapp_screen_class': 'JoystoreScaffold',
+      'xlcdapp_screen': 'AdaptiveScaffoldScreen',
+      'xlcdapp_screen_class': 'JoystoreScaffoldClass',
     });
 
     return Scaffold(

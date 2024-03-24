@@ -22,8 +22,8 @@ class ScripturesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': '聖經經文',
-      'xlcdapp_screen_class': 'ScripturesScreen',
+      'xlcdapp_screen': '聖經經文Screen',
+      'xlcdapp_screen_class': 'ScripturesScreenClass',
     });
 
     return Scaffold(

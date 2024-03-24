@@ -46,8 +46,8 @@ class _JoystoreState extends State<Joystore> {
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': 'xlcdappMain',
-      'xlcdapp_screen_class': 'Joystore',
+      'xlcdapp_screen': 'MainAppScreen',
+      'xlcdapp_screen_class': 'JoystoreClass',
     });
 
     return MaterialApp.router(

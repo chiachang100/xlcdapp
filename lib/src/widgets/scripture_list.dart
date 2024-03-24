@@ -20,8 +20,8 @@ class ScriptureList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': 'ScriptureList',
-      'xlcdapp_screen_class': 'ScriptureList',
+      'xlcdapp_screen': 'ScriptureListScreen',
+      'xlcdapp_screen_class': 'ScriptureListClass',
     });
 
     return ListView.builder(

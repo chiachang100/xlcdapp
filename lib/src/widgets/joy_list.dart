@@ -33,8 +33,8 @@ class JoyList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': 'JoyList',
-      'xlcdapp_screen_class': 'JoyList',
+      'xlcdapp_screen': 'JoyListScreen',
+      'xlcdapp_screen_class': 'JoyListClass',
     });
 
     return ListView.builder(

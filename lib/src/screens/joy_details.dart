@@ -47,8 +47,8 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': 'JoyDetails',
-      'xlcdapp_screen_class': 'JoyDetailsScreen',
+      'xlcdapp_screen': 'JoyDetailsScreen',
+      'xlcdapp_screen_class': 'JoyDetailsScreenClass',
     });
 
     if (widget.joy == null) {
