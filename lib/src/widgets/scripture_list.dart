@@ -16,16 +16,6 @@ class ScriptureList extends StatelessWidget {
     super.key,
   });
 
-  List<Color> circleAvatarBgColor = [
-    Colors.red,
-    Colors.orange,
-    Colors.yellow,
-    Colors.green,
-    Colors.blue,
-    Colors.amber,
-    Colors.grey,
-  ];
-
   @override
   Widget build(BuildContext context) => ListView.builder(
         itemCount: scriptures.length,
@@ -50,8 +40,8 @@ class ScriptureList extends StatelessWidget {
             ),
           ),
           //trailing: const Icon(Icons.arrow_forward_ios),
-          //onTap: onTap != null ? () => onTap!(scriptures[index]) : null,
-          onTap: onTap != null ? () => {} : null,
+          onTap: onTap != null ? () => onTap!(scriptures[index]) : null,
+          // onTap: onTap != null ? () => {} : null,
         ),
       );
 }

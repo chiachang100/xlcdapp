@@ -11,8 +11,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:xlcdapp/src/data/firestore_db.dart';
 
 import '../auth.dart';
-import '../data/joy.dart';
-import '../data/joystore.dart';
+//import '../data/joy.dart';
+//import '../data/joystore.dart';
+import '../data.dart';
 
 const showFirebaseDb = false;
 
@@ -22,16 +23,6 @@ Future<void> lauchTargetUrl(String urlString) async {
     //throw Exception('無法啟動 $urlForPurchasingBook');
   }
 }
-
-List<Color> circleAvatarBgColor = [
-  Colors.red,
-  Colors.orange,
-  Colors.yellow,
-  Colors.green,
-  Colors.blue,
-  Colors.amber,
-  Colors.cyan,
-];
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key, required this.firestore});

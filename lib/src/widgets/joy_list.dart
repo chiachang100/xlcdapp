@@ -17,16 +17,6 @@ class JoyList extends StatelessWidget {
     super.key,
   });
 
-  List<Color> circleAvatarBgColor = [
-    Colors.red,
-    Colors.orange,
-    Colors.yellow,
-    Colors.green,
-    Colors.blue,
-    Colors.amber,
-    Colors.grey,
-  ];
-
   static List<String> dynamicText = [
     '⚕️喜樂的心乃是良藥',
     '🤣盡情地開懷大笑吧',

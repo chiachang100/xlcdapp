@@ -76,24 +76,25 @@ class JoyStore {
     return allJoys[int.parse(id)];
   }
 
-  List<Joy> getSelectedList(List<Joy> listOfJoys, int filter) {
+  List<Joy> getSelectedList(List<Joy> listOfJoys, int topOnes) {
+    // Reindex the value of id
     //listOfJoys.sort((a, b) => a.likes.compareTo(b.likes)); // ascending
     listOfJoys.sort((a, b) => b.likes.compareTo(a.likes)); // descending
-    // Reindex the value of id
     var index = 0;
     while (index < listOfJoys.length) {
       listOfJoys[index].id = index;
       index++;
     }
 
-    // Reset the entire list
-    allJoys = listOfJoys.toList();
-
-    if (filter > 0) {
-      // Return the selected list
-      return listOfJoys.take(filter).toList();
+    if (topOnes > 0) {
+      // Return the selected list sorted by joy.id in descending order
+      allJoys = listOfJoys.toList();
+      return listOfJoys.take(topOnes).toList();
     } else {
-      // Return the whole list
+      // Return the whole list sorted by joy.articleId in ascending order
+      listOfJoys
+          .sort((a, b) => a.articleId.compareTo(b.articleId)); // ascending
+      allJoys = listOfJoys.toList();
       return listOfJoys.toList();
     }
   }
@@ -182,6 +183,7 @@ JoyStore buildJoyStoreFromFirestore() {
         );
       }
     }
+    joystoreInstance = js;
     return js;
   });
 
