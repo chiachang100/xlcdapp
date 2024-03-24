@@ -86,14 +86,14 @@ class JoyStore {
       index++;
     }
 
+    // Return the sorted order
+    allJoys = listOfJoys.toList();
+
     if (topOnes > 0) {
-      // Return the selected list sorted by joy.id in descending order
-      allJoys = listOfJoys.toList();
+      // Return the selected list
       return listOfJoys.take(topOnes).toList();
     } else {
-      // Return the whole list sorted by joy.articleId in ascending order
-      listOfJoys
-          .sort((a, b) => a.articleId.compareTo(b.articleId)); // ascending
+      // Return the whole list
       allJoys = listOfJoys.toList();
       return listOfJoys.toList();
     }
