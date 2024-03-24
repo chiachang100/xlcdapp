@@ -4,6 +4,7 @@
 
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 import '../data.dart';
 
@@ -31,6 +32,11 @@ class JoyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'JoyList',
+      'xlcdapp_screen_class': 'JoyList',
+    });
+
     return ListView.builder(
       itemCount: joys.length,
       itemBuilder: (context, index) {

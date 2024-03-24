@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 class JoysScreen extends StatefulWidget {
   final Widget child;
@@ -39,6 +40,11 @@ class _JoysScreenState extends State<JoysScreen>
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': '笑裡藏道Home',
+      'xlcdapp_screen_class': 'JoysScreen',
+    });
+
     _tabController.index = widget.selectedIndex;
     return Scaffold(
       appBar: AppBar(

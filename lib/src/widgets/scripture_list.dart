@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 import '../data.dart';
 
@@ -17,31 +18,38 @@ class ScriptureList extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => ListView.builder(
-        itemCount: scriptures.length,
-        itemBuilder: (context, index) => ListTile(
-          title: Text(
-            scriptures[index].name,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+  Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'ScriptureList',
+      'xlcdapp_screen_class': 'ScriptureList',
+    });
+
+    return ListView.builder(
+      itemCount: scriptures.length,
+      itemBuilder: (context, index) => ListTile(
+        title: Text(
+          scriptures[index].name,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
           ),
-          subtitle: Text(
-            scriptures[index].verse,
-          ),
-          leading: CircleAvatar(
-            backgroundColor: circleAvatarBgColor[
-                (scriptures[index].id % circleAvatarBgColor.length)],
-            child: Text(
-              scriptures[index].name.substring(0, 1),
-              style: const TextStyle(
-                fontSize: 20,
-              ),
-            ),
-          ),
-          //trailing: const Icon(Icons.arrow_forward_ios),
-          onTap: onTap != null ? () => onTap!(scriptures[index]) : null,
-          // onTap: onTap != null ? () => {} : null,
         ),
-      );
+        subtitle: Text(
+          scriptures[index].verse,
+        ),
+        leading: CircleAvatar(
+          backgroundColor: circleAvatarBgColor[
+              (scriptures[index].id % circleAvatarBgColor.length)],
+          child: Text(
+            scriptures[index].name.substring(0, 1),
+            style: const TextStyle(
+              fontSize: 20,
+            ),
+          ),
+        ),
+        //trailing: const Icon(Icons.arrow_forward_ios),
+        onTap: onTap != null ? () => onTap!(scriptures[index]) : null,
+        // onTap: onTap != null ? () => {} : null,
+      ),
+    );
+  }
 }

@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 import '../data.dart';
 import '../widgets/joy_list.dart';
@@ -18,23 +19,30 @@ class ScriptureDetailsScreen extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text(scripture.name),
-        ),
-        body: Center(
-          child: Column(
-            children: [
-              Expanded(
-                child: JoyList(
-                  joys: scripture.joys,
-                  // onTap: (joy) {
-                  //   onJoyTapped(joy);
-                  // },
-                ),
+  Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'ScriptureDetails',
+      'xlcdapp_screen_class': 'ScriptureDetailsScreen',
+    });
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(scripture.name),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Expanded(
+              child: JoyList(
+                joys: scripture.joys,
+                // onTap: (joy) {
+                //   onJoyTapped(joy);
+                // },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
+      ),
+    );
+  }
 }

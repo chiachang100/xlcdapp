@@ -8,9 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:xlcdapp/src/data/firestore_joy.dart';
-//import 'package:xlcdapp/src/data/firestore_db.dart';
 
 import '../auth.dart';
 //import '../data/joy.dart';
@@ -38,15 +37,22 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: const Text('「笑裡藏道」簡介'),
-          leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
-        ),
-        body: SafeArea(
-          child: SettingsContent(firestore: widget.firestore),
-        ),
-      );
+  Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': '笑裡藏道簡介',
+      'xlcdapp_screen_class': 'SettingsScreen',
+    });
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('「笑裡藏道」簡介'),
+        leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
+      ),
+      body: SafeArea(
+        child: SettingsContent(firestore: widget.firestore),
+      ),
+    );
+  }
 }
 
 class SettingsContent extends StatelessWidget {
@@ -63,6 +69,11 @@ class SettingsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'SettingsContent',
+      'xlcdapp_screen_class': 'SettingsScreen',
+    });
+
     return ListView(
       children: <Widget>[
         const QRCodeSection(),
@@ -87,6 +98,11 @@ class BookIntroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'BookIntroSection',
+      'xlcdapp_screen_class': 'SettingsScreen',
+    });
+
     return Card(
       color: Colors.yellow[50],
       elevation: 8.0,
@@ -150,6 +166,11 @@ class BookAuthorSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'BookAuthorSection',
+      'xlcdapp_screen_class': 'SettingsScreen',
+    });
+
     return Card(
       color: Colors.yellow[50],
       elevation: 8.0,
@@ -215,6 +236,11 @@ class AppDeveloperSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'AppDevelopeSection',
+      'xlcdapp_screen_class': 'SettingsScreen',
+    });
+
     return Card(
       color: Colors.yellow[50],
       elevation: 8.0,
@@ -278,6 +304,11 @@ class QRCodeSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'QRCodeSection',
+      'xlcdapp_screen_class': 'SettingsScreen',
+    });
+
     return Card(
       color: Colors.yellow[50],
       elevation: 8.0,
@@ -339,6 +370,11 @@ class BookPraiseSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'BookPraiseSection',
+      'xlcdapp_screen_class': 'SettingsScreen',
+    });
+
     return Card(
       color: Colors.yellow[50],
       elevation: 8.0,
@@ -484,6 +520,11 @@ class FirebaseDbSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'FirebaseDbSection',
+      'xlcdapp_screen_class': 'SettingsScreen',
+    });
+
     return Card(
       color: Colors.yellow[50],
       elevation: 8.0,
@@ -543,6 +584,11 @@ class CopyrightSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'CopyrightSection',
+      'xlcdapp_screen_class': 'SettingsScreen',
+    });
+
     return const Row(
       children: <Widget>[
         Text('Copyright '),

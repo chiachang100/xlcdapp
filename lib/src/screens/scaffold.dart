@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
+
 class JoystoreScaffold extends StatelessWidget {
   final Widget child;
   final int selectedIndex;
@@ -19,6 +21,11 @@ class JoystoreScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final goRouter = GoRouter.of(context);
+
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'AdaptiveScaffold',
+      'xlcdapp_screen_class': 'JoystoreScaffold',
+    });
 
     return Scaffold(
       // appBar: AppBar(

@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 import '../data/scripture.dart';
 import '../data/joystore.dart';
@@ -19,14 +20,21 @@ class ScripturesScreen extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-          leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
-        ),
-        body: ScriptureList(
-          scriptures: joystoreInstance.allScriptures,
-          onTap: onTap,
-        ),
-      );
+  Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': '聖經經文',
+      'xlcdapp_screen_class': 'ScripturesScreen',
+    });
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+        leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
+      ),
+      body: ScriptureList(
+        scriptures: joystoreInstance.allScriptures,
+        onTap: onTap,
+      ),
+    );
+  }
 }

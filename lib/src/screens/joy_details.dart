@@ -6,6 +6,7 @@
 import 'package:logging/logging.dart';
 
 import 'package:flutter/material.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/link.dart';
@@ -45,6 +46,11 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'JoyDetails',
+      'xlcdapp_screen_class': 'JoyDetailsScreen',
+    });
+
     if (widget.joy == null) {
       return const Scaffold(
         body: Center(
