@@ -2,11 +2,16 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:logging/logging.dart';
+import 'dart:developer' as developer;
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'scripture.dart';
 import 'joy.dart';
 import 'local_joystore.dart';
+
+final xlcdlog = Logger('joystore');
 
 const int topList = 10;
 const int wholeList = 0;
@@ -118,11 +123,11 @@ class JoyStore {
     //await joysRef.get().then((event) {
     await joysRef.get().then((event) {
       for (var doc in event.docs) {
-        print(
+        xlcdlog.fine(
             "Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
         //var joy = Joy.fromJson(doc.data());
         var joy = doc.data();
-        print(
+        xlcdlog.fine(
             "JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
 
         var scripture = joystoreInstanceFromJoyStore.allScriptures.firstWhere(
@@ -158,11 +163,10 @@ JoyStore buildJoyStoreFromFirestore() {
     if (event.docs.isNotEmpty) {
       js = JoyStore();
       for (var doc in event.docs) {
-        print(
+        xlcdlog.info(
             "Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
-        //var joy = Joy.fromJson(doc.data());
         var joy = doc.data();
-        print(
+        xlcdlog.info(
             "JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
         js.addJoy(
           id: joy.id,

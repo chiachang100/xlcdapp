@@ -2,9 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:adaptive_navigation/adaptive_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 
 class JoystoreScaffold extends StatelessWidget {
   final Widget child;
@@ -31,27 +31,30 @@ class JoystoreScaffold extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(bottom: 12.0),
-          child: AdaptiveNavigationScaffold(
+          child: AdaptiveScaffold(
             selectedIndex: selectedIndex,
-            body: child,
-            onDestinationSelected: (idx) {
+            body: (_) => child,
+            onSelectedIndexChange: (idx) {
               if (idx == 0) goRouter.go('/joys/like');
               if (idx == 1) goRouter.go('/scriptures');
               if (idx == 2) goRouter.go('/settings');
             },
-            destinations: const [
-              AdaptiveScaffoldDestination(
-                title: '笑裡藏道',
-                icon: Icons.sentiment_satisfied_outlined,
+            destinations: const <NavigationDestination>[
+              NavigationDestination(
+                label: '笑裡藏道',
+                icon: Icon(Icons.sentiment_satisfied_outlined),
+                selectedIcon: Icon(Icons.sentiment_satisfied),
                 //icon: ImageIcon(AssetImage('assets/icons/xlcdapp-leading-icon.png')),
               ),
-              AdaptiveScaffoldDestination(
-                title: '聖經經文',
-                icon: Icons.list,
+              NavigationDestination(
+                label: '聖經經文',
+                icon: Icon(Icons.list_outlined),
+                selectedIcon: Icon(Icons.list),
               ),
-              AdaptiveScaffoldDestination(
-                title: '資源簡介',
-                icon: Icons.group_outlined,
+              NavigationDestination(
+                label: '資源簡介',
+                icon: Icon(Icons.group_outlined),
+                selectedIcon: Icon(Icons.group),
               ),
             ],
           ),

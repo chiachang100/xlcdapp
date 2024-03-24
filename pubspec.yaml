@@ -1,7 +1,7 @@
 name: xlcdapp
 description: "xlcdapp-笑裡藏道"
 publish_to: 'none'
-version: 1.3.4
+version: 1.3.6
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
@@ -25,7 +25,6 @@ dependencies:
   url_launcher: ^6.2.4
   web: ^0.4.2
 
-  adaptive_navigation: ^0.0.10
   collection: ^1.17.0
   go_router: ^13.0.0
   path_to_regexp: ^0.4.0
@@ -37,6 +36,8 @@ dependencies:
       url: https://github.com/google/flutter-desktop-embedding.git
       path: plugins/window_size
   youtube_player_iframe: ^5.0.0
+  logging: ^1.2.0
+  flutter_adaptive_scaffold: ^0.1.10+1
 
 dev_dependencies:
   flutter_test:

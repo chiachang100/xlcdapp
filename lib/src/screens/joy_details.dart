@@ -2,7 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:developer' as developer;
+//import 'dart:developer' as developer;
+import 'package:logging/logging.dart';
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,6 +18,8 @@ import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 import '../data.dart';
 import 'scripture_details.dart';
+
+final xlcdlog = Logger('joy_details');
 
 class JoyDetailsScreen extends StatefulWidget {
   final Joy? joy;
@@ -258,7 +261,8 @@ class _YoutubePlayerIFrameSectionState
 
     _controller.setFullScreenListener(
       (isFullScreen) {
-        developer.log('${isFullScreen ? 'Entered' : 'Exited'} Fullscreen.');
+        // developer.log('${isFullScreen ? 'Entered' : 'Exited'} Fullscreen.');
+        xlcdlog.fine('${isFullScreen ? 'Entered' : 'Exited'} Fullscreen.');
       },
     );
 

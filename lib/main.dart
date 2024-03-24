@@ -4,6 +4,7 @@
 
 import 'dart:async';
 import 'dart:io' show Platform;
+import 'package:logging/logging.dart';
 
 //import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/foundation.dart' show kIsWeb, kReleaseMode;
@@ -20,7 +21,14 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'src/app.dart';
 
+final xlcdlog = Logger('main');
+
 Future<void> main() async {
+  Logger.root.level = Level.ALL;
+  Logger.root.onRecord.listen((record) {
+    print('${record.level.name}: ${record.time}: ${record.message}');
+  });
+
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -61,9 +69,10 @@ Future<void> main() async {
   // setPathUrlStrategy();
 
   setupWindow();
-  //runApp(Joystore(firestore: firestore));
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((value) => runApp(Joystore(firestore: firestore)));
+  runApp(Joystore(firestore: firestore));
+  // SystemChrome.setPreferredOrientations(
+  //         <DeviceOrientation>[DeviceOrientation.portraitUp])
+  //     .then((value) => runApp(Joystore(firestore: firestore)));
 }
 
 const double windowWidth = 480;

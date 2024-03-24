@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:logging/logging.dart';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/link.dart';
@@ -14,6 +16,8 @@ import '../auth.dart';
 //import '../data/joy.dart';
 //import '../data/joystore.dart';
 import '../data.dart';
+
+final xlcdlog = Logger('settings');
 
 const showFirebaseDb = false;
 
@@ -445,19 +449,20 @@ class FirebaseDbSection extends StatelessWidget {
     for (var joy in joystoreInstance.allJoys) {
       // firestore.collection("joys").add(joy.toFirestore()).then(
       //     (DocumentReference doc) =>
-      //         print('DocumentSnapshot added with ID: ${doc.id}'));
+      //         xlcdlog.info('DocumentSnapshot added with ID: ${doc.id}'));
       final docRef = firestore.collection("joys").doc(joy.articleId.toString());
       // Add document
       docRef
           .set(joy.toJson())
-          .onError((e, _) => print("Error writing documen(t: $e"));
+          .onError((e, _) => xlcdlog.info("Error writing documen(t: $e"));
       // Read document
       docRef.get().then(
         (DocumentSnapshot doc) {
           final data = doc.data() as Map<String, dynamic>;
-          print('DocumentSnapshot added with ID: ${doc.id}:${data['id']}');
+          xlcdlog
+              .info('DocumentSnapshot added with ID: ${doc.id}:${data['id']}');
         },
-        onError: (e) => print("Error getting document: $e"),
+        onError: (e) => xlcdlog.info("Error getting document: $e"),
       );
     }
   }
@@ -469,9 +474,9 @@ class FirebaseDbSection extends StatelessWidget {
         .get()
         .then((event) {
       for (var doc in event.docs) {
-        print("Firestore: ${doc.id} => ${doc.data()}");
+        xlcdlog.info("Firestore: ${doc.id} => ${doc.data()}");
         var joy = Joy.fromJson(doc.data());
-        print(
+        xlcdlog.info(
             "Joy: ${doc.id} => id=${joy.id}:articleId=${joy.articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
       }
     });
