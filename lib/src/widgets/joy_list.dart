@@ -10,10 +10,12 @@ import '../data.dart';
 
 class JoyList extends StatelessWidget {
   final List<Joy> joys;
+  final bool isRanked;
   final ValueChanged<Joy>? onTap;
 
   JoyList({
     required this.joys,
+    this.isRanked = false,
     this.onTap,
     super.key,
   });
@@ -60,14 +62,17 @@ class JoyList extends StatelessWidget {
               ),
               Row(
                 children: [
-                  // CircleAvatar(
-                  //   backgroundColor: circleAvatarBgColor[
-                  //       (joys[index].id % circleAvatarBgColor.length)],
-                  //   child: Text(
-                  //     joys[index].title.substring(0, 1),
-                  //     style: const TextStyle(fontSize: 16),
-                  //   ),
-                  // ),
+                  Text(
+                    //isRanked ? '[第${(index + 1)}名]' : '',
+                    isRanked ? '🏆#${(index + 1)}:' : '',
+                    // isRanked
+                    //     ? '${rankingEmoji[(index + 1) % rankingEmoji.length]}'
+                    //     : '',
+                    style: const TextStyle(
+                      color: Colors.red,
+                    ),
+                  ),
+                  const SizedBox(width: 5),
                   CircleAvatar(
                     backgroundColor: circleAvatarBgColor[
                         (joys[index].id % circleAvatarBgColor.length)],
@@ -81,7 +86,6 @@ class JoyList extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   Text(
-                    // '${joys[index].articleId}. ${joys[index].title}',
                     joys[index].title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
@@ -93,20 +97,13 @@ class JoyList extends StatelessWidget {
                     label: Text('${joys[index].likes}'),
                     backgroundColor: Colors.yellow[50],
                   ),
-                  // Badge(
-                  //   label: Text(joys[index].likes.toString()),
-                  //   child: const Icon(Icons.thumb_up_outlined),
-                  // ),
                 ],
               ),
               Text(
                 '${joys[index].scripture.verse}(${joys[index].scripture.name})',
               ),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    //backgroundColor: Colors.orange, // background
-                    //foregroundColor: Colors.yellow, // foreground
-                    ),
+                style: ElevatedButton.styleFrom(),
                 onPressed: (onTap != null ? () => onTap!(joys[index]) : null),
                 child: Text(
                   // '觀賞詳情',

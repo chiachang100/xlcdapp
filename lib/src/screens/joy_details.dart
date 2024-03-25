@@ -73,9 +73,10 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
                   final joyRef = joysRef.doc(widget.joy!.articleId.toString());
                   FirebaseFirestore.instance
                       .runTransaction((transaction) async {
-                    //final snapshot = await transaction.get(joyRef);
-                    //final newLikes = snapshot.get("likes") + 1;
-                    transaction.update(joyRef, {'likes': widget.joy!.likes});
+                    //transaction.update(joyRef, {'likes': widget.joy!.likes});
+                    final snapshot = await transaction.get(joyRef);
+                    final newLikes = snapshot.get("likes") + 1;
+                    transaction.update(joyRef, {'likes': newLikes});
                   });
                 }
               });

@@ -131,6 +131,7 @@ class _JoystoreState extends State<Joystore> {
                           builder: (context) {
                             return JoyList(
                               joys: joystoreInstance.likeJoys,
+                              isRanked: true,
                               onTap: (joy) {
                                 GoRouter.of(context)
                                     .go('/joys/like/joy/${joy.id}');

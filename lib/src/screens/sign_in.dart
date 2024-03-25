@@ -27,12 +27,10 @@ class _SignInScreenState extends State<SignInScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  final String iconUrl = 'assets/icons/xlcdapp-icon-96x96.png';
-
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          leading: Image.asset(iconUrl),
+          leading: Image.asset('assets/photos/xlcdapp_photo_default.png'),
           leadingWidth: 100,
           centerTitle: true,
           title: Text('笑裡藏道'),
