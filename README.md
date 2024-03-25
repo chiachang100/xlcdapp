@@ -93,6 +93,7 @@ await Firebase.initializeApp(
 - Rebuild your Flutter application
   - `flutter pub get`
   - Web: `flutter run -d chrome`
+  - Web: `flutter run -d chrome --web-hostname=192.168.1.100 --web-port=80`
   - Android Emulator: `flutter run -d emulator-5554`
   - iOS Simulator: `flutter run -d [TBS]`
 
@@ -108,6 +109,35 @@ await Firebase.initializeApp(
   - Web: `flutter run -d chrome`
   - Android Emulator: `flutter run -d emulator-5554`
   - iOS Simulator: `flutter run -d [TBS]`
+
+### Step 5: Add Firebase Hosting
+- Source: [Firebase CLI reference](https://firebase.google.com/docs/cli)
+- Install Node.js using NVM (Node Version Manager))
+  - Linux/MacOS: [Node Version Manager](https://github.com/nvm-sh/nvm)
+  - Windows: [nvm-windows](https://github.com/coreybutler/nvm-windows).
+- Install Firebase tools
+  - `npm install -g firebase-tools`
+- Log into Firebase
+  - `firebase login`
+- [Use the CLI with CI systems](https://firebase.google.com/docs/cli#cli-ci-systems)
+  - `firebase login:ci`
+- Listing your Firebase projects
+  - `firebase projects:list`
+- Initialize a Firebase project
+  - Run the following command from within your app's directory:
+  - `firebase init`
+  - It will create `firebase.json` config file.
+- Use project aliases
+  - `firebase use`
+  - `firebase use xlcdapp (<PROJECT_ID|ALIAS>)`
+- Serve and test your Firebase project locally
+  - `flutter build -v web --release`
+  - `firebase serve --only hosting`
+- Test from other local devices
+  - `firebase serve --host 0.0.0.0  --only hosting` // accepts requests to any host
+- Deploy to a Firebase project
+  - `firebase deploy`
+  - OR `firebase deploy --only hosting`
 
 ---
 ## Useful Tools
@@ -138,3 +168,11 @@ await Firebase.initializeApp(
 - `flutter pub add youtube_player_iframe`
 
 ---
+## Local Firebase Emulator
+- [Get Started with Firebase Authentication on Flutter](https://firebase.google.com/docs/auth/flutter/start)
+
+- Start Emulator
+  - `firebase emulators:start`
+
+---
+

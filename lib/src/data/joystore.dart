@@ -18,7 +18,7 @@ const int wholeList = 0;
 
 final joysRef = FirebaseFirestore.instance
     .collection('joys')
-    .orderBy("likes", descending: true)
+    .orderBy("articleId", descending: false)
     .withConverter<Joy>(
       fromFirestore: (snapshots, _) => Joy.fromJson(snapshots.data()!),
       toFirestore: (joy, _) => joy.toJson(),
@@ -81,7 +81,8 @@ class JoyStore {
     return allJoys[int.parse(id)];
   }
 
-  List<Joy> getSelectedList(List<Joy> listOfJoys, int topOnes) {
+/* 
+  List<Joy> getSortedList(List<Joy> listOfJoys, int topOnes) {
     // Reindex the value of id
     //listOfJoys.sort((a, b) => a.likes.compareTo(b.likes)); // ascending
     listOfJoys.sort((a, b) => b.likes.compareTo(a.likes)); // descending
@@ -103,24 +104,40 @@ class JoyStore {
       return listOfJoys.toList();
     }
   }
+ */
+
+  List<Joy> getTopList(List<Joy> listOfJoys, int topOnes) {
+    List<Joy> joyList;
+
+    if (topOnes > 0) {
+      // Return the selected list
+      joyList = listOfJoys.take(topOnes).toList();
+    } else {
+      // Return the whole list
+      joyList = listOfJoys;
+    }
+
+    //joyList.sort((a, b) => a.likes.compareTo(b.likes)); // ascending
+    joyList.sort((a, b) => b.likes.compareTo(a.likes)); // descending
+
+    return joyList;
+  }
 
   List<Joy> get wholeJoys => [
-        ...getSelectedList(allJoys, wholeList),
+        ...allJoys,
       ];
 
   List<Joy> get likeJoys => [
-        ...getSelectedList(allJoys, topList).where((joy) => (joy.likes > 0)),
+        ...getTopList(allJoys, topList).where((joy) => (joy.likes > 0)),
       ];
 
   List<Joy> get newJoys => [
-        ...getSelectedList(allJoys, wholeList).where((joy) => joy.isNew),
+        ...allJoys.where((joy) => joy.isNew),
       ];
 
-  // <Future>JoyStore joysReadDataFromJoyStore() async {
   Future<JoyStore> joysReadDataFromJoyStore() async {
     JoyStore joystoreInstanceFromJoyStore = JoyStore();
 
-    //await joysRef.get().then((event) {
     await joysRef.get().then((event) {
       for (var doc in event.docs) {
         xlcdlog.fine(
