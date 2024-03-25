@@ -60,18 +60,29 @@ class JoyList extends StatelessWidget {
               ),
               Row(
                 children: [
+                  // CircleAvatar(
+                  //   backgroundColor: circleAvatarBgColor[
+                  //       (joys[index].id % circleAvatarBgColor.length)],
+                  //   child: Text(
+                  //     joys[index].title.substring(0, 1),
+                  //     style: const TextStyle(fontSize: 16),
+                  //   ),
+                  // ),
                   CircleAvatar(
                     backgroundColor: circleAvatarBgColor[
                         (joys[index].id % circleAvatarBgColor.length)],
                     child: Text(
-                      joys[index].title.substring(0, 1),
-                      style: const TextStyle(fontSize: 16),
+                      joys[index].articleId.toString(),
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(width: 5),
                   Text(
-                    //joys[index].title,
-                    '${joys[index].articleId}. ${joys[index].title}',
+                    // '${joys[index].articleId}. ${joys[index].title}',
+                    joys[index].title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
