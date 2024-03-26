@@ -395,7 +395,9 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   Future<void> _anonymousAuth() async {
-    await auth.signInAnonymously();
+    // await auth.signInAnonymously();
+    widget.onSignIn(
+        Credentials(emailController.value.text, passwordController.value.text));
   }
 
   Future<void> _emailAndPassword() async {

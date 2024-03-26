@@ -69,8 +69,8 @@ Future<void> main() async {
   // server to redirect all paths to index.html.
   //
   // On mobile platforms, both functions are no-ops.
-  setHashUrlStrategy();
-  // setPathUrlStrategy();
+  // setHashUrlStrategy();
+  setPathUrlStrategy();
 
   setupWindow();
   runApp(Joystore(firestore: firestore));
