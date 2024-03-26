@@ -274,7 +274,7 @@ class _JoystoreState extends State<Joystore> {
                     onSignIn: (value) async {
                       final router = GoRouter.of(context);
                       await JoystoreAuth.of(context)
-                          .signIn(value.username, value.password);
+                          .signIn(value.email, value.password);
                       router.go('/joys/like');
                     },
                   );

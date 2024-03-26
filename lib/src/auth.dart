@@ -17,17 +17,19 @@ class JoystoreAuth extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> signIn(String username, String password) async {
+  Future<bool> signIn(String email, String password) async {
     await Future<void>.delayed(const Duration(milliseconds: 200));
 
     // Sign in. Allow any password.
-    //_signedIn = true;
+    _signedIn = true;
+    notifyListeners();
 
-    // TODO: hardcode them for now
-    if ((username == "g") && (password == "r")) {
-      _signedIn = true;
-      notifyListeners();
-    }
+    // // TODO: hardcode them for now
+    // if ((email == "g") && (password == "r")) {
+    //   _signedIn = true;
+    //   notifyListeners();
+    // }
+
     return _signedIn;
   }
 

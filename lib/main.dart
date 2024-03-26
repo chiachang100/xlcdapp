@@ -22,6 +22,8 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'src/app.dart';
 
 final xlcdlog = Logger('main');
+late final FirebaseApp app;
+late final FirebaseAuth auth;
 
 Future<void> main() async {
   Logger.root.level = Level.ALL;
@@ -35,9 +37,11 @@ Future<void> main() async {
       statusBarColor: Colors.blueAccent,
     ),
   );
-  await Firebase.initializeApp(
+
+  app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  auth = FirebaseAuth.instanceFor(app: app);
 
   final firestore = FirebaseFirestore.instance;
 
