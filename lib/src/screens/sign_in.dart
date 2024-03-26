@@ -311,6 +311,11 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   Future _resetPassword() async {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'ResetPassword',
+      'xlcdapp_screen_class': 'SignInScreenClass',
+    });
+
     String? email;
     await showDialog(
       context: context,
@@ -395,12 +400,22 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   Future<void> _anonymousAuth() async {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'AnonymousAuth',
+      'xlcdapp_screen_class': 'SignInScreenClass',
+    });
+
     // await auth.signInAnonymously();
     widget.onSignIn(
         Credentials(emailController.value.text, passwordController.value.text));
   }
 
   Future<void> _emailAndPassword() async {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'EmailAndPassword',
+      'xlcdapp_screen_class': 'SignInScreenClass',
+    });
+
     UserCredential userCredential;
     User? user;
 
@@ -426,6 +441,11 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   Future<void> _signInWithGoogle() async {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'SignInWithGoogl',
+      'xlcdapp_screen_class': 'SignInScreenClass',
+    });
+
     UserCredential userCredential;
     User? user;
 
@@ -453,6 +473,11 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   Future<void> _signOut() async {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'SignOut',
+      'xlcdapp_screen_class': 'SignInScreenClass',
+    });
+
     await auth.signOut();
     await GoogleSignIn().signOut();
   }
