@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -105,6 +106,11 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'SignInScreen',
+      'xlcdapp_screen_class': 'SignInScreenClass',
+    });
+
     return GestureDetector(
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
@@ -281,7 +287,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                       style:
                                           const TextStyle(color: Colors.blue),
                                       recognizer: TapGestureRecognizer()
-                                        ..onTap = _anonymousAuth,
+                                        ..onTap =
+                                            () => _handleMultiFactorException(
+                                                  _anonymousAuth,
+                                                ),
                                     ),
                                   ],
                                 ),
@@ -342,6 +351,7 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
+/* 
   Future<void> _anonymousAuth() async {
     setIsLoading();
 
@@ -359,6 +369,7 @@ class _SignInScreenState extends State<SignInScreen> {
       setIsLoading();
     }
   }
+ */
 
   Future<void> _handleMultiFactorException(
     Future<void> Function() authFunction,
@@ -378,8 +389,13 @@ class _SignInScreenState extends State<SignInScreen> {
       setState(() {
         error = '$e';
       });
+    } finally {
+      setIsLoading();
     }
-    setIsLoading();
+  }
+
+  Future<void> _anonymousAuth() async {
+    await auth.signInAnonymously();
   }
 
   Future<void> _emailAndPassword() async {

@@ -9,15 +9,16 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'auth.dart';
 import 'data.dart';
-import 'screens/scripture_details.dart';
-import 'screens/scriptures.dart';
 import 'screens/joy_details.dart';
 import 'screens/joys.dart';
+import 'screens/manage_firestore.dart';
 import 'screens/scaffold.dart';
+import 'screens/scripture_details.dart';
+import 'screens/scriptures.dart';
 import 'screens/settings.dart';
 import 'screens/sign_in.dart';
-import 'widgets/joy_list.dart';
 import 'widgets/fade_transition_page.dart';
+import 'widgets/joy_list.dart';
 
 final appShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'app shell');
 final joysNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'joys shell');
@@ -40,8 +41,6 @@ class Joystore extends StatefulWidget {
 
 class _JoystoreState extends State<Joystore> {
   final JoystoreAuth auth = JoystoreAuth();
-
-  final bool turnonSignIn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +70,8 @@ class _JoystoreState extends State<Joystore> {
         observers: [Joystore.observer],
         refreshListenable: auth,
         debugLogDiagnostics: true,
-        initialLocation: '/joys/like',
+        // initialLocation: '/joys/like',
+        initialLocation: '/joys/all',
         redirect: (context, state) {
           if (turnonSignIn) {
             final signedIn = JoystoreAuth.of(context).signedIn;
@@ -275,10 +275,20 @@ class _JoystoreState extends State<Joystore> {
                       final router = GoRouter.of(context);
                       await JoystoreAuth.of(context)
                           .signIn(value.email, value.password);
-                      router.go('/joys/like');
+                      // router.go('/joys/like');
+                      router.go('/joys/all');
                     },
                   );
                 },
+              );
+            },
+          ),
+          GoRoute(
+            path: '/manage-firestore',
+            pageBuilder: (context, state) {
+              return FadeTransitionPage<dynamic>(
+                key: state.pageKey,
+                child: ManageFirestoreScreen(firestore: widget.firestore),
               );
             },
           ),

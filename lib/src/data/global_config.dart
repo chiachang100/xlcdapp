@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const bool turnonSignIn = false;
+
 // 紅、橙、黃、綠、藍、靛、紫
 List<Color> circleAvatarBgColor = [
   Colors.red,

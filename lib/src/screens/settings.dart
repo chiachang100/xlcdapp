@@ -5,20 +5,15 @@
 import 'package:logging/logging.dart';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../auth.dart';
-//import '../data/joy.dart';
-//import '../data/joystore.dart';
 import '../data.dart';
 
 final xlcdlog = Logger('settings');
-
-const showFirebaseDb = false;
 
 Future<void> lauchTargetUrl(String urlString) async {
   Uri urlForPurchasingBook = Uri.parse(urlString);
@@ -59,14 +54,6 @@ class SettingsContent extends StatelessWidget {
   const SettingsContent({super.key, required this.firestore});
   final FirebaseFirestore firestore;
 
-  Widget showFirebaseDbSection() {
-    if (showFirebaseDb) {
-      return FirebaseDbSection(firestore: firestore);
-    } else {
-      return const SizedBox(height: 1);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
@@ -75,15 +62,14 @@ class SettingsContent extends StatelessWidget {
     });
 
     return ListView(
-      children: <Widget>[
-        const QRCodeSection(),
-        const BookIntroSection(),
-        const BookAuthorSection(),
-        const BookPraiseSection(),
-        const AppDeveloperSection(),
-        showFirebaseDbSection(),
-        const CopyrightSection(),
-        const SizedBox(height: 10),
+      children: const <Widget>[
+        QRCodeSection(),
+        BookIntroSection(),
+        BookAuthorSection(),
+        BookPraiseSection(),
+        AppDeveloperSection(),
+        CopyrightSection(),
+        SizedBox(height: 10),
       ],
     );
   }
@@ -414,7 +400,7 @@ class BookPraiseSection extends StatelessWidget {
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: circleAvatarBgColor[0], child: Text('來')),
-            title: Text(
+            title: const Text(
               '來，領受一份 「幽默感」的恩膏！ 累積你的笑話存款，提升你的親和指數，打開分享真理的機會之門！',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
@@ -424,14 +410,15 @@ class BookPraiseSection extends StatelessWidget {
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: circleAvatarBgColor[1], child: Text('若')),
-            title: Text('若同樣有功效，能用幽默的笑話，把神的道解明，豈不更好？鄭重推薦本書，幫助你分享真道，有笑果，更有效果！'),
+            title: const Text(
+                '若同樣有功效，能用幽默的笑話，把神的道解明，豈不更好？鄭重推薦本書，幫助你分享真道，有笑果，更有效果！'),
             subtitle: Text('靈糧全球使徒性網絡主席 周神助'),
           ),
           Divider(),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: circleAvatarBgColor[2], child: Text('幽')),
-            title: Text(
+            title: const Text(
                 '幽默感能使我們從新的角度來看每天周遭發生的事，也使我們可以笑談自己的缺失，並接納別人的軟弱。事實上，幽默感能幫助我們的信仰 更人性化，使人更容易來親近神。'),
             subtitle: Text('美國加州矽谷生命河靈糧堂主任牧師 劉彤'),
           ),
@@ -439,7 +426,7 @@ class BookPraiseSection extends StatelessWidget {
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: circleAvatarBgColor[3], child: Text('曾')),
-            title: Text(
+            title: const Text(
                 '曾牧師這本書顛覆傳統，詮釋了矽谷的創新精神⋯⋯一個牧師寫本關於「笑」的書，就如同嚴肅人講笑話，講的時候常有意想不到的效果。'),
             subtitle: Text('矽谷創新頻道「丁丁電視」創辦人丁維平'),
           ),
@@ -447,14 +434,14 @@ class BookPraiseSection extends StatelessWidget {
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: circleAvatarBgColor[4], child: Text('每')),
-            title: Text('每篇短文都像是曾牧師喜歡的一杯好茶，初嚐不酸，再喝不澀，品完後喉韻甘醇，回味無窮。'),
+            title: const Text('每篇短文都像是曾牧師喜歡的一杯好茶，初嚐不酸，再喝不澀，品完後喉韻甘醇，回味無窮。'),
             subtitle: Text('欣欣教育基金會教育顧問 廖本榮'),
           ),
           Divider(),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: circleAvatarBgColor[5], child: Text('獨')),
-            title: Text(
+            title: const Text(
                 '獨樂樂，不如眾樂樂。我預測你的朋友們會和你一樣，迫不及待地想要享受 《笑裡藏道》。所以，做一件讓他們大為開懷的事一一送他們一人一本吧！'),
             subtitle: Text('北加州全福會會長、優勢頻道執行委員會主席 劉效宏'),
           ),
@@ -465,112 +452,6 @@ class BookPraiseSection extends StatelessWidget {
               onPressed: () => lauchTargetUrl(bookSiteLink),
               child: const Text('📚請到靈糧書房購買「笑裡藏道」'),
             ),
-          ),
-          const SizedBox(height: 10),
-        ],
-      ),
-    );
-  }
-}
-
-class FirebaseDbSection extends StatelessWidget {
-  const FirebaseDbSection({super.key, required this.firestore});
-  final FirebaseFirestore firestore;
-
-  final String xlcdFirestore = '儲藏庫初始設定和搜尋';
-
-  void joysAddData() async {
-    // Add new documents
-    //for (var joy in firestoreDbInstance.allJoys) {
-    for (var joy in joystoreInstance.allJoys) {
-      // firestore.collection("joys").add(joy.toFirestore()).then(
-      //     (DocumentReference doc) =>
-      //         xlcdlog.info('DocumentSnapshot added with ID: ${doc.id}'));
-      final docRef = firestore.collection("joys").doc(joy.articleId.toString());
-      // Add document
-      docRef
-          .set(joy.toJson())
-          .onError((e, _) => xlcdlog.info("Error writing documen(t: $e"));
-      // Read document
-      docRef.get().then(
-        (DocumentSnapshot doc) {
-          final data = doc.data() as Map<String, dynamic>;
-          xlcdlog
-              .info('DocumentSnapshot added with ID: ${doc.id}:${data['id']}');
-        },
-        onError: (e) => xlcdlog.info("Error getting document: $e"),
-      );
-    }
-  }
-
-  void joysReadData() async {
-    await firestore
-        .collection("joys")
-        .orderBy("likes", descending: true)
-        .get()
-        .then((event) {
-      for (var doc in event.docs) {
-        xlcdlog.info("Firestore: ${doc.id} => ${doc.data()}");
-        var joy = Joy.fromJson(doc.data());
-        xlcdlog.info(
-            "Joy: ${doc.id} => id=${joy.id}:articleId=${joy.articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': 'FirebaseDbSection',
-      'xlcdapp_screen_class': 'SettingsScreenClass',
-    });
-
-    return Card(
-      color: Colors.yellow[50],
-      elevation: 8.0,
-      margin: const EdgeInsets.all(8.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              'assets/photos/xlcdapp_photo_default.png',
-              height: MediaQuery.of(context).size.width * (3 / 4),
-              width: MediaQuery.of(context).size.width,
-              //height: 120, width: 640,
-              fit: BoxFit.scaleDown,
-            ),
-          ),
-          Row(
-            children: [
-              CircleAvatar(
-                //backgroundColor: Colors.orange,
-                backgroundColor: circleAvatarBgColor[2],
-                child: Text(
-                  xlcdFirestore.substring(0, 1),
-                ),
-              ),
-              const SizedBox(width: 5),
-              Text(
-                xlcdFirestore,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          const Text('「笑裡藏道」: 儲藏庫初始設定和搜尋'),
-          Center(
-            child: ElevatedButton(
-              onPressed: joysReadData,
-              child: const Text('🔍搜尋'),
-            ),
-          ),
-          const SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: joysAddData,
-            child: const Text('⚙️初始設定'),
           ),
           const SizedBox(height: 10),
         ],
