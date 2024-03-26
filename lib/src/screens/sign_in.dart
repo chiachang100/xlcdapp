@@ -401,22 +401,34 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   Future<void> _emailAndPassword() async {
+    UserCredential userCredential;
+    User? user;
+
     if (formKey.currentState?.validate() ?? false) {
       if (mode == AuthMode.login) {
-        await auth.signInWithEmailAndPassword(
+        userCredential = await auth.signInWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
+        user = userCredential.user;
       } else {
-        await auth.createUserWithEmailAndPassword(
+        userCredential = await auth.createUserWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
+        user = userCredential.user;
+      }
+      if (user != null) {
+        widget.onSignIn(Credentials(
+            emailController.value.text, passwordController.value.text));
       }
     }
   }
 
   Future<void> _signInWithGoogle() async {
+    UserCredential userCredential;
+    User? user;
+
     // Trigger the authentication flow
     final googleUser = await GoogleSignIn().signIn();
 
@@ -431,7 +443,17 @@ class _SignInScreenState extends State<SignInScreen> {
       );
 
       // Once signed in, return the UserCredential
-      await auth.signInWithCredential(credential);
+      userCredential = await auth.signInWithCredential(credential);
+      user = userCredential.user;
+      if (user != null) {
+        widget.onSignIn(Credentials(
+            emailController.value.text, passwordController.value.text));
+      }
     }
+  }
+
+  Future<void> _signOut() async {
+    await auth.signOut();
+    await GoogleSignIn().signOut();
   }
 }
