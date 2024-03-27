@@ -140,6 +140,24 @@ await Firebase.initializeApp(
   - OR `firebase deploy --only hosting`
 
 ---
+
+## Add Firebase packages for iOS
+- Firebase iOS SDK
+  - Using [Swift Package Manager](https://github.com/firebase/firebase-ios-sdk/blob/main/SwiftPackageManager.md).
+  - Installing from Xcode
+  - Add a package by selecting File → Add Packages… in Xcode’s menu bar.
+  - Search for the Firebase Apple SDK using the repo's URL:
+    - `https://github.com/firebase/firebase-ios-sdk.git`
+  - Next, set the Dependency Rule to be Up to Next Major Version.
+    - Then, select Add Package.
+    - Choose the Firebase products that you want installed in your app.
+    - If you've installed FirebaseAnalytics, add the `-ObjC` option to Other Linker Flags in the Build Settings tab.
+- Flutterfire iOS SDK
+  - Follow the instructions describe in the **Firebase iOS SDK** section with the follow repo's URL:
+    - `https://github.com/firebase/flutterfire.git`
+- 
+
+---
 ## Useful Tools
 - `flutter clean`
 - `flutter test`
