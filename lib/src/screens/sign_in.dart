@@ -106,7 +106,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+    FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
       'xlcdapp_screen': 'SignInScreen',
       'xlcdapp_screen_class': 'SignInScreenClass',
     });
@@ -311,7 +311,7 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   Future _resetPassword() async {
-    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+    FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
       'xlcdapp_screen': 'ResetPassword',
       'xlcdapp_screen_class': 'SignInScreenClass',
     });
@@ -400,7 +400,7 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   Future<void> _anonymousAuth() async {
-    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+    FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
       'xlcdapp_screen': 'AnonymousAuth',
       'xlcdapp_screen_class': 'SignInScreenClass',
     });
@@ -411,7 +411,7 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   Future<void> _emailAndPassword() async {
-    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+    FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
       'xlcdapp_screen': 'EmailAndPassword',
       'xlcdapp_screen_class': 'SignInScreenClass',
     });
@@ -426,22 +426,37 @@ class _SignInScreenState extends State<SignInScreen> {
           password: passwordController.text,
         );
         user = userCredential.user;
+
+        FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
+          'xlcdapp_screen': 'SignInWithEmailAndPassword',
+          'xlcdapp_screen_class': 'SignInScreenClass',
+        });
       } else {
         userCredential = await auth.createUserWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
         user = userCredential.user;
+
+        FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
+          'xlcdapp_screen': 'CreateUserWithEmailAndPassword',
+          'xlcdapp_screen_class': 'SignInScreenClass',
+        });
       }
       if (user != null) {
         widget.onSignIn(Credentials(
             emailController.value.text, passwordController.value.text));
+
+        FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
+          'xlcdapp_screen': 'SuccessSignInWithEmailAndPassword',
+          'xlcdapp_screen_class': 'SignInScreenClass',
+        });
       }
     }
   }
 
   Future<void> _signInWithGoogle() async {
-    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+    FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
       'xlcdapp_screen': 'SignInWithGoogl',
       'xlcdapp_screen_class': 'SignInScreenClass',
     });
@@ -468,12 +483,17 @@ class _SignInScreenState extends State<SignInScreen> {
       if (user != null) {
         widget.onSignIn(Credentials(
             emailController.value.text, passwordController.value.text));
+
+        FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
+          'xlcdapp_screen': 'SuccessSignInWithGoogl',
+          'xlcdapp_screen_class': 'SignInScreenClass',
+        });
       }
     }
   }
 
   Future<void> _signOut() async {
-    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+    FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
       'xlcdapp_screen': 'SignOut',
       'xlcdapp_screen_class': 'SignInScreenClass',
     });
