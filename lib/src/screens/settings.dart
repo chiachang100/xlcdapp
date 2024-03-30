@@ -22,6 +22,15 @@ Future<void> lauchTargetUrl(String urlString) async {
   }
 }
 
+int circleAvatarBgColorIndex = 0;
+
+Color getNextCircleAvatarBgColor() {
+  Color nextColor = circleAvatarBgColor[
+      circleAvatarBgColorIndex % circleAvatarBgColor.length];
+  circleAvatarBgColorIndex++;
+  return nextColor;
+}
+
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key, required this.firestore});
   final FirebaseFirestore firestore;
@@ -75,6 +84,71 @@ class SettingsContent extends StatelessWidget {
   }
 }
 
+class QRCodeSection extends StatelessWidget {
+  const QRCodeSection({super.key});
+  final String xlcdQRCodeIntro = '二維碼(QR Code)';
+
+  final String xlcdappWebsiteLink = 'https://xlcdapp.web.app';
+
+  @override
+  Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'QRCodeSection',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
+    });
+
+    return Card(
+      color: Colors.yellow[50],
+      elevation: 8.0,
+      margin: const EdgeInsets.all(8.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/images/xlcdapp_qrcode.png',
+              height: MediaQuery.of(context).size.width * (2 / 4),
+              width: MediaQuery.of(context).size.width,
+              //height: 120, width: 640,
+              fit: BoxFit.scaleDown,
+            ),
+          ),
+          Row(
+            children: [
+              CircleAvatar(
+                //backgroundColor: Colors.orange,
+                backgroundColor: getNextCircleAvatarBgColor(),
+                child: Text(
+                  xlcdQRCodeIntro.substring(0, 1),
+                ),
+              ),
+              const SizedBox(width: 5),
+              Text(
+                xlcdQRCodeIntro,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          const Text(
+            '  請掃描二維碼(QR Code)方便使用xlcdapp(「笑裡藏道」App)。',
+          ),
+          Center(
+            child: ElevatedButton(
+              //onPressed: visitXlcdappWebsite,
+              onPressed: () => lauchTargetUrl(xlcdappWebsiteLink),
+              child: const Text('🔗xlcdapp(「笑裡藏道」App)'),
+            ),
+          ),
+          const SizedBox(height: 10),
+        ],
+      ),
+    );
+  }
+}
+
 class BookIntroSection extends StatelessWidget {
   const BookIntroSection({super.key});
   final String xlcdBookIntro = '笑裡藏道書籍介紹';
@@ -110,7 +184,7 @@ class BookIntroSection extends StatelessWidget {
             children: [
               CircleAvatar(
                 //backgroundColor: Colors.orange,
-                backgroundColor: circleAvatarBgColor[0],
+                backgroundColor: getNextCircleAvatarBgColor(),
                 child: Text(
                   xlcdBookIntro.substring(0, 1),
                 ),
@@ -178,7 +252,7 @@ class BookAuthorSection extends StatelessWidget {
             children: [
               CircleAvatar(
                 //backgroundColor: Colors.orange,
-                backgroundColor: circleAvatarBgColor[1],
+                backgroundColor: getNextCircleAvatarBgColor(),
                 child: Text(
                   xlcdBookAuthor.substring(0, 1),
                 ),
@@ -204,140 +278,6 @@ class BookAuthorSection extends StatelessWidget {
               //onPressed: visitYouTubePlaylist,
               onPressed: () => lauchTargetUrl(youtubePlaylistLink),
               child: const Text('▶️曾牧師講道視頻'),
-            ),
-          ),
-          const SizedBox(height: 10),
-        ],
-      ),
-    );
-  }
-}
-
-class AppDeveloperSection extends StatelessWidget {
-  const AppDeveloperSection({super.key});
-  final String xlcdAppAuthor = '張嘉: 「笑裡藏道」App開發者';
-
-  final String bibleGatewayLink =
-      'https://www.biblegateway.com/passage/?search=%E5%B8%96%E6%92%92%E7%BE%85%E5%B0%BC%E8%BF%A6%E5%89%8D%E6%9B%B8+5%3A16-18&version=CUVMPT';
-
-  @override
-  Widget build(BuildContext context) {
-    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': 'AppDevelopeSection',
-      'xlcdapp_screen_class': 'SettingsScreenClass',
-    });
-
-    return Card(
-      color: Colors.yellow[50],
-      elevation: 8.0,
-      margin: const EdgeInsets.all(8.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              'assets/photos/joy_pray_thanks.png',
-              height: MediaQuery.of(context).size.width * (3 / 4),
-              width: MediaQuery.of(context).size.width,
-              //height: 120, width: 640,
-              fit: BoxFit.scaleDown,
-            ),
-          ),
-          Row(
-            children: [
-              CircleAvatar(
-                //backgroundColor: Colors.orange,
-                backgroundColor: circleAvatarBgColor[2],
-                child: Text(
-                  xlcdAppAuthor.substring(0, 1),
-                ),
-              ),
-              const SizedBox(width: 5),
-              Text(
-                xlcdAppAuthor,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          const Text(
-              '  感謝主! 我一生一世如同聖經上應許:「有主的恩惠、慈愛隨著我!」出生於台灣，大學畢業，服完兵役，來美留學，完成電腦碩士及兼職完成企管碩士。'
-              '1981年起即在矽谷電腦公司，從事多種電腦軟體工程開發。2023年從Microsoft退休。'
-              '業餘時領受主的呼召及恩典，在教會裡擔任過多種事奉，傳主福音，跟隨耶穌，榮神益人。'
-              '與妻子Judy目前領受主賜兒孫滿堂。'
-              '祈求藉著「笑裡藏道」書籍+App為主多傳喜樂的福音，領人歸主。頌讚、榮耀歸於我們的神，直到永永遠遠！阿們。'),
-          Center(
-            child: ElevatedButton(
-              //onPressed: visitBibleWebsite,
-              onPressed: () => lauchTargetUrl(bibleGatewayLink),
-              child: const Text('✝️請閱讀線上聖經'),
-            ),
-          ),
-          const SizedBox(height: 10),
-        ],
-      ),
-    );
-  }
-}
-
-class QRCodeSection extends StatelessWidget {
-  const QRCodeSection({super.key});
-  final String xlcdQRCodeIntro = '二維碼(QR Code)';
-
-  final String xlcdappWebsiteLink = 'https://xlcdapp.web.app';
-
-  @override
-  Widget build(BuildContext context) {
-    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': 'QRCodeSection',
-      'xlcdapp_screen_class': 'SettingsScreenClass',
-    });
-
-    return Card(
-      color: Colors.yellow[50],
-      elevation: 8.0,
-      margin: const EdgeInsets.all(8.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              'assets/images/xlcdapp_qrcode.png',
-              height: MediaQuery.of(context).size.width * (2 / 4),
-              width: MediaQuery.of(context).size.width,
-              //height: 120, width: 640,
-              fit: BoxFit.scaleDown,
-            ),
-          ),
-          Row(
-            children: [
-              CircleAvatar(
-                //backgroundColor: Colors.orange,
-                backgroundColor: Colors.green,
-                child: Text(
-                  xlcdQRCodeIntro.substring(0, 1),
-                ),
-              ),
-              const SizedBox(width: 5),
-              Text(
-                xlcdQRCodeIntro,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          const Text(
-            '  請掃描二維碼(QR Code)方便使用xlcdapp(「笑裡藏道」App)。',
-          ),
-          Center(
-            child: ElevatedButton(
-              //onPressed: visitXlcdappWebsite,
-              onPressed: () => lauchTargetUrl(xlcdappWebsiteLink),
-              child: const Text('🔗xlcdapp(「笑裡藏道」App)'),
             ),
           ),
           const SizedBox(height: 10),
@@ -382,7 +322,7 @@ class BookPraiseSection extends StatelessWidget {
             children: [
               CircleAvatar(
                 //backgroundColor: Colors.orange,
-                backgroundColor: circleAvatarBgColor[2],
+                backgroundColor: getNextCircleAvatarBgColor(),
                 child: const Icon(Icons.thumb_up_outlined),
                 // child: Text(
                 //   bookPraiseSectionTitle.substring(0, 1),
@@ -399,7 +339,8 @@ class BookPraiseSection extends StatelessWidget {
           ),
           ListTile(
             leading: CircleAvatar(
-                backgroundColor: circleAvatarBgColor[0], child: Text('來')),
+                backgroundColor: getNextCircleAvatarBgColor(),
+                child: Text('來')),
             title: const Text(
               '來，領受一份 「幽默感」的恩膏！ 累積你的笑話存款，提升你的親和指數，打開分享真理的機會之門！',
               style: TextStyle(fontWeight: FontWeight.bold),
@@ -409,7 +350,8 @@ class BookPraiseSection extends StatelessWidget {
           Divider(),
           ListTile(
             leading: CircleAvatar(
-                backgroundColor: circleAvatarBgColor[1], child: Text('若')),
+                backgroundColor: getNextCircleAvatarBgColor(),
+                child: Text('若')),
             title: const Text(
                 '若同樣有功效，能用幽默的笑話，把神的道解明，豈不更好？鄭重推薦本書，幫助你分享真道，有笑果，更有效果！'),
             subtitle: Text('靈糧全球使徒性網絡主席 周神助'),
@@ -417,7 +359,8 @@ class BookPraiseSection extends StatelessWidget {
           Divider(),
           ListTile(
             leading: CircleAvatar(
-                backgroundColor: circleAvatarBgColor[2], child: Text('幽')),
+                backgroundColor: getNextCircleAvatarBgColor(),
+                child: Text('幽')),
             title: const Text(
                 '幽默感能使我們從新的角度來看每天周遭發生的事，也使我們可以笑談自己的缺失，並接納別人的軟弱。事實上，幽默感能幫助我們的信仰 更人性化，使人更容易來親近神。'),
             subtitle: Text('美國加州矽谷生命河靈糧堂主任牧師 劉彤'),
@@ -425,7 +368,8 @@ class BookPraiseSection extends StatelessWidget {
           Divider(),
           ListTile(
             leading: CircleAvatar(
-                backgroundColor: circleAvatarBgColor[3], child: Text('曾')),
+                backgroundColor: getNextCircleAvatarBgColor(),
+                child: Text('曾')),
             title: const Text(
                 '曾牧師這本書顛覆傳統，詮釋了矽谷的創新精神⋯⋯一個牧師寫本關於「笑」的書，就如同嚴肅人講笑話，講的時候常有意想不到的效果。'),
             subtitle: Text('矽谷創新頻道「丁丁電視」創辦人丁維平'),
@@ -433,14 +377,16 @@ class BookPraiseSection extends StatelessWidget {
           Divider(),
           ListTile(
             leading: CircleAvatar(
-                backgroundColor: circleAvatarBgColor[4], child: Text('每')),
+                backgroundColor: getNextCircleAvatarBgColor(),
+                child: Text('每')),
             title: const Text('每篇短文都像是曾牧師喜歡的一杯好茶，初嚐不酸，再喝不澀，品完後喉韻甘醇，回味無窮。'),
             subtitle: Text('欣欣教育基金會教育顧問 廖本榮'),
           ),
           Divider(),
           ListTile(
             leading: CircleAvatar(
-                backgroundColor: circleAvatarBgColor[5], child: Text('獨')),
+                backgroundColor: getNextCircleAvatarBgColor(),
+                child: Text('獨')),
             title: const Text(
                 '獨樂樂，不如眾樂樂。我預測你的朋友們會和你一樣，迫不及待地想要享受 《笑裡藏道》。所以，做一件讓他們大為開懷的事一一送他們一人一本吧！'),
             subtitle: Text('北加州全福會會長、優勢頻道執行委員會主席 劉效宏'),
@@ -451,6 +397,75 @@ class BookPraiseSection extends StatelessWidget {
               //onPressed: visitXlcdappWebsite,
               onPressed: () => lauchTargetUrl(bookSiteLink),
               child: const Text('📚請到靈糧書房購買「笑裡藏道」'),
+            ),
+          ),
+          const SizedBox(height: 10),
+        ],
+      ),
+    );
+  }
+}
+
+class AppDeveloperSection extends StatelessWidget {
+  const AppDeveloperSection({super.key});
+  final String xlcdAppAuthor = '張嘉: 「笑裡藏道」App開發者';
+
+  final String bibleGatewayLink =
+      'https://www.biblegateway.com/passage/?search=%E5%B8%96%E6%92%92%E7%BE%85%E5%B0%BC%E8%BF%A6%E5%89%8D%E6%9B%B8+5%3A16-18&version=CUVMPT';
+
+  @override
+  Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'AppDevelopeSection',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
+    });
+
+    return Card(
+      color: Colors.yellow[50],
+      elevation: 8.0,
+      margin: const EdgeInsets.all(8.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/photos/joy_pray_thanks.png',
+              height: MediaQuery.of(context).size.width * (3 / 4),
+              width: MediaQuery.of(context).size.width,
+              //height: 120, width: 640,
+              fit: BoxFit.scaleDown,
+            ),
+          ),
+          Row(
+            children: [
+              CircleAvatar(
+                //backgroundColor: Colors.orange,
+                backgroundColor: getNextCircleAvatarBgColor(),
+                child: Text(
+                  xlcdAppAuthor.substring(0, 1),
+                ),
+              ),
+              const SizedBox(width: 5),
+              Text(
+                xlcdAppAuthor,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          const Text(
+              '  感謝主! 我一生一世如同聖經上應許:「有主的恩惠、慈愛隨著我!」出生於台灣，大學畢業，服完兵役，來美留學，完成電腦碩士及兼職完成企管碩士。'
+              '1981年起即在矽谷電腦公司，從事多種電腦軟體工程開發。2023年從Microsoft退休。'
+              '業餘時領受主的呼召及恩典，在教會裡擔任過多種事奉，傳主福音，跟隨耶穌，榮神益人。'
+              '與妻子Judy目前領受主賜兒孫滿堂。'
+              '祈求藉著「笑裡藏道」書籍+App為主多傳喜樂的福音，領人歸主。頌讚、榮耀歸於我們的神，直到永永遠遠！阿們。'),
+          Center(
+            child: ElevatedButton(
+              //onPressed: visitBibleWebsite,
+              onPressed: () => lauchTargetUrl(bibleGatewayLink),
+              child: const Text('✝️請閱讀線上聖經'),
             ),
           ),
           const SizedBox(height: 10),

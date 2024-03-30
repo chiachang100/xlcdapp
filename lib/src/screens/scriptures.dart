@@ -5,8 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-import '../data/scripture.dart';
-import '../data/joystore.dart';
+import '../data.dart';
 import '../widgets/scripture_list.dart';
 
 class ScripturesScreen extends StatelessWidget {

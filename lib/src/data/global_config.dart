@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../data.dart';
 
 const bool turnonSignIn = true;
+late JoyStore joystoreInstance;
 
 // 紅、橙、黃、綠、藍、靛、紫
 List<Color> circleAvatarBgColor = [

@@ -10,6 +10,7 @@ import 'package:collection/collection.dart';
 import 'scripture.dart';
 import 'joy.dart';
 import 'local_joystore.dart';
+import 'global_config.dart';
 
 final xlcdlog = Logger('joystore');
 
@@ -248,4 +249,4 @@ JoyStore buildJoyStoreFromFirestoreOrLocal({prod = true}) {
 }
 
 // For prod: prod = true
-JoyStore joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
+//JoyStore joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);

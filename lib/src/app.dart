@@ -70,8 +70,7 @@ class _JoystoreState extends State<Joystore> {
         observers: [Joystore.observer],
         refreshListenable: auth,
         debugLogDiagnostics: true,
-        // initialLocation: '/joys/like',
-        initialLocation: '/joys/all',
+        initialLocation: '/joys/like',
         redirect: (context, state) {
           if (turnonSignIn) {
             final signedIn = JoystoreAuth.of(context).signedIn;
@@ -275,8 +274,7 @@ class _JoystoreState extends State<Joystore> {
                       final router = GoRouter.of(context);
                       await JoystoreAuth.of(context)
                           .signIn(value.email, value.password);
-                      // router.go('/joys/like');
-                      router.go('/joys/all');
+                      router.go('/joys/like');
                     },
                   );
                 },

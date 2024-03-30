@@ -20,10 +20,12 @@ import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'src/app.dart';
+import 'src/data.dart';
 
 final xlcdlog = Logger('main');
 late final FirebaseApp app;
 late final FirebaseAuth auth;
+//late JoyStore joystoreInstance;
 
 Future<void> main() async {
   Logger.root.level = Level.ALL;
@@ -44,6 +46,9 @@ Future<void> main() async {
   auth = FirebaseAuth.instanceFor(app: app);
 
   final firestore = FirebaseFirestore.instance;
+
+  //JoyStore joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
+  joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
 
   final settings = firestore.settings.copyWith(persistenceEnabled: true);
   final updatedSettings = firestore.settings
