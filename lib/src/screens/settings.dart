@@ -485,15 +485,16 @@ class CopyrightSection extends StatelessWidget {
       'xlcdapp_screen_class': 'SettingsScreenClass',
     });
 
-    return const Row(
-      children: <Widget>[
-        Text('Copyright '),
-        Icon(Icons.copyright),
-        Text(
-          ' 2024 Chia Chang. All rights reserved.',
-          softWrap: true,
-        ),
-      ],
+    return Card(
+      color: Colors.yellow[50],
+      elevation: 8.0,
+      margin: const EdgeInsets.all(8.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: const Column(
+        children: <Widget>[
+          Text('Copyright (c) 2024 Chia Chang. All rights reserved.'),
+        ],
+      ),
     );
   }
 }
