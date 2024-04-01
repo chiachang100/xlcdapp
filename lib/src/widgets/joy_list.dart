@@ -78,13 +78,8 @@ class JoyList extends StatelessWidget {
                         (joys[index].id % circleAvatarBgColor.length)],
                     child: Text(
                       joys[index].articleId.toString(),
-                      // style: const TextStyle(
-                      //   fontSize: 16,
-                      //   fontWeight: FontWeight.bold,
-                      // ),
                     ),
                   ),
-                  //const SizedBox(width: 5),
                   Expanded(
                     child: Text(
                       joys[index].title,
@@ -93,11 +88,12 @@ class JoyList extends StatelessWidget {
                       ),
                     ),
                   ),
-                  //const SizedBox(width: 5),
                   Chip(
                     avatar: const Icon(Icons.thumb_up_outlined),
                     label: Text('${joys[index].likes}'),
-                    backgroundColor: Colors.yellow[50],
+                    side: BorderSide.none,
+                    //backgroundColor: Colors.yellow[50],
+                    backgroundColor: Color.fromARGB(255, 218, 218, 203),
                   ),
                 ],
               ),
