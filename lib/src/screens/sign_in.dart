@@ -12,7 +12,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:xlcdapp/main.dart';
+import "../data.dart";
 
 typedef OAuthSignIn = void Function();
 
@@ -405,7 +405,7 @@ class _SignInScreenState extends State<SignInScreen> {
       'xlcdapp_screen_class': 'SignInScreenClass',
     });
 
-    // await auth.signInAnonymously();
+    await auth.signInAnonymously();
     widget.onSignIn(
         Credentials(emailController.value.text, passwordController.value.text));
   }

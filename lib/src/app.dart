@@ -40,7 +40,7 @@ class Joystore extends StatefulWidget {
 }
 
 class _JoystoreState extends State<Joystore> {
-  final JoystoreAuth auth = JoystoreAuth();
+  final JoystoreAuth joyAuth = JoystoreAuth();
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +62,13 @@ class _JoystoreState extends State<Joystore> {
           throw ('No child in .router constructor builder');
         }
         return JoystoreAuthScope(
-          notifier: auth,
+          notifier: joyAuth,
           child: child,
         );
       },
       routerConfig: GoRouter(
         observers: [Joystore.observer],
-        refreshListenable: auth,
+        refreshListenable: joyAuth,
         debugLogDiagnostics: true,
         initialLocation: '/joys/like',
         redirect: (context, state) {

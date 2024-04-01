@@ -23,8 +23,8 @@ import 'src/app.dart';
 import 'src/data.dart';
 
 final xlcdlog = Logger('main');
-late final FirebaseApp app;
-late final FirebaseAuth auth;
+// late final FirebaseApp app;
+// late final FirebaseAuth auth;
 //late JoyStore joystoreInstance;
 
 Future<void> main() async {

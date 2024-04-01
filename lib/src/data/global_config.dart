@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import '../data.dart';
+
+late final FirebaseApp app;
+late final FirebaseAuth auth;
 
 const bool turnonSignIn = true;
 late JoyStore joystoreInstance;
