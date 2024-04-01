@@ -55,9 +55,10 @@ Future<void> main() async {
       .copyWith(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
   //firestore.settings = settings;
 
-  if (kIsWeb) {
-    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
-  }
+  // if (kIsWeb) {
+  //   // await FirebaseAuth.instance.setPersistence(Persistence.NONE);
+  //   await auth.setPersistence(Persistence.LOCAL);
+  // }
 
   // if (!kReleaseMode) {
   //   FirebaseAuth.instance.useAuthEmulator('localhost', 9099);

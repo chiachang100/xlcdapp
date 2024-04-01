@@ -73,9 +73,13 @@ class _JoystoreState extends State<Joystore> {
         initialLocation: '/joys/like',
         redirect: (context, state) {
           if (turnonSignIn) {
-            final signedIn = JoystoreAuth.of(context).signedIn;
-            if (state.uri.toString() != '/sign-in' && !signedIn) {
-              return '/sign-in';
+            if (auth.currentUser == null) {
+              print('Current User is null!');
+              final signedIn = JoystoreAuth.of(context).signedIn;
+              if (state.uri.toString() != '/sign-in' && !signedIn) {
+                print('Display sign-in screen!');
+                return '/sign-in';
+              }
             }
           }
           return null;
