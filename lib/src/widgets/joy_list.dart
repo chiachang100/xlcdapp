@@ -93,7 +93,7 @@ class JoyList extends StatelessWidget {
                     label: Text('${joys[index].likes}'),
                     side: BorderSide.none,
                     //backgroundColor: Colors.yellow[50],
-                    backgroundColor: Color.fromARGB(255, 218, 218, 203),
+                    backgroundColor: const Color.fromARGB(255, 218, 218, 203),
                   ),
                 ],
               ),

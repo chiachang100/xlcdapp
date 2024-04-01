@@ -39,6 +39,8 @@ class JoystoreScaffold extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(bottom: 12.0),
           child: AdaptiveScaffold(
+            //transitionDuration: Durations.short1,
+            transitionDuration: Duration.zero,
             selectedIndex: selectedIndex,
             body: (_) => child,
             onSelectedIndexChange: (idx) {
