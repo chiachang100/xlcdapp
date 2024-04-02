@@ -51,6 +51,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         title: const Text('「笑裡藏道」簡介'),
         leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.logout_outlined),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: SafeArea(
         child: SettingsContent(firestore: widget.firestore),

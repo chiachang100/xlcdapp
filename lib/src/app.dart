@@ -56,6 +56,12 @@ class _JoystoreState extends State<Joystore> {
           //bodyLarge: Theme.of(context).textTheme.titleLarge,
           bodyMedium: Theme.of(context).textTheme.titleMedium,
         ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green, // background (button) color
+            foregroundColor: Colors.white, // foreground (text) color
+          ),
+        ),
       ),
       builder: (context, child) {
         if (child == null) {

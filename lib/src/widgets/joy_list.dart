@@ -101,15 +101,10 @@ class JoyList extends StatelessWidget {
                 '${joys[index].scripture.verse}(${joys[index].scripture.name})',
               ),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(),
                 onPressed: (onTap != null ? () => onTap!(joys[index]) : null),
                 child: Text(
                   // '觀賞詳情',
                   getNextText(),
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
               ),
               const SizedBox(height: 10),
