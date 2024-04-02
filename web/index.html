@@ -1,317 +1,211 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html><head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-<head>
-  <base href="/">
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
   <meta charset="UTF-8">
-  <title>xlcdapp</title>
-  <meta name="description" content="笑裡藏道-xlcdapp.">
-  <link rel="manifest" href="manifest.json">
-
-  <!-- Browser meta tags & icons -->
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="笑裡藏道-xlcdapp.">
+
+  <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="xlcdapp">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet" media="all">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans:700" rel="stylesheet" media="all">
+  <meta name="google-signin-client_id" content="613422672008-4naa6lfsid73eci55hc6a757coi52nfr.apps.googleusercontent.com">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBB5H8CECM"></script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <title>xlcdapp</title>
+  <link rel="manifest" href="manifest.json">
+
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-86Z986S59R');
-  </script>
-
-  <!-- Renderer specifier -->
-  <script>
-    let searchParams = new URLSearchParams(window.location.search);
-    if (searchParams.has('renderer')) {
-      window.flutterWebRenderer = searchParams.get('renderer');
-      console.log(searchParams.get('renderer') + ' renderer requested in the URL');
-    }
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = null;
+    const serviceWorkerVersion = null;
   </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script type="application/javascript" src="/assets/packages/flutter_inappwebview_web/assets/web/web_support.js" defer=""></script>
+  <script src="flutter.js" defer=""></script>
+  
+  
+  
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  
+  
+  
+  
+  
+  
+  <style id="splash-screen-style">
+    html {
+      height: 100%
+    }
 
-  <script src="flutter.js" defer></script>
-</head>
-
-<body>
-  <style>
     body {
-      background-color: #030303;
+      margin: 0;
+      min-height: 100%;
+      background-color: #241E30;
+          background-size: 100% 100%;
+    }
+
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .contain {
+      display:block;
+      width:100%; height:100%;
+      object-fit: contain;
+    }
+
+    .stretch {
+      display:block;
+      width:100%; height:100%;
+    }
+
+    .cover {
+      display:block;
+      width:100%; height:100%;
+      object-fit: cover;
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      -ms-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+    }
+
+    .bottomLeft {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .bottomRight {
+      position: absolute;
+      bottom: 0;
+      right: 0;
     }
   </style>
+  <script id="splash-screen-script">
+    function removeSplashFromWeb() {
+      document.getElementById("splash")?.remove();
+      document.getElementById("splash-branding")?.remove();
+      document.body.style.background = "transparent";
+    }
+  </script>
+</head>
+<body>
+  <picture id="splash">
+      <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x" media="(prefers-color-scheme: light)">
+      <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
+      <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
+  </picture>
+  
+  
+  
+    <script>
+      window.addEventListener('load', function(ev) {
+        _flutter.loader.loadEntrypoint({
+          serviceWorker: {
+            serviceWorkerVersion: serviceWorkerVersion,
+          },
+          onEntrypointLoaded: async function(engineInitializer) {
+            let appRunner = await engineInitializer.initializeEngine();
 
-  <!-- Cookie notice -->
+            await appRunner.runApp();
+          }
+        });
+      });
+    </script>
+
 <!--
-  <div>
-    <style>
-      #cookie-notice {
-        background-color: #fff;
-        bottom: 0;
-        box-shadow: 0px 8px 24px rgba(0, 0, 0, .25);
-        -webkit-box-direction: normal;
-        -webkit-font-smoothing: antialiased;
-        display: none;
-        left: 0;
-        opacity: 0;
-        padding: 40px 0;
-        position: fixed;
-        width: 100%;
-        z-index: 11;
-      }
-
-      #cookie-notice.show {
-        animation-delay: .2s;
-        animation-duration: .5s;
-        animation-fill-mode: forwards;
-        animation-iteration-count: 1;
-        animation-name: fadein;
-        animation-timing-function: cubic-bezier(.27, .89, .39, .95);
-        display: block;
-      }
-
-      @keyframes fadein {
-        0% {
-          opacity: 0
-        }
-
-        to {
-          opacity: 1
-        }
-      }
-
-      .container {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        position: relative;
-        top: 1px;
-        margin: 0 auto;
-        max-width: calc(1280px - 100px);
-        width: calc(100% - 24px*2);
-      }
-
-      .container p {
-        max-width: 1200px;
-        margin: 0;
-        margin-right: 50px;
-        color: #4a4a4a;
-        font-size: 16px;
-        font-family: "Roboto", sans-serif;
-        line-height: 1.5;
-
-      }
-
-      p a {
-        color: #0468d7;
-        text-decoration: none;
-      }
-
-      button {
-        background-color: #0468d7;
-        color: #fff;
-        align-items: center;
-        justify-content: center;
-        border: 0 solid;
-        border-radius: 24px;
-        cursor: pointer;
-        display: inline-flex;
-        font-family: "Google Sans", sans-serif;
-        font-size: 14px;
-        font-weight: 700;
-        height: 40px;
-        padding: 0 32px;
-        text-align: center;
-        line-height: 1.15;
-      }
-    </style>
-    <section id="cookie-notice">
-      <div class="container">
-        <p>Google uses cookies to deliver its services, to personalize ads, and to analyze traffic. You can
-          adjust your privacy controls anytime in your
-          <a href="https://myaccount.google.com/data-and-personalization" target="_blank" rel="noopener">Google
-            settings</a>.
-          <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">Learn more</a>.
-        </p>
-        <button id="cookie-consent">Okay</button>
-      </div>
-    </section>
-  </div>
   <script>
-    function _setCookie(name, value) {
-      const expires = "; expires=2147483647"; // ~2038 i.e. until user clears cookies
-      document.cookie = name + "=" + (value || "") + expires + "; SameSite=Strict";
-    }
-
-    function _getCookie(name) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-      }
-      return null;
-    }
-
-    function initCookieNotice() {
-      const notice = document.getElementById('cookie-notice');
-      const consentBtn = document.getElementById('cookie-consent');
-      const cookieKey = 'cookie-consent';
-      const cookieConsentValue = 'true'
-      const activeClass = 'show';
-      if (_getCookie(cookieKey) === cookieConsentValue) {
+    //var serviceWorkerVersion = null;
+    var scriptLoaded = false;
+    function loadMainDartJs() {
+      if (scriptLoaded) {
         return;
       }
-      notice.classList.add(activeClass);
-      consentBtn.classList.add(activeClass);
-      consentBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        _setCookie(cookieKey, cookieConsentValue);
-        notice.classList.remove(activeClass);
-        consentBtn.classList.add(activeClass);
-      });
+      scriptLoaded = true;
+      var scriptTag = document.createElement('script');
+      scriptTag.src = 'main.dart.js';
+      scriptTag.type = 'application/javascript';
+      document.body.append(scriptTag);
     }
 
-    initCookieNotice();
+    if ('serviceWorker' in navigator) {
+      // Service workers are supported. Use them.
+      window.addEventListener('load', function () {
+        // Wait for registration to finish before dropping the <script> tag.
+        // Otherwise, the browser will load the script multiple times,
+        // potentially different versions.
+        var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
+        navigator.serviceWorker.register(serviceWorkerUrl)
+          .then((reg) => {
+            function waitForActivation(serviceWorker) {
+              serviceWorker.addEventListener('statechange', () => {
+                if (serviceWorker.state == 'activated') {
+                  console.log('Installed new service worker.');
+                  loadMainDartJs();
+                }
+              });
+            }
+            if (!reg.active && (reg.installing || reg.waiting)) {
+              // No active web worker and we have installed or are installing
+              // one for the first time. Simply wait for it to activate.
+              waitForActivation(reg.installing || reg.waiting);
+            } else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
+              // When the app updates the serviceWorkerVersion changes, so we
+              // need to ask the service worker to update.
+              console.log('New service worker available.');
+              reg.update();
+              waitForActivation(reg.installing);
+            } else {
+              // Existing service worker is still good.
+              console.log('Loading app from service worker.');
+              loadMainDartJs();
+            }
+          });
+
+        // If service worker doesn't succeed in a reasonable amount of time,
+        // fallback to plaint <script> tag.
+        setTimeout(() => {
+          if (!scriptLoaded) {
+            console.warn(
+              'Failed to load app from service worker. Falling back to plain <script> tag.',
+            );
+            loadMainDartJs();
+          }
+        }, 4000);
+      });
+    } else {
+      // Service workers not supported. Just drop the <script> tag.
+      loadMainDartJs();
+    }
   </script>
 -->
-  <!-- Background -->
-  <style>
-    body.light {
-      background-color: #E6EBEB;
-    }
 
-    body.dark {
-      background-color: #241E30;
-    }
-  </style>
-  <script>
-    var queryParams = new URLSearchParams(window.location.search);
 
-    // Set the theme from the URL param, with fallback to user preference if no theme is
-    // specified.
-    var theme = queryParams.get("brightness");
-    theme ||= window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-    document.body.classList.add(theme);
-  </script>
 
-  <!-- Loading indicator -->
-  <div id="loading">
-    <style>
-      body {
-        inset: 0;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-        position: fixed;
-      }
-
-      #loading {
-        align-items: center;
-        display: flex;
-        height: 100%;
-        justify-content: center;
-        width: 100%;
-      }
-
-      #loading img {
-        animation: 1s ease-in-out 0s infinite alternate breathe;
-        opacity: .66;
-        transition: opacity .4s;
-      }
-
-      #loading.main_done img {
-        opacity: 1;
-      }
-
-      #loading.init_done img {
-        animation: .33s ease-in-out 0s 1 forwards zooooom;
-        opacity: .05;
-      }
-
-      @keyframes breathe {
-        from {
-          transform: scale(1)
-        }
-
-        to {
-          transform: scale(0.95)
-        }
-      }
-
-      @keyframes zooooom {
-        from {
-          transform: scale(1)
-        }
-
-        to {
-          transform: scale(0.01)
-        }
-      }
-    </style>
-    <img src="icons/Icon-192.png" alt="Loading indicator..." />
-  </div>
-  <script>
-    window.addEventListener('load', function () {
-      var loading = document.querySelector('#loading');
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        }
-      }).then(function (engineInitializer) {
-        loading.classList.add('main_done');
-        return engineInitializer.initializeEngine();
-      }).then(function (appRunner) {
-        loading.classList.add('init_done');
-        return appRunner.runApp();
-      }).then(function (app) {
-        // Wait a few milliseconds so users can see the "zoooom" animation
-        // before getting rid of the "loading" div.
-        window.setTimeout(function () {
-          loading.remove();
-        }, 200);
-      });
-    });
-  </script>
-
-  <!-- App -->
-
-  <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyCxMOWaAH86WBhDlpm6xKlOjC3BuJqzzrc",
-      authDomain: "xlcdapp.firebaseapp.com",
-      projectId: "xlcdapp",
-      storageBucket: "xlcdapp.appspot.com",
-      messagingSenderId: "613422672008",
-      appId: "1:613422672008:web:b2ccf3a963676d8a25573d",
-      measurementId: "G-86Z986S59R"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
-</body>
-
-</html>
+</body></html>

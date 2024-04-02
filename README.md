@@ -12,7 +12,10 @@ xlcdapp-笑裡藏道.
   - [Flutter samples: Navigation and Routing](https://flutter.github.io/samples/navigation_and_routing.html)
   - [How to add a YouTube video to your Flutter app? by 
 Walnut Software](https://walnutistanbul.medium.com/how-to-add-a-youtube-video-to-your-flutter-app-40c0125414ba)
-- [Flutter package: youtube_player_flutter](youtube_player_flutter)
+
+---
+### Flutter Packages
+- [youtube_player_flutter](youtube_player_flutter)
   - `youtube_player_flutter` depends on `flutter_inappwebview`
     - [flutter_inappwebview](https://pub.dev/packages/flutter_inappwebview)
     - [flutter_inappwebview: Getting Started](https://inappwebview.dev/docs/intro/)
@@ -23,9 +26,12 @@ Walnut Software](https://walnutistanbul.medium.com/how-to-add-a-youtube-video-to
 "Error: UnimplementedError: addJavaScriptHandler is not implemented on the current platform."
 ...
 ```
-- [Flutter package: youtube_player_iframe](https://pub.dev/packages/youtube_player_iframe)
+- [youtube_player_iframe](https://pub.dev/packages/youtube_player_iframe)
   - [Depends on webview_flutter (Android & iOS)](https://pub.dev/packages/webview_flutter)
 - [Material Icons](https://fonts.google.com/icons)
+- [flutter_native_splash](https://pub.dev/packages/flutter_native_splash)
+  - After adding your settings to pubspec.yaml, run the following command in the terminal:
+    - `dart run flutter_native_splash:create`
 
 ---
 ## Getting Started

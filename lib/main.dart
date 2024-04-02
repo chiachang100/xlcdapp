@@ -18,6 +18,7 @@ import 'package:firebase_core/firebase_core.dart';
 //import 'package:firebase_database/firebase_database.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'src/app.dart';
 import 'src/data.dart';
@@ -33,7 +34,10 @@ Future<void> main() async {
     print('${record.level.name}: ${record.time}: ${record.message}');
   });
 
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  // Preserve the splash screen during the initialization.
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.blueAccent,
@@ -79,6 +83,9 @@ Future<void> main() async {
   setPathUrlStrategy();
 
   setupWindow();
+
+  // Remove the splash screen.
+  FlutterNativeSplash.remove();
   runApp(Joystore(firestore: firestore));
   // SystemChrome.setPreferredOrientations(
   //         <DeviceOrientation>[DeviceOrientation.portraitUp])
