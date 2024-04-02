@@ -3,6 +3,9 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:flutter/widgets.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import "data.dart";
 
 /// A mock authentication service
 class JoystoreAuth extends ChangeNotifier {
@@ -11,6 +14,14 @@ class JoystoreAuth extends ChangeNotifier {
   bool get signedIn => _signedIn;
 
   Future<void> signOut() async {
+    FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
+      'xlcdapp_screen': 'SignOut',
+      'xlcdapp_screen_class': 'JoystoreAuthClass',
+    });
+
+    await auth.signOut();
+    await GoogleSignIn().signOut();
+
     await Future<void>.delayed(const Duration(milliseconds: 200));
     // Sign out.
     _signedIn = false;

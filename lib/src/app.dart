@@ -80,7 +80,7 @@ class _JoystoreState extends State<Joystore> {
         redirect: (context, state) {
           if (turnonSignIn) {
             if (auth.currentUser == null) {
-              print('Current User is null!');
+              print('Current User is signed out!');
               final signedIn = JoystoreAuth.of(context).signedIn;
               if (state.uri.toString() != '/sign-in' && !signedIn) {
                 print('Display sign-in screen!');

@@ -261,7 +261,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     TextSpan(
                                       text: mode == AuthMode.login
                                           ? 'Register now'
-                                          : 'Click to login',
+                                          : 'Click to Sign in',
                                       style:
                                           const TextStyle(color: Colors.blue),
                                       recognizer: TapGestureRecognizer()
@@ -492,7 +492,7 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
-  Future<void> _signOut() async {
+  Future<void> signOut() async {
     FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
       'xlcdapp_screen': 'SignOut',
       'xlcdapp_screen_class': 'SignInScreenClass',

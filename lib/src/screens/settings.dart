@@ -54,7 +54,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.logout_outlined),
-            onPressed: () {},
+            onPressed: () async {
+              await JoystoreAuth.of(context).signOut();
+              xlcdlog.info('User just signed out!');
+
+              FirebaseAnalytics.instance
+                  .logEvent(name: 'screen_view', parameters: {
+                'xlcdapp_screen': 'UserSignedOut',
+                'xlcdapp_screen_class': 'SettingsScreenClass',
+              });
+            },
           ),
         ],
       ),
@@ -139,15 +148,15 @@ class QRCodeSection extends StatelessWidget {
             ],
           ),
           const Text(
-            '  請掃描二維碼(QR Code)方便使用xlcdapp(「笑裡藏道」App)。',
+            '  請掃描二維碼(QR Code)便於使用xlcdapp(「笑裡藏道」App)。',
           ),
-          Center(
-            child: ElevatedButton(
-              //onPressed: visitXlcdappWebsite,
-              onPressed: () => lauchTargetUrl(xlcdappWebsiteLink),
-              child: const Text('🔗xlcdapp(「笑裡藏道」App)'),
-            ),
-          ),
+          // Center(
+          //   child: ElevatedButton(
+          //     //onPressed: visitXlcdappWebsite,
+          //     onPressed: () => lauchTargetUrl(xlcdappWebsiteLink),
+          //     child: const Text('🔗xlcdapp(「笑裡藏道」App)'),
+          //   ),
+          // ),
           const SizedBox(height: 10),
         ],
       ),
