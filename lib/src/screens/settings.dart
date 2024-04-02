@@ -53,13 +53,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
         leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
         actions: <Widget>[
           IconButton(
+            icon: const Icon(Icons.settings_outlined),
+            tooltip: 'Settings',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('There are currently no settings available.'),
+                ),
+              );
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.logout_outlined),
+            tooltip: 'Sign out',
             onPressed: () async {
               await JoystoreAuth.of(context).signOut();
               xlcdlog.info('User just signed out!');
 
               FirebaseAnalytics.instance
-                  .logEvent(name: 'screen_view', parameters: {
+                  .logEvent(name: 'signin_view', parameters: {
                 'xlcdapp_screen': 'UserSignedOut',
                 'xlcdapp_screen_class': 'SettingsScreenClass',
               });
@@ -222,7 +234,7 @@ class BookIntroSection extends StatelessWidget {
             child: ElevatedButton(
               //onPressed: visitBuyBookWebsite,
               onPressed: () => lauchTargetUrl(bookSiteLink),
-              child: const Text('📚請到靈糧書房購買「笑裡藏道」'),
+              child: const Text('📚靈糧書房購書'),
             ),
           ),
           const SizedBox(height: 10),
@@ -292,7 +304,7 @@ class BookAuthorSection extends StatelessWidget {
             child: ElevatedButton(
               //onPressed: visitYouTubePlaylist,
               onPressed: () => lauchTargetUrl(youtubePlaylistLink),
-              child: const Text('▶️曾牧師講道視頻'),
+              child: const Text('▶️曾興才牧師講道視頻'),
             ),
           ),
           const SizedBox(height: 10),
@@ -355,63 +367,63 @@ class BookPraiseSection extends StatelessWidget {
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: getNextCircleAvatarBgColor(),
-                child: Text('來')),
+                child: const Text('來')),
             title: const Text(
               '來，領受一份 「幽默感」的恩膏！ 累積你的笑話存款，提升你的親和指數，打開分享真理的機會之門！',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            subtitle: Text(''),
+            subtitle: const Text(''),
           ),
-          Divider(),
+          const Divider(),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: getNextCircleAvatarBgColor(),
-                child: Text('若')),
+                child: const Text('若')),
             title: const Text(
                 '若同樣有功效，能用幽默的笑話，把神的道解明，豈不更好？鄭重推薦本書，幫助你分享真道，有笑果，更有效果！'),
-            subtitle: Text('靈糧全球使徒性網絡主席 周神助'),
+            subtitle: const Text('靈糧全球使徒性網絡主席 周神助'),
           ),
           Divider(),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: getNextCircleAvatarBgColor(),
-                child: Text('幽')),
+                child: const Text('幽')),
             title: const Text(
                 '幽默感能使我們從新的角度來看每天周遭發生的事，也使我們可以笑談自己的缺失，並接納別人的軟弱。事實上，幽默感能幫助我們的信仰 更人性化，使人更容易來親近神。'),
-            subtitle: Text('美國加州矽谷生命河靈糧堂主任牧師 劉彤'),
+            subtitle: const Text('美國加州矽谷生命河靈糧堂主任牧師 劉彤'),
           ),
           Divider(),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: getNextCircleAvatarBgColor(),
-                child: Text('曾')),
+                child: const Text('曾')),
             title: const Text(
                 '曾牧師這本書顛覆傳統，詮釋了矽谷的創新精神⋯⋯一個牧師寫本關於「笑」的書，就如同嚴肅人講笑話，講的時候常有意想不到的效果。'),
-            subtitle: Text('矽谷創新頻道「丁丁電視」創辦人丁維平'),
+            subtitle: const Text('矽谷創新頻道「丁丁電視」創辦人丁維平'),
           ),
           Divider(),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: getNextCircleAvatarBgColor(),
-                child: Text('每')),
+                child: const Text('每')),
             title: const Text('每篇短文都像是曾牧師喜歡的一杯好茶，初嚐不酸，再喝不澀，品完後喉韻甘醇，回味無窮。'),
-            subtitle: Text('欣欣教育基金會教育顧問 廖本榮'),
+            subtitle: const Text('欣欣教育基金會教育顧問 廖本榮'),
           ),
           Divider(),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: getNextCircleAvatarBgColor(),
-                child: Text('獨')),
+                child: const Text('獨')),
             title: const Text(
                 '獨樂樂，不如眾樂樂。我預測你的朋友們會和你一樣，迫不及待地想要享受 《笑裡藏道》。所以，做一件讓他們大為開懷的事一一送他們一人一本吧！'),
-            subtitle: Text('北加州全福會會長、優勢頻道執行委員會主席 劉效宏'),
+            subtitle: const Text('北加州全福會會長、優勢頻道執行委員會主席 劉效宏'),
           ),
-          Divider(),
+          const Divider(),
           Center(
             child: ElevatedButton(
               //onPressed: visitXlcdappWebsite,
               onPressed: () => lauchTargetUrl(bookSiteLink),
-              child: const Text('📚請到靈糧書房購買「笑裡藏道」'),
+              child: const Text('📚靈糧書房購書'),
             ),
           ),
           const SizedBox(height: 10),
@@ -480,7 +492,7 @@ class AppDeveloperSection extends StatelessWidget {
             child: ElevatedButton(
               //onPressed: visitBibleWebsite,
               onPressed: () => lauchTargetUrl(bibleGatewayLink),
-              child: const Text('✝️請閱讀線上聖經'),
+              child: const Text('✝️線上閱讀聖經'),
             ),
           ),
           const SizedBox(height: 10),
