@@ -300,6 +300,13 @@ class _YoutubePlayerIFrameSectionState
   // final _controller = YoutubePlayerController(
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'YoutubePlayerIFrameSection',
+      'xlcdapp_screen_class': 'JoyDetailsScreenClass',
+    });
+
+    xlcdlog.info('Using YoutubePlayerIFrame.');
+
     return ypi.YoutubePlayerScaffold(
       controller: _controller,
       aspectRatio: 16 / 9,
@@ -367,6 +374,13 @@ class _YoutubePlayerFlutterSectionState
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'YoutubePlayerFlutterSection',
+      'xlcdapp_screen_class': 'JoyDetailsScreenClass',
+    });
+
+    xlcdlog.info('Using YoutubePlayerFlutter.');
+
     return ypf.YoutubePlayerBuilder(
       onExitFullScreen: () {
         SystemChrome.setPreferredOrientations(DeviceOrientation.values);
