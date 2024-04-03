@@ -62,15 +62,15 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
       appBar: AppBar(
         title: Text('${widget.joy!.articleId}. ${widget.joy!.title}'),
 
-        // TODO:
+        // Disable the hack for now.
         // The following leading handler for back button is a hack:
         // without it, web works fine; however, iOS and Android do not work.
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            GoRouter.of(context).go('/joys/like');
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.arrow_back),
+        //   onPressed: () {
+        //     GoRouter.of(context).go('/joys/like');
+        //   },
+        // ),
 
         actions: <Widget>[
           ActionChip(
