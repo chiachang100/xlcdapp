@@ -6,6 +6,7 @@
 import 'package:logging/logging.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb, kReleaseMode;
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:go_router/go_router.dart';
@@ -13,9 +14,9 @@ import 'package:url_launcher/link.dart';
 //import 'package:web/helpers.dart';
 import 'package:flutter/services.dart';
 import 'package:xlcdapp/src/screens/scaffold.dart';
-//import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart' as ypf;
 //import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:youtube_player_iframe/youtube_player_iframe.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart' as ypi;
 
 import '../data.dart';
 import 'scripture_details.dart';
@@ -58,20 +59,10 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
         ),
       );
     }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('${widget.joy!.articleId}. ${widget.joy!.title}'),
-
-        // Disable the hack for now.
-        // The following leading handler for back button is a hack:
-        // without it, web works fine; however, iOS and Android do not work.
-        // leading: IconButton(
-        //   icon: const Icon(Icons.arrow_back),
-        //   onPressed: () {
-        //     GoRouter.of(context).go('/joys/like');
-        //   },
-        // ),
-
         actions: <Widget>[
           ActionChip(
             avatar: const Icon(Icons.thumb_up_outlined),
@@ -112,8 +103,13 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
                 description: widget.joy!.talk, iconUrl: iconUrl),
             const DividerSection(Icon(Icons.live_tv_outlined)),
             //YoutubePlayerIFrameSection(videoId: 'Mez7DnMOlgc', videoName: '不要怕！你要得人了 | 曾興才牧師 | 20240225 | 生命河 ROLCCmedia'),
-            YoutubePlayerIFrameSection(
-                videoId: widget.joy!.videoId, videoName: widget.joy!.videoName),
+            (useYoutubePlayerFlutterVersion && !kIsWeb)
+                ? YoutubePlayerFlutterSection(
+                    videoId: widget.joy!.videoId,
+                    videoName: widget.joy!.videoName)
+                : YoutubePlayerIFrameSection(
+                    videoId: widget.joy!.videoId,
+                    videoName: widget.joy!.videoName),
             const SizedBox(height: 20),
           ],
         ),
@@ -263,13 +259,13 @@ class YoutubePlayerIFrameSection extends StatefulWidget {
 
 class _YoutubePlayerIFrameSectionState
     extends State<YoutubePlayerIFrameSection> {
-  late YoutubePlayerController _controller;
+  late ypi.YoutubePlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = YoutubePlayerController(
-      params: const YoutubePlayerParams(
+    _controller = ypi.YoutubePlayerController(
+      params: const ypi.YoutubePlayerParams(
         showControls: true,
         mute: false,
         showFullscreenButton: true,
@@ -290,14 +286,21 @@ class _YoutubePlayerIFrameSectionState
 
   @override
   void dispose() {
-    _controller.close();
-    super.dispose();
+    try {
+      _controller.close();
+      super.dispose();
+    } catch (e) {
+      //xlcdlog.info('Caught exception: $e');
+      xlcdlog.info('Caught exception...');
+    } finally {
+      //super.dispose();
+    }
   }
 
   // final _controller = YoutubePlayerController(
   @override
   Widget build(BuildContext context) {
-    return YoutubePlayerScaffold(
+    return ypi.YoutubePlayerScaffold(
       controller: _controller,
       aspectRatio: 16 / 9,
       builder: (context, player) => Padding(
@@ -321,31 +324,34 @@ class _YoutubePlayerIFrameSectionState
   }
 }
 
-/* 
 //
-// YoutubePlayerSection uses [youtube_player_flutter](https://pub.dev/packages/youtube_player_flutter). 
+// YoutubePlayerFlutterSection uses [youtube_player_flutter](https://pub.dev/packages/youtube_player_flutter).
 // Only works for Android and iOS. Web was failed. See README.md file for detailed information.
 //
-class YoutubePlayerSection extends StatefulWidget {
-  const YoutubePlayerSection({super.key, required this.videoId});
+class YoutubePlayerFlutterSection extends StatefulWidget {
+  const YoutubePlayerFlutterSection(
+      {super.key, required this.videoId, required this.videoName});
   final String videoId;
+  final String videoName;
 
   @override
-  State<YoutubePlayerSection> createState() => _YoutubePlayerSectionState();
+  State<YoutubePlayerFlutterSection> createState() =>
+      _YoutubePlayerFlutterSectionState();
 }
 
-class _YoutubePlayerSectionState extends State<YoutubePlayerSection> {
-  late YoutubePlayerController _controller;
+class _YoutubePlayerFlutterSectionState
+    extends State<YoutubePlayerFlutterSection> {
+  late ypf.YoutubePlayerController _controller;
   bool isFullScreen = false;
 
-//videoId = YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=BBAyRBTfsOU");
+//videoId = ypf.YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=BBAyRBTfsOU");
 
   @override
   void initState() {
     super.initState();
-    _controller = YoutubePlayerController(
+    _controller = ypf.YoutubePlayerController(
       initialVideoId: widget.videoId,
-      flags: YoutubePlayerFlags(
+      flags: const ypf.YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
         //isLive: true,
@@ -361,23 +367,32 @@ class _YoutubePlayerSectionState extends State<YoutubePlayerSection> {
 
   @override
   Widget build(BuildContext context) {
-    return YoutubePlayerBuilder(
+    return ypf.YoutubePlayerBuilder(
       onExitFullScreen: () {
         SystemChrome.setPreferredOrientations(DeviceOrientation.values);
         setState(() {
           isFullScreen = false;
         });
       },
-      player: YoutubePlayer(
+      player: ypf.YoutubePlayer(
         controller: _controller,
         liveUIColor: Colors.amber,
         showVideoProgressIndicator: true,
+        aspectRatio: 16 / 9,
       ),
       builder: (context, player) => Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding:
+            const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20, right: 20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Text(
+              '(${widget.videoName})',
+              softWrap: true,
+              style: const TextStyle(
+                fontSize: 12.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             player,
           ],
         ),
@@ -385,4 +400,3 @@ class _YoutubePlayerSectionState extends State<YoutubePlayerSection> {
     );
   }
 }
- */

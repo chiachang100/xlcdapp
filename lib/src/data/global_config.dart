@@ -3,10 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../data.dart';
 
+const bool turnonSignIn = true;
+const bool useYoutubePlayerFlutterVersion = true;
+
 late final FirebaseApp app;
 late final FirebaseAuth auth;
-
-const bool turnonSignIn = true;
 late JoyStore joystoreInstance;
 
 // 紅、橙、黃、綠、藍、靛、紫

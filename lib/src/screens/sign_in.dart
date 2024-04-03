@@ -406,6 +406,9 @@ class _SignInScreenState extends State<SignInScreen> {
     });
 
     await auth.signInAnonymously();
+    xlcdlog.info(
+        'SingInAnonymously uid: ${FirebaseAuth.instance.currentUser?.uid}');
+
     widget.onSignIn(
         Credentials(emailController.value.text, passwordController.value.text));
   }
@@ -444,6 +447,9 @@ class _SignInScreenState extends State<SignInScreen> {
         });
       }
       if (user != null) {
+        xlcdlog.info(
+            'SingInWithEmailAndPassword uid: ${FirebaseAuth.instance.currentUser?.uid}');
+
         widget.onSignIn(Credentials(
             emailController.value.text, passwordController.value.text));
 
@@ -481,6 +487,9 @@ class _SignInScreenState extends State<SignInScreen> {
       userCredential = await auth.signInWithCredential(credential);
       user = userCredential.user;
       if (user != null) {
+        xlcdlog.info(
+            'SingInWithGoogle uid: ${FirebaseAuth.instance.currentUser?.uid}');
+
         widget.onSignIn(Credentials(
             emailController.value.text, passwordController.value.text));
 

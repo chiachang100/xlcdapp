@@ -15,9 +15,12 @@ Walnut Software](https://walnutistanbul.medium.com/how-to-add-a-youtube-video-to
 
 ---
 ### Flutter Packages
+#### YouTube Player packages: youtube_player_flutter, flutter_inappwebview, and youtube_player_iframe
 - [youtube_player_flutter](youtube_player_flutter)
+  - `flutter pub add youtube_player_flutter`
   - `youtube_player_flutter` depends on `flutter_inappwebview`
     - [flutter_inappwebview](https://pub.dev/packages/flutter_inappwebview)
+      - `flutter pub add flutter_inappwebview`
     - [flutter_inappwebview: Getting Started](https://inappwebview.dev/docs/intro/)
   - NOTE:
     - For Android & iOS: it seems to work fine.
@@ -33,6 +36,10 @@ Walnut Software](https://walnutistanbul.medium.com/how-to-add-a-youtube-video-to
   - After adding your settings to pubspec.yaml, run the following command in the terminal:
     - `dart run flutter_native_splash:create`
 
+- IMPORTANT NOTES:
+  - For Web: use `youtube_player_iframe`.
+  - For Android and iOS: use `youtube_player_flutter` and  `flutter_inappwebview`.
+  
 ---
 ## Getting Started
 

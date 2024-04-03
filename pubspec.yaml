@@ -1,7 +1,7 @@
 name: xlcdapp
 description: "xlcdapp-笑裡藏道"
 publish_to: 'none'
-version: 1.4.6
+version: 1.5.0
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
@@ -13,10 +13,6 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   # Firebase
-  #cloud_firestore: ^4.8.5
-  #firebase_core: ^2.12.0
-  #firebase_analytics: ^10.4.0
-  #firebase_auth: ^4.6.0
   cloud_firestore: ^4.15.5
   firebase_analytics: ^10.8.5
   firebase_auth: ^4.17.5
@@ -41,6 +37,8 @@ dependencies:
   flutter_adaptive_scaffold: ^0.1.10+1
   flutter_signin_button: ^2.0.0
   flutter_native_splash: ^2.4.0
+  youtube_player_flutter: ^9.0.0
+  flutter_inappwebview: ^6.0.0
 
 dev_dependencies:
   flutter_test:
