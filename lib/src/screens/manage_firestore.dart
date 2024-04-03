@@ -68,13 +68,17 @@ class FirebaseDbSection extends StatelessWidget {
 
   final String xlcdFirestore = '儲藏庫初始設定和搜尋';
 
-  void joysAddData() async {
-    // Add new documents
-    //for (var joy in firestoreDbInstance.allJoys) {
-    for (var joy in joystoreInstance.allJoys) {
-      // firestore.collection("joys").add(joy.toFirestore()).then(
-      //     (DocumentReference doc) =>
-      //         xlcdlog.info('DocumentSnapshot added with ID: ${doc.id}'));
+  void initializeJoystoreData() async {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'initializeJoystoreData',
+      'xlcdapp_screen_class': 'ManageFirestoreScreenClass',
+    });
+
+    // Build JoyStore Instance from local JoyStore
+    JoyStore firestoreDbInstance = buildJoyStoreFromLocal();
+
+    // Initialize the new documents
+    for (var joy in firestoreDbInstance.allJoys) {
       final docRef = firestore.collection("joys").doc(joy.articleId.toString());
       // Add document
       docRef
@@ -92,7 +96,12 @@ class FirebaseDbSection extends StatelessWidget {
     }
   }
 
-  void joysReadData() async {
+  void readJoystoreData() async {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'readJoystoreData',
+      'xlcdapp_screen_class': 'ManageFirestoreScreenClass',
+    });
+
     await firestore
         .collection("joys")
         .orderBy("likes", descending: true)
@@ -152,13 +161,13 @@ class FirebaseDbSection extends StatelessWidget {
           const Text('「笑裡藏道」: 儲藏庫初始設定和搜尋'),
           Center(
             child: ElevatedButton(
-              onPressed: joysReadData,
+              onPressed: readJoystoreData,
               child: const Text('🔍搜尋'),
             ),
           ),
           const SizedBox(height: 10),
           ElevatedButton(
-            onPressed: joysAddData,
+            onPressed: initializeJoystoreData,
             child: const Text('⚙️初始設定'),
           ),
           const SizedBox(height: 10),
