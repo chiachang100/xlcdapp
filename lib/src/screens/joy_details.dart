@@ -61,6 +61,17 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('${widget.joy!.articleId}. ${widget.joy!.title}'),
+
+        // TODO:
+        // The following leading handler for back button is a hack:
+        // without it, web works fine; however, iOS and Android do not work.
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            GoRouter.of(context).go('/joys/like');
+          },
+        ),
+
         actions: <Widget>[
           ActionChip(
             avatar: const Icon(Icons.thumb_up_outlined),
