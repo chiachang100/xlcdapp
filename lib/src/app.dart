@@ -43,12 +43,16 @@ class _JoystoreState extends State<Joystore> {
   final JoystoreAuth joyAuth = JoystoreAuth();
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'MainAppScreen',
       'xlcdapp_screen_class': 'JoystoreClass',
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

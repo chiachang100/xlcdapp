@@ -46,12 +46,16 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
           );
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'JoyDetailsScreen',
       'xlcdapp_screen_class': 'JoyDetailsScreenClass',
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     if (widget.joy == null) {
       return const Scaffold(
         body: Center(
@@ -264,6 +268,11 @@ class _YoutubePlayerIFrameSectionState
   @override
   void initState() {
     super.initState();
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'YoutubePlayerIFrameSection',
+      'xlcdapp_screen_class': 'JoyDetailsScreenClass',
+    });
+
     _controller = ypi.YoutubePlayerController(
       params: const ypi.YoutubePlayerParams(
         showControls: true,
@@ -302,11 +311,6 @@ class _YoutubePlayerIFrameSectionState
   // final _controller = YoutubePlayerController(
   @override
   Widget build(BuildContext context) {
-    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': 'YoutubePlayerIFrameSection',
-      'xlcdapp_screen_class': 'JoyDetailsScreenClass',
-    });
-
     return ypi.YoutubePlayerScaffold(
       controller: _controller,
       aspectRatio: 16 / 9,
@@ -356,6 +360,11 @@ class _YoutubePlayerFlutterSectionState
   @override
   void initState() {
     super.initState();
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'YoutubePlayerFlutterSection',
+      'xlcdapp_screen_class': 'JoyDetailsScreenClass',
+    });
+
     _controller = ypf.YoutubePlayerController(
       initialVideoId: widget.videoId,
       flags: const ypf.YoutubePlayerFlags(
@@ -376,11 +385,6 @@ class _YoutubePlayerFlutterSectionState
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
-      'xlcdapp_screen': 'YoutubePlayerFlutterSection',
-      'xlcdapp_screen_class': 'JoyDetailsScreenClass',
-    });
-
     return ypf.YoutubePlayerBuilder(
       onExitFullScreen: () {
         SystemChrome.setPreferredOrientations(DeviceOrientation.values);

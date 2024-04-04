@@ -41,12 +41,16 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': '笑裡藏道簡介Screen',
       'xlcdapp_screen_class': 'SettingsScreenClass',
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('「笑裡藏道」簡介'),

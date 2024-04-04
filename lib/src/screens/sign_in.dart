@@ -91,6 +91,10 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   void initState() {
     super.initState();
+    FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
+      'xlcdapp_screen': 'SignInScreen',
+      'xlcdapp_screen_class': 'SignInScreenClass',
+    });
 
     // if (withSilentVerificationSMSMFA && !kIsWeb) {
     //   FirebaseMessaging messaging = FirebaseMessaging.instance;
@@ -106,11 +110,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAnalytics.instance.logEvent(name: 'signin_view', parameters: {
-      'xlcdapp_screen': 'SignInScreen',
-      'xlcdapp_screen_class': 'SignInScreenClass',
-    });
-
     return GestureDetector(
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(

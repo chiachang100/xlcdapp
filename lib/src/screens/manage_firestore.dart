@@ -23,12 +23,16 @@ class ManageFirestoreScreen extends StatefulWidget {
 
 class _ManageFirestoreScreenState extends State<ManageFirestoreScreen> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'ManageFirestoreScreen',
       'xlcdapp_screen_class': 'ManageFirestoreScreenClass',
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Manage Firestore'),
