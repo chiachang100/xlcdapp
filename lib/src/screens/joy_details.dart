@@ -282,6 +282,8 @@ class _YoutubePlayerIFrameSectionState
 
     //_controller.loadVideoById(videoId: widget.videoId); // Auto Play
     _controller.cueVideoById(videoId: widget.videoId); // Manual Play
+
+    xlcdlog.info('Using YoutubePlayerIFrame.');
   }
 
   @override
@@ -304,8 +306,6 @@ class _YoutubePlayerIFrameSectionState
       'xlcdapp_screen': 'YoutubePlayerIFrameSection',
       'xlcdapp_screen_class': 'JoyDetailsScreenClass',
     });
-
-    xlcdlog.info('Using YoutubePlayerIFrame.');
 
     return ypi.YoutubePlayerScaffold(
       controller: _controller,
@@ -370,6 +370,8 @@ class _YoutubePlayerFlutterSectionState
           });
         }
       });
+
+    xlcdlog.info('Using YoutubePlayerFlutter.');
   }
 
   @override
@@ -378,8 +380,6 @@ class _YoutubePlayerFlutterSectionState
       'xlcdapp_screen': 'YoutubePlayerFlutterSection',
       'xlcdapp_screen_class': 'JoyDetailsScreenClass',
     });
-
-    xlcdlog.info('Using YoutubePlayerFlutter.');
 
     return ypf.YoutubePlayerBuilder(
       onExitFullScreen: () {
