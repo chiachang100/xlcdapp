@@ -8,7 +8,7 @@ final localJoyStoreNext = [
     "prelude": '  靈巧像蛇、馴良像鴿子 ，。...',
     "laugh": '  靈巧像蛇、馴良像鴿子 ，。..'
         '\n\n  靈巧像蛇、馴良像鴿子 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  靈巧像蛇、馴良像鴿子 ，。..',
@@ -26,7 +26,7 @@ final localJoyStoreNext = [
     "prelude": '  隱藏的事會顯出來 ，。...',
     "laugh": '  隱藏的事會顯出來 ，。..'
         '\n\n  隱藏的事會顯出來 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  隱藏的事會顯出來 ，。..',
@@ -44,7 +44,7 @@ final localJoyStoreNext = [
     "prelude": '  勇敢改變自己 ，。...',
     "laugh": '  勇敢改變自己 ，。..'
         '\n\n  勇敢改變自己 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  勇敢改變自己 ，。..',
@@ -62,7 +62,7 @@ final localJoyStoreNext = [
     "prelude": '  要凡事謝恩 ，。...',
     "laugh": '  要凡事謝恩 ，。..'
         '\n\n  要凡事謝恩 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  要凡事謝恩 ，。..',
@@ -80,7 +80,7 @@ final localJoyStoreNext = [
     "prelude": '  愛人不可虛假 ，。...',
     "laugh": '  愛人不可虛假 ，。..'
         '\n\n  愛人不可虛假 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  愛人不可虛假 ，。..',
@@ -98,7 +98,7 @@ final localJoyStoreNext = [
     "prelude": '  不要以外貌看人 ，。...',
     "laugh": '  不要以外貌看人 ，。..'
         '\n\n  不要以外貌看人 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  不要以外貌看人 ，。..',
@@ -116,7 +116,7 @@ final localJoyStoreNext = [
     "prelude": '  喜樂的心是良藥 ，。...',
     "laugh": '  喜樂的心是良藥 ，。..'
         '\n\n  喜樂的心是良藥 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  喜樂的心是良藥 ，。..',
@@ -134,7 +134,7 @@ final localJoyStoreNext = [
     "prelude": '  專注的能力 ，。...',
     "laugh": '  專注的能力 ，。..'
         '\n\n  專注的能力 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  專注的能力 ，。..',
@@ -152,7 +152,7 @@ final localJoyStoreNext = [
     "prelude": '  成功的秘訣 ，。...',
     "laugh": '  成功的秘訣 ，。..'
         '\n\n  成功的秘訣 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  成功的秘訣 ，。..',
@@ -170,7 +170,7 @@ final localJoyStoreNext = [
     "prelude": '  用愛心說誠實話 ，。...',
     "laugh": '  用愛心說誠實話 ，。..'
         '\n\n  用愛心說誠實話 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  用愛心說誠實話 ，。..',
@@ -188,7 +188,7 @@ final localJoyStoreNext = [
     "prelude": '  為我造清潔的心 ，。...',
     "laugh": '  為我造清潔的心 ，。..'
         '\n\n  為我造清潔的心 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  為我造清潔的心 ，。..',
@@ -206,7 +206,7 @@ final localJoyStoreNext = [
     "prelude": '  有衣有食就當知足 ，。...',
     "laugh": '  有衣有食就當知足 ，。..'
         '\n\n  有衣有食就當知足 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  有衣有食就當知足 ，。..',
@@ -224,7 +224,7 @@ final localJoyStoreNext = [
     "prelude": '  永生是上帝的恩賜 ，。...',
     "laugh": '  永生是上帝的恩賜 ，。..'
         '\n\n  永生是上帝的恩賜 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  永生是上帝的恩賜 ，。..',
@@ -242,7 +242,7 @@ final localJoyStoreNext = [
     "prelude": '  作一個内裡誠責的人 ，。...',
     "laugh": '  作一個内裡誠責的人 ，。..'
         '\n\n  作一個内裡誠責的人 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  作一個内裡誠責的人 ，。..',
@@ -260,7 +260,7 @@ final localJoyStoreNext = [
     "prelude": '  管教是愛 ，。...',
     "laugh": '  管教是愛 ，。..'
         '\n\n  管教是愛 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  管教是愛 ，。..',
@@ -278,7 +278,7 @@ final localJoyStoreNext = [
     "prelude": '  你可以勝過試探 ，。...',
     "laugh": '  你可以勝過試探 ，。..'
         '\n\n  你可以勝過試探 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  你可以勝過試探 ，。..',
@@ -296,7 +296,7 @@ final localJoyStoreNext = [
     "prelude": '  要愛你的妻子 ，。...',
     "laugh": '  要愛你的妻子 ，。..'
         '\n\n  要愛你的妻子 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  要愛你的妻子 ，。..',
@@ -314,7 +314,7 @@ final localJoyStoreNext = [
     "prelude": '  要殷勤、不可懶惰 ，。...',
     "laugh": '  要殷勤、不可懶惰 ，。..'
         '\n\n  要殷勤、不可懶惰 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  要殷勤、不可懶惰 ，。..',
@@ -332,7 +332,7 @@ final localJoyStoreNext = [
     "prelude": '  真正的平安 ，。...',
     "laugh": '  真正的平安 ，。..'
         '\n\n  真正的平安 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  真正的平安 ，。..',
@@ -350,7 +350,7 @@ final localJoyStoreNext = [
     "prelude": '  要教養孩子 ，。...',
     "laugh": '  要教養孩子 ，。..'
         '\n\n  要教養孩子 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  要教養孩子 ，。..',
@@ -368,7 +368,7 @@ final localJoyStoreNext = [
     "prelude": '  不要作糊塗人 ，。...',
     "laugh": '  不要作糊塗人 ，。..'
         '\n\n  不要作糊塗人 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  不要作糊塗人 ，。..',
@@ -386,7 +386,7 @@ final localJoyStoreNext = [
     "prelude": '  與智慧人同行 ，。...',
     "laugh": '  與智慧人同行 ，。..'
         '\n\n  與智慧人同行 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  與智慧人同行 ，。..',
@@ -404,7 +404,7 @@ final localJoyStoreNext = [
     "prelude": '  不要惹兒女的氣 ，。...',
     "laugh": '  不要惹兒女的氣 ，。..'
         '\n\n  不要惹兒女的氣 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  不要惹兒女的氣 ，。..',
@@ -422,7 +422,7 @@ final localJoyStoreNext = [
     "prelude": '  不可安求 ，。...',
     "laugh": '  不可安求 ，。..'
         '\n\n  不可安求 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  不可安求 ，。..',
@@ -440,7 +440,7 @@ final localJoyStoreNext = [
     "prelude": '  得力在乎平靜安穩 ，。...',
     "laugh": '  得力在乎平靜安穩 ，。..'
         '\n\n  得力在乎平靜安穩 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  得力在乎平靜安穩 ，。..',
@@ -458,7 +458,7 @@ final localJoyStoreNext = [
     "prelude": '  要培養內在美 ，。...',
     "laugh": '  要培養內在美 ，。..'
         '\n\n  要培養內在美 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  要培養內在美 ，。..',
@@ -476,7 +476,7 @@ final localJoyStoreNext = [
     "prelude": '  得著妻子的人有福了 ，。...',
     "laugh": '  得著妻子的人有福了 ，。..'
         '\n\n  得著妻子的人有福了 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  得著妻子的人有福了 ，。..',
@@ -494,7 +494,7 @@ final localJoyStoreNext = [
     "prelude": '  自卑的必升為高 ，。...',
     "laugh": '  自卑的必升為高 ，。..'
         '\n\n  自卑的必升為高 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  自卑的必升為高 ，。..',
@@ -512,7 +512,7 @@ final localJoyStoreNext = [
     "prelude": '  不可離棄智慧 ，。...',
     "laugh": '  不可離棄智慧 ，。..'
         '\n\n  不可離棄智慧 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  不可離棄智慧 ，。..',
@@ -530,7 +530,7 @@ final localJoyStoreNext = [
     "prelude": '  真實的彼此相愛 ，。...',
     "laugh": '  真實的彼此相愛 ，。..'
         '\n\n  真實的彼此相愛 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  真實的彼此相愛 ，。..',
@@ -548,7 +548,7 @@ final localJoyStoreNext = [
     "prelude": '  要彼此順服 ，。...',
     "laugh": '  要彼此順服 ，。..'
         '\n\n  要彼此順服 ，。..',
-    "photoUrl": 'assets/photos/xlcdapp_photo_52.png',
+    "photoUrl": 'assets/photos/xlcdapp_photo_00.png',
     "videoId": 'gUxlZ4S_meE',
     "videoName": '你要我為你做什麼 | 曾興才牧師 | 20220109 | 生命河 ROLCCmedia',
     "talk": '  要彼此順服 ，。..',
