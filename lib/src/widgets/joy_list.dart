@@ -24,9 +24,9 @@ class JoyList extends StatelessWidget {
     '⚕️喜樂的心乃是良藥',
     '🤣盡情地開懷大笑吧',
     '💓神的道是活潑的',
-    '✝️神的道是有功效的',
+    '✞神的道是有功效的',
     '😌領受一份幽默感',
-    '🏦累積你的笑話存款',
+    '💰累積你的笑話存款',
     '📈提升你的親和指數'
   ];
 
@@ -54,8 +54,10 @@ class JoyList extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Image.asset(
                   joys[index].photoUrl,
-                  height: MediaQuery.of(context).size.width * (3 / 4),
-                  width: MediaQuery.of(context).size.width,
+                  // height: MediaQuery.of(context).size.width * (3 / 4),
+                  // width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.width * (2 / 4),
+                  width: MediaQuery.of(context).size.width * (2 / 4),
                   //height: 120, width: 640,
                   fit: BoxFit.scaleDown,
                 ),
@@ -93,12 +95,15 @@ class JoyList extends StatelessWidget {
                     label: Text('${joys[index].likes}'),
                     side: BorderSide.none,
                     //backgroundColor: Colors.yellow[50],
-                    backgroundColor: const Color.fromARGB(255, 218, 218, 203),
+                    //backgroundColor: const Color.fromARGB(255, 218, 218, 203),
                   ),
                 ],
               ),
               Text(
-                '${joys[index].scripture.verse}(${joys[index].scripture.name})',
+                '✞${joys[index].scripture.verse}(${joys[index].scripture.name})',
+              ),
+              Text(
+                '🌞${joys[index].laugh.substring(0, 24)}...',
               ),
               ElevatedButton(
                 onPressed: (onTap != null ? () => onTap!(joys[index]) : null),

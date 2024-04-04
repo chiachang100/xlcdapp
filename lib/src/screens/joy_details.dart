@@ -68,25 +68,37 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
       appBar: AppBar(
         title: Text('${widget.joy!.articleId}. ${widget.joy!.title}'),
         actions: <Widget>[
-          ActionChip(
-            avatar: const Icon(Icons.thumb_up_outlined),
-            label: Text('${widget.joy!.likes}'),
-            onPressed: () {
-              setState(() {
-                if (!favorite) {
-                  favorite = true;
-                  widget.joy!.likes++;
-                  final joyRef = joysRef.doc(widget.joy!.articleId.toString());
-                  FirebaseFirestore.instance
-                      .runTransaction((transaction) async {
-                    final snapshot = await transaction.get(joyRef);
-                    // final newLikes = snapshot.get("likes") + 1;
-                    widget.joy!.likes = snapshot.get("likes") + 1;
-                    transaction.update(joyRef, {'likes': widget.joy!.likes});
-                  });
-                }
-              });
-            },
+          Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: ActionChip(
+              avatar: const Icon(
+                Icons.thumb_up_outlined,
+                color: Colors.white,
+              ),
+              label: Text(
+                '${widget.joy!.likes}',
+                style: const TextStyle(color: Colors.white),
+              ),
+              backgroundColor: Colors.green,
+              tooltip: '點讚',
+              onPressed: () {
+                setState(() {
+                  if (!favorite) {
+                    favorite = true;
+                    widget.joy!.likes++;
+                    final joyRef =
+                        joysRef.doc(widget.joy!.articleId.toString());
+                    FirebaseFirestore.instance
+                        .runTransaction((transaction) async {
+                      final snapshot = await transaction.get(joyRef);
+                      // final newLikes = snapshot.get("likes") + 1;
+                      widget.joy!.likes = snapshot.get("likes") + 1;
+                      transaction.update(joyRef, {'likes': widget.joy!.likes});
+                    });
+                  }
+                });
+              },
+            ),
           ),
         ],
       ),
@@ -185,7 +197,7 @@ class _TitleSectionState extends State<TitleSection> {
             padding: const EdgeInsets.only(bottom: 1),
             child: Text(
               // '「$verse」($name)',
-              '${widget.verse}(${widget.name})',
+              '✞${widget.verse}(${widget.name})',
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
