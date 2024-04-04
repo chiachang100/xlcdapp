@@ -168,7 +168,6 @@ await Firebase.initializeApp(
 - Flutterfire iOS SDK
   - Follow the instructions describe in the **Firebase iOS SDK** section with the follow repo's URL:
     - `https://github.com/firebase/flutterfire.git`
-- 
 
 ---
 ## Useful Tools
@@ -204,6 +203,26 @@ await Firebase.initializeApp(
 
 - Start Emulator
   - `firebase emulators:start`
+
+---
+## Troubleshooting
+### Troubleshooting on iOS
+- Error: `Module 'flutter_inappwebview_ios' not found`
+  - `flutter clean`
+  - `flutter pub get`
+- Error: `Error (Xcode): redefinition of module 'Firebase'`
+```
+Error (Xcode): redefinition of module 'Firebase'
+/Users/chiachang/src/git/chiachang100/xlcdapp/ios/Pods/Firebase/CoreOnly/Sources/module.modulemap:0:7
+```
+  - `vi /Users/chiachang/src/git/chiachang100/xlcdapp/ios/Pods/Firebase/CoreOnly/Sources/module.modulemap`
+  - Replace `module Firebase` with `module FirebaseCoreOnly`
+```
+module FirebaseCoreOnly {
+  export *
+  header "Firebase.h"
+}
+```
 
 ---
 
