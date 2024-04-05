@@ -1,7 +1,7 @@
 name: xlcdapp
 description: "xlcdapp-笑裡藏道"
 publish_to: 'none'
-version: 1.5.0
+version: 1.5.1
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
