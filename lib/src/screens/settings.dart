@@ -520,7 +520,7 @@ class CopyrightSection extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: const Column(
         children: <Widget>[
-          Text('Copyright (c) 2024 Chia Chang. All rights reserved.'),
+          Text('Copyright (c) 2024 Chia Chang. The MIT License (MIT).'),
         ],
       ),
     );
