@@ -48,9 +48,9 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter_native_splash:
-  #color: "#E6EBEB" #light
-  color: "#241E30" #dark
-  image: "assets/images/xlcd_splash_screen.png"
+  color: "#E6EBEB" #light
+  #color: "#241E30" #dark
+  image: "assets/logos/xlcd_splash_logo.png"
   web_image_mode: center
   android_gravity: center
   ios_content_mode: center
@@ -63,3 +63,4 @@ flutter:
   - assets/icons/
   - assets/images/
   - assets/photos/
+  - assets/logos/

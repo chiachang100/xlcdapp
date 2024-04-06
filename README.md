@@ -35,6 +35,7 @@ Walnut Software](https://walnutistanbul.medium.com/how-to-add-a-youtube-video-to
 - [flutter_native_splash](https://pub.dev/packages/flutter_native_splash)
   - After adding your settings to pubspec.yaml, run the following command in the terminal:
     - `dart run flutter_native_splash:create`
+    - OR: `flutter pub run flutter_native_splash:create`
 
 - IMPORTANT NOTES:
   - For Web: use `youtube_player_iframe`.
