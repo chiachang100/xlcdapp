@@ -184,8 +184,9 @@ class BookIntroSection extends StatelessWidget {
   const BookIntroSection({super.key});
   final String xlcdBookIntro = '笑裡藏道書籍介紹';
 
-  final String bookSiteLink =
+  final String riverbankSite =
       'https://www.rolcc.net/opencart/index.php?route=product/product&product_id=358';
+  final String gracephSite = 'https://graceph.com/product/01i072/';
 
   @override
   Widget build(BuildContext context) {
@@ -234,12 +235,19 @@ class BookIntroSection extends StatelessWidget {
             '「笑裡藏道」是曾興才牧師首本著作，收集了五十二篇他這些年於矽谷生命河靈糧堂主日證道中分享的精彩笑話及其中引申的經文應用。'
             '喜樂的心乃是良藥，這本讓人開懷大笑的好書，能使大家從幽默文字中領悟屬靈的道理，也為您打開與人分享真理的機會之門！',
           ),
-          Center(
-            child: ElevatedButton(
-              //onPressed: visitBuyBookWebsite,
-              onPressed: () => lauchTargetUrl(bookSiteLink),
-              child: const Text('📚靈糧書房購書'),
-            ),
+          Row(
+            children: [
+              const Text('📚購書請到: '),
+              ElevatedButton(
+                onPressed: () => lauchTargetUrl(gracephSite),
+                child: const Text('天恩出版社'),
+              ),
+              const Text(' / '),
+              ElevatedButton(
+                onPressed: () => lauchTargetUrl(riverbankSite),
+                child: const Text('靈糧書房'),
+              ),
+            ],
           ),
           const SizedBox(height: 10),
         ],
@@ -322,9 +330,6 @@ class BookPraiseSection extends StatelessWidget {
   const BookPraiseSection({super.key});
   final String bookPraiseSectionTitle = '讚揚「笑裡藏道」書籍';
 
-  final String bookSiteLink =
-      'https://www.rolcc.net/opencart/index.php?route=product/product&product_id=358';
-
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
@@ -378,7 +383,7 @@ class BookPraiseSection extends StatelessWidget {
             ),
             subtitle: const Text(''),
           ),
-          const Divider(),
+          const Divider(height: 0),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: getNextCircleAvatarBgColor(),
@@ -387,7 +392,7 @@ class BookPraiseSection extends StatelessWidget {
                 '若同樣有功效，能用幽默的笑話，把神的道解明，豈不更好？鄭重推薦本書，幫助你分享真道，有笑果，更有效果！'),
             subtitle: const Text('靈糧全球使徒性網絡主席 周神助'),
           ),
-          Divider(),
+          const Divider(height: 0),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: getNextCircleAvatarBgColor(),
@@ -396,7 +401,7 @@ class BookPraiseSection extends StatelessWidget {
                 '幽默感能使我們從新的角度來看每天周遭發生的事，也使我們可以笑談自己的缺失，並接納別人的軟弱。事實上，幽默感能幫助我們的信仰 更人性化，使人更容易來親近神。'),
             subtitle: const Text('美國加州矽谷生命河靈糧堂主任牧師 劉彤'),
           ),
-          Divider(),
+          const Divider(height: 0),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: getNextCircleAvatarBgColor(),
@@ -405,7 +410,7 @@ class BookPraiseSection extends StatelessWidget {
                 '曾牧師這本書顛覆傳統，詮釋了矽谷的創新精神⋯⋯一個牧師寫本關於「笑」的書，就如同嚴肅人講笑話，講的時候常有意想不到的效果。'),
             subtitle: const Text('矽谷創新頻道「丁丁電視」創辦人丁維平'),
           ),
-          Divider(),
+          const Divider(height: 0),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: getNextCircleAvatarBgColor(),
@@ -413,7 +418,7 @@ class BookPraiseSection extends StatelessWidget {
             title: const Text('每篇短文都像是曾牧師喜歡的一杯好茶，初嚐不酸，再喝不澀，品完後喉韻甘醇，回味無窮。'),
             subtitle: const Text('欣欣教育基金會教育顧問 廖本榮'),
           ),
-          Divider(),
+          const Divider(height: 0),
           ListTile(
             leading: CircleAvatar(
                 backgroundColor: getNextCircleAvatarBgColor(),
@@ -421,14 +426,6 @@ class BookPraiseSection extends StatelessWidget {
             title: const Text(
                 '獨樂樂，不如眾樂樂。我預測你的朋友們會和你一樣，迫不及待地想要享受 《笑裡藏道》。所以，做一件讓他們大為開懷的事一一送他們一人一本吧！'),
             subtitle: const Text('北加州全福會會長、優勢頻道執行委員會主席 劉效宏'),
-          ),
-          const Divider(),
-          Center(
-            child: ElevatedButton(
-              //onPressed: visitXlcdappWebsite,
-              onPressed: () => lauchTargetUrl(bookSiteLink),
-              child: const Text('📚靈糧書房購書'),
-            ),
           ),
           const SizedBox(height: 10),
         ],
