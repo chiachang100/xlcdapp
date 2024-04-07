@@ -28,13 +28,6 @@ class JoystoreScaffold extends StatelessWidget {
     });
 
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
-      //   title: const Text('笑裡藏道'),
-      //   centerTitle: true,
-      //   //backgroundColor: Colors.orange,
-      // ),
-      //extendBodyBehindAppBar: true,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(bottom: 12.0),

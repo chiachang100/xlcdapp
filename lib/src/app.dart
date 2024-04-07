@@ -3,9 +3,11 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:go_router/go_router.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:logging/logging.dart';
 
 import 'auth.dart';
 import 'data.dart';
@@ -22,6 +24,8 @@ import 'widgets/joy_list.dart';
 
 final appShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'app shell');
 final joysNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'joys shell');
+
+final xlcdlog = Logger('app_joystore');
 
 class Joystore extends StatefulWidget {
   const Joystore({
@@ -84,10 +88,10 @@ class _JoystoreState extends State<Joystore> {
         redirect: (context, state) {
           if (turnonSignIn) {
             if (auth.currentUser == null) {
-              print('Current User is signed out!');
+              xlcdlog.info('Current User is signed out!');
               final signedIn = JoystoreAuth.of(context).signedIn;
               if (state.uri.toString() != '/sign-in' && !signedIn) {
-                print('Display sign-in screen!');
+                xlcdlog.info('Display sign-in screen!');
                 return '/sign-in';
               }
             }
@@ -116,11 +120,13 @@ class _JoystoreState extends State<Joystore> {
                     child: Builder(builder: (context) {
                       return JoysScreen(
                         onTap: (idx) {
-                          GoRouter.of(context).go(switch (idx) {
-                            0 => '/joys/like',
-                            1 => '/joys/new',
-                            2 => '/joys/all',
-                            _ => '/joys/all',
+                          SchedulerBinding.instance.addPostFrameCallback((_) {
+                            GoRouter.of(context).go(switch (idx) {
+                              0 => '/joys/like',
+                              1 => '/joys/new',
+                              2 => '/joys/all',
+                              _ => '/joys/all',
+                            });
                           });
                         },
                         selectedIndex: switch (state.uri.path) {
