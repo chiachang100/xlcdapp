@@ -104,6 +104,9 @@ class JoyList extends StatelessWidget {
               ),
               Text(
                 '🌞${joys[index].laugh.substring(0, 20)}...',
+                style: const TextStyle(
+                  fontStyle: FontStyle.italic,
+                ),
               ),
               ElevatedButton(
                 onPressed: (onTap != null ? () => onTap!(joys[index]) : null),
