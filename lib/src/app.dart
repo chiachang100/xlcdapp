@@ -53,6 +53,8 @@ class _JoystoreState extends State<Joystore> {
       'xlcdapp_screen': 'MainAppScreen',
       'xlcdapp_screen_class': 'JoystoreClass',
     });
+
+    joystoreInstance = buildJoyStoreFromFirestore(joystoreInstance);
   }
 
   @override
