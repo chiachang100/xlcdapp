@@ -51,8 +51,8 @@ class JoystoreScaffold extends StatelessWidget {
             destinations: const <NavigationDestination>[
               NavigationDestination(
                 label: '笑裡藏道',
-                icon: Icon(Icons.sentiment_satisfied_outlined),
-                selectedIcon: Icon(Icons.sentiment_satisfied),
+                icon: Icon(Icons.home_outlined),
+                selectedIcon: Icon(Icons.home),
                 //icon: ImageIcon(AssetImage('assets/icons/xlcdapp-leading-icon.png')),
               ),
               NavigationDestination(
