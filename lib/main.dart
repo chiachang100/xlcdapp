@@ -51,7 +51,6 @@ Future<void> main() async {
 
   final firestore = FirebaseFirestore.instance;
 
-  //JoyStore joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
   joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
 
   final settings = firestore.settings.copyWith(persistenceEnabled: true);

@@ -80,7 +80,7 @@ class _JoystoreState extends State<Joystore> {
         observers: [Joystore.observer],
         refreshListenable: joyAuth,
         debugLogDiagnostics: true,
-        initialLocation: '/joys/all',
+        initialLocation: '/joys/like',
         redirect: (context, state) {
           if (turnonSignIn) {
             if (auth.currentUser == null) {
@@ -120,7 +120,7 @@ class _JoystoreState extends State<Joystore> {
                             0 => '/joys/like',
                             1 => '/joys/new',
                             2 => '/joys/all',
-                            _ => '/joys/like',
+                            _ => '/joys/all',
                           });
                         },
                         selectedIndex: switch (state.uri.path) {
@@ -205,6 +205,8 @@ class _JoystoreState extends State<Joystore> {
                         key: state.pageKey,
                         child: Builder(
                           builder: (context) {
+                            joystoreInstance =
+                                buildJoyStoreFromFirestore(joystoreInstance);
                             return JoyList(
                               // joys: joystoreInstance.allJoys,
                               joys: joystoreInstance.wholeJoys,

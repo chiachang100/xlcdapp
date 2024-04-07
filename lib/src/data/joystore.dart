@@ -174,12 +174,10 @@ class JoyStore {
 }
 
 // Build JoyStore Instance from Remote Firestore JoyStore
-JoyStore buildJoyStoreFromFirestore() {
-  var js = buildJoyStoreFromLocal();
-
+JoyStore buildJoyStoreFromFirestore(JoyStore joystore) {
   joysRef.get().then((event) {
     if (event.docs.isNotEmpty) {
-      js = JoyStore();
+      var js = JoyStore();
       for (var doc in event.docs) {
         xlcdlog.info(
             "Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
@@ -204,12 +202,12 @@ JoyStore buildJoyStoreFromFirestore() {
           category: joy.category,
         );
       }
+      joystoreInstance = js;
+      return js;
     }
-    joystoreInstance = js;
-    return js;
   });
 
-  return js;
+  return joystore;
 }
 
 // Build JoyStore Instance from local JoyStore
@@ -239,14 +237,11 @@ JoyStore buildJoyStoreFromLocal() {
 }
 
 JoyStore buildJoyStoreFromFirestoreOrLocal({prod = true}) {
+  // Build JoyStore Instance from local JoyStore
+  var js = buildJoyStoreFromLocal();
   if (prod) {
     // Build JoyStore Instance from Firestore JoyStore
-    return buildJoyStoreFromFirestore();
-  } else {
-    // Build JoyStore Instance from local JoyStore
-    return buildJoyStoreFromLocal();
+    js = buildJoyStoreFromFirestore(js);
   }
+  return js;
 }
-
-// For prod: prod = true
-//JoyStore joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
