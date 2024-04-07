@@ -226,6 +226,6 @@ module FirebaseCoreOnly {
 ```
 
 ---
-Copyright (c) 2024 Chia Chang. The MIT License (MIT). 
+Copyright (c) 2024 Chia Chang. MIT License. 
 
 ---

@@ -103,7 +103,7 @@ class JoyList extends StatelessWidget {
                 '✞${joys[index].scripture.verse}(${joys[index].scripture.name})',
               ),
               Text(
-                '🌞${joys[index].laugh.substring(0, 24)}...',
+                '🌞${joys[index].laugh.substring(0, 20)}...',
               ),
               ElevatedButton(
                 onPressed: (onTap != null ? () => onTap!(joys[index]) : null),
