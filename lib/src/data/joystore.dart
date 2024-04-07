@@ -142,12 +142,17 @@ JoyStore buildJoyStoreFromFirestore(JoyStore joystore) {
   joysRef.get().then((event) {
     if (event.docs.isNotEmpty) {
       var js = JoyStore();
+      var isLogged = false;
       for (var doc in event.docs) {
-        xlcdlog.info(
-            "Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
         var joy = doc.data();
-        xlcdlog.info(
-            "JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
+        if (!isLogged) {
+          xlcdlog.info(
+              "Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
+          xlcdlog.info(
+              "JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
+          isLogged = true;
+        }
+
         js.addJoy(
           id: joy.id,
           articleId: joy.articleId,
