@@ -36,7 +36,6 @@ class JoyDetailsScreen extends StatefulWidget {
 }
 
 class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
-  final String iconUrl = 'assets/icons/xlcdapp-leading-icon.png';
   bool favorite = false;
 
   final joysRef =
@@ -116,7 +115,9 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
             const DividerSection(Icon(Icons.face_outlined)),
             TextSection(description: widget.joy!.laugh),
             LeadingIconTextSection(
-                description: widget.joy!.talk, iconUrl: iconUrl),
+              description: widget.joy!.talk,
+              iconUrl: 'assets/icons/xlcdapp-leading-icon.png',
+            ),
             const DividerSection(Icon(Icons.live_tv_outlined)),
             //YoutubePlayerIFrameSection(videoId: 'Mez7DnMOlgc', videoName: '不要怕！你要得人了 | 曾興才牧師 | 20240225 | 生命河 ROLCCmedia'),
             (useYoutubePlayerFlutterVersion && !kIsWeb)

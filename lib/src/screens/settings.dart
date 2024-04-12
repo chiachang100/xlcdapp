@@ -9,6 +9,7 @@ import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:go_router/go_router.dart';
 
 import '../auth.dart';
 import '../data.dart';
@@ -54,7 +55,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('「笑裡藏道」簡介'),
-        leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
+              onPressed: () {
+                GoRouter.of(context).go('/joys/all');
+              },
+            );
+          },
+        ),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.settings_outlined),

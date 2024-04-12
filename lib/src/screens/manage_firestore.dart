@@ -7,6 +7,7 @@ import 'package:logging/logging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:go_router/go_router.dart';
 
 import '../auth.dart';
 import '../data.dart';
@@ -36,7 +37,16 @@ class _ManageFirestoreScreenState extends State<ManageFirestoreScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Manage Firestore'),
-        leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
+              onPressed: () {
+                GoRouter.of(context).go('/joys/all');
+              },
+            );
+          },
+        ),
       ),
       body: SafeArea(
         child: FirestoreSettingsContent(firestore: widget.firestore),

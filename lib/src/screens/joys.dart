@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:go_router/go_router.dart';
 
 class JoysScreen extends StatefulWidget {
   final Widget child;
@@ -49,7 +50,16 @@ class _JoysScreenState extends State<JoysScreen>
     return Scaffold(
       appBar: AppBar(
         title: const Text('笑裡藏道'),
-        leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
+              onPressed: () {
+                GoRouter.of(context).go('/joys/all');
+              },
+            );
+          },
+        ),
         //backgroundColor: Colors.orange,
         bottom: TabBar(
           //isScrollable: true,

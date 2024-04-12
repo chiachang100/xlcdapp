@@ -46,7 +46,6 @@ class JoystoreScaffold extends StatelessWidget {
                 label: '笑裡藏道',
                 icon: Icon(Icons.home_outlined),
                 selectedIcon: Icon(Icons.home),
-                //icon: ImageIcon(AssetImage('assets/icons/xlcdapp-leading-icon.png')),
               ),
               NavigationDestination(
                 label: '聖經經文',

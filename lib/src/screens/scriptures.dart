@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:go_router/go_router.dart';
 
 import '../data.dart';
 import '../widgets/scripture_list.dart';
@@ -28,7 +29,16 @@ class ScripturesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
-        leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
+              onPressed: () {
+                GoRouter.of(context).go('/joys/all');
+              },
+            );
+          },
+        ),
       ),
       body: ScriptureList(
         scriptures: joystoreInstance.allScriptures,
