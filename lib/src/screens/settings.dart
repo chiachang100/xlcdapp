@@ -138,7 +138,7 @@ class QRCodeSection extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              'assets/images/xlcdapp_qrcode.png',
+              'assets/icons/xlcdapp_qrcode.png',
               height: MediaQuery.of(context).size.width * (2 / 4),
               width: MediaQuery.of(context).size.width,
               //height: 120, width: 640,
