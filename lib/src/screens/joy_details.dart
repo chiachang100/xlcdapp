@@ -1,8 +1,3 @@
-// Copyright 2021, the Flutter project authors. Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-//import 'dart:developer' as developer;
 import 'package:logging/logging.dart';
 
 import 'package:flutter/material.dart';
@@ -10,10 +5,8 @@ import 'package:flutter/foundation.dart' show kIsWeb, kReleaseMode;
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/link.dart';
 //import 'package:web/helpers.dart';
 import 'package:flutter/services.dart';
-import 'package:xlcdapp/src/screens/scaffold.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as ypf;
 //import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart' as ypi;

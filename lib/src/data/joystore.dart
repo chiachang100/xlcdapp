@@ -1,12 +1,5 @@
-// Copyright 2021, the Flutter project authors. Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
 import 'package:logging/logging.dart';
-import 'dart:developer' as developer;
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'scripture.dart';
 import 'joy.dart';
 import 'local_joystore.dart';

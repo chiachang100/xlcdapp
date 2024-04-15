@@ -1,11 +1,6 @@
-// Copyright 2021, the Flutter project authors. Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
 import 'package:logging/logging.dart';
 
 import 'package:flutter/material.dart';
-import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -555,7 +550,7 @@ class CopyrightSection extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: const Column(
         children: <Widget>[
-          Text('Copyright (c) 2024 Chia Chang. MIT License.'),
+          Text('Copyright 2024 Chia Chang. Apache License, Version 2.0.'),
         ],
       ),
     );

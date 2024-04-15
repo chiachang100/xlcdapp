@@ -1,12 +1,6 @@
-// Copyright 2021, the Flutter project authors. Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
 import 'dart:async';
 import 'dart:io' show Platform;
 import 'package:logging/logging.dart';
-
-//import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/foundation.dart' show kIsWeb, kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,18 +9,12 @@ import 'package:window_size/window_size.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-//import 'package:firebase_database/firebase_database.dart';
 import 'firebase_options.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-
 import 'src/app.dart';
 import 'src/data.dart';
 
 final xlcdlog = Logger('main');
-// late final FirebaseApp app;
-// late final FirebaseAuth auth;
-//late JoyStore joystoreInstance;
 
 Future<void> main() async {
   Logger.root.level = Level.ALL;
