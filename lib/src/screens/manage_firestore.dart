@@ -89,7 +89,7 @@ class FirebaseDbSection extends StatelessWidget {
 
     // Initialize the new documents
     for (var joy in firestoreDbInstance.allJoys) {
-      final docRef = firestore.collection("joys").doc(joy.articleId.toString());
+      final docRef = firestore.collection('joys').doc(joy.articleId.toString());
       // Add document
       docRef
           .set(joy.toJson())
@@ -113,8 +113,8 @@ class FirebaseDbSection extends StatelessWidget {
     });
 
     await firestore
-        .collection("joys")
-        .orderBy("likes", descending: true)
+        .collection('joys')
+        .orderBy('likes', descending: true)
         .get()
         .then((event) {
       for (var doc in event.docs) {
