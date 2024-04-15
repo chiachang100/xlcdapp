@@ -86,10 +86,13 @@ class FirebaseDbSection extends StatelessWidget {
 
     // Build JoyStore Instance from local JoyStore
     JoyStore firestoreDbInstance = buildJoyStoreFromLocal();
+    //JoyStore firestoreDbInstance = buildJoyStoreFromLocalWithLocale();
 
     // Initialize the new documents
     for (var joy in firestoreDbInstance.allJoys) {
-      final docRef = firestore.collection('joys').doc(joy.articleId.toString());
+      // final docRef = firestore.collection('joys').doc(joy.articleId.toString());
+      final docRef =
+          firestore.collection(joystoreName).doc(joy.articleId.toString());
       // Add document
       docRef
           .set(joy.toJson())
@@ -98,8 +101,8 @@ class FirebaseDbSection extends StatelessWidget {
       docRef.get().then(
         (DocumentSnapshot doc) {
           final data = doc.data() as Map<String, dynamic>;
-          xlcdlog
-              .info('DocumentSnapshot added with ID: ${doc.id}:${data['id']}');
+          xlcdlog.info(
+              '$joystoreName: DocumentSnapshot added with ID: ${doc.id}:${data['id']}');
         },
         onError: (e) => xlcdlog.info("Error getting document: $e"),
       );
@@ -113,15 +116,16 @@ class FirebaseDbSection extends StatelessWidget {
     });
 
     await firestore
-        .collection('joys')
+        // .collection('joys')
+        .collection(joystoreName)
         .orderBy('likes', descending: true)
         .get()
         .then((event) {
       for (var doc in event.docs) {
-        xlcdlog.info("Firestore: ${doc.id} => ${doc.data()}");
+        xlcdlog.info("$joystoreName: Firestore: ${doc.id} => ${doc.data()}");
         var joy = Joy.fromJson(doc.data());
         xlcdlog.info(
-            "Joy: ${doc.id} => id=${joy.id}:articleId=${joy.articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
+            "$joystoreName: Joy: ${doc.id} => id=${joy.id}:articleId=${joy.articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
       }
     });
   }

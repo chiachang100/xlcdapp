@@ -2,8 +2,10 @@ import 'package:logging/logging.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'scripture.dart';
 import 'joy.dart';
-import 'local_joystore.dart';
 import 'global_config.dart';
+import 'local_joystore.dart';
+import 'local_joystore_zh_cn.dart';
+import 'local_joystore_zh_tw.dart';
 
 final xlcdlog = Logger('joystore');
 
@@ -11,7 +13,8 @@ const int topList = 10;
 const int wholeList = 0;
 
 final joysRef = FirebaseFirestore.instance
-    .collection('joys')
+    // .collection('joys')
+    .collection(joystoreName)
     .orderBy("articleId", descending: false)
     .withConverter<Joy>(
       fromFirestore: (snapshots, _) => Joy.fromJson(snapshots.data()!),
@@ -172,10 +175,49 @@ JoyStore buildJoyStoreFromFirestore(JoyStore joystore) {
   return joystore;
 }
 
+/* 
 // Build JoyStore Instance from local JoyStore
 JoyStore buildJoyStoreFromLocal() {
   var js = JoyStore();
   for (var joyMap in localJoyStore) {
+    var joy = Joy.fromJson(joyMap);
+    js.addJoy(
+      id: joy.id,
+      articleId: joy.articleId,
+      title: joy.title,
+      scriptureName: joy.scriptureName,
+      scriptureVerse: joy.scriptureVerse,
+      prelude: joy.prelude,
+      laugh: joy.laugh,
+      photoUrl: joy.photoUrl,
+      videoId: joy.videoId,
+      videoName: joy.videoName,
+      talk: joy.talk,
+      likes: joy.likes,
+      type: joy.type,
+      isNew: joy.isNew,
+      category: joy.category,
+    );
+  }
+  return js;
+}
+ */
+
+// Build JoyStore Instance from local JoyStore
+JoyStore buildJoyStoreFromLocal() {
+  var js = JoyStore();
+  var joystoreByLocale = localJoyStoreForZhTw;
+  switch (joysCurrentLocale) {
+    case LOCALE_ZH_CN:
+      joystoreByLocale = localJoyStoreForZhCn;
+    case LOCALE_ZH_TW:
+      joystoreByLocale = localJoyStoreForZhTw;
+    default:
+      joystoreByLocale = localJoyStoreForZhTw;
+  }
+
+  //for (var joyMap in localJoyStore) {
+  for (var joyMap in joystoreByLocale) {
     var joy = Joy.fromJson(joyMap);
     js.addJoy(
       id: joy.id,

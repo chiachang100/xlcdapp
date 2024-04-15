@@ -32,7 +32,8 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
   bool favorite = false;
 
   final joysRef =
-      FirebaseFirestore.instance.collection('joys').withConverter<Joy>(
+      // FirebaseFirestore.instance.collection('joys').withConverter<Joy>(
+      FirebaseFirestore.instance.collection(joystoreName).withConverter<Joy>(
             fromFirestore: (snapshots, _) => Joy.fromJson(snapshots.data()!),
             toFirestore: (joy, _) => joy.toJson(),
           );

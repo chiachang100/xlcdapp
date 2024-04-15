@@ -20,6 +20,8 @@ Future<void> lauchTargetUrl(String urlString) async {
 
 int circleAvatarBgColorIndex = 0;
 
+enum LanguageType { traditional, simplified }
+
 Color getNextCircleAvatarBgColor() {
   Color nextColor = circleAvatarBgColor[
       circleAvatarBgColorIndex % circleAvatarBgColor.length];
@@ -60,33 +62,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             );
           },
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.settings_outlined),
-            tooltip: 'Settings',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('There are currently no settings available.'),
-                ),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.logout_outlined),
-            tooltip: 'Sign out',
-            onPressed: () async {
-              await JoystoreAuth.of(context).signOut();
-              xlcdlog.info('User just signed out!');
-
-              FirebaseAnalytics.instance
-                  .logEvent(name: 'signin_view', parameters: {
-                'xlcdapp_screen': 'UserSignedOut',
-                'xlcdapp_screen_class': 'SettingsScreenClass',
-              });
-            },
-          ),
-        ],
       ),
       body: SafeArea(
         child: SettingsContent(firestore: widget.firestore),
@@ -109,6 +84,7 @@ class SettingsContent extends StatelessWidget {
     return ListView(
       children: const <Widget>[
         QRCodeSection(),
+        LanguageSection(),
         BookIntroSection(),
         BookAuthorSection(),
         BookPraiseSection(),
@@ -171,13 +147,100 @@ class QRCodeSection extends StatelessWidget {
           const Text(
             '  請掃描二維碼(QR Code)便於使用xlcdapp(「笑裡藏道」App)。',
           ),
-          // Center(
-          //   child: ElevatedButton(
-          //     //onPressed: visitXlcdappWebsite,
-          //     onPressed: () => lauchTargetUrl(xlcdappWebsiteLink),
-          //     child: const Text('🔗xlcdapp(「笑裡藏道」App)'),
-          //   ),
-          // ),
+          const SizedBox(height: 10),
+        ],
+      ),
+    );
+  }
+}
+
+class LanguageSection extends StatefulWidget {
+  const LanguageSection({super.key});
+
+  @override
+  State<LanguageSection> createState() => _LanguageSectionState();
+}
+
+class _LanguageSectionState extends State<LanguageSection> {
+  final String xlcdLanguageSelection = '設定個人喜好';
+  final String xlcdappWebsiteLink = 'https://xlcdapp.web.app';
+
+  LanguageType? _language = LanguageType.traditional;
+
+  @override
+  Widget build(BuildContext context) {
+    FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
+      'xlcdapp_screen': 'LanguageSection',
+      'xlcdapp_screen_class': 'SettingsScreenClass',
+    });
+
+    return Card(
+      color: Colors.yellow[50],
+      elevation: 8.0,
+      margin: const EdgeInsets.all(8.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: [
+              CircleAvatar(
+                backgroundColor: getNextCircleAvatarBgColor(),
+                child: Text(
+                  xlcdLanguageSelection.substring(0, 1),
+                ),
+              ),
+              Expanded(
+                child: Text(
+                  xlcdLanguageSelection,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              // IconButton(
+              //   icon: const Icon(Icons.logout_outlined),
+              //   tooltip: 'Sign out',
+              //   onPressed: () async {
+              //     await JoystoreAuth.of(context).signOut();
+              //     xlcdlog.info('User just signed out!');
+
+              //     FirebaseAnalytics.instance
+              //         .logEvent(name: 'signin_view', parameters: {
+              //       'xlcdapp_screen': 'UserSignedOut',
+              //       'xlcdapp_screen_class': 'SettingsScreenClass',
+              //     });
+              //   },
+              // ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Column(
+            children: <Widget>[
+              //const Text('語言選擇: '),
+              RadioListTile<LanguageType>(
+                  title: const Text('繁體'),
+                  value: LanguageType.traditional,
+                  groupValue: _language,
+                  onChanged: (LanguageType? value) {
+                    setState(() {
+                      _language = value;
+                      joysCurrentLocale = LOCALE_ZH_TW;
+                      joystoreName = JOYSTORE_NAME_ZH_TW;
+                    });
+                  }),
+              RadioListTile<LanguageType>(
+                  title: const Text('簡體'),
+                  value: LanguageType.simplified,
+                  groupValue: _language,
+                  onChanged: (LanguageType? value) {
+                    setState(() {
+                      _language = value;
+                      joysCurrentLocale = LOCALE_ZH_CN;
+                      joystoreName = JOYSTORE_NAME_ZH_CN;
+                    });
+                  }),
+            ],
+          ),
           const SizedBox(height: 10),
         ],
       ),

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logging/logging.dart';
+import '../auth.dart';
+
+final xlcdlogJoysScreen = Logger('oyscreen');
 
 class JoysScreen extends StatefulWidget {
   final Widget child;
@@ -75,6 +79,21 @@ class _JoysScreenState extends State<JoysScreen>
             ),
           ],
         ),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('↪ 登出'),
+            onPressed: () async {
+              await JoystoreAuth.of(context).signOut();
+              xlcdlogJoysScreen.info('User just signed out!');
+
+              FirebaseAnalytics.instance
+                  .logEvent(name: 'signin_view', parameters: {
+                'xlcdapp_screen': 'UserSignedOut',
+                'xlcdapp_screen_class': 'SettingsScreenClass',
+              });
+            },
+          ),
+        ],
       ),
       body: widget.child,
     );

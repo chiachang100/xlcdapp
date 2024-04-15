@@ -12,6 +12,7 @@ xlcdapp-笑裡藏道.
   - [Flutter samples: Navigation and Routing](https://flutter.github.io/samples/navigation_and_routing.html)
   - [How to add a YouTube video to your Flutter app? by 
 Walnut Software](https://walnutistanbul.medium.com/how-to-add-a-youtube-video-to-your-flutter-app-40c0125414ba)
+- [Internationalizing Flutter apps](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
 
 ---
 ### Flutter Packages
@@ -226,6 +227,33 @@ module FirebaseCoreOnly {
 ```
 
 ---
-Copyright (c) 2024 Chia Chang. MIT License. 
+## Internationalizing (I18N) Flutter apps
+- [Internationalizing Flutter apps](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
+  - [flutter_localizations]()
+  - [intl](https://pub.dev/packages/intl)
+  - [intl_translation](https://pub.dev/packages/intl_translation)
+
+- `flutter pub add flutter_localizations --sdk=flutter`
+- `flutter pub add intl:any`
+- `flutter pub add intl_translation`
+
+---
+Copyright 2024 Chia Chang. Apache License, Version 2.0 (the "License").
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+   Copyright 2021, the Flutter project authors. Please see the AUTHORS file
+   for details. All rights reserved. Use of this source code is governed by a
+   BSD-style license that can be found in the LICENSE file.
 
 ---

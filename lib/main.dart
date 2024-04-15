@@ -32,6 +32,9 @@ Future<void> main() async {
     ),
   );
 
+  //------------------------------------------
+  // Setup Firebase
+  //------------------------------------------
   app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -39,12 +42,23 @@ Future<void> main() async {
 
   final firestore = FirebaseFirestore.instance;
 
-  joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
-
   final settings = firestore.settings.copyWith(persistenceEnabled: true);
   final updatedSettings = firestore.settings
       .copyWith(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
   //firestore.settings = settings;
+
+  //------------------------------------------
+  // Setup Locale and JoyStore instance
+  //------------------------------------------
+  // joystoreName = JOYSTORE_NAME_DEFAULT;
+
+  joysCurrentLocale = LOCALE_ZH_TW;
+  joystoreName = JOYSTORE_NAME_ZH_TW;
+
+  // joysCurrentLocale = LOCALE_ZH_CN;
+  // joystoreName = JOYSTORE_NAME_ZH_CN;
+
+  joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
 
   // if (kIsWeb) {
   //   // await FirebaseAuth.instance.setPersistence(Persistence.NONE);

@@ -10,6 +10,15 @@ late final FirebaseApp app;
 late final FirebaseAuth auth;
 late JoyStore joystoreInstance;
 
+late String joysCurrentLocale;
+const LOCALE_ZH_CN = 'zh_CN';
+const LOCALE_ZH_TW = 'zh_TW';
+
+late String joystoreName;
+const JOYSTORE_NAME_DEFAULT = 'joys';
+const JOYSTORE_NAME_ZH_CN = 'joys_zh_cn';
+const JOYSTORE_NAME_ZH_TW = 'joys_zh_tw';
+
 // 紅、橙、黃、綠、藍、靛、紫
 List<Color> circleAvatarBgColor = [
   Colors.red,

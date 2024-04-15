@@ -158,3 +158,19 @@ The relevant error-causing widget was:
 ```
 
 ---
+- Display a SnackBar
+```
+          // IconButton(
+          //   icon: const Icon(Icons.settings_outlined),
+          //   tooltip: 'Settings',
+          //   onPressed: () {
+          //     ScaffoldMessenger.of(context).showSnackBar(
+          //       const SnackBar(
+          //         content: Text('There are currently no settings available.'),
+          //       ),
+          //     );
+          //   },
+          // ),
+
+```
+---
