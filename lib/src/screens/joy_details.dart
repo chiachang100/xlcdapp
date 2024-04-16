@@ -14,7 +14,7 @@ import 'package:youtube_player_iframe/youtube_player_iframe.dart' as ypi;
 import '../data.dart';
 import 'scripture_details.dart';
 
-final xlcdlog = Logger('joy_details');
+final xlcdlogJoyDetails = Logger('joy_details');
 
 class JoyDetailsScreen extends StatefulWidget {
   final Joy? joy;
@@ -292,14 +292,15 @@ class _YoutubePlayerIFrameSectionState
     _controller.setFullScreenListener(
       (isFullScreen) {
         // developer.log('${isFullScreen ? 'Entered' : 'Exited'} Fullscreen.');
-        xlcdlog.fine('${isFullScreen ? 'Entered' : 'Exited'} Fullscreen.');
+        xlcdlogJoyDetails
+            .fine('${isFullScreen ? 'Entered' : 'Exited'} Fullscreen.');
       },
     );
 
     //_controller.loadVideoById(videoId: widget.videoId); // Auto Play
     _controller.cueVideoById(videoId: widget.videoId); // Manual Play
 
-    xlcdlog.info('Using YoutubePlayerIFrame.');
+    xlcdlogJoyDetails.info('Using YoutubePlayerIFrame.');
   }
 
   @override
@@ -308,8 +309,8 @@ class _YoutubePlayerIFrameSectionState
       _controller.close();
       super.dispose();
     } catch (e) {
-      //xlcdlog.info('Caught exception: $e');
-      xlcdlog.info('Caught exception...');
+      //xlcdlogJoyDetails.info('Caught exception: $e');
+      xlcdlogJoyDetails.info('Caught exception...');
     } finally {
       //super.dispose();
     }
@@ -387,7 +388,7 @@ class _YoutubePlayerFlutterSectionState
         }
       });
 
-    xlcdlog.info('Using YoutubePlayerFlutter.');
+    xlcdlogJoyDetails.info('Using YoutubePlayerFlutter.');
   }
 
   @override

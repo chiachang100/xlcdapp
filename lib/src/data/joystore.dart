@@ -7,19 +7,10 @@ import 'local_joystore.dart';
 import 'local_joystore_zh_cn.dart';
 import 'local_joystore_zh_tw.dart';
 
-final xlcdlog = Logger('joystore');
+final xlcdlogJoyStore = Logger('joystore');
 
 const int topList = 10;
 const int wholeList = 0;
-
-final joysRef = FirebaseFirestore.instance
-    // .collection('joys')
-    .collection(joystoreName)
-    .orderBy("articleId", descending: false)
-    .withConverter<Joy>(
-      fromFirestore: (snapshots, _) => Joy.fromJson(snapshots.data()!),
-      toFirestore: (joy, _) => joy.toJson(),
-    );
 
 class JoyStore {
   List<Joy> allJoys = [];
@@ -135,6 +126,14 @@ class JoyStore {
 
 // Build JoyStore Instance from Remote Firestore JoyStore
 JoyStore buildJoyStoreFromFirestore(JoyStore joystore) {
+  final joysRef = FirebaseFirestore.instance
+      // .collection('joys')
+      .collection(joystoreName)
+      .orderBy("articleId", descending: false)
+      .withConverter<Joy>(
+        fromFirestore: (snapshots, _) => Joy.fromJson(snapshots.data()!),
+        toFirestore: (joy, _) => joy.toJson(),
+      );
   joysRef.get().then((event) {
     if (event.docs.isNotEmpty) {
       var js = JoyStore();
@@ -142,10 +141,10 @@ JoyStore buildJoyStoreFromFirestore(JoyStore joystore) {
       for (var doc in event.docs) {
         var joy = doc.data();
         if (!isLogged) {
-          xlcdlog.info(
-              "Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
-          xlcdlog.info(
-              "JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
+          xlcdlogJoyStore.info(
+              "$joystoreName: Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
+          xlcdlogJoyStore.info(
+              "$joystoreName: JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
           isLogged = true;
         }
 

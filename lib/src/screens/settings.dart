@@ -1,15 +1,13 @@
-import 'package:logging/logging.dart';
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:logging/logging.dart';
 import '../auth.dart';
 import '../data.dart';
 
-final xlcdlog = Logger('settings');
+final xlcdlogSettings = Logger('settings');
 
 Future<void> lauchTargetUrl(String urlString) async {
   Uri urlForPurchasingBook = Uri.parse(urlString);
@@ -21,6 +19,19 @@ Future<void> lauchTargetUrl(String urlString) async {
 int circleAvatarBgColorIndex = 0;
 
 enum LanguageType { traditional, simplified }
+
+LanguageType getCurrentLanguage() {
+  var lang = LanguageType.traditional;
+  switch (joysCurrentLocale) {
+    case LOCALE_ZH_CN:
+      lang = LanguageType.simplified;
+    case LOCALE_ZH_TW:
+      lang = LanguageType.traditional;
+    default:
+      lang = LanguageType.traditional;
+  }
+  return lang;
+}
 
 Color getNextCircleAvatarBgColor() {
   Color nextColor = circleAvatarBgColor[
@@ -162,10 +173,10 @@ class LanguageSection extends StatefulWidget {
 }
 
 class _LanguageSectionState extends State<LanguageSection> {
-  final String xlcdLanguageSelection = '設定個人喜好';
+  final String xlcdLanguageSelection = '設定喜好';
   final String xlcdappWebsiteLink = 'https://xlcdapp.web.app';
 
-  LanguageType? _language = LanguageType.traditional;
+  LanguageType? _language = getCurrentLanguage();
 
   @override
   Widget build(BuildContext context) {
@@ -197,20 +208,6 @@ class _LanguageSectionState extends State<LanguageSection> {
                   ),
                 ),
               ),
-              // IconButton(
-              //   icon: const Icon(Icons.logout_outlined),
-              //   tooltip: 'Sign out',
-              //   onPressed: () async {
-              //     await JoystoreAuth.of(context).signOut();
-              //     xlcdlog.info('User just signed out!');
-
-              //     FirebaseAnalytics.instance
-              //         .logEvent(name: 'signin_view', parameters: {
-              //       'xlcdapp_screen': 'UserSignedOut',
-              //       'xlcdapp_screen_class': 'SettingsScreenClass',
-              //     });
-              //   },
-              // ),
             ],
           ),
           const SizedBox(height: 10),

@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 import '../auth.dart';
 import '../data.dart';
 
-final xlcdlog = Logger('manage-firestore');
+final xlcdlogManageFirestore = Logger('manage-firestore');
 
 class ManageFirestoreScreen extends StatefulWidget {
   const ManageFirestoreScreen({super.key, required this.firestore});
@@ -94,17 +94,17 @@ class FirebaseDbSection extends StatelessWidget {
       final docRef =
           firestore.collection(joystoreName).doc(joy.articleId.toString());
       // Add document
-      docRef
-          .set(joy.toJson())
-          .onError((e, _) => xlcdlog.info("Error writing documen(t: $e"));
+      docRef.set(joy.toJson()).onError(
+          (e, _) => xlcdlogManageFirestore.info("Error writing documen(t: $e"));
       // Read document
       docRef.get().then(
         (DocumentSnapshot doc) {
           final data = doc.data() as Map<String, dynamic>;
-          xlcdlog.info(
+          xlcdlogManageFirestore.info(
               '$joystoreName: DocumentSnapshot added with ID: ${doc.id}:${data['id']}');
         },
-        onError: (e) => xlcdlog.info("Error getting document: $e"),
+        onError: (e) =>
+            xlcdlogManageFirestore.info("Error getting document: $e"),
       );
     }
   }
@@ -122,9 +122,10 @@ class FirebaseDbSection extends StatelessWidget {
         .get()
         .then((event) {
       for (var doc in event.docs) {
-        xlcdlog.info("$joystoreName: Firestore: ${doc.id} => ${doc.data()}");
+        xlcdlogManageFirestore
+            .info("$joystoreName: Firestore: ${doc.id} => ${doc.data()}");
         var joy = Joy.fromJson(doc.data());
-        xlcdlog.info(
+        xlcdlogManageFirestore.info(
             "$joystoreName: Joy: ${doc.id} => id=${joy.id}:articleId=${joy.articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
       }
     });

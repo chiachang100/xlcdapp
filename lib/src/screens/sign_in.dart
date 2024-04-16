@@ -5,6 +5,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import "../data.dart";
+import 'package:logging/logging.dart';
+
+final xlcdlogSignIn = Logger('sign_in');
 
 typedef OAuthSignIn = void Function();
 
@@ -397,7 +400,7 @@ class _SignInScreenState extends State<SignInScreen> {
     });
 
     await auth.signInAnonymously();
-    xlcdlog.info(
+    xlcdlogSignIn.info(
         'SingInAnonymously uid: ${FirebaseAuth.instance.currentUser?.uid}');
 
     widget.onSignIn(
@@ -438,7 +441,7 @@ class _SignInScreenState extends State<SignInScreen> {
         });
       }
       if (user != null) {
-        xlcdlog.info(
+        xlcdlogSignIn.info(
             'SingInWithEmailAndPassword uid: ${FirebaseAuth.instance.currentUser?.uid}');
 
         widget.onSignIn(Credentials(
@@ -478,7 +481,7 @@ class _SignInScreenState extends State<SignInScreen> {
       userCredential = await auth.signInWithCredential(credential);
       user = userCredential.user;
       if (user != null) {
-        xlcdlog.info(
+        xlcdlogSignIn.info(
             'SingInWithGoogle uid: ${FirebaseAuth.instance.currentUser?.uid}');
 
         widget.onSignIn(Credentials(

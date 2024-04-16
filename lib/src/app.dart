@@ -20,7 +20,7 @@ import 'widgets/joy_list.dart';
 final appShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'app shell');
 final joysNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'joys shell');
 
-final xlcdlog = Logger('app_joystore');
+final xlcdlogAppJoystore = Logger('app_joystore');
 
 class Joystore extends StatefulWidget {
   const Joystore({
@@ -85,10 +85,10 @@ class _JoystoreState extends State<Joystore> {
         redirect: (context, state) {
           if (turnonSignIn) {
             if (auth.currentUser == null) {
-              xlcdlog.info('Current User is signed out!');
+              xlcdlogAppJoystore.info('Current User is signed out!');
               final signedIn = JoystoreAuth.of(context).signedIn;
               if (state.uri.toString() != '/sign-in' && !signedIn) {
-                xlcdlog.info('Display sign-in screen!');
+                xlcdlogAppJoystore.info('Display sign-in screen!');
                 return '/sign-in';
               }
             }
