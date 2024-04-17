@@ -39,6 +39,7 @@ dependencies:
   flutter_native_splash: ^2.4.0
   youtube_player_flutter: ^9.0.0
   flutter_inappwebview: ^6.0.0
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:

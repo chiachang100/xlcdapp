@@ -10,11 +10,13 @@ late final FirebaseApp app;
 late final FirebaseAuth auth;
 late JoyStore joystoreInstance;
 
-late String joysCurrentLocale;
+// late String joysCurrentLocale;
+var joysCurrentLocale = LOCALE_ZH_TW;
 const LOCALE_ZH_CN = 'zh_CN';
 const LOCALE_ZH_TW = 'zh_TW';
 
-late String joystoreName;
+// late String joystoreName;
+var joystoreName = JOYSTORE_NAME_ZH_TW;
 const JOYSTORE_NAME_DEFAULT = 'joys';
 const JOYSTORE_NAME_ZH_CN = 'joys_zh_cn';
 const JOYSTORE_NAME_ZH_TW = 'joys_zh_tw';

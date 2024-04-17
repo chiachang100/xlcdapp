@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
-
 import 'package:firebase_analytics/firebase_analytics.dart';
+import '../services/locale_services.dart';
 
 class JoystoreScaffold extends StatelessWidget {
   final Widget child;
@@ -23,6 +23,10 @@ class JoystoreScaffold extends StatelessWidget {
       'xlcdapp_screen_class': 'JoystoreScaffoldClass',
     });
 
+    String xlcdAppTitle = LocaleServices.getXlcdAppTitle();
+    String xlcdAppScriptLabel = LocaleServices.getXlcdAppScriptLabel();
+    String xlcdAppSettingsLabel = LocaleServices.getXlcdAppSettingsLabel();
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -37,21 +41,24 @@ class JoystoreScaffold extends StatelessWidget {
               if (idx == 1) goRouter.go('/scriptures');
               if (idx == 2) goRouter.go('/settings');
             },
-            destinations: const <NavigationDestination>[
+            destinations: <NavigationDestination>[
               NavigationDestination(
-                label: '笑裡藏道',
-                icon: Icon(Icons.home_outlined),
-                selectedIcon: Icon(Icons.home),
+                // label: '笑裡藏道',
+                label: xlcdAppTitle,
+                icon: const Icon(Icons.home_outlined),
+                selectedIcon: const Icon(Icons.home),
               ),
               NavigationDestination(
-                label: '聖經經文',
-                icon: Icon(Icons.list_outlined),
+                // label: '聖經經文',
+                label: xlcdAppScriptLabel,
+                icon: const Icon(Icons.list_outlined),
                 selectedIcon: Icon(Icons.list),
               ),
               NavigationDestination(
-                label: '資源簡介',
-                icon: Icon(Icons.group_outlined),
-                selectedIcon: Icon(Icons.group),
+                // label: '資源簡介',
+                label: xlcdAppSettingsLabel,
+                icon: const Icon(Icons.group_outlined),
+                selectedIcon: const Icon(Icons.group),
               ),
             ],
           ),

@@ -3,8 +3,9 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
 import '../auth.dart';
+import '../services/locale_services.dart';
 
-final xlcdlogJoysScreen = Logger('oyscreen');
+final xlcdlogJoysScreen = Logger('joyscreen');
 
 class JoysScreen extends StatefulWidget {
   final Widget child;
@@ -49,7 +50,8 @@ class _JoysScreenState extends State<JoysScreen>
     _tabController.index = widget.selectedIndex;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('笑裡藏道'),
+        // title: const Text('笑裡藏道'),
+        title: Text(LocaleServices.getXlcdAppTitle()),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(

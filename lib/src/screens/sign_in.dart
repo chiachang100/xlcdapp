@@ -6,6 +6,7 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import "../data.dart";
 import 'package:logging/logging.dart';
+import '../services/locale_services.dart';
 
 final xlcdlogSignIn = Logger('sign_in');
 
@@ -112,7 +113,8 @@ class _SignInScreenState extends State<SignInScreen> {
           leading: Image.asset('assets/photos/xlcdapp_photo_default.png'),
           leadingWidth: 100,
           centerTitle: true,
-          title: Text('笑裡藏道'),
+          // title: Text('笑裡藏道'),
+          title: Text(LocaleServices.getXlcdAppTitle()),
         ),
         body: Center(
           child: SingleChildScrollView(

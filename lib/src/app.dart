@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:logging/logging.dart';
+import 'package:xlcdapp/src/services/locale_services.dart';
 import 'auth.dart';
 import 'data.dart';
 import 'screens/joy_details.dart';
@@ -244,6 +245,7 @@ class _JoystoreState extends State<Joystore> {
                     key: state.pageKey,
                     child: Builder(builder: (context) {
                       return ScripturesScreen(
+                        title: LocaleServices.getXlcdAppScriptLabel(),
                         onTap: (scripture) {
                           GoRouter.of(context)
                               .go('/scriptures/scripture/${scripture.id}');

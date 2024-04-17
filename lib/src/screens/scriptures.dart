@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:go_router/go_router.dart';
-
 import '../data.dart';
 import '../widgets/scripture_list.dart';
+import '../services/locale_services.dart';
 
-class ScripturesScreen extends StatelessWidget {
+class ScripturesScreen extends StatefulWidget {
   final String title;
   final ValueChanged<Scripture> onTap;
 
-  const ScripturesScreen({
+  ScripturesScreen({
     required this.onTap,
-    this.title = '聖經經文',
+    // this.title = '聖經經文',
+    required this.title,
     super.key,
   });
 
+  @override
+  State<ScripturesScreen> createState() => _ScripturesScreenState();
+}
+
+class _ScripturesScreenState extends State<ScripturesScreen> {
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
@@ -24,7 +30,7 @@ class ScripturesScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -38,7 +44,7 @@ class ScripturesScreen extends StatelessWidget {
       ),
       body: ScriptureList(
         scriptures: joystoreInstance.allScriptures,
-        onTap: onTap,
+        onTap: widget.onTap,
       ),
     );
   }

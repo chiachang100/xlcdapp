@@ -13,6 +13,7 @@ import 'firebase_options.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'src/app.dart';
 import 'src/data.dart';
+import 'src/services/locale_services.dart';
 
 final xlcdlog = Logger('main');
 
@@ -99,7 +100,8 @@ const double windowHeight = 854;
 void setupWindow() {
   if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
     WidgetsFlutterBinding.ensureInitialized();
-    setWindowTitle('笑裡藏道');
+    // setWindowTitle('笑裡藏道');
+    setWindowTitle(LocaleServices.getXlcdAppTitle());
     setWindowMinSize(const Size(windowWidth, windowHeight));
     setWindowMaxSize(const Size(windowWidth, windowHeight));
     getCurrentScreen().then((screen) {

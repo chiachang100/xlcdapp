@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:xlcdapp/src/services/locale_services.dart';
 import '../data.dart';
 
 class JoyList extends StatelessWidget {
@@ -15,16 +16,7 @@ class JoyList extends StatelessWidget {
     super.key,
   });
 
-  static List<String> dynamicText = [
-    '⚕️喜樂的心乃是良藥',
-    '🤣盡情地開懷大笑吧',
-    '💓神的道是活潑的',
-    '✞神的道是有功效的',
-    '😌領受一份幽默感',
-    '💰累積你的笑話存款',
-    '📈提升你的親和指數'
-  ];
-
+  List<String> dynamicText = LocaleServices.getButtonText();
   String getNextText() => dynamicText[Random().nextInt(dynamicText.length)];
 
   @override
@@ -49,22 +41,15 @@ class JoyList extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Image.asset(
                   joys[index].photoUrl,
-                  // height: MediaQuery.of(context).size.width * (3 / 4),
-                  // width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.width * (2 / 4),
                   width: MediaQuery.of(context).size.width * (2 / 4),
-                  //height: 120, width: 640,
                   fit: BoxFit.scaleDown,
                 ),
               ),
               Row(
                 children: [
                   Text(
-                    //isRanked ? '[第${(index + 1)}名]' : '',
                     isRanked ? '🏆#${(index + 1)}:' : '',
-                    // isRanked
-                    //     ? '${rankingEmoji[(index + 1) % rankingEmoji.length]}'
-                    //     : '',
                     style: const TextStyle(
                       color: Colors.red,
                     ),
@@ -89,8 +74,6 @@ class JoyList extends StatelessWidget {
                     avatar: const Icon(Icons.thumb_up_outlined),
                     label: Text('${joys[index].likes}'),
                     side: BorderSide.none,
-                    //backgroundColor: Colors.yellow[50],
-                    //backgroundColor: const Color.fromARGB(255, 218, 218, 203),
                   ),
                 ],
               ),

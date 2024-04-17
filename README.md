@@ -13,6 +13,7 @@ xlcdapp-笑裡藏道.
   - [How to add a YouTube video to your Flutter app? by 
 Walnut Software](https://walnutistanbul.medium.com/how-to-add-a-youtube-video-to-your-flutter-app-40c0125414ba)
 - [Internationalizing Flutter apps](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
+- [Store key-value data on disk](https://docs.flutter.dev/cookbook/persistence/key-value)
 
 ---
 ### Flutter Packages
@@ -170,6 +171,11 @@ await Firebase.initializeApp(
 - Flutterfire iOS SDK
   - Follow the instructions describe in the **Firebase iOS SDK** section with the follow repo's URL:
     - `https://github.com/firebase/flutterfire.git`
+
+---
+## Store key-value data on disk
+- [Store key-value data on disk](https://docs.flutter.dev/cookbook/persistence/key-value)
+- `flutter pub add shared_preferences`
 
 ---
 ## Useful Tools
