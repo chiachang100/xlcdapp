@@ -165,10 +165,10 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
-        str = '语言选择:  ';
+        str = '⚙️语言选择:  ';
       case LOCALE_ZH_TW:
       default:
-        str = '語言選擇:  ';
+        str = '⚙️語言選擇:  ';
     }
     return str;
   }
@@ -204,10 +204,10 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
-        str = '笑里藏道书籍介绍';
+        str = '「笑里藏道」书籍介绍';
       case LOCALE_ZH_TW:
       default:
-        str = '笑裡藏道書籍介紹';
+        str = '「笑裡藏道」書籍介紹';
     }
     return str;
   }
@@ -404,10 +404,10 @@ class LocaleServices {
     String str = '';
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
-        str = '👍北加州全福会会长、优势频道执行委员会主席 刘效宏';
+        str = '👍北加州全福会会长、优视频道执行委员会主席 刘效宏';
       case LOCALE_ZH_TW:
       default:
-        str = '👍北加州全福會會長、優勢頻道執行委員會主席 劉效宏';
+        str = '👍北加州全福會會長、優視頻道執行委員會主席 劉效宏';
     }
     return str;
   }

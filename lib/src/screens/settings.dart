@@ -135,23 +135,13 @@ class _QRCodeSectionState extends State<QRCodeSection> {
               fit: BoxFit.scaleDown,
             ),
           ),
-          Row(
-            children: [
-              CircleAvatar(
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: Text(
-                  xlcdQRCodeIntro.substring(0, 1),
-                ),
-              ),
-              const SizedBox(width: 5),
-              Text(
-                xlcdQRCodeIntro,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+          Text(
+            xlcdQRCodeIntro,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          const SizedBox(height: 10),
           Text(LocaleServices.getQRCodeDescription()),
           const SizedBox(height: 10),
         ],
@@ -190,26 +180,15 @@ class _LanguageSectionState extends State<LanguageSection> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Column(
         children: <Widget>[
-          Row(
-            children: [
-              CircleAvatar(
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: Text(
-                  xlcdLanguageSelection.substring(0, 1),
-                ),
-              ),
-              Expanded(
-                child: Text(
-                  xlcdLanguageSelection,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
+          Text(
+            xlcdLanguageSelection,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(height: 10),
-          Row(
+          Wrap(
+            direction: Axis.horizontal,
             children: <Widget>[
               Text(LocaleServices.getLanguageSelectionHeader()),
               ToggleButtons(
@@ -311,26 +290,16 @@ class _BookIntroSectionState extends State<BookIntroSection> {
               fit: BoxFit.scaleDown,
             ),
           ),
-          Row(
-            children: [
-              CircleAvatar(
-                //backgroundColor: Colors.orange,
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: Text(
-                  xlcdBookIntro.substring(0, 1),
-                ),
-              ),
-              const SizedBox(width: 5),
-              Text(
-                xlcdBookIntro,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+          Text(
+            xlcdBookIntro,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          const SizedBox(height: 10),
           Text(LocaleServices.getBookIntroDescription()),
-          Row(
+          Wrap(
+            direction: Axis.horizontal,
             children: [
               ElevatedButton(
                 onPressed: () => lauchTargetUrl(gracephSite),
@@ -387,24 +356,13 @@ class _BookAuthorSectionState extends State<BookAuthorSection> {
               fit: BoxFit.scaleDown,
             ),
           ),
-          Row(
-            children: [
-              CircleAvatar(
-                //backgroundColor: Colors.orange,
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: Text(
-                  xlcdBookAuthor.substring(0, 1),
-                ),
-              ),
-              const SizedBox(width: 5),
-              Text(
-                xlcdBookAuthor,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+          Text(
+            xlcdBookAuthor,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          const SizedBox(height: 10),
           Text(LocaleServices.getBookAuthorDescription()),
           Center(
             child: ElevatedButton(
@@ -454,97 +412,83 @@ class _BookPraiseSectionState extends State<BookPraiseSection> {
               fit: BoxFit.scaleDown,
             ),
           ),
-          Row(
-            children: [
-              CircleAvatar(
-                //backgroundColor: Colors.orange,
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: const Icon(Icons.thumb_up_outlined),
-                // child: Text(
-                //   bookPraiseSectionTitle.substring(0, 1),
-                // ),
-              ),
-              const SizedBox(width: 5),
-              Text(
-                bookPraiseSectionTitle,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+          Text(
+            bookPraiseSectionTitle,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          const SizedBox(height: 10),
           ListTile(
-            leading: CircleAvatar(
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: const Text('來')),
+            tileColor: Colors.yellow[50],
             title: Text(
               LocaleServices.getBookPraiseDescription1(),
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              // style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: const Text(''),
           ),
           const Divider(height: 0),
           ListTile(
-            leading: CircleAvatar(
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: const Text('若')),
+            // leading: CircleAvatar(
+            //     backgroundColor: getNextCircleAvatarBgColor(),
+            //     child: const Text('若')),
             title: Text(LocaleServices.getBookPraiseDescription2Title()),
-            subtitle: Text(
-              LocaleServices.getBookPraiseDescription2SubTitle(),
-              style: const TextStyle(
-                fontStyle: FontStyle.italic,
+            subtitle: Center(
+              child: Text(
+                LocaleServices.getBookPraiseDescription2SubTitle(),
+                style: const TextStyle(
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             ),
           ),
           const Divider(height: 0),
           ListTile(
-            leading: CircleAvatar(
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: const Text('幽')),
+            tileColor: Colors.yellow[50],
             title: Text(LocaleServices.getBookPraiseDescription3Title()),
-            subtitle: Text(
-              LocaleServices.getBookPraiseDescription3SubTitle(),
-              style: const TextStyle(
-                fontStyle: FontStyle.italic,
+            subtitle: Center(
+              child: Text(
+                LocaleServices.getBookPraiseDescription3SubTitle(),
+                style: const TextStyle(
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             ),
           ),
           const Divider(height: 0),
           ListTile(
-            leading: CircleAvatar(
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: const Text('曾')),
             title: Text(LocaleServices.getBookPraiseDescription4Title()),
-            subtitle: Text(
-              LocaleServices.getBookPraiseDescription4SubTitle(),
-              style: const TextStyle(
-                fontStyle: FontStyle.italic,
+            subtitle: Center(
+              child: Text(
+                LocaleServices.getBookPraiseDescription4SubTitle(),
+                style: const TextStyle(
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             ),
           ),
           const Divider(height: 0),
           ListTile(
-            leading: CircleAvatar(
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: const Text('每')),
+            tileColor: Colors.yellow[50],
             title: Text(LocaleServices.getBookPraiseDescription5Title()),
-            subtitle: Text(
-              LocaleServices.getBookPraiseDescription5SubTitle(),
-              style: const TextStyle(
-                fontStyle: FontStyle.italic,
+            subtitle: Center(
+              child: Text(
+                LocaleServices.getBookPraiseDescription5SubTitle(),
+                style: const TextStyle(
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             ),
           ),
           const Divider(height: 0),
           ListTile(
-            leading: CircleAvatar(
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: const Text('獨')),
             title: Text(LocaleServices.getBookPraiseDescription6Title()),
-            subtitle: Text(
-              LocaleServices.getBookPraiseDescription6SubTitle(),
-              style: const TextStyle(
-                fontStyle: FontStyle.italic,
+            subtitle: Center(
+              child: Text(
+                LocaleServices.getBookPraiseDescription6SubTitle(),
+                style: const TextStyle(
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             ),
           ),
@@ -592,24 +536,13 @@ class _AppDeveloperSectionState extends State<AppDeveloperSection> {
               fit: BoxFit.scaleDown,
             ),
           ),
-          Row(
-            children: [
-              CircleAvatar(
-                //backgroundColor: Colors.orange,
-                backgroundColor: getNextCircleAvatarBgColor(),
-                child: Text(
-                  xlcdAppAuthor.substring(0, 1),
-                ),
-              ),
-              const SizedBox(width: 5),
-              Text(
-                xlcdAppAuthor,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+          Text(
+            xlcdAppAuthor,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          const SizedBox(height: 10),
           Text(LocaleServices.getAppDeveloperDescription()),
           Center(
             child: ElevatedButton(
