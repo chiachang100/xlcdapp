@@ -93,7 +93,7 @@ class _JoysScreenState extends State<JoysScreen>
         ),
         actions: <Widget>[
           TextButton(
-            child: const Text('↪ 登出'),
+            child: Text(LocaleServices.getSignOutLabel()),
             onPressed: () async {
               await JoystoreAuth.of(context).signOut();
               xlcdlogJoysScreen.info('User just signed out!');

@@ -307,12 +307,12 @@ class _BookIntroSectionState extends State<BookIntroSection> {
               children: [
                 ElevatedButton(
                   onPressed: () => lauchTargetUrl(gracephSite),
-                  child: const Text('天恩出版社'),
+                  child: Text(LocaleServices.getGraceBookStoreButtonLabel()),
                 ),
-                const Text(' || '),
+                const SizedBox(width: 10.0),
                 ElevatedButton(
                   onPressed: () => lauchTargetUrl(riverbankSite),
-                  child: const Text('靈糧書房'),
+                  child: Text(LocaleServices.getRiverBookStoreButtonLabel()),
                 ),
               ],
             ),
@@ -374,7 +374,7 @@ class _BookAuthorSectionState extends State<BookAuthorSection> {
             child: ElevatedButton(
               //onPressed: visitYouTubePlaylist,
               onPressed: () => lauchTargetUrl(youtubePlaylistLink),
-              child: const Text('▶️曾興才牧師講道視頻'),
+              child: Text(LocaleServices.getBookAuthorVideoButtonLabel()),
             ),
           ),
           const SizedBox(height: 10),
@@ -556,7 +556,7 @@ class _AppDeveloperSectionState extends State<AppDeveloperSection> {
             child: ElevatedButton(
               //onPressed: visitBibleWebsite,
               onPressed: () => lauchTargetUrl(bibleGatewayLink),
-              child: const Text('✝️線上閱讀聖經'),
+              child: Text(LocaleServices.getOnlineBibleButtonLabel()),
             ),
           ),
           const SizedBox(height: 10),

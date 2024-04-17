@@ -30,6 +30,19 @@ class LocaleServices {
     return isTraditional;
   }
 
+  static String getSignOutLabel() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
+        str = '↪登出';
+      case LOCALE_ZH_TW:
+      default:
+        str = '↪登出';
+    }
+    return str;
+  }
+
   static String getXlcdAppTitle() {
     String str = '';
 
@@ -229,6 +242,32 @@ class LocaleServices {
     return str;
   }
 
+  static String getGraceBookStoreButtonLabel() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
+        str = '📚天恩出版社';
+      case LOCALE_ZH_TW:
+      default:
+        str = '📚天恩出版社';
+    }
+    return str;
+  }
+
+  static String getRiverBookStoreButtonLabel() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
+        str = '📚灵粮书房';
+      case LOCALE_ZH_TW:
+      default:
+        str = '📚靈糧書房';
+    }
+    return str;
+  }
+
   static String getBookAuthor() {
     String str = '';
 
@@ -259,6 +298,19 @@ class LocaleServices {
             '1995年返回馬來西亞擔任吉隆坡信義會主任牧師。'
             '2001年全家返美，加入「矽谷生命河靈糧堂」事奉團隊，目前負責牧養處事工。'
             '與師母 Connie 育有兩個女兒。';
+    }
+    return str;
+  }
+
+  static String getBookAuthorVideoButtonLabel() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
+        str = '▶️曾兴才牧师讲道视频';
+      case LOCALE_ZH_TW:
+      default:
+        str = '▶️曾興才牧師講道視頻';
     }
     return str;
   }
@@ -444,6 +496,19 @@ class LocaleServices {
             '業餘時領受主的呼召及恩典，在教會裡擔任過多種事奉，傳主福音，跟隨耶穌，榮神益人。'
             '與妻子Judy目前領受主賜兒孫滿堂。'
             '祈求藉著「笑裡藏道」書籍+App為主多傳喜樂的福音，領人歸主。頌讚、榮耀歸於我們的神，直到永永遠遠！阿們。';
+    }
+    return str;
+  }
+
+  static String getOnlineBibleButtonLabel() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
+        str = '✝️线上阅读圣经';
+      case LOCALE_ZH_TW:
+      default:
+        str = '✝️線上閱讀聖經';
     }
     return str;
   }
