@@ -124,6 +124,7 @@ class _QRCodeSectionState extends State<QRCodeSection> {
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -179,6 +180,7 @@ class _LanguageSectionState extends State<LanguageSection> {
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             xlcdLanguageSelection,
@@ -279,6 +281,7 @@ class _BookIntroSectionState extends State<BookIntroSection> {
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -298,19 +301,21 @@ class _BookIntroSectionState extends State<BookIntroSection> {
           ),
           const SizedBox(height: 10),
           Text(LocaleServices.getBookIntroDescription()),
-          Wrap(
-            direction: Axis.horizontal,
-            children: [
-              ElevatedButton(
-                onPressed: () => lauchTargetUrl(gracephSite),
-                child: const Text('天恩出版社'),
-              ),
-              const Text(' || '),
-              ElevatedButton(
-                onPressed: () => lauchTargetUrl(riverbankSite),
-                child: const Text('靈糧書房'),
-              ),
-            ],
+          Center(
+            child: Wrap(
+              direction: Axis.horizontal,
+              children: [
+                ElevatedButton(
+                  onPressed: () => lauchTargetUrl(gracephSite),
+                  child: const Text('天恩出版社'),
+                ),
+                const Text(' || '),
+                ElevatedButton(
+                  onPressed: () => lauchTargetUrl(riverbankSite),
+                  child: const Text('靈糧書房'),
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 10),
         ],
@@ -345,6 +350,7 @@ class _BookAuthorSectionState extends State<BookAuthorSection> {
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -401,6 +407,7 @@ class _BookPraiseSectionState extends State<BookPraiseSection> {
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -525,6 +532,7 @@ class _AppDeveloperSectionState extends State<AppDeveloperSection> {
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -574,6 +582,7 @@ class CopyrightSection extends StatelessWidget {
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text('Copyright 2024 Chia Chang. Apache License, Version 2.0.'),
         ],

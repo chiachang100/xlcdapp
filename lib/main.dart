@@ -58,21 +58,31 @@ Future<void> main() async {
   joysCurrentLocale = LOCALE_ZH_TW;
   joystoreName = JOYSTORE_NAME_ZH_TW;
 
+  xlcdlogMain.info(
+      'main-default: joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
+
+  joystoreInstance = buildJoyStoreFromLocal();
+
   // joysCurrentLocale = LOCALE_ZH_CN;
   // joystoreName = JOYSTORE_NAME_ZH_CN;
 
+  // Load 'joysCurrentLocale' and 'joystoreName' from the local store.
   XlcdAppDataServices.loadDataStoreKeyValueDataOnDisk(
           key: 'joysCurrentLocale', defaultValue: joysCurrentLocale)
-      .then((result) => joysCurrentLocale = result.toString());
+      // .then((result) => joysCurrentLocale = result.toString());
+      .then((result) {
+    joysCurrentLocale = result.toString();
 
-  XlcdAppDataServices.loadDataStoreKeyValueDataOnDisk(
-          key: 'joystoreName', defaultValue: joystoreName)
-      .then((result) => joystoreName = result.toString());
-
-  xlcdlogMain.info(
-      'main: joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
-
-  joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
+    XlcdAppDataServices.loadDataStoreKeyValueDataOnDisk(
+            key: 'joystoreName', defaultValue: joystoreName)
+        // .then((result) => joystoreName = result.toString());
+        .then((result) {
+      joystoreName = result.toString();
+      joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
+      xlcdlogMain.info(
+          'main-loading: joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
+    });
+  });
 
   // if (kIsWeb) {
   //   // await FirebaseAuth.instance.setPersistence(Persistence.NONE);
