@@ -31,9 +31,9 @@ class ScriptureDetailsScreen extends StatelessWidget {
             Expanded(
               child: JoyList(
                 joys: scripture.joys,
-                // onTap: (joy) {
-                //   onJoyTapped(joy);
-                // },
+                onTap: (joy) {
+                  onJoyTapped(joy);
+                },
               ),
             ),
           ],

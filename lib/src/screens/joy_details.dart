@@ -310,7 +310,7 @@ class _YoutubePlayerIFrameSectionState
       super.dispose();
     } catch (e) {
       //xlcdlogJoyDetails.info('Caught exception: $e');
-      xlcdlogJoyDetails.info('Caught exception...');
+      xlcdlogJoyDetails.info('YoutubePlayerIFrame: Caught exception...');
     } finally {
       //super.dispose();
     }
@@ -389,6 +389,19 @@ class _YoutubePlayerFlutterSectionState
       });
 
     xlcdlogJoyDetails.info('Using YoutubePlayerFlutter.');
+  }
+
+  @override
+  void dispose() {
+    try {
+      _controller.dispose();
+      super.dispose();
+    } catch (e) {
+      //xlcdlogJoyDetails.info('Caught exception: $e');
+      xlcdlogJoyDetails.info('YoutubePlayerFlutter: Caught exception...');
+    } finally {
+      //super.dispose();
+    }
   }
 
   @override
