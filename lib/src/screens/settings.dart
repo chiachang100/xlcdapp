@@ -7,6 +7,7 @@ import 'package:logging/logging.dart';
 import '../auth.dart';
 import '../data.dart';
 import '../services/locale_services.dart';
+import '../services/data_services.dart';
 
 final xlcdlogSettings = Logger('settings');
 
@@ -208,21 +209,22 @@ class _LanguageSectionState extends State<LanguageSection> {
             ],
           ),
           const SizedBox(height: 10),
-          Column(
+          Row(
             children: <Widget>[
+              Text(LocaleServices.getLanguageSelectionHeader()),
               ToggleButtons(
                 isSelected: isSelected,
-                selectedColor: Colors.white,
                 color: Colors.blue,
-                fillColor: Colors.lightBlue.shade900,
-                splashColor: Colors.red,
-                highlightColor: Colors.orange,
+                selectedColor: Colors.amberAccent,
+                fillColor: Colors.purple,
+                highlightColor: Colors.purpleAccent,
+                splashColor: Colors.lightBlue,
+                borderColor: Colors.white,
+                borderWidth: 2,
+                selectedBorderColor: Colors.greenAccent,
                 textStyle: const TextStyle(fontWeight: FontWeight.bold),
                 renderBorder: true,
-                borderColor: Colors.black,
-                borderWidth: 1.5,
                 borderRadius: BorderRadius.circular(10),
-                selectedBorderColor: Colors.red,
                 onPressed: (int index) {
                   setState(() {
                     for (int buttonIndex = 0;
@@ -241,42 +243,26 @@ class _LanguageSectionState extends State<LanguageSection> {
                       joysCurrentLocale = LOCALE_ZH_CN;
                       joystoreName = JOYSTORE_NAME_ZH_CN;
                     }
+
+                    XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
+                        key: 'joysCurrentLocale', value: joysCurrentLocale);
+                    XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
+                        key: 'joystoreName', value: joystoreName);
+
+                    super.setState(() {});
                   });
                 },
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(LocaleServices.getTraditionalLanguage()),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(LocaleServices.getSimplifiedLanguage()),
                   )
                 ],
               ),
-              //const Text('語言選擇: '),
-              // RadioListTile<LanguageType>(
-              //     title: Text(LocaleServices.getTraditionalLanguage()),
-              //     value: LanguageType.traditional,
-              //     groupValue: _language,
-              //     onChanged: (LanguageType? value) {
-              //       setState(() {
-              //         _language = value;
-              //         joysCurrentLocale = LOCALE_ZH_TW;
-              //         joystoreName = JOYSTORE_NAME_ZH_TW;
-              //       });
-              //     }),
-              // RadioListTile<LanguageType>(
-              //     title: Text(LocaleServices.getSimplifiedLanguage()),
-              //     value: LanguageType.simplified,
-              //     groupValue: _language,
-              //     onChanged: (LanguageType? value) {
-              //       setState(() {
-              //         _language = value;
-              //         joysCurrentLocale = LOCALE_ZH_CN;
-              //         joystoreName = JOYSTORE_NAME_ZH_CN;
-              //       });
-              //     }),
             ],
           ),
           const SizedBox(height: 10),

@@ -48,6 +48,11 @@ class _JoysScreenState extends State<JoysScreen>
   @override
   Widget build(BuildContext context) {
     _tabController.index = widget.selectedIndex;
+
+    String xlcdAppJoysScreenLikes = LocaleServices.getXlcdAppJoysScreenLikes();
+    String xlcdAppJoysScreenNew = LocaleServices.getXlcdAppJoysScreenNew();
+    String xlcdAppJoysScreenAll = LocaleServices.getXlcdAppJoysScreenAll();
+
     return Scaffold(
       appBar: AppBar(
         // title: const Text('笑裡藏道'),
@@ -66,18 +71,23 @@ class _JoysScreenState extends State<JoysScreen>
         bottom: TabBar(
           //isScrollable: true,
           controller: _tabController,
-          tabs: const [
+          tabs: [
             Tab(
-              text: '喜樂榜',
-              icon: Icon(Icons.format_list_numbered, color: Colors.red),
+              // text: '喜樂榜',
+              text: xlcdAppJoysScreenLikes,
+              icon: const Icon(Icons.format_list_numbered, color: Colors.red),
             ),
             Tab(
-              text: '新出爐',
-              icon: Icon(Icons.rocket_launch_outlined, color: Colors.green),
+              // text: '新出爐',
+              text: xlcdAppJoysScreenNew,
+              icon:
+                  const Icon(Icons.rocket_launch_outlined, color: Colors.green),
             ),
             Tab(
-              text: '目錄表',
-              icon: Icon(Icons.collections_outlined, color: Colors.blueAccent),
+              // text: '目錄表',
+              text: xlcdAppJoysScreenAll,
+              icon: const Icon(Icons.collections_outlined,
+                  color: Colors.blueAccent),
             ),
           ],
         ),

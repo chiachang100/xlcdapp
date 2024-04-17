@@ -69,6 +69,45 @@ class LocaleServices {
     return str;
   }
 
+  static String getXlcdAppJoysScreenLikes() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
+        str = '喜乐榜';
+      case LOCALE_ZH_TW:
+      default:
+        str = '喜樂榜';
+    }
+    return str;
+  }
+
+  static String getXlcdAppJoysScreenNew() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
+        str = '新出炉';
+      case LOCALE_ZH_TW:
+      default:
+        str = '新出爐';
+    }
+    return str;
+  }
+
+  static String getXlcdAppJoysScreenAll() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
+        str = '目录表';
+      case LOCALE_ZH_TW:
+      default:
+        str = '目錄表';
+    }
+    return str;
+  }
+
   static String getSettingsScreenTitle() {
     String str = '';
 
@@ -117,6 +156,19 @@ class LocaleServices {
       case LOCALE_ZH_TW:
       default:
         str = '設定喜好';
+    }
+    return str;
+  }
+
+  static String getLanguageSelectionHeader() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
+        str = '语言选择:  ';
+      case LOCALE_ZH_TW:
+      default:
+        str = '語言選擇:  ';
     }
     return str;
   }

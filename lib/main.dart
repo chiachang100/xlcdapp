@@ -14,8 +14,9 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'src/app.dart';
 import 'src/data.dart';
 import 'src/services/locale_services.dart';
+import 'src/services/data_services.dart';
 
-final xlcdlog = Logger('main');
+final xlcdlogMain = Logger('main');
 
 Future<void> main() async {
   Logger.root.level = Level.ALL;
@@ -53,11 +54,23 @@ Future<void> main() async {
   //------------------------------------------
   // joystoreName = JOYSTORE_NAME_DEFAULT;
 
+  // Set the default values
   joysCurrentLocale = LOCALE_ZH_TW;
   joystoreName = JOYSTORE_NAME_ZH_TW;
 
   // joysCurrentLocale = LOCALE_ZH_CN;
   // joystoreName = JOYSTORE_NAME_ZH_CN;
+
+  XlcdAppDataServices.loadDataStoreKeyValueDataOnDisk(
+          key: 'joysCurrentLocale', defaultValue: joysCurrentLocale)
+      .then((result) => joysCurrentLocale = result.toString());
+
+  XlcdAppDataServices.loadDataStoreKeyValueDataOnDisk(
+          key: 'joystoreName', defaultValue: joystoreName)
+      .then((result) => joystoreName = result.toString());
+
+  xlcdlogMain.info(
+      'main: joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
 
   joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
 
