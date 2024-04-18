@@ -72,7 +72,7 @@ class _SettingsContentState extends State<SettingsContent> {
     return ListView(
       children: const <Widget>[
         LanguageSection(),
-        CopyrightSection(),
+        // CopyrightSection(),
         SizedBox(height: 10),
       ],
     );

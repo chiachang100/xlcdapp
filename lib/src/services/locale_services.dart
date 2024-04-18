@@ -74,10 +74,10 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
-        str = '我的设置';
+        str = '个人设置';
       case LOCALE_ZH_TW:
       default:
-        str = '我的設置';
+        str = '個人設置';
     }
     return str;
   }
@@ -139,10 +139,10 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
-        str = '我的设置';
+        str = '个人设置';
       case LOCALE_ZH_TW:
       default:
-        str = '我的設置';
+        str = '個人設置';
     }
     return str;
   }
