@@ -204,10 +204,10 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
-        str = '⚙️语言设置:  ';
+        str = '语言设置:  ';
       case LOCALE_ZH_TW:
       default:
-        str = '⚙️語言設置:  ';
+        str = '語言設置:  ';
     }
     return str;
   }
