@@ -5,17 +5,29 @@ enum LanguageType { traditional, simplified }
 class LocaleServices {
   LocaleServices._(); // Private constructor to prevent instantiation
 
-  static LanguageType getCurrentLanguage() {
+  static LanguageType getCurrentLanguageType() {
     var lang = LanguageType.traditional;
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
         lang = LanguageType.simplified;
       case LOCALE_ZH_TW:
-        lang = LanguageType.traditional;
       default:
         lang = LanguageType.traditional;
     }
     return lang;
+  }
+
+  static String getLanguageTextByLanguageType(LanguageType lang) {
+    String str = '';
+
+    switch (lang) {
+      case LanguageType.simplified:
+        str = getSimplifiedLanguageText();
+      case LanguageType.traditional:
+      default:
+        str = getTraditionalLanguageText();
+    }
+    return str;
   }
 
   static bool isTraditionalLanguage() {
@@ -212,7 +224,7 @@ class LocaleServices {
     return str;
   }
 
-  static String getTraditionalLanguage() {
+  static String getTraditionalLanguageText() {
     String str = '';
 
     switch (joysCurrentLocale) {
@@ -225,7 +237,7 @@ class LocaleServices {
     return str;
   }
 
-  static String getSimplifiedLanguage() {
+  static String getSimplifiedLanguageText() {
     String str = '';
 
     switch (joysCurrentLocale) {

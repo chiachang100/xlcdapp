@@ -12,6 +12,12 @@ import '../widgets/copyright.dart';
 
 final xlcdlogSettings = Logger('settings');
 
+// List<String> langList = <String>['繁體中文', '簡體中文'];
+List<String> langList = <String>[
+  LocaleServices.getTraditionalLanguageText(),
+  LocaleServices.getSimplifiedLanguageText(),
+];
+
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key, required this.firestore});
   final FirebaseFirestore firestore;
@@ -91,9 +97,13 @@ class _LanguageSectionState extends State<LanguageSection> {
 
   final String xlcdappWebsiteLink = 'https://xlcdapp.web.app';
 
-  LanguageType? _language = LocaleServices.getCurrentLanguage();
+  LanguageType? _language = LocaleServices.getCurrentLanguageType();
   List<bool> isSelected =
       LocaleServices.isTraditionalLanguage() ? [true, false] : [false, true];
+
+  String dropdownValue = LocaleServices.getLanguageTextByLanguageType(
+      LocaleServices.getCurrentLanguageType());
+  final TextEditingController langController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -107,73 +117,61 @@ class _LanguageSectionState extends State<LanguageSection> {
       elevation: 8.0,
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            xlcdLanguageSelection,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Wrap(
-            direction: Axis.horizontal,
-            children: <Widget>[
-              Text(LocaleServices.getLanguageSelectionHeader()),
-              ToggleButtons(
-                isSelected: isSelected,
-                color: Colors.blue,
-                selectedColor: Colors.amberAccent,
-                fillColor: Colors.purple,
-                highlightColor: Colors.purpleAccent,
-                splashColor: Colors.lightBlue,
-                // borderColor: Colors.black,
-                borderWidth: 2,
-                // selectedBorderColor: Colors.black,
-                textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                renderBorder: true,
-                borderRadius: BorderRadius.circular(10),
-                onPressed: (int index) {
-                  setState(() {
-                    for (int buttonIndex = 0;
-                        buttonIndex < isSelected.length;
-                        buttonIndex++) {
-                      if (buttonIndex == index) {
-                        isSelected[buttonIndex] = true;
-                      } else {
-                        isSelected[buttonIndex] = false;
-                      }
-                    }
-                    if (index == LanguageType.traditional.index) {
-                      joysCurrentLocale = LOCALE_ZH_TW;
-                      joystoreName = JOYSTORE_NAME_ZH_TW;
-                    } else {
-                      joysCurrentLocale = LOCALE_ZH_CN;
-                      joystoreName = JOYSTORE_NAME_ZH_CN;
-                    }
-
-                    XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
-                        key: 'joysCurrentLocale', value: joysCurrentLocale);
-                    XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
-                        key: 'joystoreName', value: joystoreName);
-                  });
-                },
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Text(LocaleServices.getTraditionalLanguage()),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(height: 10),
+            Wrap(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                DropdownMenu<String>(
+                  initialSelection:
+                      LocaleServices.getLanguageTextByLanguageType(
+                          LocaleServices.getCurrentLanguageType()),
+                  controller: langController,
+                  requestFocusOnTap: true,
+                  label: Text(
+                    LocaleServices.getLanguageSelectionHeader(),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Text(LocaleServices.getSimplifiedLanguage()),
-                  )
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-        ],
+                  onSelected: (String? value) {
+                    // This is called when the user selects an item.
+                    setState(() {
+                      dropdownValue = value!;
+
+                      if (dropdownValue ==
+                          LocaleServices.getSimplifiedLanguageText()) {
+                        joysCurrentLocale = LOCALE_ZH_CN;
+                        joystoreName = JOYSTORE_NAME_ZH_CN;
+                      } else {
+                        joysCurrentLocale = LOCALE_ZH_TW;
+                        joystoreName = JOYSTORE_NAME_ZH_TW;
+                      }
+
+                      XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
+                          key: 'joysCurrentLocale', value: joysCurrentLocale);
+                      XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
+                          key: 'joystoreName', value: joystoreName);
+
+                      langList[0] = LocaleServices.getTraditionalLanguageText();
+                      langList[1] = LocaleServices.getSimplifiedLanguageText();
+                    });
+                  },
+                  dropdownMenuEntries:
+                      langList.map<DropdownMenuEntry<String>>((String value) {
+                    return DropdownMenuEntry<String>(
+                        value: value, label: value);
+                  }).toList(),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+          ],
+        ),
       ),
     );
   }
