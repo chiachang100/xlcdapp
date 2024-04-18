@@ -17,6 +17,7 @@ import 'screens/settings.dart';
 import 'screens/sign_in.dart';
 import 'widgets/fade_transition_page.dart';
 import 'widgets/joy_list.dart';
+import 'screens/about.dart';
 
 final appShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'app shell');
 final joysNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'joys shell');
@@ -105,6 +106,7 @@ class _JoystoreState extends State<Joystore> {
                   var p when p.startsWith('/joys') => 0,
                   var p when p.startsWith('/scriptures') => 1,
                   var p when p.startsWith('/settings') => 2,
+                  var p when p.startsWith('/about') => 3,
                   _ => 0,
                 },
                 child: child,
@@ -280,6 +282,15 @@ class _JoystoreState extends State<Joystore> {
                   return FadeTransitionPage<dynamic>(
                     key: state.pageKey,
                     child: SettingsScreen(firestore: widget.firestore),
+                  );
+                },
+              ),
+              GoRoute(
+                path: '/about',
+                pageBuilder: (context, state) {
+                  return FadeTransitionPage<dynamic>(
+                    key: state.pageKey,
+                    child: AboutScreen(firestore: widget.firestore),
                   );
                 },
               ),

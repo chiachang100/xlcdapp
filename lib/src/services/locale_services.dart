@@ -74,6 +74,19 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
+        str = '我的设置';
+      case LOCALE_ZH_TW:
+      default:
+        str = '我的設置';
+    }
+    return str;
+  }
+
+  static String getXlcdAppAboutLabel() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
         str = '资源简介';
       case LOCALE_ZH_TW:
       default:
@@ -126,6 +139,19 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
+        str = '我的设置';
+      case LOCALE_ZH_TW:
+      default:
+        str = '我的設置';
+    }
+    return str;
+  }
+
+  static String getAboutScreenTitle() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
         str = '「笑里藏道」简介';
       case LOCALE_ZH_TW:
       default:
@@ -165,10 +191,10 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
-        str = '设定喜好';
+        str = '设置喜好';
       case LOCALE_ZH_TW:
       default:
-        str = '設定喜好';
+        str = '設置喜好';
     }
     return str;
   }
@@ -178,10 +204,10 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
-        str = '⚙️语言选择:  ';
+        str = '⚙️语言设置:  ';
       case LOCALE_ZH_TW:
       default:
-        str = '⚙️語言選擇:  ';
+        str = '⚙️語言設置:  ';
     }
     return str;
   }
