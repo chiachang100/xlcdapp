@@ -217,10 +217,10 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
-        str = '繁体';
+        str = '繁体中文';
       case LOCALE_ZH_TW:
       default:
-        str = '繁體';
+        str = '繁體中文';
     }
     return str;
   }
@@ -230,10 +230,10 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
-        str = '简体';
+        str = '简体中文';
       case LOCALE_ZH_TW:
       default:
-        str = '簡體';
+        str = '簡體中文';
     }
     return str;
   }
