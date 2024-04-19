@@ -9,6 +9,7 @@ import '../data.dart';
 import '../services/locale_services.dart';
 import '../services/data_services.dart';
 import '../widgets/copyright.dart';
+import '../models/locale_info_model.dart';
 
 final xlcdlogSettings = Logger('settings');
 
@@ -97,13 +98,15 @@ class _LanguageSectionState extends State<LanguageSection> {
 
   final String xlcdappWebsiteLink = 'https://xlcdapp.web.app';
 
-  LanguageType? _language = LocaleServices.getCurrentLanguageType();
-  List<bool> isSelected =
-      LocaleServices.isTraditionalLanguage() ? [true, false] : [false, true];
-
   String dropdownValue = LocaleServices.getLanguageTextByLanguageType(
       LocaleServices.getCurrentLanguageType());
   final TextEditingController langController = TextEditingController();
+
+  @override
+  void dispose() {
+    langController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,6 +162,17 @@ class _LanguageSectionState extends State<LanguageSection> {
 
                       langList[0] = LocaleServices.getTraditionalLanguageText();
                       langList[1] = LocaleServices.getSimplifiedLanguageText();
+
+                      var newRecords = <String, String>{
+                        'locale': joysCurrentLocale,
+                        'store': joystoreName,
+                      };
+
+                      // Change the locale and store name and notify all listeners.
+                      var localeInfo = LocaleInfoModel();
+                      localeInfo.setAppLocaleInfo(newRecords);
+                      xlcdlogSettings.info(
+                          'LanguageSection: Notify listeners: joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName.');
                     });
                   },
                   dropdownMenuEntries:

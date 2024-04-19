@@ -4,6 +4,7 @@ import 'package:logging/logging.dart';
 import 'package:flutter/foundation.dart' show kIsWeb, kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:window_size/window_size.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,6 +16,7 @@ import 'src/app.dart';
 import 'src/data.dart';
 import 'src/services/locale_services.dart';
 import 'src/services/data_services.dart';
+import 'src/models/locale_info_model.dart';
 
 final xlcdlogMain = Logger('main');
 
@@ -111,7 +113,16 @@ Future<void> main() async {
 
   // Remove the splash screen.
   FlutterNativeSplash.remove();
-  runApp(Joystore(firestore: firestore));
+
+  // Place ChangeNotifierProvider
+  // runApp(Joystore(firestore: firestore));
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => LocaleInfoModel(),
+      child: Joystore(firestore: firestore),
+    ),
+  );
+
   // SystemChrome.setPreferredOrientations(
   //         <DeviceOrientation>[DeviceOrientation.portraitUp])
   //     .then((value) => runApp(Joystore(firestore: firestore)));

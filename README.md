@@ -14,6 +14,7 @@ xlcdapp-笑裡藏道.
 Walnut Software](https://walnutistanbul.medium.com/how-to-add-a-youtube-video-to-your-flutter-app-40c0125414ba)
 - [Internationalizing Flutter apps](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
 - [Store key-value data on disk](https://docs.flutter.dev/cookbook/persistence/key-value)
+- [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple)
 
 ---
 ### Flutter Packages
@@ -231,6 +232,18 @@ module FirebaseCoreOnly {
   header "Firebase.h"
 }
 ```
+
+---
+## Add Change Notification
+- [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple)
+  - With provider, you need to understand 3 concepts:
+    - ChangeNotifier
+    - ChangeNotifierProvider
+    - Consumer
+
+- `flutter pub add provider`
+- `import 'package:provider/provider.dart';`
+
 
 ---
 ## Internationalizing (I18N) Flutter apps
