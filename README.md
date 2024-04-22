@@ -276,3 +276,14 @@ Copyright 2024 Chia Chang. Apache License, Version 2.0 (the "License").
    BSD-style license that can be found in the LICENSE file.
 
 ---
+- Convert PNG file to animated PNG (APNG) or GIF file.
+- [Ezgif](https://ezgif.com/)
+  - First create 4 images:
+    1. one straight up
+    2. one rotated 90 degrees
+    3. one rortated 180 degrees
+    4. on rotated counter-clock 90 degrees
+  - Upload the above four images and arrange the order of them correctly.
+  - Generate an animated PNG file and convert it to a GIF file.
+
+---

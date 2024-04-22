@@ -125,6 +125,12 @@ class _LanguageSectionState extends State<LanguageSection> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Text(
+              xlcdLanguageSelection,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 10),
             Wrap(
               direction: Axis.horizontal,

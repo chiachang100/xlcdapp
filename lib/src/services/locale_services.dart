@@ -203,10 +203,10 @@ class LocaleServices {
 
     switch (joysCurrentLocale) {
       case LOCALE_ZH_CN:
-        str = '设置喜好';
+        str = '语言设置更换后，请重新启动应用程式。';
       case LOCALE_ZH_TW:
       default:
-        str = '設置喜好';
+        str = '語言設置更換後，請重新啟動應用程式。';
     }
     return str;
   }
