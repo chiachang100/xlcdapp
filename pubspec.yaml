@@ -52,7 +52,8 @@ dev_dependencies:
 flutter_native_splash:
   color: "#E6EBEB" #light
   #color: "#241E30" #dark
-  image: "assets/logos/xlcd_splash_logo.png"
+  #image: "assets/logos/xlcd_splash_logo.png"
+  image: "assets/logos/xlcd_splash_logo_apng.png"
   web_image_mode: center
   android_gravity: center
   ios_content_mode: center
