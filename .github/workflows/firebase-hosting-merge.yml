@@ -23,9 +23,11 @@ jobs:
     - run: flutter doctor -v
 
     # Build and deploy
-    - run: flutter pub get
-    - run: flutter test
-    - run: flutter build web --release
+    - run: |
+        flutter --disable-analytics
+        flutter pub get
+        flutter test
+        flutter build web --release
       #- run: flutter build -v web --release
     - uses: FirebaseExtended/action-hosting-deploy@v0
       with:

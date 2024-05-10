@@ -19,6 +19,7 @@ jobs:
     # Checkout code and get packages.
     - name: Checkout code
       uses: actions/checkout@v4
+    - run: flutter --disable-analytics
     - run: flutter pub get
 
     # Build and deploy
