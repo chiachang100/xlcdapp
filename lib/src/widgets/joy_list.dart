@@ -27,6 +27,37 @@ class JoyList extends StatelessWidget {
     });
 
     return ListView.builder(
+        itemCount: joys.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            isThreeLine: true,
+            title: Text(
+              '${(index + 1)}. ${joys[index].title} (${joys[index].articleId})',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+              '✞ (${joys[index].scripture.name})${joys[index].scripture.verse.substring(0, 12)}...' +
+                  '\n🌞${joys[index].laugh.substring(0, 22)}...',
+            ),
+            leading: ConstrainedBox(
+              constraints: const BoxConstraints(
+                minWidth: 44,
+                minHeight: 44,
+                maxWidth: 64,
+                maxHeight: 64,
+              ),
+              child: Image.asset('${joys[index].photoUrl}'),
+            ),
+            //trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: onTap != null ? () => onTap!(joys[index]) : null,
+            // onTap: onTap != null ? () => {} : null,
+          );
+        });
+
+/* 
+    return ListView.builder(
       itemCount: joys.length,
       itemBuilder: (context, index) {
         return Card(
@@ -99,5 +130,6 @@ class JoyList extends StatelessWidget {
         );
       },
     );
+ */
   }
 }
