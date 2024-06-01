@@ -304,4 +304,26 @@ defaultConfig {
 }
 ```
 
+- Access `pubspec.yaml`
+- [package_info_plus](https://pub.dev/packages/package_info_plus/install)
+  - `flutter pub add package_info_plus`
+```
+
+```
+
+- [pubspec_parse](https://pub.dev/packages/pubspec_parse)
+  - [pubspec_parse@GitHub](https://github.com/dart-lang/pubspec_parse)
+  - [Pubspec class](https://pub.dev/documentation/pubspec_parse/latest/pubspec_parse/Pubspec-class.html)
+- `flutter pub add pubspec_parse`
+```
+import 'dart:io';
+import 'package:pubspec_parse/pubspec_parse.dart';
+
+final pubspecFile = File('pubspec.yaml').readAsStringSync();
+final pubspec = Pubspec.parse(pubspecFile);
+final appName = pubspec.name;
+final appVersion = pubspec.version.toString();
+
+```
+
 ---

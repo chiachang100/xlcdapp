@@ -42,13 +42,13 @@ class JoyList extends StatelessWidget {
               Text(
                 '✞ (${joys[index].scripture.name})${joys[index].scripture.verse}',
                 maxLines: 1,
-                overflow: TextOverflow.fade,
+                overflow: TextOverflow.ellipsis,
                 softWrap: false,
               ),
               Text(
                 '🌞${joys[index].laugh}',
                 maxLines: 1,
-                overflow: TextOverflow.fade,
+                overflow: TextOverflow.ellipsis,
                 softWrap: false,
               ),
             ],

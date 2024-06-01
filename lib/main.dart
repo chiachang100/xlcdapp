@@ -123,6 +123,17 @@ Future<void> main() async {
     ),
   );
 
+  // Get pubspec.yaml info
+  // PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+  // appName = packageInfo.appName;
+  // appVersion = packageInfo.version.toString();
+  // appPkgName = packageInfo.packageName;
+
+  appName = 'xlcdapp';
+  appVersion = '1.7.4';
+  appPkgName = 'xlcdapp';
+
   // SystemChrome.setPreferredOrientations(
   //         <DeviceOrientation>[DeviceOrientation.portraitUp])
   //     .then((value) => runApp(Joystore(firestore: firestore)));

@@ -119,7 +119,7 @@ class _QRCodeSectionState extends State<QRCodeSection> {
     });
 
     return Card(
-      color: Colors.yellow[50],
+      // color: Colors.yellow[50],
       elevation: 8.0,
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -143,7 +143,7 @@ class _QRCodeSectionState extends State<QRCodeSection> {
             ),
           ),
           const SizedBox(height: 10),
-          Text(LocaleServices.getQRCodeDescription()),
+          Text('${LocaleServices.getQRCodeDescription()} (v$appVersion)'),
           const SizedBox(height: 10),
         ],
       ),
@@ -174,7 +174,7 @@ class _BookIntroSectionState extends State<BookIntroSection> {
     });
 
     return Card(
-      color: Colors.yellow[50],
+      // color: Colors.yellow[50],
       elevation: 8.0,
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -243,7 +243,7 @@ class _BookAuthorSectionState extends State<BookAuthorSection> {
     });
 
     return Card(
-      color: Colors.yellow[50],
+      // color: Colors.yellow[50],
       elevation: 8.0,
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -300,7 +300,7 @@ class _BookPraiseSectionState extends State<BookPraiseSection> {
     });
 
     return Card(
-      color: Colors.yellow[50],
+      // color: Colors.yellow[50],
       elevation: 8.0,
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -325,7 +325,7 @@ class _BookPraiseSectionState extends State<BookPraiseSection> {
           ),
           const SizedBox(height: 10),
           ListTile(
-            tileColor: Colors.yellow[50],
+            // tileColor: Colors.yellow[50],
             title: Text(
               LocaleServices.getBookPraiseDescription1(),
               // style: const TextStyle(fontWeight: FontWeight.bold),
@@ -349,7 +349,7 @@ class _BookPraiseSectionState extends State<BookPraiseSection> {
           ),
           const Divider(height: 0),
           ListTile(
-            tileColor: Colors.yellow[50],
+            // tileColor: Colors.yellow[50],
             title: Text(LocaleServices.getBookPraiseDescription3Title()),
             subtitle: Center(
               child: Text(
@@ -374,7 +374,7 @@ class _BookPraiseSectionState extends State<BookPraiseSection> {
           ),
           const Divider(height: 0),
           ListTile(
-            tileColor: Colors.yellow[50],
+            // tileColor: Colors.yellow[50],
             title: Text(LocaleServices.getBookPraiseDescription5Title()),
             subtitle: Center(
               child: Text(
@@ -425,7 +425,7 @@ class _AppDeveloperSectionState extends State<AppDeveloperSection> {
     });
 
     return Card(
-      color: Colors.yellow[50],
+      // color: Colors.yellow[50],
       elevation: 8.0,
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),

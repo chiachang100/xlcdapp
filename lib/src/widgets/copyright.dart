@@ -12,7 +12,7 @@ class CopyrightSection extends StatelessWidget {
     });
 
     return Card(
-      color: Colors.yellow[50],
+      // color: Colors.yellow[50],
       elevation: 8.0,
       margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
