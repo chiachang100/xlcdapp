@@ -70,6 +70,8 @@ class _JoystoreState extends State<Joystore> {
           ),
         ),
       ),
+      darkTheme: ThemeData.dark(useMaterial3: true),
+      themeMode: ThemeMode.system,
       builder: (context, child) {
         if (child == null) {
           throw ('No child in .router constructor builder');

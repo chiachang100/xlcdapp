@@ -59,7 +59,7 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.joy!.articleId}. ${widget.joy!.title}'),
+        title: Text(widget.joy!.title),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.all(6.0),
@@ -98,30 +98,20 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ImageSection(image: widget.joy!.photoUrl),
-            TitleSection(
-              name: widget.joy!.scripture.name,
-              verse: widget.joy!.scripture.verse,
-              likes: widget.joy!.likes,
+            DisplayTitleSection(
+              photoUrl: widget.joy!.photoUrl,
+              title: widget.joy!.title,
+              articleId: widget.joy!.articleId,
+              scriptureVerse: widget.joy!.scripture.verse,
+              scriptureName: widget.joy!.scripture.name,
             ),
-            const DividerSection(Icon(Icons.star_border_rounded)),
-            TextSection(description: widget.joy!.prelude),
-            const DividerSection(Icon(Icons.face_outlined)),
-            TextSection(description: widget.joy!.laugh),
-            LeadingIconTextSection(
-              description: widget.joy!.talk,
-              iconUrl: 'assets/icons/xlcdapp-leading-icon.png',
-            ),
-            const DividerSection(Icon(Icons.live_tv_outlined)),
-            //YoutubePlayerIFrameSection(videoId: 'Mez7DnMOlgc', videoName: '不要怕！你要得人了 | 曾興才牧師 | 20240225 | 生命河 ROLCCmedia'),
-            (useYoutubePlayerFlutterVersion && !kIsWeb)
-                ? YoutubePlayerFlutterSection(
-                    videoId: widget.joy!.videoId,
-                    videoName: widget.joy!.videoName)
-                : YoutubePlayerIFrameSection(
-                    videoId: widget.joy!.videoId,
-                    videoName: widget.joy!.videoName),
-            const SizedBox(height: 20),
+            DisplayArticleContent(title: '前奏曲', content: widget.joy!.prelude),
+            DisplayArticleContent(title: '開懷大笑', content: widget.joy!.laugh),
+            DisplayArticleContent(title: '笑裡藏道', content: widget.joy!.talk),
+            DisplayYouTubeVideo(
+              videoId: widget.joy!.videoId,
+              videoName: widget.joy!.videoName,
+            )
           ],
         ),
       ),
@@ -129,74 +119,52 @@ class _JoyDetailsScreenState extends State<JoyDetailsScreen> {
   }
 }
 
-class DividerSection extends StatelessWidget {
-  const DividerSection(this.icon);
-  final Icon icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        height: 20,
-        child: icon,
-      ),
-    );
-  }
-}
-
-class ImageSection extends StatelessWidget {
-  const ImageSection({super.key, required this.image});
-  final String image;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      //crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        Image.asset(
-          image,
-          height: MediaQuery.of(context).size.width * (3 / 4),
-          width: MediaQuery.of(context).size.width,
-          //height: 320, width: 640,
-          fit: BoxFit.scaleDown,
-        ),
-      ],
-    );
-  }
-}
-
-class TitleSection extends StatefulWidget {
-  TitleSection({
+class DisplayTitleSection extends StatelessWidget {
+  const DisplayTitleSection({
     super.key,
-    required this.name,
-    required this.verse,
-    required this.likes,
+    required this.photoUrl,
+    required this.title,
+    required this.articleId,
+    required this.scriptureVerse,
+    required this.scriptureName,
   });
-  final String name;
-  final String verse;
-  int likes;
+  final String photoUrl;
+  final String title;
+  final int articleId;
+  final String scriptureVerse;
+  final String scriptureName;
 
-  @override
-  State<TitleSection> createState() => _TitleSectionState();
-}
-
-class _TitleSectionState extends State<TitleSection> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12),
+    return Card(
+      // color: Colors.yellow[50],
+      elevation: 1.0,
+      margin: const EdgeInsets.all(12.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(bottom: 1),
-            child: Text(
-              // '「$verse」($name)',
-              '✞${widget.verse}(${widget.name})',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-              ),
+            padding: const EdgeInsets.all(1.0),
+            child: Image.asset(
+              photoUrl,
+              height: MediaQuery.of(context).size.width * 3 / 4,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.contain,
+            ),
+          ),
+          Text(
+            '$title ($articleId)',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            '$scriptureVerse($scriptureName)',
+            style: const TextStyle(
+              fontSize: 16.0,
             ),
           ),
         ],
@@ -205,50 +173,86 @@ class _TitleSectionState extends State<TitleSection> {
   }
 }
 
-class TextSection extends StatelessWidget {
-  const TextSection({
+class DisplayArticleContent extends StatelessWidget {
+  const DisplayArticleContent({
     super.key,
-    required this.description,
+    required this.title,
+    required this.content,
   });
-
-  final String description;
+  final String title;
+  final String content;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      //padding: const EdgeInsets.all(32),
-      padding: const EdgeInsets.all(12),
-      child: Text(
-        description,
-        softWrap: true,
-        style: const TextStyle(fontSize: 16.0),
+    return Card(
+      // color: Colors.yellow[50],
+      elevation: 1.0,
+      margin: const EdgeInsets.all(12.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            title,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            content,
+            style: const TextStyle(
+              fontSize: 16.0,
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
-class LeadingIconTextSection extends StatelessWidget {
-  const LeadingIconTextSection({
+class DisplayYouTubeVideo extends StatelessWidget {
+  const DisplayYouTubeVideo({
     super.key,
-    required this.description,
-    required this.iconUrl,
+    required this.videoId,
+    required this.videoName,
   });
-
-  final String description;
-  final String iconUrl;
+  final String videoId;
+  final String videoName;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 15, right: 15),
+    return Card(
+      // color: Colors.yellow[50],
+      elevation: 1.0,
+      margin: const EdgeInsets.all(12.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Image.asset(iconUrl),
-          Text(
-            description,
-            softWrap: true,
-            style: const TextStyle(fontSize: 16.0),
+          const Text(
+            'YouTube視頻',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+            ),
           ),
+          const SizedBox(height: 10),
+          Text(
+            videoName,
+            softWrap: true,
+            style: const TextStyle(
+              fontSize: 16.0,
+            ),
+          ),
+          const SizedBox(height: 10),
+          //YoutubePlayerIFrameSection(videoId: 'Mez7DnMOlgc', videoName: '不要怕！你要得人了 | 曾興才牧師 | 20240225 | 生命河 ROLCCmedia'),
+          (useYoutubePlayerFlutterVersion && !kIsWeb)
+              ? YoutubePlayerFlutterSection(
+                  videoId: videoId, videoName: videoName)
+              : YoutubePlayerIFrameSection(
+                  videoId: videoId, videoName: videoName),
         ],
       ),
     );
@@ -327,14 +331,14 @@ class _YoutubePlayerIFrameSectionState
             const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20, right: 20),
         child: Column(
           children: <Widget>[
-            Text(
-              '(${widget.videoName})',
-              softWrap: true,
-              style: const TextStyle(
-                fontSize: 12.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            // Text(
+            //   '(${widget.videoName})',
+            //   softWrap: true,
+            //   style: const TextStyle(
+            //     fontSize: 12.0,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            // ),
             player,
           ],
         ),
@@ -424,14 +428,14 @@ class _YoutubePlayerFlutterSectionState
             const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20, right: 20),
         child: Column(
           children: <Widget>[
-            Text(
-              '(${widget.videoName})',
-              softWrap: true,
-              style: const TextStyle(
-                fontSize: 12.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            // Text(
+            //   '(${widget.videoName})',
+            //   softWrap: true,
+            //   style: const TextStyle(
+            //     fontSize: 12.0,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            // ),
             player,
           ],
         ),

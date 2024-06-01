@@ -287,3 +287,21 @@ Copyright 2024 Chia Chang. Apache License, Version 2.0 (the "License").
   - Generate an animated PNG file and convert it to a GIF file.
 
 ---
+## Misc Configurations
+- Add the following in `android/app/build.gradle`
+```
+dependencies {
+    ...
+    implementation 'com.android.support:multidex:1.0.3'
+}
+```
+
+- Add the following in `android/app/build.gradle`
+```
+defaultConfig {
+    ...
+    multiDexEnabled true
+}
+```
+
+---
