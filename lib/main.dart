@@ -22,6 +22,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:xlcdapp/l10n/codegen_loader.g.dart';
 import 'package:xlcdapp/l10n/locale_keys.g.dart';
 
+import 'package:package_info_plus/package_info_plus.dart';
+
 final xlcdlogMain = Logger('main');
 
 class L10n {
@@ -156,15 +158,17 @@ Future<void> main() async {
   );
 
   // Get pubspec.yaml info
-  // PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-  // appName = packageInfo.appName;
-  // appVersion = packageInfo.version.toString();
-  // appPkgName = packageInfo.packageName;
+  appName = packageInfo.appName;
+  appVersion = packageInfo.version.toString();
+  appPkgName = packageInfo.packageName;
 
-  appName = 'xlcdapp';
-  appVersion = '1.9.0';
-  appPkgName = 'xlcdapp';
+  // appName = 'xlcdapp';
+  // appVersion = '1.9.0';
+  // appPkgName = 'xlcdapp';
+  xlcdlogMain.info(
+      'main-loading: appName=$appName; appVersion=$appVersion; appPkgName=$appPkgName');
 
   // SystemChrome.setPreferredOrientations(
   //         <DeviceOrientation>[DeviceOrientation.portraitUp])
