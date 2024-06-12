@@ -5,6 +5,10 @@ import 'package:logging/logging.dart';
 import '../auth.dart';
 import '../services/locale_services.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:xlcdapp/l10n/codegen_loader.g.dart';
+import 'package:xlcdapp/l10n/locale_keys.g.dart';
+
 final xlcdlogJoysScreen = Logger('joyscreen');
 
 class JoysScreen extends StatefulWidget {
@@ -49,14 +53,14 @@ class _JoysScreenState extends State<JoysScreen>
   Widget build(BuildContext context) {
     _tabController.index = widget.selectedIndex;
 
-    String xlcdAppJoysScreenLikes = LocaleServices.getXlcdAppJoysScreenLikes();
-    String xlcdAppJoysScreenNew = LocaleServices.getXlcdAppJoysScreenNew();
-    String xlcdAppJoysScreenAll = LocaleServices.getXlcdAppJoysScreenAll();
+    String xlcdAppJoysScreenLikes = LocaleKeys.rankingList.tr();
+    String xlcdAppJoysScreenNew = LocaleKeys.newList.tr();
+    String xlcdAppJoysScreenAll = LocaleKeys.tableOfContnets.tr();
 
     return Scaffold(
       appBar: AppBar(
         // title: const Text('笑裡藏道'),
-        title: Text(LocaleServices.getXlcdAppTitle()),
+        title: Text(LocaleKeys.appTitle.tr()),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -93,7 +97,7 @@ class _JoysScreenState extends State<JoysScreen>
         ),
         actions: <Widget>[
           TextButton(
-            child: Text(LocaleServices.getSignOutLabel()),
+            child: Text(LocaleKeys.signOut.tr()),
             onPressed: () async {
               await JoystoreAuth.of(context).signOut();
               xlcdlogJoysScreen.info('User just signed out!');

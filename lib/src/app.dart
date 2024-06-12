@@ -19,6 +19,10 @@ import 'widgets/fade_transition_page.dart';
 import 'widgets/joy_list.dart';
 import 'screens/about.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:xlcdapp/l10n/codegen_loader.g.dart';
+import 'package:xlcdapp/l10n/locale_keys.g.dart';
+
 final appShellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'app shell');
 final joysNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'joys shell');
 
@@ -58,6 +62,10 @@ class _JoystoreState extends State<Joystore> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
+      // easy_localization locale properties
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: ThemeData(
         textTheme: TextTheme(
           //bodyLarge: Theme.of(context).textTheme.titleLarge,
@@ -76,6 +84,8 @@ class _JoystoreState extends State<Joystore> {
         if (child == null) {
           throw ('No child in .router constructor builder');
         }
+        xlcdlogAppJoystore.info(
+            'MainAppScreen: Locale=${context.locale.toString()}; joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
         return JoystoreAuthScope(
           notifier: joyAuth,
           child: child,
@@ -249,7 +259,7 @@ class _JoystoreState extends State<Joystore> {
                     key: state.pageKey,
                     child: Builder(builder: (context) {
                       return ScripturesScreen(
-                        title: LocaleServices.getXlcdAppScriptLabel(),
+                        title: LocaleKeys.bibleVerse.tr(),
                         onTap: (scripture) {
                           GoRouter.of(context)
                               .go('/scriptures/scripture/${scripture.id}');

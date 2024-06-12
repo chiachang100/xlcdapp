@@ -4,6 +4,10 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:xlcdapp/src/services/locale_services.dart';
 import '../data.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:xlcdapp/l10n/codegen_loader.g.dart';
+import 'package:xlcdapp/l10n/locale_keys.g.dart';
+
 class JoyList extends StatelessWidget {
   final List<Joy> joys;
   final bool isRanked;
@@ -15,9 +19,6 @@ class JoyList extends StatelessWidget {
     this.onTap,
     super.key,
   });
-
-  List<String> dynamicText = LocaleServices.getButtonText();
-  String getNextText() => dynamicText[Random().nextInt(dynamicText.length)];
 
   @override
   Widget build(BuildContext context) {

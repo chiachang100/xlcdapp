@@ -8,6 +8,10 @@ import "../data.dart";
 import 'package:logging/logging.dart';
 import '../services/locale_services.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:xlcdapp/l10n/codegen_loader.g.dart';
+import 'package:xlcdapp/l10n/locale_keys.g.dart';
+
 final xlcdlogSignIn = Logger('sign_in');
 
 typedef OAuthSignIn = void Function();
@@ -114,7 +118,7 @@ class _SignInScreenState extends State<SignInScreen> {
           leadingWidth: 100,
           centerTitle: true,
           // title: Text('笑裡藏道'),
-          title: Text(LocaleServices.getXlcdAppTitle()),
+          title: Text(LocaleKeys.appTitle.tr()),
         ),
         body: Center(
           child: SingleChildScrollView(

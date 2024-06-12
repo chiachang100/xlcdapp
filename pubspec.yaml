@@ -1,7 +1,7 @@
 name: xlcdapp
 description: "xlcdapp-笑裡藏道"
 publish_to: 'none'
-version: 1.7.4
+version: 1.9.0
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
@@ -42,6 +42,7 @@ dependencies:
   flutter_inappwebview: ^6.0.0
   shared_preferences: ^2.2.3
   provider: ^6.1.2
+  easy_localization: ^3.0.7
 
 dev_dependencies:
   flutter_test:
@@ -68,3 +69,4 @@ flutter:
   - assets/icons/
   - assets/photos/
   - assets/logos/
+  - assets/translations/

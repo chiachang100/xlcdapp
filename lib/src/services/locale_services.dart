@@ -1,6 +1,6 @@
 import '../data/global_config.dart';
 
-enum LanguageType { traditional, simplified }
+enum LanguageType { english, traditional, simplified }
 
 class LocaleServices {
   LocaleServices._(); // Private constructor to prevent instantiation
@@ -8,6 +8,8 @@ class LocaleServices {
   static LanguageType getCurrentLanguageType() {
     var lang = LanguageType.traditional;
     switch (joysCurrentLocale) {
+      case LOCALE_EN_US:
+        lang = LanguageType.english;
       case LOCALE_ZH_CN:
         lang = LanguageType.simplified;
       case LOCALE_ZH_TW:
@@ -21,6 +23,8 @@ class LocaleServices {
     String str = '';
 
     switch (lang) {
+      case LanguageType.english:
+        str = getEnglishLanguageText();
       case LanguageType.simplified:
         str = getSimplifiedLanguageText();
       case LanguageType.traditional:
@@ -33,6 +37,7 @@ class LocaleServices {
   static bool isTraditionalLanguage() {
     var isTraditional = true;
     switch (joysCurrentLocale) {
+      case LOCALE_EN_US:
       case LOCALE_ZH_CN:
         isTraditional = false;
       case LOCALE_ZH_TW:
@@ -42,10 +47,27 @@ class LocaleServices {
     return isTraditional;
   }
 
+  static String getSignInLabel() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_EN_US:
+        str = '↪Sign In';
+      case LOCALE_ZH_CN:
+        str = '↪登入';
+      case LOCALE_ZH_TW:
+      default:
+        str = '↪登入';
+    }
+    return str;
+  }
+
   static String getSignOutLabel() {
     String str = '';
 
     switch (joysCurrentLocale) {
+      case LOCALE_EN_US:
+        str = '↪Sign Out';
       case LOCALE_ZH_CN:
         str = '↪登出';
       case LOCALE_ZH_TW:
@@ -220,6 +242,19 @@ class LocaleServices {
       case LOCALE_ZH_TW:
       default:
         str = '語言設置:  ';
+    }
+    return str;
+  }
+
+  static String getEnglishLanguageText() {
+    String str = '';
+
+    switch (joysCurrentLocale) {
+      case LOCALE_ZH_CN:
+        str = '英文';
+      case LOCALE_ZH_TW:
+      default:
+        str = '英文';
     }
     return str;
   }

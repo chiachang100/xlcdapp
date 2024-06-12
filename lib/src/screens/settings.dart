@@ -11,13 +11,11 @@ import '../services/data_services.dart';
 import '../widgets/copyright.dart';
 import '../models/locale_info_model.dart';
 
-final xlcdlogSettings = Logger('settings');
+import 'package:easy_localization/easy_localization.dart';
+import 'package:xlcdapp/l10n/codegen_loader.g.dart';
+import 'package:xlcdapp/l10n/locale_keys.g.dart';
 
-// List<String> langList = <String>['繁體中文', '簡體中文'];
-List<String> langList = <String>[
-  LocaleServices.getTraditionalLanguageText(),
-  LocaleServices.getSimplifiedLanguageText(),
-];
+final xlcdlogSettings = Logger('settings');
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key, required this.firestore});
@@ -41,7 +39,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(LocaleServices.getSettingsScreenTitle()),
+        title: Text(LocaleKeys.settings.tr()),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -94,17 +92,10 @@ class LanguageSection extends StatefulWidget {
 }
 
 class _LanguageSectionState extends State<LanguageSection> {
-  String xlcdLanguageSelection = LocaleServices.getLanguageSelection();
-
-  final String xlcdappWebsiteLink = 'https://xlcdapp.web.app';
-
-  String dropdownValue = LocaleServices.getLanguageTextByLanguageType(
-      LocaleServices.getCurrentLanguageType());
-  final TextEditingController langController = TextEditingController();
+  String xlcdLanguageSelection = LocaleKeys.settingsLangSetting.tr();
 
   @override
   void dispose() {
-    langController.dispose();
     super.dispose();
   }
 
@@ -116,82 +107,133 @@ class _LanguageSectionState extends State<LanguageSection> {
     });
 
     return Card(
-      // color: Colors.yellow[50],
-      elevation: 8.0,
-      margin: const EdgeInsets.all(8.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              xlcdLanguageSelection,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+      elevation: 4.0,
+      margin: const EdgeInsets.all(16.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+            child: Image.asset(
+              "assets/logos/xlcd_splash_logo.png",
+              fit: BoxFit.cover,
             ),
-            const SizedBox(height: 10),
-            Wrap(
-              direction: Axis.horizontal,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                DropdownMenu<String>(
-                  initialSelection:
-                      LocaleServices.getLanguageTextByLanguageType(
-                          LocaleServices.getCurrentLanguageType()),
-                  controller: langController,
-                  requestFocusOnTap: true,
-                  label: Text(
-                    LocaleServices.getLanguageSelectionHeader(),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                Text(
+                  LocaleKeys.settingsLangSetting.tr(),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
-                  onSelected: (String? value) {
-                    // This is called when the user selects an item.
-                    setState(() {
-                      dropdownValue = value!;
-
-                      if (dropdownValue ==
-                          LocaleServices.getSimplifiedLanguageText()) {
-                        joysCurrentLocale = LOCALE_ZH_CN;
-                        joystoreName = JOYSTORE_NAME_ZH_CN;
-                      } else {
-                        joysCurrentLocale = LOCALE_ZH_TW;
-                        joystoreName = JOYSTORE_NAME_ZH_TW;
-                      }
-
-                      XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
-                          key: 'joysCurrentLocale', value: joysCurrentLocale);
-                      XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
-                          key: 'joystoreName', value: joystoreName);
-
-                      langList[0] = LocaleServices.getTraditionalLanguageText();
-                      langList[1] = LocaleServices.getSimplifiedLanguageText();
-
-                      var newRecords = <String, String>{
-                        'locale': joysCurrentLocale,
-                        'store': joystoreName,
-                      };
-
-                      // Change the locale and store name and notify all listeners.
-                      var localeInfo = LocaleInfoModel();
-                      localeInfo.setAppLocaleInfo(newRecords);
-                      xlcdlogSettings.info(
-                          'LanguageSection: Notify listeners: joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName.');
-                    });
-                  },
-                  dropdownMenuEntries:
-                      langList.map<DropdownMenuEntry<String>>((String value) {
-                    return DropdownMenuEntry<String>(
-                        value: value, label: value);
-                  }).toList(),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  LocaleKeys.settingsLangSettingsSubtitle.tr(),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[600],
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 10),
-          ],
-        ),
+          ),
+          OverflowBar(
+            spacing: 10,
+            overflowSpacing: 20,
+            alignment: MainAxisAlignment.center,
+            overflowAlignment: OverflowBarAlignment.center,
+            children: <Widget>[
+              OutlinedButton(
+                onPressed: () {
+                  joysCurrentLocale = LOCALE_ZH_TW;
+                  joystoreName = JOYSTORE_NAME_ZH_TW;
+                  XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
+                    key: 'joysCurrentLocale',
+                    value: LOCALE_ZH_TW,
+                  );
+                  XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
+                    key: 'joystoreName',
+                    value: JOYSTORE_NAME_ZH_TW,
+                  );
+                  context.setLocale(const Locale('zh', 'TW'));
+                  joystoreInstance =
+                      buildJoyStoreFromFirestoreOrLocal(prod: true);
+                  FirebaseAnalytics.instance
+                      .logEvent(name: 'screen_view', parameters: {
+                    'xlcdapp_screen': 'LanguageSection',
+                    'xlcdapp_screen_class': 'SetLocaleToZhTW',
+                  });
+                  xlcdlogSettings.info(
+                      'LanguageSection: Notify listeners: Locale=${context.locale.toString()};'
+                      ' joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName.');
+                },
+                child: Text(LocaleKeys.localeZhTw.tr()),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  joysCurrentLocale = LOCALE_ZH_CN;
+                  joystoreName = JOYSTORE_NAME_ZH_CN;
+                  XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
+                    key: 'joysCurrentLocale',
+                    value: LOCALE_ZH_CN,
+                  );
+                  XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
+                    key: 'joystoreName',
+                    value: JOYSTORE_NAME_ZH_CN,
+                  );
+                  context.setLocale(const Locale('zh', 'CN'));
+                  joystoreInstance =
+                      buildJoyStoreFromFirestoreOrLocal(prod: true);
+                  FirebaseAnalytics.instance
+                      .logEvent(name: 'screen_view', parameters: {
+                    'xlcdapp_screen': 'LanguageSection',
+                    'xlcdapp_screen_class': 'SetLocaleToZhCN',
+                  });
+                  xlcdlogSettings.info(
+                      'LanguageSection: Notify listeners: Locale=${context.locale.toString()};'
+                      ' joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName.');
+                },
+                child: Text(LocaleKeys.localeZhCn.tr()),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  joysCurrentLocale = LOCALE_EN_US;
+                  joystoreName = JOYSTORE_NAME_EN_US;
+                  XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
+                    key: 'joysCurrentLocale',
+                    value: LOCALE_EN_US,
+                  );
+                  XlcdAppDataServices.saveDataStoreKeyValueDataOnDisk(
+                    key: 'joystoreName',
+                    value: JOYSTORE_NAME_EN_US,
+                  );
+                  context.setLocale(const Locale('en', 'US'));
+                  joystoreInstance =
+                      buildJoyStoreFromFirestoreOrLocal(prod: true);
+                  FirebaseAnalytics.instance
+                      .logEvent(name: 'screen_view', parameters: {
+                    'xlcdapp_screen': 'LanguageSection',
+                    'xlcdapp_screen_class': 'SetLocaleToEnUs',
+                  });
+                  xlcdlogSettings.info(
+                      'LanguageSection: Notify listeners: Locale=${context.locale.toString()};'
+                      ' joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName.');
+                },
+                child: Text(LocaleKeys.localeEnUs.tr()),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+        ],
       ),
     );
   }

@@ -4,6 +4,10 @@ import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import '../services/locale_services.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:xlcdapp/l10n/codegen_loader.g.dart';
+import 'package:xlcdapp/l10n/locale_keys.g.dart';
+
 class JoystoreScaffold extends StatelessWidget {
   final Widget child;
   final int selectedIndex;
@@ -23,10 +27,10 @@ class JoystoreScaffold extends StatelessWidget {
       'xlcdapp_screen_class': 'JoystoreScaffoldClass',
     });
 
-    String xlcdAppTitle = LocaleServices.getXlcdAppTitle();
-    String xlcdAppScriptLabel = LocaleServices.getXlcdAppScriptLabel();
-    String xlcdAppSettingsLabel = LocaleServices.getXlcdAppSettingsLabel();
-    String xlcdAppAboutLabel = LocaleServices.getXlcdAppAboutLabel();
+    String xlcdAppTitle = LocaleKeys.xlcd.tr();
+    String xlcdAppScriptLabel = LocaleKeys.bibleVerse.tr();
+    String xlcdAppSettingsLabel = LocaleKeys.settings.tr();
+    String xlcdAppAboutLabel = LocaleKeys.about.tr();
 
     return Scaffold(
       body: SafeArea(

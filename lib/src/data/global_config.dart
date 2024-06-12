@@ -16,12 +16,14 @@ late final String appPkgName;
 
 // late String joysCurrentLocale;
 var joysCurrentLocale = LOCALE_ZH_TW;
+const LOCALE_EN_US = 'en_US';
 const LOCALE_ZH_CN = 'zh_CN';
 const LOCALE_ZH_TW = 'zh_TW';
 
 // late String joystoreName;
 var joystoreName = JOYSTORE_NAME_ZH_TW;
 const JOYSTORE_NAME_DEFAULT = 'joys';
+const JOYSTORE_NAME_EN_US = 'joys_en_us';
 const JOYSTORE_NAME_ZH_CN = 'joys_zh_cn';
 const JOYSTORE_NAME_ZH_TW = 'joys_zh_tw';
 

@@ -49,5 +49,13 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>CFBundleLocalizations</key>
+		<array>
+			<string>en</string>
+			<string>en-US</string>
+			<string>zh</string>
+			<string>zh-CN</string>
+			<string>zh-TW</string>
+		</array>
 	</dict>
 </plist>

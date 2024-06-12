@@ -18,7 +18,21 @@ import 'src/services/locale_services.dart';
 import 'src/services/data_services.dart';
 import 'src/models/locale_info_model.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:xlcdapp/l10n/codegen_loader.g.dart';
+import 'package:xlcdapp/l10n/locale_keys.g.dart';
+
 final xlcdlogMain = Logger('main');
+
+class L10n {
+  static final allLocales = [
+    // const Locale('en'),
+    // const Locale('zh'),
+    const Locale('en', 'US'),
+    const Locale('zh', 'CN'),
+    const Locale('zh', 'TW'),
+  ];
+}
 
 Future<void> main() async {
   Logger.root.level = Level.ALL;
@@ -59,6 +73,9 @@ Future<void> main() async {
   // Set the default values
   joysCurrentLocale = LOCALE_ZH_TW;
   joystoreName = JOYSTORE_NAME_ZH_TW;
+
+  // Initialize easy_localization
+  await EasyLocalization.ensureInitialized();
 
   xlcdlogMain.info(
       'main-default: joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
@@ -116,10 +133,25 @@ Future<void> main() async {
 
   // Place ChangeNotifierProvider
   // runApp(Joystore(firestore: firestore));
+
+  // runApp(
+  //   ChangeNotifierProvider(
+  //     create: (context) => LocaleInfoModel(),
+  //     child: Joystore(firestore: firestore),
+  //   ),
+  // );
+
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => LocaleInfoModel(),
-      child: Joystore(firestore: firestore),
+    // Add easy_localization widget
+    EasyLocalization(
+      supportedLocales: L10n.allLocales,
+      path: 'assets/translations',
+      fallbackLocale: const Locale('zh', 'TW'),
+      saveLocale: true,
+      child: ChangeNotifierProvider(
+        create: (context) => LocaleInfoModel(),
+        child: Joystore(firestore: firestore),
+      ),
     ),
   );
 
@@ -131,7 +163,7 @@ Future<void> main() async {
   // appPkgName = packageInfo.packageName;
 
   appName = 'xlcdapp';
-  appVersion = '1.7.4';
+  appVersion = '1.9.0';
   appPkgName = 'xlcdapp';
 
   // SystemChrome.setPreferredOrientations(
@@ -146,7 +178,7 @@ void setupWindow() {
   if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
     WidgetsFlutterBinding.ensureInitialized();
     // setWindowTitle('笑裡藏道');
-    setWindowTitle(LocaleServices.getXlcdAppTitle());
+    setWindowTitle(LocaleKeys.appTitle.tr());
     setWindowMinSize(const Size(windowWidth, windowHeight));
     setWindowMaxSize(const Size(windowWidth, windowHeight));
     getCurrentScreen().then((screen) {

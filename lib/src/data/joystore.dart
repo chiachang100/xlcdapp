@@ -4,6 +4,7 @@ import 'scripture.dart';
 import 'joy.dart';
 import 'global_config.dart';
 import 'local_joystore.dart';
+import 'local_joystore_en_us.dart';
 import 'local_joystore_zh_cn.dart';
 import 'local_joystore_zh_tw.dart';
 
@@ -207,6 +208,8 @@ JoyStore buildJoyStoreFromLocal() {
   var js = JoyStore();
   var joystoreByLocale = localJoyStoreForZhTw;
   switch (joysCurrentLocale) {
+    case LOCALE_EN_US:
+      joystoreByLocale = localJoyStoreForEnUs;
     case LOCALE_ZH_CN:
       joystoreByLocale = localJoyStoreForZhCn;
     case LOCALE_ZH_TW:

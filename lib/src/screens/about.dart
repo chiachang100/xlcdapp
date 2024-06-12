@@ -10,7 +10,16 @@ import '../services/locale_services.dart';
 import '../services/data_services.dart';
 import '../widgets/copyright.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:xlcdapp/l10n/codegen_loader.g.dart';
+import 'package:xlcdapp/l10n/locale_keys.g.dart';
+
 final xlcdlogAbout = Logger('about');
+
+const String riverbankSite =
+    'https://www.rolcc.net/opencart/index.php?route=product/product&product_id=358';
+
+const String gracephSite = 'https://graceph.com/product/01i072/';
 
 Future<void> lauchTargetUrl(String urlString) async {
   Uri urlForPurchasingBook = Uri.parse(urlString);
@@ -50,7 +59,7 @@ class _AboutScreenState extends State<AboutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(LocaleServices.getAboutScreenTitle()),
+        title: Text(LocaleKeys.about.tr()),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -107,8 +116,6 @@ class QRCodeSection extends StatefulWidget {
 }
 
 class _QRCodeSectionState extends State<QRCodeSection> {
-  String xlcdQRCodeIntro = LocaleServices.getQRCodeIntro();
-
   final String xlcdappWebsiteLink = 'https://xlcdapp.web.app';
 
   @override
@@ -137,13 +144,14 @@ class _QRCodeSectionState extends State<QRCodeSection> {
             ),
           ),
           Text(
-            xlcdQRCodeIntro,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+            // xlcdQRCodeIntro,
+            LocaleKeys.xlcdappQrCode.tr(),
+            style: const TextStyle(fontSize: 18.0),
           ),
           const SizedBox(height: 10),
-          Text('${LocaleServices.getQRCodeDescription()} (v$appVersion)'),
+          Text('${LocaleKeys.xlcdappQrCode.tr()} (v$appVersion)'),
+          const SizedBox(height: 10),
+          Text('${LocaleKeys.useQrCode.tr()} ${LocaleKeys.xlcdappApp.tr()}'),
           const SizedBox(height: 10),
         ],
       ),
@@ -159,13 +167,6 @@ class BookIntroSection extends StatefulWidget {
 }
 
 class _BookIntroSectionState extends State<BookIntroSection> {
-  String xlcdBookIntro = LocaleServices.getBookIntro();
-
-  final String riverbankSite =
-      'https://www.rolcc.net/opencart/index.php?route=product/product&product_id=358';
-
-  final String gracephSite = 'https://graceph.com/product/01i072/';
-
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
@@ -192,28 +193,30 @@ class _BookIntroSectionState extends State<BookIntroSection> {
             ),
           ),
           Text(
-            xlcdBookIntro,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+            // xlcdBookIntro,
+            LocaleKeys.bookIntro.tr(),
+            style: const TextStyle(fontSize: 18.0),
           ),
           const SizedBox(height: 10),
-          Text(LocaleServices.getBookIntroDescription()),
-          Center(
-            child: Wrap(
-              direction: Axis.horizontal,
-              children: [
-                ElevatedButton(
-                  onPressed: () => lauchTargetUrl(gracephSite),
-                  child: Text(LocaleServices.getGraceBookStoreButtonLabel()),
-                ),
-                const SizedBox(width: 10.0),
-                ElevatedButton(
-                  onPressed: () => lauchTargetUrl(riverbankSite),
-                  child: Text(LocaleServices.getRiverBookStoreButtonLabel()),
-                ),
-              ],
-            ),
+          Text(LocaleKeys.bookIntroSubtitle.tr()),
+          const SizedBox(height: 10),
+          Text(LocaleKeys.bookIntroContent.tr()),
+          const SizedBox(height: 10),
+          OverflowBar(
+            spacing: 10,
+            overflowSpacing: 20,
+            alignment: MainAxisAlignment.center,
+            overflowAlignment: OverflowBarAlignment.center,
+            children: <Widget>[
+              OutlinedButton(
+                onPressed: () => lauchTargetUrl(gracephSite),
+                child: Text(LocaleKeys.gracephBookStore.tr()),
+              ),
+              OutlinedButton(
+                onPressed: () => lauchTargetUrl(riverbankSite),
+                child: Text(LocaleKeys.riverbankBookStore.tr()),
+              ),
+            ],
           ),
           const SizedBox(height: 10),
         ],
@@ -230,8 +233,6 @@ class BookAuthorSection extends StatefulWidget {
 }
 
 class _BookAuthorSectionState extends State<BookAuthorSection> {
-  String xlcdBookAuthor = LocaleServices.getBookAuthor();
-
   final String youtubePlaylistLink =
       'https://www.youtube.com/results?search_query=%22%E6%9B%BE%E8%88%88%E6%89%8D%E7%89%A7%E5%B8%AB%22';
 
@@ -261,18 +262,18 @@ class _BookAuthorSectionState extends State<BookAuthorSection> {
             ),
           ),
           Text(
-            xlcdBookAuthor,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+            LocaleKeys.bookAuthor.tr(),
+            style: const TextStyle(fontSize: 18.0),
           ),
           const SizedBox(height: 10),
-          Text(LocaleServices.getBookAuthorDescription()),
+          Text(LocaleKeys.bookAuthorSubtitle.tr()),
+          const SizedBox(height: 10),
+          Text(LocaleKeys.bookAuthorContent.tr()),
           Center(
-            child: ElevatedButton(
+            child: OutlinedButton(
               //onPressed: visitYouTubePlaylist,
               onPressed: () => lauchTargetUrl(youtubePlaylistLink),
-              child: Text(LocaleServices.getBookAuthorVideoButtonLabel()),
+              child: Text(LocaleKeys.bookAuthorYouTube.tr()),
             ),
           ),
           const SizedBox(height: 10),
@@ -290,8 +291,6 @@ class BookPraiseSection extends StatefulWidget {
 }
 
 class _BookPraiseSectionState extends State<BookPraiseSection> {
-  String bookPraiseSectionTitle = LocaleServices.getBookPraiseSectionTitle();
-
   @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
@@ -318,84 +317,54 @@ class _BookPraiseSectionState extends State<BookPraiseSection> {
             ),
           ),
           Text(
-            bookPraiseSectionTitle,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+            LocaleKeys.bookPraisesTitle.tr(),
+            style: const TextStyle(fontSize: 18.0),
           ),
           const SizedBox(height: 10),
           ListTile(
             // tileColor: Colors.yellow[50],
             title: Text(
-              LocaleServices.getBookPraiseDescription1(),
-              // style: const TextStyle(fontWeight: FontWeight.bold),
+              LocaleKeys.bookPraisesSubtitle.tr(),
             ),
-            subtitle: const Text(''),
           ),
           const Divider(height: 0),
           ListTile(
-            // leading: CircleAvatar(
-            //     backgroundColor: getNextCircleAvatarBgColor(),
-            //     child: const Text('若')),
-            title: Text(LocaleServices.getBookPraiseDescription2Title()),
-            subtitle: Center(
-              child: Text(
-                LocaleServices.getBookPraiseDescription2SubTitle(),
-                style: const TextStyle(
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-            ),
+            title: Text(LocaleKeys.bookPraises1.tr()),
           ),
           const Divider(height: 0),
           ListTile(
             // tileColor: Colors.yellow[50],
-            title: Text(LocaleServices.getBookPraiseDescription3Title()),
-            subtitle: Center(
-              child: Text(
-                LocaleServices.getBookPraiseDescription3SubTitle(),
-                style: const TextStyle(
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-            ),
+            title: Text(LocaleKeys.bookPraises2.tr()),
           ),
           const Divider(height: 0),
           ListTile(
-            title: Text(LocaleServices.getBookPraiseDescription4Title()),
-            subtitle: Center(
-              child: Text(
-                LocaleServices.getBookPraiseDescription4SubTitle(),
-                style: const TextStyle(
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-            ),
+            title: Text(LocaleKeys.bookPraises3.tr()),
           ),
           const Divider(height: 0),
           ListTile(
             // tileColor: Colors.yellow[50],
-            title: Text(LocaleServices.getBookPraiseDescription5Title()),
-            subtitle: Center(
-              child: Text(
-                LocaleServices.getBookPraiseDescription5SubTitle(),
-                style: const TextStyle(
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-            ),
+            title: Text(LocaleKeys.bookPraises4.tr()),
           ),
           const Divider(height: 0),
           ListTile(
-            title: Text(LocaleServices.getBookPraiseDescription6Title()),
-            subtitle: Center(
-              child: Text(
-                LocaleServices.getBookPraiseDescription6SubTitle(),
-                style: const TextStyle(
-                  fontStyle: FontStyle.italic,
-                ),
+            title: Text(LocaleKeys.bookPraises5.tr()),
+          ),
+          const SizedBox(height: 10),
+          OverflowBar(
+            spacing: 10,
+            overflowSpacing: 20,
+            alignment: MainAxisAlignment.center,
+            overflowAlignment: OverflowBarAlignment.center,
+            children: <Widget>[
+              OutlinedButton(
+                onPressed: () => lauchTargetUrl(gracephSite),
+                child: Text(LocaleKeys.gracephBookStore.tr()),
               ),
-            ),
+              OutlinedButton(
+                onPressed: () => lauchTargetUrl(riverbankSite),
+                child: Text(LocaleKeys.riverbankBookStore.tr()),
+              ),
+            ],
           ),
           const SizedBox(height: 10),
         ],
@@ -412,8 +381,6 @@ class AppDeveloperSection extends StatefulWidget {
 }
 
 class _AppDeveloperSectionState extends State<AppDeveloperSection> {
-  String xlcdAppAuthor = LocaleServices.getAppAuthor();
-
   final String bibleGatewayLink =
       'https://www.biblegateway.com/passage/?search=%E5%B8%96%E6%92%92%E7%BE%85%E5%B0%BC%E8%BF%A6%E5%89%8D%E6%9B%B8+5%3A16-18&version=CUVMPT';
 
@@ -443,18 +410,19 @@ class _AppDeveloperSectionState extends State<AppDeveloperSection> {
             ),
           ),
           Text(
-            xlcdAppAuthor,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+            LocaleKeys.appDeveloper.tr(),
+            style: const TextStyle(fontSize: 18.0),
           ),
           const SizedBox(height: 10),
-          Text(LocaleServices.getAppDeveloperDescription()),
+          Text(LocaleKeys.appDeveloperSubtitle.tr()),
+          const SizedBox(height: 10),
+          Text(LocaleKeys.appDeveloperContent.tr()),
+          const SizedBox(height: 10),
           Center(
-            child: ElevatedButton(
+            child: OutlinedButton(
               //onPressed: visitBibleWebsite,
               onPressed: () => lauchTargetUrl(bibleGatewayLink),
-              child: Text(LocaleServices.getOnlineBibleButtonLabel()),
+              child: Text(LocaleKeys.onlineBible.tr()),
             ),
           ),
           const SizedBox(height: 10),
