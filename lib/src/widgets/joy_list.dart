@@ -39,6 +39,7 @@ class JoyList extends StatelessWidget {
             ),
           ),
           subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 '✞ (${joys[index].scripture.name})${joys[index].scripture.verse}',

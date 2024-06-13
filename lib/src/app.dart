@@ -85,7 +85,7 @@ class _JoystoreState extends State<Joystore> {
           throw ('No child in .router constructor builder');
         }
         xlcdlogAppJoystore.info(
-            'MainAppScreen: Locale=${context.locale.toString()}; joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
+            '[MainAppScreen] Locale=${context.locale.toString()}; joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
         return JoystoreAuthScope(
           notifier: joyAuth,
           child: child,
@@ -99,10 +99,12 @@ class _JoystoreState extends State<Joystore> {
         redirect: (context, state) {
           if (turnonSignIn) {
             if (auth.currentUser == null) {
-              xlcdlogAppJoystore.info('Current User is signed out!');
+              xlcdlogAppJoystore
+                  .info('[MainAppScreen] Current User is signed out!');
               final signedIn = JoystoreAuth.of(context).signedIn;
               if (state.uri.toString() != '/sign-in' && !signedIn) {
-                xlcdlogAppJoystore.info('Display sign-in screen!');
+                xlcdlogAppJoystore
+                    .info('[MainAppScreen] Display sign-in screen!');
                 return '/sign-in';
               }
             }

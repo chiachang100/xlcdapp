@@ -304,7 +304,7 @@ class _YoutubePlayerIFrameSectionState
     //_controller.loadVideoById(videoId: widget.videoId); // Auto Play
     _controller.cueVideoById(videoId: widget.videoId); // Manual Play
 
-    xlcdlogJoyDetails.info('Using YoutubePlayerIFrame.');
+    xlcdlogJoyDetails.info('[JoyDetails] Using YoutubePlayerIFrame.');
   }
 
   @override
@@ -313,8 +313,9 @@ class _YoutubePlayerIFrameSectionState
       _controller.close();
       super.dispose();
     } catch (e) {
-      //xlcdlogJoyDetails.info('Caught exception: $e');
-      xlcdlogJoyDetails.info('YoutubePlayerIFrame: Caught exception...');
+      //xlcdlogJoyDetails.info('[JoyDetails] Caught exception: $e');
+      xlcdlogJoyDetails
+          .info('[JoyDetails] YoutubePlayerIFrame: Caught exception...');
     } finally {
       //super.dispose();
     }
@@ -392,7 +393,7 @@ class _YoutubePlayerFlutterSectionState
         }
       });
 
-    xlcdlogJoyDetails.info('Using YoutubePlayerFlutter.');
+    xlcdlogJoyDetails.info('[JoyDetails] Using YoutubePlayerFlutter.');
   }
 
   @override
@@ -401,8 +402,9 @@ class _YoutubePlayerFlutterSectionState
       _controller.dispose();
       super.dispose();
     } catch (e) {
-      //xlcdlogJoyDetails.info('Caught exception: $e');
-      xlcdlogJoyDetails.info('YoutubePlayerFlutter: Caught exception...');
+      //xlcdlogJoyDetails.info('[JoyDetails] Caught exception: $e');
+      xlcdlogJoyDetails
+          .info('[JoyDetails] YoutubePlayerFlutter: Caught exception...');
     } finally {
       //super.dispose();
     }

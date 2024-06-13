@@ -94,17 +94,17 @@ class FirebaseDbSection extends StatelessWidget {
       final docRef =
           firestore.collection(joystoreName).doc(joy.articleId.toString());
       // Add document
-      docRef.set(joy.toJson()).onError(
-          (e, _) => xlcdlogManageFirestore.info("Error writing documen(t: $e"));
+      docRef.set(joy.toJson()).onError((e, _) => xlcdlogManageFirestore
+          .info("[ManageFirestore] Error writing documen(t: $e"));
       // Read document
       docRef.get().then(
         (DocumentSnapshot doc) {
           final data = doc.data() as Map<String, dynamic>;
           xlcdlogManageFirestore.info(
-              '$joystoreName: DocumentSnapshot added with ID: ${doc.id}:${data['id']}');
+              '[ManageFirestore] $joystoreName: DocumentSnapshot added with ID: ${doc.id}:${data['id']}');
         },
-        onError: (e) =>
-            xlcdlogManageFirestore.info("Error getting document: $e"),
+        onError: (e) => xlcdlogManageFirestore
+            .info("[ManageFirestore] Error getting document: $e"),
       );
     }
   }
@@ -122,11 +122,11 @@ class FirebaseDbSection extends StatelessWidget {
         .get()
         .then((event) {
       for (var doc in event.docs) {
-        xlcdlogManageFirestore
-            .info("$joystoreName: Firestore: ${doc.id} => ${doc.data()}");
+        xlcdlogManageFirestore.info(
+            "[ManageFirestore] $joystoreName: Firestore: ${doc.id} => ${doc.data()}");
         var joy = Joy.fromJson(doc.data());
         xlcdlogManageFirestore.info(
-            "$joystoreName: Joy: ${doc.id} => id=${joy.id}:articleId=${joy.articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
+            "[ManageFirestore] $joystoreName: Joy: ${doc.id} => id=${joy.id}:articleId=${joy.articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
       }
     });
   }

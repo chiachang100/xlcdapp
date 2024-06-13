@@ -100,7 +100,7 @@ class _JoysScreenState extends State<JoysScreen>
             child: Text(LocaleKeys.signOut.tr()),
             onPressed: () async {
               await JoystoreAuth.of(context).signOut();
-              xlcdlogJoysScreen.info('User just signed out!');
+              xlcdlogJoysScreen.info('[JoysScreen] User just signed out!');
 
               FirebaseAnalytics.instance
                   .logEvent(name: 'signin_view', parameters: {

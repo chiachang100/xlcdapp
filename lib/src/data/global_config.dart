@@ -31,7 +31,7 @@ const JOYSTORE_NAME_ZH_TW = 'joys_zh_tw';
 List<Color> circleAvatarBgColor = [
   Colors.red,
   Colors.orange,
-  Colors.yellow,
+  // Colors.yellow,
   Colors.green,
   Colors.blue,
   Colors.indigoAccent,

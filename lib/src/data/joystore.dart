@@ -143,9 +143,9 @@ JoyStore buildJoyStoreFromFirestore(JoyStore joystore) {
         var joy = doc.data();
         if (!isLogged) {
           xlcdlogJoyStore.info(
-              "$joystoreName: Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
+              "[JoyStore] $joystoreName: Firestore: ${doc.id} => id=${doc.data().id}:articleId=${doc.data().articleId}:likes=${doc.data().likes}:isNew=${doc.data().isNew}:category=${doc.data().category}");
           xlcdlogJoyStore.info(
-              "$joystoreName: JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
+              "[JoyStore] $joystoreName: JoyStore:  ${doc.id} => id=${joy.id}:articleId=${doc.data().articleId}:likes=${joy.likes}:isNew=${joy.isNew}:category=${joy.category}");
           isLogged = true;
         }
 

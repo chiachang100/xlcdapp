@@ -80,7 +80,7 @@ Future<void> main() async {
   await EasyLocalization.ensureInitialized();
 
   xlcdlogMain.info(
-      'main-default: joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
+      '[Main-default] joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
 
   joystoreInstance = buildJoyStoreFromLocal();
 
@@ -101,7 +101,7 @@ Future<void> main() async {
       joystoreName = result.toString();
       joystoreInstance = buildJoyStoreFromFirestoreOrLocal(prod: true);
       xlcdlogMain.info(
-          'main-loading: joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
+          '[Main-loading] joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName');
     });
   });
 
@@ -168,7 +168,7 @@ Future<void> main() async {
   // appVersion = '1.9.0';
   // appPkgName = 'xlcdapp';
   xlcdlogMain.info(
-      'main-loading: appName=$appName; appVersion=$appVersion; appPkgName=$appPkgName');
+      '[Main-loading] appName=$appName; appVersion=$appVersion; appPkgName=$appPkgName');
 
   // SystemChrome.setPreferredOrientations(
   //         <DeviceOrientation>[DeviceOrientation.portraitUp])

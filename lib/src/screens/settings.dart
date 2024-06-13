@@ -173,7 +173,7 @@ class _LanguageSectionState extends State<LanguageSection> {
                     'xlcdapp_screen_class': 'SetLocaleToZhTW',
                   });
                   xlcdlogSettings.info(
-                      'LanguageSection: Notify listeners: Locale=${context.locale.toString()};'
+                      '[Settings] Notify listeners: Locale=${context.locale.toString()};'
                       ' joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName.');
                 },
                 child: Text(LocaleKeys.localeZhTw.tr()),
@@ -199,7 +199,7 @@ class _LanguageSectionState extends State<LanguageSection> {
                     'xlcdapp_screen_class': 'SetLocaleToZhCN',
                   });
                   xlcdlogSettings.info(
-                      'LanguageSection: Notify listeners: Locale=${context.locale.toString()};'
+                      '[Settings] Notify listeners: Locale=${context.locale.toString()};'
                       ' joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName.');
                 },
                 child: Text(LocaleKeys.localeZhCn.tr()),
@@ -225,7 +225,7 @@ class _LanguageSectionState extends State<LanguageSection> {
                     'xlcdapp_screen_class': 'SetLocaleToEnUs',
                   });
                   xlcdlogSettings.info(
-                      'LanguageSection: Notify listeners: Locale=${context.locale.toString()};'
+                      '[Settings] Notify listeners: Locale=${context.locale.toString()};'
                       ' joysCurrentLocale=$joysCurrentLocale; joystoreName=$joystoreName.');
                 },
                 child: Text(LocaleKeys.localeEnUs.tr()),
