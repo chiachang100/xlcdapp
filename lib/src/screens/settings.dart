@@ -94,6 +94,21 @@ class LanguageSection extends StatefulWidget {
 class _LanguageSectionState extends State<LanguageSection> {
   String xlcdLanguageSelection = LocaleKeys.settingsLangSetting.tr();
 
+  late bool isEnUs;
+  late bool isZhCn;
+  late bool isZhTw;
+
+  @override
+  void initState() {
+    super.initState();
+    // isEnUs = context.locale == const Locale('en', 'US') ? true : false;
+    // isZhCn = context.locale == const Locale('zh', 'CN') ? true : false;
+    // isZhTw = context.locale == const Locale('zh', 'TW') ? true : false;
+    isEnUs = false;
+    isZhCn = false;
+    isZhTw = false;
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -105,6 +120,16 @@ class _LanguageSectionState extends State<LanguageSection> {
       'xlcdapp_screen': 'LanguageSection',
       'xlcdapp_screen_class': 'SettingsScreenClass',
     });
+
+    switch (context.locale.toString()) {
+      case 'en_US':
+        isEnUs = true;
+      case 'zh_CN':
+        isZhCn = true;
+      case 'zh_TW':
+      default:
+        isZhTw = true;
+    }
 
     return Card(
       elevation: 4.0,
@@ -153,6 +178,11 @@ class _LanguageSectionState extends State<LanguageSection> {
             overflowAlignment: OverflowBarAlignment.center,
             children: <Widget>[
               OutlinedButton(
+                style: isZhTw
+                    ? OutlinedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.blue)
+                    : null,
                 onPressed: () {
                   joysCurrentLocale = LOCALE_ZH_TW;
                   joystoreName = JOYSTORE_NAME_ZH_TW;
@@ -167,6 +197,12 @@ class _LanguageSectionState extends State<LanguageSection> {
                   context.setLocale(const Locale('zh', 'TW'));
                   joystoreInstance =
                       buildJoyStoreFromFirestoreOrLocal(prod: true);
+                  setState(() {
+                    isEnUs = false;
+                    isZhCn = false;
+                    isZhTw = true;
+                  });
+
                   FirebaseAnalytics.instance
                       .logEvent(name: 'screen_view', parameters: {
                     'xlcdapp_screen': 'LanguageSection',
@@ -179,6 +215,11 @@ class _LanguageSectionState extends State<LanguageSection> {
                 child: Text(LocaleKeys.localeZhTw.tr()),
               ),
               OutlinedButton(
+                style: isZhCn
+                    ? OutlinedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.blue)
+                    : null,
                 onPressed: () {
                   joysCurrentLocale = LOCALE_ZH_CN;
                   joystoreName = JOYSTORE_NAME_ZH_CN;
@@ -193,6 +234,12 @@ class _LanguageSectionState extends State<LanguageSection> {
                   context.setLocale(const Locale('zh', 'CN'));
                   joystoreInstance =
                       buildJoyStoreFromFirestoreOrLocal(prod: true);
+                  setState(() {
+                    isEnUs = false;
+                    isZhCn = true;
+                    isZhTw = false;
+                  });
+
                   FirebaseAnalytics.instance
                       .logEvent(name: 'screen_view', parameters: {
                     'xlcdapp_screen': 'LanguageSection',
@@ -205,6 +252,11 @@ class _LanguageSectionState extends State<LanguageSection> {
                 child: Text(LocaleKeys.localeZhCn.tr()),
               ),
               OutlinedButton(
+                style: isEnUs
+                    ? OutlinedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.blue)
+                    : null,
                 onPressed: () {
                   joysCurrentLocale = LOCALE_EN_US;
                   joystoreName = JOYSTORE_NAME_EN_US;
@@ -219,6 +271,12 @@ class _LanguageSectionState extends State<LanguageSection> {
                   context.setLocale(const Locale('en', 'US'));
                   joystoreInstance =
                       buildJoyStoreFromFirestoreOrLocal(prod: true);
+                  setState(() {
+                    isEnUs = true;
+                    isZhCn = false;
+                    isZhTw = false;
+                  });
+
                   FirebaseAnalytics.instance
                       .logEvent(name: 'screen_view', parameters: {
                     'xlcdapp_screen': 'LanguageSection',
