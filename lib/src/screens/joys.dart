@@ -53,10 +53,6 @@ class _JoysScreenState extends State<JoysScreen>
   Widget build(BuildContext context) {
     _tabController.index = widget.selectedIndex;
 
-    String xlcdAppJoysScreenLikes = LocaleKeys.rankingList.tr();
-    String xlcdAppJoysScreenNew = LocaleKeys.newList.tr();
-    String xlcdAppJoysScreenAll = LocaleKeys.tableOfContnets.tr();
-
     return Scaffold(
       appBar: AppBar(
         // title: const Text('笑裡藏道'),
@@ -78,18 +74,18 @@ class _JoysScreenState extends State<JoysScreen>
           tabs: [
             Tab(
               // text: '喜樂榜',
-              text: xlcdAppJoysScreenLikes,
+              text: LocaleKeys.rankingList.tr(),
               icon: const Icon(Icons.format_list_numbered, color: Colors.red),
             ),
             Tab(
               // text: '新出爐',
-              text: xlcdAppJoysScreenNew,
+              text: LocaleKeys.newList.tr(),
               icon:
                   const Icon(Icons.rocket_launch_outlined, color: Colors.green),
             ),
             Tab(
               // text: '目錄表',
-              text: xlcdAppJoysScreenAll,
+              text: LocaleKeys.tableOfContnets.tr(),
               icon: const Icon(Icons.collections_outlined,
                   color: Colors.blueAccent),
             ),

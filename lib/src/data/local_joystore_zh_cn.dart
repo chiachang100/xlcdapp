@@ -147,7 +147,7 @@ final localJoyStoreForZhCn = [
     "id": 0,
     "articleId": 6,
     "title": '选择报告好消息',
-    "scriptureName": '箴言 15:30，新译本',
+    "scriptureName": '新译本，箴言 15:30',
     "scriptureVerse": '「眼中的光采使人心快乐；好消息使骨头滋润。」',
     "prelude":
         '  我们每天听到的消息，坏消息总是比好消息多。 其实，每一件事情的发生，有它好的一面，也有不好的一面，关键是在于我们怎么去看待所发生的事。 ',

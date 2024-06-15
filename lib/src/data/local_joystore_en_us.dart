@@ -147,7 +147,7 @@ final localJoyStoreForEnUs = [
     "id": 0,
     "articleId": 6,
     "title": '選擇報告好消息',
-    "scriptureName": '箴言 15:30，新譯本',
+    "scriptureName": '新譯本，箴言 15:30',
     "scriptureVerse": '「眼中的光采使人心快樂；好消息使骨頭滋潤。」',
     "prelude":
         '  我們每天聽到的消息，壞消息總是比好消息多。其實，每一件事情的發生，有它好的一面，也有不好的一面，關鍵是在於我們怎麼去看待所發生的事。',
