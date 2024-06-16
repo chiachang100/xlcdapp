@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:xlcdapp/l10n/codegen_loader.g.dart';
+import 'package:xlcdapp/l10n/locale_keys.g.dart';
+
 import '../data.dart';
 import '../widgets/joy_list.dart';
 
@@ -23,20 +27,50 @@ class ScriptureDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(scripture.name),
+        title: Text(LocaleKeys.bibleVerse.tr()),
+        // leading: Image.asset('assets/icons/xlcdapp-leading-icon.png'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Expanded(
-              child: JoyList(
-                joys: scripture.joys,
-                onTap: (joy) {
-                  onJoyTapped(joy);
-                },
-              ),
-            ),
-          ],
+      body: ListView(
+        children: <Widget>[
+          ScriptureSection(
+            scripture: scripture,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ScriptureSection extends StatelessWidget {
+  final Scripture scripture;
+
+  const ScriptureSection({
+    super.key,
+    required this.scripture,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        // scripture.joys.first.title,
+        scripture.name,
+        style: const TextStyle(
+          fontSize: 18.0,
+        ),
+      ),
+      subtitle: Text(
+        '${scripture.verse} (${scripture.name})',
+      ),
+      isThreeLine: true,
+      leading: CircleAvatar(
+        backgroundColor:
+            circleAvatarBgColor[(scripture.id % circleAvatarBgColor.length)],
+        child: Text(
+          scripture.name.substring(0, 1),
+          style: const TextStyle(
+            fontSize: 20,
+          ),
         ),
       ),
     );

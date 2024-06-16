@@ -72,16 +72,16 @@ class JoystoreScaffold extends StatelessWidget {
                     selectedIcon: Icon(Icons.list),
                   ),
                   NavigationDestination(
-                    // label: '我的設定',
-                    label: xlcdAppSettingsLabel,
-                    icon: const Icon(Icons.settings_outlined),
-                    selectedIcon: const Icon(Icons.settings),
-                  ),
-                  NavigationDestination(
                     // label: '資源簡介',
                     label: xlcdAppAboutLabel,
                     icon: const Icon(Icons.group_outlined),
                     selectedIcon: const Icon(Icons.group),
+                  ),
+                  NavigationDestination(
+                    // label: '我的設定',
+                    label: xlcdAppSettingsLabel,
+                    icon: const Icon(Icons.settings_outlined),
+                    selectedIcon: const Icon(Icons.settings),
                   ),
                 ],
               ),

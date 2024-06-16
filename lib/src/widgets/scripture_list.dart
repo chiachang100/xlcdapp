@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import '../data.dart';
 
-class ScriptureList extends StatelessWidget {
+import 'package:easy_localization/easy_localization.dart';
+import 'package:xlcdapp/l10n/codegen_loader.g.dart';
+import 'package:xlcdapp/l10n/locale_keys.g.dart';
+
+class ScriptureList extends StatefulWidget {
   final List<Scripture> scriptures;
   final ValueChanged<Scripture>? onTap;
 
@@ -13,38 +17,119 @@ class ScriptureList extends StatelessWidget {
   });
 
   @override
+  State<ScriptureList> createState() => _ScriptureListState();
+}
+
+class _ScriptureListState extends State<ScriptureList> {
+  List<Scripture> _filteredItems = [];
+  bool isInit = true;
+
+  TextEditingController _searchController = TextEditingController();
+
+  void _clearSearch() {
+    _searchController.clear();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _filteredItems = widget.scriptures;
+    _searchController.addListener(_handleSearchChanged);
+    isInit = true;
+  }
+
+  @override
+  void dispose() {
+    _searchController.removeListener(_handleSearchChanged);
+    super.dispose();
+  }
+
+  void _searchItems(String query) {
+    final results = widget.scriptures
+        .where((m) =>
+            m.name.toLowerCase().contains(query.toLowerCase()) ||
+            m.verse.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+    setState(() {
+      _filteredItems = results;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     FirebaseAnalytics.instance.logEvent(name: 'screen_view', parameters: {
       'xlcdapp_screen': 'ScriptureListScreen',
       'xlcdapp_screen_class': 'ScriptureListClass',
     });
 
-    return ListView.builder(
-      itemCount: scriptures.length,
-      itemBuilder: (context, index) => ListTile(
-        title: Text(
-          scriptures[index].name,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SearchBar(
+            controller: _searchController,
+            hintText: LocaleKeys.search.tr(),
+            onTap: () {
+              isInit = false;
+            },
+            onChanged: (query) {
+              _searchItems(query);
+            },
+            leading: IconButton(
+              icon: isInit
+                  ? const Icon(Icons.search)
+                  : const Icon(Icons.arrow_back),
+              onPressed: () {
+                // Handle back action, e.g., close the search or navigate back
+                // close(context, '');
+                _searchController.clear();
+                isInit = true;
+              },
+            ),
+            trailing: [
+              IconButton(
+                icon: const Icon(Icons.clear),
+                onPressed: _clearSearch,
+              ),
+            ],
           ),
         ),
-        subtitle: Text(
-          scriptures[index].verse,
-        ),
-        leading: CircleAvatar(
-          backgroundColor: circleAvatarBgColor[
-              (scriptures[index].id % circleAvatarBgColor.length)],
-          child: Text(
-            scriptures[index].name.substring(0, 1),
-            style: const TextStyle(
-              fontSize: 20,
+        Expanded(
+          child: ListView.builder(
+            itemCount: _filteredItems.length,
+            itemBuilder: (context, index) => ListTile(
+              title: Text(
+                _filteredItems[index].name,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: Text(
+                _filteredItems[index].verse,
+              ),
+              leading: CircleAvatar(
+                backgroundColor: circleAvatarBgColor[
+                    (_filteredItems[index].id % circleAvatarBgColor.length)],
+                child: Text(
+                  _filteredItems[index].name.substring(0, 1),
+                  style: const TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              //trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: widget.onTap != null
+                  ? () => widget.onTap!(_filteredItems[index])
+                  : null,
+              // onTap: onTap != null ? () => {} : null,
             ),
           ),
         ),
-        //trailing: const Icon(Icons.arrow_forward_ios),
-        onTap: onTap != null ? () => onTap!(scriptures[index]) : null,
-        // onTap: onTap != null ? () => {} : null,
-      ),
+      ],
     );
+  }
+
+  void _handleSearchChanged() {
+    _searchItems(_searchController.text);
   }
 }
