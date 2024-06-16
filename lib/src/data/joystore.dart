@@ -37,8 +37,13 @@ class JoyStore {
     var scripture = allScriptures.firstWhere(
       (scripture) => scripture.name == scriptureName,
       orElse: () {
-        final value =
-            Scripture(allScriptures.length, scriptureName, scriptureVerse);
+        final value = Scripture(
+          allScriptures.length,
+          articleId,
+          title,
+          scriptureName,
+          scriptureVerse,
+        );
         allScriptures.add(value);
         return value;
       },

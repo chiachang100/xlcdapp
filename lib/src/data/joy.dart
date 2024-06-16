@@ -58,6 +58,8 @@ class Joy {
             category: json['category']! as String,
             scripture: Scripture(
                 (json['id']! as int),
+                (json['articleId']! as int),
+                (json['title']! as String),
                 (json['scriptureName']! as String),
                 (json['scriptureVerse']! as String)));
 

@@ -133,16 +133,6 @@ Future<void> main() async {
   // Remove the splash screen.
   FlutterNativeSplash.remove();
 
-  // Place ChangeNotifierProvider
-  // runApp(Joystore(firestore: firestore));
-
-  // runApp(
-  //   ChangeNotifierProvider(
-  //     create: (context) => LocaleInfoModel(),
-  //     child: Joystore(firestore: firestore),
-  //   ),
-  // );
-
   runApp(
     // Add easy_localization widget
     EasyLocalization(

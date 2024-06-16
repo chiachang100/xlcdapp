@@ -32,6 +32,15 @@ class ScriptureDetailsScreen extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          ListTile(
+            title: Text(
+              '${scripture.title} (${scripture.articleId})',
+              style: const TextStyle(
+                fontSize: 18.0,
+              ),
+            ),
+          ),
+          const SizedBox(height: 10.0),
           ScriptureSection(
             scripture: scripture,
           ),
@@ -51,25 +60,26 @@ class ScriptureSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        // scripture.joys.first.title,
-        scripture.name,
-        style: const TextStyle(
-          fontSize: 18.0,
-        ),
-      ),
-      subtitle: Text(
-        '${scripture.verse} (${scripture.name})',
-      ),
-      isThreeLine: true,
-      leading: CircleAvatar(
-        backgroundColor:
-            circleAvatarBgColor[(scripture.id % circleAvatarBgColor.length)],
-        child: Text(
-          scripture.name.substring(0, 1),
+    return Card.filled(
+      child: ListTile(
+        title: Text(
+          scripture.name,
           style: const TextStyle(
-            fontSize: 20,
+            fontSize: 18.0,
+          ),
+        ),
+        subtitle: Text(
+          '${scripture.verse} (${scripture.name})',
+        ),
+        isThreeLine: true,
+        leading: CircleAvatar(
+          backgroundColor:
+              circleAvatarBgColor[(scripture.id % circleAvatarBgColor.length)],
+          child: Text(
+            scripture.name.substring(0, 1),
+            style: const TextStyle(
+              fontSize: 20,
+            ),
           ),
         ),
       ),

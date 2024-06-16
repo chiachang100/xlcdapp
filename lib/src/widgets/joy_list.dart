@@ -124,7 +124,7 @@ class _JoyListState extends State<JoyList> {
                       softWrap: false,
                     ),
                     Text(
-                      '🌞${_filteredItems[index].laugh}',
+                      '•ᴗ•${_filteredItems[index].laugh}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       softWrap: false,

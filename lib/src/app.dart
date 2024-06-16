@@ -119,8 +119,8 @@ class _JoystoreState extends State<Joystore> {
                 selectedIndex: switch (state.uri.path) {
                   var p when p.startsWith('/joys') => 0,
                   var p when p.startsWith('/scriptures') => 1,
-                  var p when p.startsWith('/settings') => 2,
-                  var p when p.startsWith('/about') => 3,
+                  var p when p.startsWith('/about') => 2,
+                  var p when p.startsWith('/settings') => 3,
                   _ => 0,
                 },
                 child: child,
@@ -291,20 +291,20 @@ class _JoystoreState extends State<Joystore> {
                 ],
               ),
               GoRoute(
-                path: '/settings',
-                pageBuilder: (context, state) {
-                  return FadeTransitionPage<dynamic>(
-                    key: state.pageKey,
-                    child: SettingsScreen(firestore: widget.firestore),
-                  );
-                },
-              ),
-              GoRoute(
                 path: '/about',
                 pageBuilder: (context, state) {
                   return FadeTransitionPage<dynamic>(
                     key: state.pageKey,
                     child: AboutScreen(firestore: widget.firestore),
+                  );
+                },
+              ),
+              GoRoute(
+                path: '/settings',
+                pageBuilder: (context, state) {
+                  return FadeTransitionPage<dynamic>(
+                    key: state.pageKey,
+                    child: SettingsScreen(firestore: widget.firestore),
                   );
                 },
               ),

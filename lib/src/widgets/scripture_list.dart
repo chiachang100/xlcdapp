@@ -47,6 +47,7 @@ class _ScriptureListState extends State<ScriptureList> {
   void _searchItems(String query) {
     final results = widget.scriptures
         .where((m) =>
+            m.title.toLowerCase().contains(query.toLowerCase()) ||
             m.name.toLowerCase().contains(query.toLowerCase()) ||
             m.verse.toLowerCase().contains(query.toLowerCase()))
         .toList();
@@ -80,8 +81,6 @@ class _ScriptureListState extends State<ScriptureList> {
                   ? const Icon(Icons.search)
                   : const Icon(Icons.arrow_back),
               onPressed: () {
-                // Handle back action, e.g., close the search or navigate back
-                // close(context, '');
                 _searchController.clear();
                 isInit = true;
               },
@@ -99,13 +98,16 @@ class _ScriptureListState extends State<ScriptureList> {
             itemCount: _filteredItems.length,
             itemBuilder: (context, index) => ListTile(
               title: Text(
-                _filteredItems[index].name,
+                '${index + 1}. ${_filteredItems[index].title}',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               subtitle: Text(
-                _filteredItems[index].verse,
+                '(${_filteredItems[index].name}) ${_filteredItems[index].verse}',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                softWrap: false,
               ),
               leading: CircleAvatar(
                 backgroundColor: circleAvatarBgColor[
