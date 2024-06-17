@@ -1,7 +1,7 @@
 name: xlcdapp
 description: "xlcdapp-笑裡藏道"
 publish_to: 'none'
-version: 0.12.0
+version: 0.12.2
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
@@ -35,7 +35,8 @@ dependencies:
       path: plugins/window_size
   youtube_player_iframe: ^5.0.0
   logging: ^1.2.0
-  flutter_adaptive_scaffold: ^0.1.10+1
+  #flutter_adaptive_scaffold: ^0.1.10+1
+  flutter_adaptive_scaffold: ^0.1.11
   flutter_signin_button: ^2.0.0
   flutter_native_splash: ^2.4.0
   youtube_player_flutter: ^9.0.0
