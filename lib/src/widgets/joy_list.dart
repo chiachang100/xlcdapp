@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:xlcdapp/src/services/locale_services.dart';
-import '../data.dart';
+import '../data/data_index.dart';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:xlcdapp/l10n/codegen_loader.g.dart';

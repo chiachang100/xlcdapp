@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
-import '../auth.dart';
+import '../services/auth.dart';
 import '../services/locale_services.dart';
 
 import 'package:easy_localization/easy_localization.dart';

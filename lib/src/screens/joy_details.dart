@@ -11,7 +11,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart' as ypf;
 //import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart' as ypi;
 
-import '../data.dart';
+import '../data/data_index.dart';
 import 'scripture_details.dart';
 
 final xlcdlogJoyDetails = Logger('joy_details');

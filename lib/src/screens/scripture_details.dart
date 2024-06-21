@@ -5,7 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:xlcdapp/l10n/codegen_loader.g.dart';
 import 'package:xlcdapp/l10n/locale_keys.g.dart';
 
-import '../data.dart';
+import '../data/data_index.dart';
 import '../widgets/joy_list.dart';
 
 class ScriptureDetailsScreen extends StatelessWidget {

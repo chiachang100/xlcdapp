@@ -5,8 +5,8 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:go_router/go_router.dart';
 
-import '../auth.dart';
-import '../data.dart';
+import '../services/auth.dart';
+import '../data/data_index.dart';
 
 final xlcdlogManageFirestore = Logger('manage-firestore');
 

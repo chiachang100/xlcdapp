@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:go_router/go_router.dart';
-import '../data.dart';
+import '../data/data_index.dart';
 import '../widgets/scripture_list.dart';
 import '../services/locale_services.dart';
 

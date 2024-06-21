@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import "data.dart";
+import "../data/data_index.dart";
 
 /// A mock authentication service
 class JoystoreAuth extends ChangeNotifier {

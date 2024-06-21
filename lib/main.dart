@@ -13,7 +13,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'src/app.dart';
-import 'src/data.dart';
+import 'src/data/data_index.dart';
 import 'src/services/locale_services.dart';
 import 'src/services/data_services.dart';
 import 'src/models/locale_info_model.dart';

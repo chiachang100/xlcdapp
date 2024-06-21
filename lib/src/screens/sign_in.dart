@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import "../data.dart";
+import "../data/data_index.dart";
 import 'package:logging/logging.dart';
 import '../services/locale_services.dart';
 
