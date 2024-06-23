@@ -11,9 +11,9 @@ abstract class  LocaleKeys {
   static const xlcd = 'xlcd';
   static const about = 'about';
   static const settings = 'settings';
-  static const rankingList = 'rankingList';
+  static const topList = 'topList';
   static const newList = 'newList';
-  static const tableOfContnets = 'tableOfContnets';
+  static const allList = 'allList';
   static const login = 'login';
   static const photos = 'photos';
   static const firebaseExpo = 'firebaseExpo';

@@ -286,6 +286,59 @@ Copyright 2024 Chia Chang. Apache License, Version 2.0 (the "License").
   - Upload the above four images and arrange the order of them correctly.
   - Generate an animated PNG file and convert it to a GIF file.
 
+
+---
+### easy_localization
+- [easy_localization](https://pub.dev/packages/easy_localization)
+  - [easy_localization](https://github.com/aissat/easy_localization)
+- [easy_localization_loader](https://pub.dev/packages/easy_localization_loader)
+  - [easy_localization_loader](https://github.com/aissat/easy_localization_loader)
+
+
+- `flutter pub add easy_localization`
+- Add to your package's `pubspec.yaml` (and run an implicit `flutter pub get`)
+```
+dependencies:
+  easy_localization: ^3.0.7
+```
+- Create a folder and add translation files:
+  - assets
+      - translations
+        - en.json
+        - en-US.json
+        - zh.json # same as zh-TW.json
+        - zh-CN.json
+        - zh-TW.json
+- Declare the assets localization directory in `pubsec.yaml`
+  - flutter:
+      assets:
+        - assets/translations/
+
+```
+import 'package:easy_localization/easy_localization.dart';
+```
+
+## Code generation
+- [easy_localization: Code generation](https://pub.dev/packages/easy_localization)
+- `flutter pub run easy_localization:generate -h`
+- `flutter pub run easy_localization:generate -S assets\translations -O lib/l10n`
+```
+import 'l10n/codegen_loader.g.dart';
+```
+- `flutter pub run easy_localization:generate -S assets\translations -f keys -O lib/l10n -o locale_keys.g.dart`
+
+- Add supported locales to the `ios/Runner/Info.plist` file
+```
+		<key>CFBundleLocalizations</key>
+		<array>
+			<string>en</string>
+			<string>en-US</string>
+			<string>zh</string>
+			<string>zh-CN</string>
+			<string>zh-TW</string>
+		</array>
+```
+
 ---
 ## Misc Configurations
 - Add the following in `android/app/build.gradle`

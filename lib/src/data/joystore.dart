@@ -10,8 +10,8 @@ import 'local_joystore_zh_tw.dart';
 
 final xlcdlogJoyStore = Logger('joystore');
 
-const int topList = 10;
-const int wholeList = 0;
+const int topList = 7;
+const int allList = 0;
 
 class JoyStore {
   List<Joy> allJoys = [];
@@ -93,7 +93,7 @@ class JoyStore {
       // Return the selected list
       return listOfJoys.take(topOnes).toList();
     } else {
-      // Return the whole list
+      // Return the All List
       allJoys = listOfJoys.toList();
       return listOfJoys.toList();
     }
@@ -107,7 +107,7 @@ class JoyStore {
       // Return the selected list
       joyList = listOfJoys.take(topOnes).toList();
     } else {
-      // Return the whole list
+      // Return the All List
       joyList = listOfJoys;
     }
 

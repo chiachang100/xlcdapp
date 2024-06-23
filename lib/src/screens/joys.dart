@@ -74,7 +74,7 @@ class _JoysScreenState extends State<JoysScreen>
           tabs: [
             Tab(
               // text: '喜樂榜',
-              text: LocaleKeys.rankingList.tr(),
+              text: LocaleKeys.topList.tr(),
               icon: const Icon(Icons.format_list_numbered, color: Colors.red),
             ),
             Tab(
@@ -85,7 +85,7 @@ class _JoysScreenState extends State<JoysScreen>
             ),
             Tab(
               // text: '目錄表',
-              text: LocaleKeys.tableOfContnets.tr(),
+              text: LocaleKeys.allList.tr(),
               icon: const Icon(Icons.collections_outlined,
                   color: Colors.blueAccent),
             ),
