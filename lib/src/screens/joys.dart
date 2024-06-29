@@ -91,20 +91,20 @@ class _JoysScreenState extends State<JoysScreen>
             ),
           ],
         ),
-        actions: <Widget>[
-          TextButton(
-            child: Text(LocaleKeys.signOut.tr()),
-            onPressed: () async {
-              await JoystoreAuth.of(context).signOut();
-              xlcdlogJoysScreen.info('[JoysScreen] User just signed out!');
+        actions: const <Widget>[
+          //   TextButton(
+          //     child: Text(LocaleKeys.signOut.tr()),
+          //     onPressed: () async {
+          //       await JoystoreAuth.of(context).signOut();
+          //       xlcdlogJoysScreen.info('[JoysScreen] User just signed out!');
 
-              FirebaseAnalytics.instance
-                  .logEvent(name: 'signin_view', parameters: {
-                'xlcdapp_screen': 'UserSignedOut',
-                'xlcdapp_screen_class': 'SettingsScreenClass',
-              });
-            },
-          ),
+          //       FirebaseAnalytics.instance
+          //           .logEvent(name: 'signin_view', parameters: {
+          //         'xlcdapp_screen': 'UserSignedOut',
+          //         'xlcdapp_screen_class': 'SettingsScreenClass',
+          //       });
+          //     },
+          //   ),
         ],
       ),
       body: widget.child,
