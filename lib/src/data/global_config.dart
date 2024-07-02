@@ -3,8 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'data_index.dart';
 
-// const bool turnonSignIn = true;
-const bool turnonSignIn = false;
+const bool turnonSignIn = true;
 const bool useYoutubePlayerFlutterVersion = true;
 
 late final FirebaseApp app;
