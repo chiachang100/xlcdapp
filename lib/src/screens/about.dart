@@ -234,7 +234,7 @@ class BookAuthorSection extends StatefulWidget {
 
 class _BookAuthorSectionState extends State<BookAuthorSection> {
   final String youtubePlaylistLink =
-      'https://www.youtube.com/results?search_query=%22%E6%9B%BE%E8%88%88%E6%89%8D%E7%89%A7%E5%B8%AB%22';
+      'https://www.youtube.com/playlist?list=PLKdEkGc8_SfGcg2T5VPTzKAgfQVc0IPdR';
 
   @override
   Widget build(BuildContext context) {
