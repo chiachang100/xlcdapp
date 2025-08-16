@@ -250,9 +250,11 @@ JoyStore buildJoyStoreFromLocal() {
 JoyStore buildJoyStoreFromFirestoreOrLocal({prod = true}) {
   // Build JoyStore Instance from local JoyStore
   var js = buildJoyStoreFromLocal();
-  if (prod) {
-    // Build JoyStore Instance from Firestore JoyStore
-    js = buildJoyStoreFromFirestore(js);
+  if (useFilestore) {
+    if (prod) {
+      // Build JoyStore Instance from Firestore JoyStore
+      js = buildJoyStoreFromFirestore(js);
+    }
   }
   return js;
 }

@@ -1,7 +1,7 @@
 name: xlcdapp
 description: "xlcdapp-笑裡藏道"
 publish_to: 'none'
-version: 1.1.4
+version: 1.2.1
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
@@ -72,3 +72,6 @@ flutter:
   - assets/photos/
   - assets/logos/
   - assets/translations/
+
+dependency_overrides:
+  win32: ^5.5.1
